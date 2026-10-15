@@ -52,13 +52,13 @@ class BookCatalogueTests(TestCase):
         )
 
     def test_catalogue_page_loads(self):
-        response = self.client.get(reverse("book_catalogue"))
+        response = self.client.get(reverse("books:book_catalogue"))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "books/catalogue.html")
 
     def test_available_books_are_displayed(self):
-        response = self.client.get(reverse("book_catalogue"))
+        response = self.client.get(reverse("books:book_catalogue"))
 
         self.assertContains(response, "Clean Code")
         self.assertContains(response, "Robert C. Martin")
@@ -66,14 +66,14 @@ class BookCatalogueTests(TestCase):
         self.assertContains(response, "Programming")
 
     def test_unavailable_books_are_excluded(self):
-        response = self.client.get(reverse("book_catalogue"))
+        response = self.client.get(reverse("books:book_catalogue"))
 
         self.assertContains(response, "Clean Code")
         self.assertNotContains(response, "Unavailable Book")
 
     def test_search_by_title(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"q": "Clean Code"},
         )
 
@@ -82,7 +82,7 @@ class BookCatalogueTests(TestCase):
 
     def test_search_by_author(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"q": "Robert C. Martin"},
         )
 
@@ -91,7 +91,7 @@ class BookCatalogueTests(TestCase):
 
     def test_search_by_isbn(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"q": "9780132350884"},
         )
 
@@ -100,7 +100,7 @@ class BookCatalogueTests(TestCase):
 
     def test_search_by_description_keyword(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"q": "introduction"},
         )
 
@@ -109,7 +109,7 @@ class BookCatalogueTests(TestCase):
 
     def test_search_is_case_insensitive(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"q": "CLEAN CODE"},
         )
 
@@ -118,7 +118,7 @@ class BookCatalogueTests(TestCase):
 
     def test_unmatched_search_displays_message(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"q": "Nonexistent Book XYZ"},
         )
 
@@ -131,7 +131,7 @@ class BookCatalogueTests(TestCase):
     def test_empty_catalogue_displays_message(self):
         Book.objects.all().delete()
 
-        response = self.client.get(reverse("book_catalogue"))
+        response = self.client.get(reverse("books:book_catalogue"))
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(
@@ -141,7 +141,7 @@ class BookCatalogueTests(TestCase):
 
     def test_filter_by_category(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"category": "Programming"},
         )
 
@@ -151,7 +151,7 @@ class BookCatalogueTests(TestCase):
 
     def test_category_filter_is_case_insensitive(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"category": "programming"},
         )
 
@@ -161,7 +161,7 @@ class BookCatalogueTests(TestCase):
 
     def test_category_filter_excludes_unavailable_books(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"category": "Programming"},
         )
 
@@ -169,7 +169,7 @@ class BookCatalogueTests(TestCase):
 
     def test_filter_by_minimum_price(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"min_price": "350"},
         )
 
@@ -179,7 +179,7 @@ class BookCatalogueTests(TestCase):
 
     def test_filter_by_maximum_price(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"max_price": "350"},
         )
 
@@ -189,7 +189,7 @@ class BookCatalogueTests(TestCase):
 
     def test_filter_by_price_range(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {
                 "min_price": "300",
                 "max_price": "400",
@@ -202,7 +202,7 @@ class BookCatalogueTests(TestCase):
 
     def test_price_boundaries_are_inclusive(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {
                 "min_price": "350",
                 "max_price": "350",
@@ -215,7 +215,7 @@ class BookCatalogueTests(TestCase):
 
     def test_filter_by_category_and_price_together(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {
                 "category": "Programming",
                 "min_price": "400",
@@ -228,7 +228,7 @@ class BookCatalogueTests(TestCase):
 
     def test_search_and_filters_work_together(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {
                 "q": "programming",
                 "category": "Programming",
@@ -242,7 +242,7 @@ class BookCatalogueTests(TestCase):
 
     def test_invalid_minimum_price_does_not_crash(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"min_price": "invalid"},
         )
 
@@ -254,7 +254,7 @@ class BookCatalogueTests(TestCase):
 
     def test_negative_minimum_price_is_rejected(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"min_price": "-10"},
         )
 
@@ -266,7 +266,7 @@ class BookCatalogueTests(TestCase):
 
     def test_invalid_maximum_price_does_not_crash(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"max_price": "invalid"},
         )
 
@@ -278,7 +278,7 @@ class BookCatalogueTests(TestCase):
 
     def test_non_finite_price_is_rejected(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {"min_price": "NaN"},
         )
 
@@ -290,7 +290,7 @@ class BookCatalogueTests(TestCase):
 
     def test_minimum_price_greater_than_maximum_is_rejected(self):
         response = self.client.get(
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
             {
                 "min_price": "500",
                 "max_price": "100",
@@ -307,7 +307,7 @@ class BookCatalogueTests(TestCase):
         self.assertContains(response, "The Alchemist")
 
     def test_results_are_ordered_by_title(self):
-        response = self.client.get(reverse("book_catalogue"))
+        response = self.client.get(reverse("books:book_catalogue"))
 
         books = list(response.context["books"])
 
@@ -349,7 +349,7 @@ class BookDetailTests(TestCase):
 
     def test_book_detail_page_loads(self):
         response = self.client.get(
-            reverse("book_detail", args=[self.book.id])
+            reverse("books:book_detail", args=[self.book.id])
         )
 
         self.assertEqual(response.status_code, 200)
@@ -357,7 +357,7 @@ class BookDetailTests(TestCase):
 
     def test_book_detail_displays_book_information(self):
         response = self.client.get(
-            reverse("book_detail", args=[self.book.id])
+            reverse("books:book_detail", args=[self.book.id])
         )
 
         self.assertContains(response, "Clean Code")
@@ -373,7 +373,7 @@ class BookDetailTests(TestCase):
 
     def test_book_detail_displays_cover_image(self):
         response = self.client.get(
-            reverse("book_detail", args=[self.book.id])
+            reverse("books:book_detail", args=[self.book.id])
         )
 
         self.assertContains(
@@ -395,29 +395,29 @@ class BookDetailTests(TestCase):
         )
 
         response = self.client.get(
-            reverse("book_detail", args=[book_without_cover.id])
+            reverse("books:book_detail", args=[book_without_cover.id])
         )
 
         self.assertContains(response, "No cover image available")
 
     def test_book_detail_returns_404_for_nonexistent_book(self):
         response = self.client.get(
-            reverse("book_detail", args=[999999])
+            reverse("books:book_detail", args=[999999])
         )
 
         self.assertEqual(response.status_code, 404)
 
     def test_unavailable_book_detail_returns_404(self):
         response = self.client.get(
-            reverse("book_detail", args=[self.unavailable_book.id])
+            reverse("books:book_detail", args=[self.unavailable_book.id])
         )
 
         self.assertEqual(response.status_code, 404)
 
     def test_catalogue_links_to_book_details(self):
-        response = self.client.get(reverse("book_catalogue"))
+        response = self.client.get(reverse("books:book_catalogue"))
 
         self.assertContains(
             response,
-            reverse("book_detail", args=[self.book.id]),
+            reverse("books:book_detail", args=[self.book.id]),
         )

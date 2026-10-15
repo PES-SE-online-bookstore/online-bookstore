@@ -27,7 +27,7 @@ def is_buyer(user):
 def cart_detail(request):
     if not is_buyer(request.user):
         messages.error(request, "Only buyers can access the shopping cart.")
-        return redirect("book_catalogue")
+        return redirect("books:book_catalogue")
 
     cart, _ = Cart.objects.get_or_create(user=request.user)
     items = cart.items.select_related("book").all()
@@ -47,7 +47,7 @@ def cart_detail(request):
 def add_to_cart(request, book_id):
     if not is_buyer(request.user):
         messages.error(request, "Only buyers can add books to a cart.")
-        return redirect("book_catalogue")
+        return redirect("books:book_catalogue")
 
     quantity_value = request.POST.get("quantity", "1")
 
@@ -57,7 +57,7 @@ def add_to_cart(request, book_id):
             raise ValueError
     except (TypeError, ValueError):
         messages.error(request, "Please enter a valid quantity.")
-        return redirect("book_detail", book_id=book_id)
+        return redirect("books:book_detail", book_id=book_id)
 
     with transaction.atomic():
         book = get_object_or_404(
@@ -71,7 +71,7 @@ def add_to_cart(request, book_id):
                 request,
                 "The requested quantity exceeds the available stock.",
             )
-            return redirect("book_detail", book_id=book.id)
+            return redirect("books:book_detail", book_id=book.id)
 
         cart, _ = Cart.objects.get_or_create(user=request.user)
 
@@ -83,7 +83,7 @@ def add_to_cart(request, book_id):
                 request,
                 "The requested quantity exceeds the available stock.",
             )
-            return redirect("book_detail", book_id=book.id)
+            return redirect("books:book_detail", book_id=book.id)
 
         if item:
             item.quantity = new_quantity
@@ -104,7 +104,7 @@ def add_to_cart(request, book_id):
 def update_cart_item(request, item_id):
     if not is_buyer(request.user):
         messages.error(request, "Only buyers can update a shopping cart.")
-        return redirect("book_catalogue")
+        return redirect("books:book_catalogue")
 
     quantity_value = request.POST.get("quantity", "")
 
@@ -148,7 +148,7 @@ def update_cart_item(request, item_id):
 def remove_from_cart(request, item_id):
     if not is_buyer(request.user):
         messages.error(request, "Only buyers can remove items from a cart.")
-        return redirect("book_catalogue")
+        return redirect("books:book_catalogue")
 
     item = get_object_or_404(
         CartItem,
@@ -167,7 +167,7 @@ def remove_from_cart(request, item_id):
 def checkout(request):
     if not is_buyer(request.user):
         messages.error(request, "Only buyers can proceed to checkout.")
-        return redirect("book_catalogue")
+        return redirect("books:book_catalogue")
 
     cart, _ = Cart.objects.get_or_create(user=request.user)
     items = cart.items.select_related("book").all()

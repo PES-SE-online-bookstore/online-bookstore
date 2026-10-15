@@ -282,3 +282,143 @@ class CreateOrderFromCartTests(TestCase):
             payment.transaction_reference,
             "",
         )
+
+
+class OrderHistoryAndDetailTests(TestCase):
+    def setUp(self):
+        self.buyer = User.objects.create_user(
+            username="history_buyer",
+            email="history@example.com",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        self.other_buyer = User.objects.create_user(
+            username="other_buyer",
+            email="other@example.com",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.other_buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        self.book = Book.objects.create(
+            title="Order History Book",
+            author="Test Author",
+            isbn="9781234567891",
+            description="A book used to test order history.",
+            category="Testing",
+            price=Decimal("150.00"),
+            stock_quantity=5,
+            is_available=True,
+        )
+
+        self.order = Order.objects.create(
+            user=self.buyer,
+            full_name="History Buyer",
+            address_line_1="123 Test Street",
+            address_line_2="",
+            city="Bengaluru",
+            state="Karnataka",
+            postal_code="560001",
+            country="India",
+            phone_number="9876543210",
+            total_amount=Decimal("300.00"),
+            status=Order.Status.PENDING,
+        )
+
+        OrderItem.objects.create(
+            order=self.order,
+            book=self.book,
+            book_title=self.book.title,
+            unit_price=Decimal("150.00"),
+            quantity=2,
+        )
+
+        self.payment = Payment.objects.create(
+            order=self.order,
+            method=Payment.Method.TEST_CARD,
+            amount=Decimal("300.00"),
+            status=Payment.Status.PENDING,
+        )
+
+    def test_buyer_can_view_order_history(self):
+        self.client.force_login(self.buyer)
+
+        response = self.client.get("/orders/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "My Orders")
+        self.assertContains(response, f"#{self.order.pk}")
+        self.assertContains(response, "Order History Book")
+
+    def test_order_history_does_not_show_other_buyers_orders(self):
+        Order.objects.create(
+            user=self.other_buyer,
+            full_name="Other Buyer",
+            address_line_1="456 Other Street",
+            address_line_2="",
+            city="Mysuru",
+            state="Karnataka",
+            postal_code="570001",
+            country="India",
+            phone_number="9876543211",
+            total_amount=Decimal("50.00"),
+            status=Order.Status.PENDING,
+        )
+
+        self.client.force_login(self.buyer)
+
+        response = self.client.get("/orders/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f"#{self.order.pk}")
+        self.assertNotContains(response, "Other Buyer")
+
+    def test_buyer_can_view_own_order_details(self):
+        self.client.force_login(self.buyer)
+
+        response = self.client.get(f"/orders/{self.order.pk}/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Order History Book")
+        self.assertContains(response, "History Buyer")
+        self.assertContains(response, "Test Card")
+        self.assertContains(response, "Pending")
+
+    def test_buyer_cannot_view_another_buyers_order(self):
+        other_order = Order.objects.create(
+            user=self.other_buyer,
+            full_name="Other Buyer",
+            address_line_1="456 Other Street",
+            address_line_2="",
+            city="Mysuru",
+            state="Karnataka",
+            postal_code="570001",
+            country="India",
+            phone_number="9876543211",
+            total_amount=Decimal("50.00"),
+            status=Order.Status.PENDING,
+        )
+
+        self.client.force_login(self.buyer)
+
+        response = self.client.get(f"/orders/{other_order.pk}/")
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_order_history_requires_login(self):
+        response = self.client.get("/orders/")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/accounts/login", response.url)
+
+    def test_order_details_require_login(self):
+        response = self.client.get(f"/orders/{self.order.pk}/")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/accounts/login", response.url)

@@ -102,7 +102,7 @@ class CartTests(TestCase):
 
         self.assertRedirects(
             response,
-            reverse("book_detail", args=[self.book.id]),
+            reverse("books:book_detail", args=[self.book.id]),
         )
         self.assertFalse(
             CartItem.objects.filter(cart=self.cart, book=self.book).exists()
@@ -150,7 +150,7 @@ class CartTests(TestCase):
 
                 self.assertRedirects(
                     response,
-                    reverse("book_detail", args=[self.book.id]),
+                    reverse("books:book_detail", args=[self.book.id]),
                 )
 
         self.assertFalse(
@@ -216,7 +216,7 @@ class CartTests(TestCase):
 
         self.assertRedirects(
             response,
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
         )
 
     def test_seller_cannot_add_book_to_cart(self):
@@ -229,7 +229,7 @@ class CartTests(TestCase):
 
         self.assertRedirects(
             response,
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
         )
         self.assertFalse(
             CartItem.objects.filter(book=self.book).exists()
@@ -338,7 +338,7 @@ class CheckoutTests(TestCase):
 
         self.assertRedirects(
             response,
-            reverse("book_catalogue"),
+            reverse("books:book_catalogue"),
         )
 
     def test_checkout_requires_login(self):

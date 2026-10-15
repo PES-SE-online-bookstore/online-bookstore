@@ -157,7 +157,7 @@
 <div class="container">
     <header>
         <h1>Shopping Cart</h1>
-        <a href="{% url 'book_catalogue' %}">Continue Shopping</a>
+        <a href="{% url 'books:book_catalogue' %}">Continue Shopping</a>
     </header>
 
     {% if messages %}
@@ -175,7 +175,7 @@
             <section class="cart-item">
                 <div class="book-info">
                     <h2>
-                        <a href="{% url 'book_detail' item.book.id %}">
+                        <a href="{% url 'books:book_detail' item.book.id %}">
                             {{ item.book.title }}
                         </a>
                     </h2>
@@ -231,7 +231,7 @@
             <p class="muted">
                 Browse our catalogue and add books you would like to purchase.
             </p>
-            <a class="button" href="{% url 'book_catalogue' %}">
+            <a class="button" href="{% url 'books:book_catalogue' %}">
                 Browse Books
             </a>
         </section>

@@ -307,7 +307,7 @@
 
                     <a
                         class="reset-button"
-                        href="{% url 'book_catalogue' %}"
+                        href="{% url 'books:book_catalogue' %}"
                     >
                         Reset
                     </a>
@@ -327,7 +327,7 @@
                     <article class="book-card">
                         <h2>
                             <a
-                                href="{% url 'book_detail' book.id %}"
+                                href="{% url 'books:book_detail' book.id %}"
                                 style="color: #243b53; text-decoration: none;"
                             >
                                 {{ book.title }}
