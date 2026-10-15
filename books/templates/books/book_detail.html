@@ -141,18 +141,64 @@
             overflow-wrap: anywhere;
         }
 
-        .browse-button {
+        .browse-button,
+        .add-to-cart-button {
             display: inline-block;
             margin-top: 15px;
             padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .browse-button {
             background-color: #243b53;
             color: white;
-            border-radius: 5px;
-            text-decoration: none;
         }
 
         .browse-button:hover {
             background-color: #334e68;
+        }
+
+        .add-to-cart-button {
+            background-color: #3157c8;
+            color: white;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #2445a5;
+        }
+
+        .quantity-field {
+            display: block;
+            margin-top: 12px;
+        }
+
+        .quantity-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .quantity-field input {
+            width: 100px;
+            padding: 10px;
+            border: 1px solid #cbd2d9;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .message {
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: #e8eef5;
+        }
+
+        .login-note {
+            margin-top: 15px;
         }
 
         @media (max-width: 650px) {
@@ -182,6 +228,14 @@
         <a class="back-link" href="{% url 'book_catalogue' %}">
             &larr; Back to catalogue
         </a>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message" role="status">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
 
         <article class="book-details">
             <div class="cover-container">
@@ -235,6 +289,44 @@
                 {% else %}
                     <p class="availability out-of-stock">
                         Currently out of stock
+                    </p>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    {% if user.profile.role == "BUYER" %}
+                        {% if book.is_available and book.stock_quantity > 0 %}
+                            <form
+                                method="post"
+                                action="{% url 'cart:add_to_cart' book.id %}"
+                            >
+                                {% csrf_token %}
+
+                                <div class="quantity-field">
+                                    <label for="quantity">Quantity</label>
+                                    <input
+                                        type="number"
+                                        id="quantity"
+                                        name="quantity"
+                                        value="1"
+                                        min="1"
+                                        max="{{ book.stock_quantity }}"
+                                        required
+                                    >
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    class="add-to-cart-button"
+                                >
+                                    Add to Cart
+                                </button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    <p class="login-note">
+                        <a href="{% url 'login' %}">Log in</a>
+                        as a buyer to add this book to your cart.
                     </p>
                 {% endif %}
 

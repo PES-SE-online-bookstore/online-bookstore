@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Online Bookstore</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        a {
+            color: #2457c5;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .panel, .cart-item {
+            background: white;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .book-info {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .book-info h2 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .muted {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button, .button {
+            display: inline-block;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #2457c5;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .danger {
+            background: #b42318;
+        }
+
+        .summary {
+            text-align: right;
+        }
+
+        .summary h2 {
+            margin-top: 0;
+        }
+
+        .messages {
+            padding: 0;
+            list-style: none;
+        }
+
+        .messages li {
+            background: #e8f5e9;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .messages .error {
+            background: #ffebee;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 14px;
+            }
+
+            .cart-item {
+                align-items: flex-start;
+            }
+
+            .summary {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Shopping Cart</h1>
+        <a href="{% url 'book_catalogue' %}">Continue Shopping</a>
+    </header>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{% if message.tags == 'error' %}error{% endif %}">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if items %}
+        {% for item in items %}
+            <section class="cart-item">
+                <div class="book-info">
+                    <h2>
+                        <a href="{% url 'book_detail' item.book.id %}">
+                            {{ item.book.title }}
+                        </a>
+                    </h2>
+
+                    <p class="muted">By {{ item.book.author }}</p>
+
+                    <p>Unit price: ₹{{ item.book.price|floatformat:2 }}</p>
+
+                    <p class="price">
+                        Subtotal: ₹{{ item.total_price|floatformat:2 }}
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <form method="post"
+                          action="{% url 'cart:update_cart_item' item.id %}">
+                        {% csrf_token %}
+
+                        <label for="quantity-{{ item.id }}">Quantity</label>
+
+                        <input
+                            type="number"
+                            id="quantity-{{ item.id }}"
+                            name="quantity"
+                            value="{{ item.quantity }}"
+                            min="1"
+                            max="{{ item.book.stock_quantity }}"
+                            required
+                        >
+
+                        <button type="submit">Update</button>
+                    </form>
+
+                    <form method="post"
+                          action="{% url 'cart:remove_from_cart' item.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="danger">Remove</button>
+                    </form>
+                </div>
+            </section>
+        {% endfor %}
+
+        <section class="panel summary">
+            <p>Total items: {{ cart.total_items }}</p>
+            <h2>Cart Total: ₹{{ cart.total_price|floatformat:2 }}</h2>
+            <p class="muted">
+                Checkout will be available when the checkout feature is implemented.
+            </p>
+            <button type="button" disabled>Proceed to Checkout</button>
+        </section>
+    {% else %}
+        <section class="panel empty">
+            <h2>Your cart is empty</h2>
+            <p class="muted">
+                Browse our catalogue and add books you would like to purchase.
+            </p>
+            <a class="button" href="{% url 'book_catalogue' %}">
+                Browse Books
+            </a>
+        </section>
+    {% endif %}
+</div>
+</body>
+</html>
