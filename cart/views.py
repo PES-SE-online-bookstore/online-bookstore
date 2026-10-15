@@ -6,6 +6,8 @@ from django.views.decorators.http import require_POST
 
 from accounts.models import Profile
 from books.models import Book
+from orders.models import Payment
+from orders.services import create_order_from_cart
 
 from .forms import CheckoutForm, ShippingAddressForm
 from .models import Cart, CartItem, ShippingAddress
@@ -180,14 +182,17 @@ def checkout(request):
     addresses = ShippingAddress.objects.filter(user=request.user)
 
     selected_address = None
-    address_id = request.POST.get("address_id") if request.method == "POST" else None
+    address_id = (
+        request.POST.get("address_id")
+        if request.method == "POST"
+        else None
+    )
 
     if address_id:
         selected_address = addresses.filter(id=address_id).first()
 
     if request.method == "POST":
         checkout_form = CheckoutForm(request.POST)
-
         use_new_address = request.POST.get("use_new_address") == "yes"
 
         if use_new_address:
@@ -195,70 +200,111 @@ def checkout(request):
             address_valid = address_form.is_valid()
 
             if checkout_form.is_valid() and address_valid:
-                with transaction.atomic():
-                    address = address_form.save(commit=False)
-                    address.user = request.user
+                try:
+                    with transaction.atomic():
+                        address = address_form.save(commit=False)
+                        address.user = request.user
 
-                    if address.is_default:
-                        ShippingAddress.objects.filter(
+                        if address.is_default:
+                            ShippingAddress.objects.filter(
+                                user=request.user,
+                                is_default=True,
+                            ).update(is_default=False)
+
+                        address.save()
+
+                        order, payment = create_order_from_cart(
                             user=request.user,
-                            is_default=True,
-                        ).update(is_default=False)
+                            cart=cart,
+                            shipping_address=address,
+                            payment_method=checkout_form.cleaned_data[
+                                "payment_method"
+                            ],
+                        )
 
-                    address.save()
+                except ValueError as exc:
+                    messages.error(request, str(exc))
+                else:
+                    messages.warning(
+                        request,
+                        (
+                            f"Order #{order.pk} has been created with "
+                            f"pending payment of {payment.amount}. "
+                            "This is a test-mode workflow: no money was "
+                            "charged, and payment has not been verified. "
+                            "Your cart has been preserved."
+                        ),
+                    )
 
-                messages.success(
-                    request,
-                    "Shipping address saved. Payment processing will be "
-                    "available when the secure payment feature is implemented.",
-                )
-
-                return render(
-                    request,
-                    "cart/checkout.html",
-                    {
-                        "cart": cart,
-                        "items": items,
-                        "addresses": addresses,
-                        "selected_address": address,
-                        "address_form": ShippingAddressForm(),
-                        "checkout_form": checkout_form,
-                        "checkout_pending": True,
-                    },
-                )
+                    return render(
+                        request,
+                        "cart/checkout.html",
+                        {
+                            "cart": cart,
+                            "items": cart.items.select_related("book").all(),
+                            "addresses": ShippingAddress.objects.filter(
+                                user=request.user
+                            ),
+                            "selected_address": address,
+                            "address_form": ShippingAddressForm(),
+                            "checkout_form": CheckoutForm(),
+                            "checkout_pending": True,
+                            "order": order,
+                            "payment": payment,
+                        },
+                    )
 
         else:
             address_form = ShippingAddressForm()
 
-            if (
-                checkout_form.is_valid()
-                and selected_address is not None
-            ):
-                messages.success(
-                    request,
-                    "Checkout details validated. Payment processing will be "
-                    "available when the secure payment feature is implemented.",
-                )
+            if checkout_form.is_valid() and selected_address is not None:
+                try:
+                    order, payment = create_order_from_cart(
+                        user=request.user,
+                        cart=cart,
+                        shipping_address=selected_address,
+                        payment_method=checkout_form.cleaned_data[
+                            "payment_method"
+                        ],
+                    )
 
-                return render(
-                    request,
-                    "cart/checkout.html",
-                    {
-                        "cart": cart,
-                        "items": items,
-                        "addresses": addresses,
-                        "selected_address": selected_address,
-                        "address_form": address_form,
-                        "checkout_form": checkout_form,
-                        "checkout_pending": True,
-                    },
-                )
+                except ValueError as exc:
+                    messages.error(request, str(exc))
+                else:
+                    messages.warning(
+                        request,
+                        (
+                            f"Order #{order.pk} has been created with "
+                            f"pending payment of {payment.amount}. "
+                            "This is a test-mode workflow: no money was "
+                            "charged, and payment has not been verified. "
+                            "Your cart has been preserved."
+                        ),
+                    )
 
-            if not selected_address:
+                    return render(
+                        request,
+                        "cart/checkout.html",
+                        {
+                            "cart": cart,
+                            "items": cart.items.select_related("book").all(),
+                            "addresses": addresses,
+                            "selected_address": selected_address,
+                            "address_form": address_form,
+                            "checkout_form": CheckoutForm(),
+                            "checkout_pending": True,
+                            "order": order,
+                            "payment": payment,
+                        },
+                    )
+
+            elif not selected_address:
                 checkout_form.add_error(
                     None,
-                    "Please select one of your saved shipping addresses "
-                    "or enter a new address.",
+                    (
+                        "Please select one of your saved shipping addresses "
+                        "or enter a new address."
+                    ),
                 )
 
     else:
