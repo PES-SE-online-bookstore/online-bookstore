@@ -2,14 +2,16 @@ from decimal import Decimal, InvalidOperation
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db import transaction
+from django.db.models import Avg, Q
+from django.db.models.deletion import ProtectedError
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import BookListingForm
-from .models import Book
+from orders.models import Order, OrderItem
 
-from django.db import transaction
-from django.db.models.deletion import ProtectedError
+from .forms import BookListingForm, ReviewForm
+from .models import Book, Review
+
 
 def book_catalogue(request):
     query = request.GET.get("q", "").strip()
@@ -119,11 +121,140 @@ def book_detail(request, book_id):
         approval_status=Book.ApprovalStatus.APPROVED,
     )
 
+    reviews = (
+        Review.objects.filter(book=book)
+        .select_related("buyer")
+        .order_by("-created_at")
+    )
+
+    review_stats = reviews.aggregate(
+        average_rating=Avg("rating"),
+    )
+
+    review_form = None
+    can_review = False
+    has_reviewed = False
+
+    if request.user.is_authenticated:
+        has_reviewed = Review.objects.filter(
+            book=book,
+            buyer=request.user,
+        ).exists()
+
+        has_purchased = OrderItem.objects.filter(
+            book=book,
+            order__user=request.user,
+        ).exclude(
+            order__status=Order.Status.CANCELLED,
+        ).exists()
+
+        can_review = has_purchased and not has_reviewed
+
+        if can_review:
+            review_form = ReviewForm()
+
     context = {
         "book": book,
+        "reviews": reviews,
+        "average_rating": review_stats["average_rating"],
+        "review_count": reviews.count(),
+        "review_form": review_form,
+        "can_review": can_review,
+        "has_reviewed": has_reviewed,
     }
 
     return render(request, "books/book_detail.html", context)
+
+
+@login_required
+def submit_review(request, book_id):
+    if request.method != "POST":
+        return redirect("books:book_detail", book_id=book_id)
+
+    book = get_object_or_404(
+        Book,
+        id=book_id,
+        is_available=True,
+        approval_status=Book.ApprovalStatus.APPROVED,
+    )
+
+    # Only buyers with a non-cancelled order containing this book may review.
+    has_purchased = OrderItem.objects.filter(
+        book=book,
+        order__user=request.user,
+    ).exclude(
+        order__status=Order.Status.CANCELLED,
+    ).exists()
+
+    if not has_purchased:
+        messages.error(
+            request,
+            "You must purchase this book before reviewing it.",
+        )
+        return redirect("books:book_detail", book_id=book.pk)
+
+    if Review.objects.filter(book=book, buyer=request.user).exists():
+        messages.error(
+            request,
+            "You have already reviewed this book.",
+        )
+        return redirect("books:book_detail", book_id=book.pk)
+
+    form = ReviewForm(request.POST)
+
+    if not form.is_valid():
+        # Keep validation errors visible on the book details page.
+        reviews = (
+            Review.objects.filter(book=book)
+            .select_related("buyer")
+            .order_by("-created_at")
+        )
+
+        review_stats = reviews.aggregate(
+            average_rating=Avg("rating"),
+        )
+
+        context = {
+            "book": book,
+            "reviews": reviews,
+            "average_rating": review_stats["average_rating"],
+            "review_count": reviews.count(),
+            "review_form": form,
+            "can_review": True,
+            "has_reviewed": False,
+        }
+
+        return render(
+            request,
+            "books/book_detail.html",
+            context,
+            status=400,
+        )
+
+    try:
+        with transaction.atomic():
+            # The database constraint also prevents duplicate reviews.
+            Review.objects.create(
+                book=book,
+                buyer=request.user,
+                rating=form.cleaned_data["rating"],
+                comment=form.cleaned_data["comment"],
+            )
+
+    except Exception:
+        # A concurrent duplicate submission may violate the unique constraint.
+        if Review.objects.filter(book=book, buyer=request.user).exists():
+            messages.error(
+                request,
+                "You have already reviewed this book.",
+            )
+        else:
+            raise
+
+        return redirect("books:book_detail", book_id=book.pk)
+
+    messages.success(request, "Your review was submitted successfully.")
+    return redirect("books:book_detail", book_id=book.pk)
 
 
 @login_required
@@ -161,6 +292,7 @@ def create_listing(request):
         {"form": form},
     )
 
+
 @login_required
 def my_listings(request):
     # Only sellers may manage book listings.
@@ -181,6 +313,7 @@ def my_listings(request):
         "books/my_listings.html",
         {"listings": listings},
     )
+
 
 @login_required
 def edit_listing(request, book_id):
@@ -227,6 +360,7 @@ def edit_listing(request, book_id):
             "book": book,
         },
     )
+
 
 @login_required
 def delete_listing(request, book_id):

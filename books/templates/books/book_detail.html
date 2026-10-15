@@ -36,7 +36,7 @@
         main {
             max-width: 1000px;
             margin: 35px auto;
-            padding: 0 20px;
+            padding: 0 20px 40px;
         }
 
         .back-link {
@@ -142,7 +142,8 @@
         }
 
         .browse-button,
-        .add-to-cart-button {
+        .add-to-cart-button,
+        .submit-review-button {
             display: inline-block;
             margin-top: 15px;
             padding: 12px 20px;
@@ -162,12 +163,14 @@
             background-color: #334e68;
         }
 
-        .add-to-cart-button {
+        .add-to-cart-button,
+        .submit-review-button {
             background-color: #3157c8;
             color: white;
         }
 
-        .add-to-cart-button:hover {
+        .add-to-cart-button:hover,
+        .submit-review-button:hover {
             background-color: #2445a5;
         }
 
@@ -201,6 +204,93 @@
             margin-top: 15px;
         }
 
+        .reviews-section {
+            margin-top: 30px;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #e1e5ea;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .reviews-section h2 {
+            margin-top: 0;
+            color: #243b53;
+        }
+
+        .rating-summary {
+            padding: 15px;
+            margin-bottom: 25px;
+            background-color: #f5f7fa;
+            border-radius: 6px;
+        }
+
+        .rating-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #243b53;
+        }
+
+        .review-card {
+            padding: 20px 0;
+            border-top: 1px solid #e1e5ea;
+        }
+
+        .review-card h3 {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .review-rating {
+            color: #a66a00;
+            font-weight: bold;
+        }
+
+        .review-date {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .review-comment {
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+
+        .review-form {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f5f7fa;
+            border-radius: 6px;
+        }
+
+        .review-form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        .review-form select,
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd2d9;
+            border-radius: 5px;
+            font: inherit;
+        }
+
+        .review-form textarea {
+            resize: vertical;
+        }
+
+        .field-errors {
+            color: #a61b1b;
+            margin: 5px 0;
+        }
+
+        .empty-reviews {
+            color: #52606d;
+        }
+
         @media (max-width: 650px) {
             .book-details {
                 grid-template-columns: 1fr;
@@ -213,6 +303,10 @@
 
             .book-information h2 {
                 font-size: 25px;
+            }
+
+            .reviews-section {
+                padding: 20px;
             }
         }
     </style>
@@ -338,6 +432,117 @@
                 </a>
             </div>
         </article>
+
+        <section class="reviews-section" aria-labelledby="reviews-heading">
+            <h2 id="reviews-heading">Customer Reviews</h2>
+
+            <div class="rating-summary">
+                {% if review_count %}
+                    <div class="rating-number">
+                        {{ average_rating|floatformat:1 }} / 5
+                    </div>
+
+                    <div aria-label="Average rating">
+                        {% with rounded_rating=average_rating|floatformat:0 %}
+                            Average customer rating
+                        {% endwith %}
+                    </div>
+
+                    <p>
+                        Based on {{ review_count }}
+                        review{{ review_count|pluralize }}
+                    </p>
+                {% else %}
+                    <p>No reviews yet. Be the first to review this book!</p>
+                {% endif %}
+            </div>
+
+            {% if reviews %}
+                {% for review in reviews %}
+                    <article class="review-card">
+                        <h3>{{ review.buyer.username }}</h3>
+
+                        <p class="review-rating">
+                            {{ review.rating }} / 5 stars
+                        </p>
+
+                        <p class="review-date">
+                            Reviewed on {{ review.created_at|date:"F j, Y" }}
+                        </p>
+
+                        <p class="review-comment">{{ review.comment }}</p>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p class="empty-reviews">
+                    There are no customer reviews for this book yet.
+                </p>
+            {% endif %}
+
+            <div class="review-form">
+                <h3>Write a Review</h3>
+
+                {% if can_review and review_form %}
+                    <form
+                        method="post"
+                        action="{% url 'books:submit_review' book.id %}"
+                    >
+                        {% csrf_token %}
+
+                        {% if review_form.non_field_errors %}
+                            <div class="field-errors">
+                                {{ review_form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        <label for="{{ review_form.rating.id_for_label }}">
+                            Your Rating
+                        </label>
+
+                        {{ review_form.rating }}
+
+                        {% if review_form.rating.errors %}
+                            <div class="field-errors">
+                                {{ review_form.rating.errors }}
+                            </div>
+                        {% endif %}
+
+                        <label for="{{ review_form.comment.id_for_label }}">
+                            Your Review
+                        </label>
+
+                        {{ review_form.comment }}
+
+                        {% if review_form.comment.errors %}
+                            <div class="field-errors">
+                                {{ review_form.comment.errors }}
+                            </div>
+                        {% endif %}
+
+                        <button
+                            type="submit"
+                            class="submit-review-button"
+                        >
+                            Submit Review
+                        </button>
+                    </form>
+
+                {% elif not user.is_authenticated %}
+                    <p>
+                        <a href="{% url 'login' %}">Log in</a>
+                        to submit a review after purchasing this book.
+                    </p>
+
+                {% elif has_reviewed %}
+                    <p>You have already reviewed this book. Thank you!</p>
+
+                {% else %}
+                    <p>
+                        You can review this book after purchasing it.
+                    </p>
+                {% endif %}
+            </div>
+        </section>
     </main>
 </body>
 </html>

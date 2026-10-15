@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Book
+from .models import Book, Review
 
 
 class BookListingForm(forms.ModelForm):
@@ -52,14 +52,18 @@ class BookListingForm(forms.ModelForm):
 
     def clean_title(self):
         title = self.cleaned_data["title"].strip()
+
         if not title:
             raise forms.ValidationError("Book title is required.")
+
         return title
 
     def clean_author(self):
         author = self.cleaned_data["author"].strip()
+
         if not author:
             raise forms.ValidationError("Author name is required.")
+
         return author
 
     def clean_isbn(self):
@@ -81,3 +85,60 @@ class BookListingForm(forms.ModelForm):
             )
 
         return price
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ["rating", "comment"]
+
+        widgets = {
+            "rating": forms.Select(
+                choices=[
+                    (1, "1 star"),
+                    (2, "2 stars"),
+                    (3, "3 stars"),
+                    (4, "4 stars"),
+                    (5, "5 stars"),
+                ],
+                attrs={"class": "form-control"},
+            ),
+            "comment": forms.Textarea(
+                attrs={
+                    "placeholder": "Share your experience with this book",
+                    "rows": 4,
+                    "maxlength": 2000,
+                    "class": "form-control",
+                }
+            ),
+        }
+
+        labels = {
+            "rating": "Your Rating",
+            "comment": "Your Review",
+        }
+
+    def clean_rating(self):
+        rating = self.cleaned_data["rating"]
+
+        if rating not in range(1, 6):
+            raise forms.ValidationError(
+                "Please select a rating between 1 and 5."
+            )
+
+        return rating
+
+    def clean_comment(self):
+        comment = self.cleaned_data["comment"].strip()
+
+        if not comment:
+            raise forms.ValidationError(
+                "Please write a review before submitting."
+            )
+
+        if len(comment) > 2000:
+            raise forms.ValidationError(
+                "Your review cannot exceed 2000 characters."
+            )
+
+        return comment

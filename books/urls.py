@@ -12,6 +12,11 @@ urlpatterns = [
         name="book_detail",
     ),
     path(
+        "<int:book_id>/review/",
+        views.submit_review,
+        name="submit_review",
+    ),
+    path(
         "seller/create/",
         views.create_listing,
         name="create_listing",

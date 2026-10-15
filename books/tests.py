@@ -708,6 +708,7 @@ class SellerMyListingsTests(TestCase):
             "You haven't created any book listings yet.",
         )
 
+
 class SellerEditListingTests(TestCase):
     def setUp(self):
         self.seller = User.objects.create_user(
@@ -864,6 +865,7 @@ class SellerEditListingTests(TestCase):
             response,
             f"{reverse('login')}?next={self.url}",
         )
+
 
 class SellerDeleteListingTests(TestCase):
     def setUp(self):
@@ -1024,6 +1026,7 @@ class SellerDeleteListingTests(TestCase):
         )
 
         self.assertContains(response, "cannot be deleted")
+
 
 class AdminListingApprovalTests(TestCase):
     @classmethod
@@ -1200,6 +1203,7 @@ class AdminListingApprovalTests(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertIn("/admin/login/", response.url)
+
 
 class AdminInventoryManagementTests(TestCase):
     @classmethod
@@ -1378,3 +1382,273 @@ class AdminInventoryManagementTests(TestCase):
 
         self.approved_book.refresh_from_db()
         self.assertEqual(self.approved_book.stock_quantity, 5)
+
+
+class BookReviewTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.buyer = User.objects.create_user(
+            username="review_buyer",
+            password="TestBuyerPassword123!",
+        )
+        Profile.objects.create(
+            user=cls.buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        cls.other_buyer = User.objects.create_user(
+            username="review_other_buyer",
+            password="TestBuyerPassword123!",
+        )
+        Profile.objects.create(
+            user=cls.other_buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        cls.book = Book.objects.create(
+            title="Book for Review",
+            author="Review Author",
+            isbn="9781234567866",
+            description="A book used for review tests.",
+            category="Technology",
+            price="400.00",
+            stock_quantity=5,
+            approval_status=Book.ApprovalStatus.APPROVED,
+            is_available=True,
+        )
+
+    def setUp(self):
+        self.review_url = reverse(
+            "books:submit_review",
+            args=[self.book.pk],
+        )
+        self.detail_url = reverse(
+            "books:book_detail",
+            args=[self.book.pk],
+        )
+
+    def create_order(self, user, status=Order.Status.PENDING):
+        order = Order.objects.create(
+            user=user,
+            status=status,
+            full_name="Test Buyer",
+            address_line_1="123 Test Street",
+            city="Bengaluru",
+            state="Karnataka",
+            postal_code="560001",
+            country="India",
+            phone_number="9876543210",
+            total_amount=Decimal("400.00"),
+        )
+
+        OrderItem.objects.create(
+            order=order,
+            book=self.book,
+            book_title=self.book.title,
+            unit_price=self.book.price,
+            quantity=1,
+        )
+
+        return order
+
+    def test_purchasing_buyer_can_submit_review(self):
+        self.create_order(self.buyer)
+        self.client.force_login(self.buyer)
+
+        response = self.client.post(
+            self.review_url,
+            {
+                "rating": "5",
+                "comment": "Excellent book. Very useful.",
+            },
+        )
+
+        self.assertRedirects(response, self.detail_url)
+
+        from books.models import Review
+
+        review = Review.objects.get(
+            book=self.book,
+            buyer=self.buyer,
+        )
+        self.assertEqual(review.rating, 5)
+        self.assertEqual(
+            review.comment,
+            "Excellent book. Very useful.",
+        )
+
+    def test_buyer_without_purchase_cannot_submit_review(self):
+        self.client.force_login(self.buyer)
+
+        response = self.client.post(
+            self.review_url,
+            {
+                "rating": "5",
+                "comment": "Excellent book.",
+            },
+            follow=True,
+        )
+
+        from books.models import Review
+
+        self.assertFalse(
+            Review.objects.filter(
+                book=self.book,
+                buyer=self.buyer,
+            ).exists()
+        )
+        self.assertContains(
+            response,
+            "purchase this book",
+            status_code=200,
+        )
+
+    def test_cancelled_order_does_not_qualify_for_review(self):
+        self.create_order(
+            self.buyer,
+            status=Order.Status.CANCELLED,
+        )
+        self.client.force_login(self.buyer)
+
+        response = self.client.post(
+            self.review_url,
+            {
+                "rating": "4",
+                "comment": "A review of the book.",
+            },
+            follow=True,
+        )
+
+        from books.models import Review
+
+        self.assertFalse(
+            Review.objects.filter(
+                book=self.book,
+                buyer=self.buyer,
+            ).exists()
+        )
+        self.assertContains(
+            response,
+            "purchase this book",
+            status_code=200,
+        )
+
+    def test_buyer_cannot_submit_duplicate_review(self):
+        from books.models import Review
+
+        self.create_order(self.buyer)
+        Review.objects.create(
+            book=self.book,
+            buyer=self.buyer,
+            rating=4,
+            comment="My first review.",
+        )
+        self.client.force_login(self.buyer)
+
+        response = self.client.post(
+            self.review_url,
+            {
+                "rating": "5",
+                "comment": "My second review.",
+            },
+            follow=True,
+        )
+
+        self.assertEqual(
+            Review.objects.filter(
+                book=self.book,
+                buyer=self.buyer,
+            ).count(),
+            1,
+        )
+        self.assertContains(
+            response,
+            "already reviewed",
+            status_code=200,
+        )
+
+    def test_invalid_rating_is_rejected(self):
+        from books.forms import ReviewForm
+
+        for rating in ("0", "6", "invalid"):
+            with self.subTest(rating=rating):
+                form = ReviewForm(
+                    data={
+                        "rating": rating,
+                        "comment": "A valid review comment.",
+                    }
+                )
+                self.assertFalse(form.is_valid())
+
+    def test_blank_comment_is_rejected(self):
+        from books.forms import ReviewForm
+
+        form = ReviewForm(
+            data={
+                "rating": "5",
+                "comment": "   ",
+            }
+        )
+
+        self.assertFalse(form.is_valid())
+        self.assertIn("comment", form.errors)
+
+    def test_review_is_displayed_on_book_detail_page(self):
+        from books.models import Review
+
+        Review.objects.create(
+            book=self.book,
+            buyer=self.buyer,
+            rating=5,
+            comment="Excellent book. Highly recommended.",
+        )
+
+        response = self.client.get(self.detail_url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Excellent book.")
+        self.assertContains(response, "review_buyer")
+        self.assertEqual(response.context["review_count"], 1)
+        self.assertEqual(
+            response.context["average_rating"],
+            5.0,
+        )
+
+    def test_anonymous_user_is_redirected_to_login(self):
+        response = self.client.post(
+            self.review_url,
+            {
+                "rating": "5",
+                "comment": "Excellent book.",
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/accounts/login/", response.url)
+
+    def test_review_does_not_allow_another_buyer_to_review(self):
+        self.create_order(self.buyer)
+        self.client.force_login(self.other_buyer)
+
+        response = self.client.post(
+            self.review_url,
+            {
+                "rating": "4",
+                "comment": "I did not purchase this book.",
+            },
+            follow=True,
+        )
+
+        from books.models import Review
+
+        self.assertFalse(
+            Review.objects.filter(
+                book=self.book,
+                buyer=self.other_buyer,
+            ).exists()
+        )
+        self.assertContains(
+            response,
+            "purchase this book",
+            status_code=200,
+        )
