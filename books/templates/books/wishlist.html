@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Wishlist | Online Bookstore</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #243b53;
+            color: white;
+            padding: 24px 8%;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px 40px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #243b53;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .page-heading h2 {
+            margin-bottom: 5px;
+            color: #243b53;
+            font-size: 30px;
+        }
+
+        .page-heading p {
+            margin-top: 0;
+            color: #52606d;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        .wishlist-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: white;
+            border: 1px solid #e1e5ea;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .cover-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            padding: 15px;
+            background-color: #eef2f7;
+        }
+
+        .cover-image {
+            display: block;
+            max-width: 100%;
+            max-height: 220px;
+            object-fit: contain;
+        }
+
+        .cover-placeholder {
+            color: #52606d;
+            text-align: center;
+        }
+
+        .book-information {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .book-information h3 {
+            margin: 0 0 5px;
+            color: #243b53;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .author {
+            margin-top: 0;
+            color: #52606d;
+        }
+
+        .price {
+            margin-top: auto;
+            padding-top: 10px;
+            color: #243b53;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .stock-status {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .in-stock {
+            color: #247a45;
+        }
+
+        .out-of-stock {
+            color: #a61b1b;
+        }
+
+        .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .view-button,
+        .remove-button,
+        .browse-button {
+            display: inline-block;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .view-button {
+            flex: 1;
+            background-color: #243b53;
+            color: white;
+        }
+
+        .view-button:hover {
+            background-color: #334e68;
+        }
+
+        .remove-button {
+            background-color: #a61b1b;
+            color: white;
+        }
+
+        .remove-button:hover {
+            background-color: #821616;
+        }
+
+        .empty-state {
+            padding: 45px 20px;
+            background-color: white;
+            border: 1px solid #e1e5ea;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .empty-state h3 {
+            margin-top: 0;
+            color: #243b53;
+        }
+
+        .empty-state p {
+            color: #52606d;
+        }
+
+        .browse-button {
+            margin-top: 15px;
+            background-color: #243b53;
+            color: white;
+        }
+
+        .browse-button:hover {
+            background-color: #334e68;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 12px;
+            background-color: #e8eef5;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 500px) {
+            .page-heading h2 {
+                font-size: 25px;
+            }
+
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Online Bookstore</h1>
+        <p>Your saved books, all in one place.</p>
+    </header>
+
+    <main>
+        <a
+            class="back-link"
+            href="{% url 'books:book_catalogue' %}"
+        >
+            &larr; Back to catalogue
+        </a>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message" role="status">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <section class="page-heading">
+            <h2>My Wishlist</h2>
+            <p>Keep track of the books you want to read or purchase later.</p>
+        </section>
+
+        {% if wishlist_items %}
+            <div class="wishlist-grid">
+                {% for item in wishlist_items %}
+                    <article class="wishlist-card">
+                        <div class="cover-container">
+                            {% if item.book.cover_image_url %}
+                                <img
+                                    class="cover-image"
+                                    src="{{ item.book.cover_image_url }}"
+                                    alt="Cover of {{ item.book.title }}"
+                                >
+                            {% else %}
+                                <div class="cover-placeholder">
+                                    No cover image available
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="book-information">
+                            <h3>{{ item.book.title }}</h3>
+
+                            <p class="author">
+                                By {{ item.book.author }}
+                            </p>
+
+                            <p class="price">
+                                ₹{{ item.book.price }}
+                            </p>
+
+                            {% if item.book.stock_quantity > 0 %}
+                                <p class="stock-status in-stock">
+                                    In stock
+                                </p>
+                            {% else %}
+                                <p class="stock-status out-of-stock">
+                                    Currently out of stock
+                                </p>
+                            {% endif %}
+
+                            <div class="card-actions">
+                                <a
+                                    class="view-button"
+                                    href="{% url 'books:book_detail' item.book.id %}"
+                                >
+                                    View Book
+                                </a>
+
+                                <form
+                                    method="post"
+                                    action="{% url 'books:remove_from_wishlist' item.book.id %}"
+                                >
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="remove-button"
+                                    >
+                                        Remove
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <section class="empty-state">
+                <h3>Your wishlist is empty</h3>
+
+                <p>
+                    You haven't saved any books yet.
+                    Browse the catalogue and add books you'd like to read later.
+                </p>
+
+                <a
+                    class="browse-button"
+                    href="{% url 'books:book_catalogue' %}"
+                >
+                    Browse Books
+                </a>
+            </section>
+        {% endif %}
+    </main>
+</body>
+</html>

@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from orders.models import Order, OrderItem
 
 from .forms import BookListingForm, ReviewForm
-from .models import Book, Review
+from .models import Book, Review, WishlistItem
 
 
 def book_catalogue(request):
@@ -134,6 +134,7 @@ def book_detail(request, book_id):
     review_form = None
     can_review = False
     has_reviewed = False
+    is_in_wishlist = False
 
     if request.user.is_authenticated:
         has_reviewed = Review.objects.filter(
@@ -153,6 +154,16 @@ def book_detail(request, book_id):
         if can_review:
             review_form = ReviewForm()
 
+        # Only buyers can have wishlist items.
+        if (
+            hasattr(request.user, "profile")
+            and request.user.profile.role == "BUYER"
+        ):
+            is_in_wishlist = WishlistItem.objects.filter(
+                buyer=request.user,
+                book=book,
+            ).exists()
+
     context = {
         "book": book,
         "reviews": reviews,
@@ -161,6 +172,7 @@ def book_detail(request, book_id):
         "review_form": review_form,
         "can_review": can_review,
         "has_reviewed": has_reviewed,
+        "is_in_wishlist": is_in_wishlist,
     }
 
     return render(request, "books/book_detail.html", context)
@@ -214,6 +226,15 @@ def submit_review(request, book_id):
             average_rating=Avg("rating"),
         )
 
+        is_in_wishlist = (
+            hasattr(request.user, "profile")
+            and request.user.profile.role == "BUYER"
+            and WishlistItem.objects.filter(
+                buyer=request.user,
+                book=book,
+            ).exists()
+        )
+
         context = {
             "book": book,
             "reviews": reviews,
@@ -222,6 +243,7 @@ def submit_review(request, book_id):
             "review_form": form,
             "can_review": True,
             "has_reviewed": False,
+            "is_in_wishlist": is_in_wishlist,
         }
 
         return render(
@@ -402,3 +424,99 @@ def delete_listing(request, book_id):
         "books/confirm_delete_listing.html",
         {"book": book},
     )
+
+
+@login_required
+def wishlist(request):
+    """Display the logged-in buyer's saved books."""
+    if not hasattr(request.user, "profile"):
+        messages.error(request, "Your account profile was not found.")
+        return redirect("books:book_catalogue")
+
+    if request.user.profile.role != "BUYER":
+        messages.error(request, "Only buyers can manage a wishlist.")
+        return redirect("books:book_catalogue")
+
+    wishlist_items = (
+        WishlistItem.objects.filter(buyer=request.user)
+        .select_related("book")
+        .order_by("-created_at")
+    )
+
+    return render(
+        request,
+        "books/wishlist.html",
+        {"wishlist_items": wishlist_items},
+    )
+
+
+@login_required
+def add_to_wishlist(request, book_id):
+    """Add an approved, available book to the buyer's wishlist."""
+    if request.method != "POST":
+        return redirect("books:book_detail", book_id=book_id)
+
+    if not hasattr(request.user, "profile"):
+        messages.error(request, "Your account profile was not found.")
+        return redirect("books:book_catalogue")
+
+    if request.user.profile.role != "BUYER":
+        messages.error(request, "Only buyers can manage a wishlist.")
+        return redirect("books:book_catalogue")
+
+    book = get_object_or_404(
+        Book,
+        id=book_id,
+        is_available=True,
+        approval_status=Book.ApprovalStatus.APPROVED,
+    )
+
+    _, created = WishlistItem.objects.get_or_create(
+        buyer=request.user,
+        book=book,
+    )
+
+    if created:
+        messages.success(
+            request,
+            f'"{book.title}" was added to your wishlist.',
+        )
+    else:
+        messages.info(
+            request,
+            f'"{book.title}" is already in your wishlist.',
+        )
+
+    return redirect("books:book_detail", book_id=book.pk)
+
+
+@login_required
+def remove_from_wishlist(request, book_id):
+    """Remove a saved book belonging to the logged-in buyer."""
+    if request.method != "POST":
+        return redirect("books:wishlist")
+
+    if not hasattr(request.user, "profile"):
+        messages.error(request, "Your account profile was not found.")
+        return redirect("books:book_catalogue")
+
+    if request.user.profile.role != "BUYER":
+        messages.error(request, "Only buyers can manage a wishlist.")
+        return redirect("books:book_catalogue")
+
+    item = WishlistItem.objects.filter(
+        buyer=request.user,
+        book_id=book_id,
+    ).first()
+
+    if item is None:
+        messages.info(request, "That book is not in your wishlist.")
+    else:
+        book_title = item.book.title
+        item.delete()
+        messages.success(
+            request,
+            f'"{book_title}" was removed from your wishlist.',
+        )
+
+    return redirect("books:wishlist")

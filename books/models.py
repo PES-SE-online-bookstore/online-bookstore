@@ -86,3 +86,31 @@ class Review(models.Model):
             f"{self.rating}/5 review for {self.book.title} "
             f"by {self.buyer.username}"
         )
+
+
+class WishlistItem(models.Model):
+    buyer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="wishlist_items",
+    )
+
+    book = models.ForeignKey(
+        Book,
+        on_delete=models.CASCADE,
+        related_name="wishlisted_by",
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["buyer", "book"],
+                name="unique_wishlist_item_per_buyer_book",
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.buyer.username} - {self.book.title}"

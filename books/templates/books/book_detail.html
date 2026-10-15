@@ -143,7 +143,8 @@
 
         .browse-button,
         .add-to-cart-button,
-        .submit-review-button {
+        .submit-review-button,
+        .wishlist-button {
             display: inline-block;
             margin-top: 15px;
             padding: 12px 20px;
@@ -172,6 +173,29 @@
         .add-to-cart-button:hover,
         .submit-review-button:hover {
             background-color: #2445a5;
+        }
+
+        .wishlist-button {
+            margin-left: 8px;
+            background-color: #9f1239;
+            color: white;
+        }
+
+        .wishlist-button:hover {
+            background-color: #881337;
+        }
+
+        .wishlist-link {
+            display: inline-block;
+            margin-top: 15px;
+            margin-left: 8px;
+            color: #243b53;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .wishlist-link:hover {
+            text-decoration: underline;
         }
 
         .quantity-field {
@@ -420,8 +444,35 @@
                 {% else %}
                     <p class="login-note">
                         <a href="{% url 'login' %}">Log in</a>
-                        as a buyer to add this book to your cart.
+                        as a buyer to add this book to your cart or wishlist.
                     </p>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    {% if user.profile.role == "BUYER" %}
+                        {% if is_in_wishlist %}
+                            <a
+                                class="wishlist-link"
+                                href="{% url 'books:wishlist' %}"
+                            >
+                                View My Wishlist
+                            </a>
+                        {% else %}
+                            <form
+                                method="post"
+                                action="{% url 'books:add_to_wishlist' book.id %}"
+                            >
+                                {% csrf_token %}
+
+                                <button
+                                    type="submit"
+                                    class="wishlist-button"
+                                >
+                                    Add to Wishlist
+                                </button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
 
                 <a
