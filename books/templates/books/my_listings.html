@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Listings | Online Bookstore</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .page-actions {
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            background: #2457a7;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #193f7d;
+        }
+
+        .secondary {
+            background: #e5eaf2;
+            color: #22324a;
+        }
+
+        .secondary:hover {
+            background: #d3dce9;
+        }
+
+        .delete-button {
+            background: #b42318;
+            color: white;
+        }
+
+        .delete-button:hover {
+            background: #8f1c13;
+        }
+
+        .listing {
+            padding: 20px;
+            margin-bottom: 18px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+        }
+
+        .listing h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            overflow-wrap: anywhere;
+        }
+
+        .details {
+            color: #555;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .details p {
+            margin: 7px 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 5px;
+            background: #fff2cc;
+            color: #785800;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status-approved {
+            background: #e1f5e7;
+            color: #176b35;
+        }
+
+        .status-rejected {
+            background: #fde8e8;
+            color: #a61b1b;
+        }
+
+        .empty {
+            padding: 30px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .empty p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            background: #e1f5e7;
+            color: #176b35;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .listing {
+                padding: 16px;
+            }
+
+            .button {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>My Book Listings</h1>
+
+        <p class="intro">
+            View and manage the books you have listed for sale.
+            You can edit your listings, delete eligible listings,
+            and check their approval status.
+        </p>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="actions page-actions">
+            <a
+                class="button"
+                href="{% url 'books:create_listing' %}"
+            >
+                Create New Listing
+            </a>
+
+            <a
+                class="button secondary"
+                href="{% url 'books:book_catalogue' %}"
+            >
+                Back to Catalogue
+            </a>
+        </div>
+
+        {% if listings %}
+            {% for book in listings %}
+                <article class="listing">
+                    <h2>{{ book.title }}</h2>
+
+                    <div class="details">
+                        <p>
+                            <strong>Author:</strong>
+                            {{ book.author }}
+                        </p>
+
+                        <p>
+                            <strong>ISBN:</strong>
+                            {{ book.isbn }}
+                        </p>
+
+                        <p>
+                            <strong>Category:</strong>
+                            {{ book.category|default:"Not specified" }}
+                        </p>
+
+                        <p>
+                            <strong>Price:</strong>
+                            INR {{ book.price }}
+                        </p>
+
+                        <p>
+                            <strong>Stock:</strong>
+                            {{ book.stock_quantity }}
+                        </p>
+
+                        <p>
+                            <strong>Availability:</strong>
+
+                            {% if book.is_available %}
+                                Available
+                            {% else %}
+                                Unavailable
+                            {% endif %}
+                        </p>
+
+                        <p>
+                            <strong>Approval status:</strong>
+
+                            {% if book.approval_status == "APPROVED" %}
+                                <span class="status status-approved">
+                                    Approved
+                                </span>
+
+                            {% elif book.approval_status == "REJECTED" %}
+                                <span class="status status-rejected">
+                                    Rejected
+                                </span>
+
+                            {% else %}
+                                <span class="status">
+                                    Pending Approval
+                                </span>
+                            {% endif %}
+                        </p>
+
+                        {% if book.description %}
+                            <p>
+                                <strong>Description:</strong>
+                                {{ book.description|linebreaksbr }}
+                            </p>
+                        {% endif %}
+
+                        {% if book.cover_image_url %}
+                            <p>
+                                <strong>Cover Image URL:</strong>
+                                <a
+                                    href="{{ book.cover_image_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View Cover Image
+                                </a>
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    <div class="actions">
+                        <a
+                            class="button"
+                            href="{% url 'books:edit_listing' book.id %}"
+                        >
+                            Edit Listing
+                        </a>
+
+                        <a
+                            class="button delete-button"
+                            href="{% url 'books:delete_listing' book.id %}"
+                        >
+                            Delete Listing
+                        </a>
+                    </div>
+                </article>
+            {% endfor %}
+
+        {% else %}
+            <div class="empty">
+                <h2>No Listings Yet</h2>
+
+                <p>
+                    You haven't created any book listings yet.
+                    Create your first listing to get started.
+                </p>
+
+                <a
+                    class="button"
+                    href="{% url 'books:create_listing' %}"
+                >
+                    Create Your First Listing
+                </a>
+            </div>
+        {% endif %}
+    </main>
+</body>
+</html>

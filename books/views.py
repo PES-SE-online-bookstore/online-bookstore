@@ -8,6 +8,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import BookListingForm
 from .models import Book
 
+from django.db import transaction
+from django.db.models.deletion import ProtectedError
 
 def book_catalogue(request):
     query = request.GET.get("q", "").strip()
@@ -157,4 +159,112 @@ def create_listing(request):
         request,
         "books/create_listing.html",
         {"form": form},
+    )
+
+@login_required
+def my_listings(request):
+    # Only sellers may manage book listings.
+    if not hasattr(request.user, "profile"):
+        messages.error(request, "Your account profile was not found.")
+        return redirect("books:book_catalogue")
+
+    if request.user.profile.role != "SELLER":
+        messages.error(request, "Only sellers can manage book listings.")
+        return redirect("books:book_catalogue")
+
+    listings = Book.objects.filter(
+        seller=request.user,
+    ).order_by("-created_at")
+
+    return render(
+        request,
+        "books/my_listings.html",
+        {"listings": listings},
+    )
+
+@login_required
+def edit_listing(request, book_id):
+    # Only sellers may edit listings.
+    if not hasattr(request.user, "profile"):
+        messages.error(request, "Your account profile was not found.")
+        return redirect("books:book_catalogue")
+
+    if request.user.profile.role != "SELLER":
+        messages.error(request, "Only sellers can edit book listings.")
+        return redirect("books:book_catalogue")
+
+    # Restrict access to listings owned by the logged-in seller.
+    book = get_object_or_404(
+        Book,
+        id=book_id,
+        seller=request.user,
+    )
+
+    if request.method == "POST":
+        form = BookListingForm(request.POST, instance=book)
+
+        if form.is_valid():
+            book = form.save(commit=False)
+
+            # Editing a listing requires fresh admin approval.
+            book.approval_status = Book.ApprovalStatus.PENDING
+            book.is_available = False
+            book.save()
+
+            messages.success(
+                request,
+                "Your listing was updated and submitted for admin approval.",
+            )
+            return redirect("books:my_listings")
+    else:
+        form = BookListingForm(instance=book)
+
+    return render(
+        request,
+        "books/edit_listing.html",
+        {
+            "form": form,
+            "book": book,
+        },
+    )
+
+@login_required
+def delete_listing(request, book_id):
+    if not hasattr(request.user, "profile"):
+        messages.error(request, "Your account profile was not found.")
+        return redirect("books:book_catalogue")
+
+    if request.user.profile.role != "SELLER":
+        messages.error(request, "Only sellers can delete book listings.")
+        return redirect("books:book_catalogue")
+
+    book = get_object_or_404(
+        Book,
+        id=book_id,
+        seller=request.user,
+    )
+
+    if request.method == "POST":
+        try:
+            with transaction.atomic():
+                book.delete()
+
+            messages.success(
+                request,
+                "Your book listing was deleted successfully.",
+            )
+
+        except ProtectedError:
+            messages.error(
+                request,
+                "This listing cannot be deleted because it is "
+                "associated with existing orders.",
+            )
+
+        return redirect("books:my_listings")
+
+    return render(
+        request,
+        "books/confirm_delete_listing.html",
+        {"book": book},
     )

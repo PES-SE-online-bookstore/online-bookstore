@@ -1,9 +1,12 @@
+from decimal import Decimal
+
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 
 from accounts.models import Profile
 from .models import Book
+from orders.models import Order, OrderItem
 
 
 class BookCatalogueTests(TestCase):
@@ -567,3 +570,457 @@ class SellerCreateListingTests(TestCase):
         self.assertFalse(
             Book.objects.filter(title="Test Seller Book").exists()
         )
+
+
+class SellerMyListingsTests(TestCase):
+    def setUp(self):
+        self.seller = User.objects.create_user(
+            username="mylistings_seller",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.seller,
+            role=Profile.Role.SELLER,
+        )
+
+        self.buyer = User.objects.create_user(
+            username="mylistings_buyer",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        self.pending_book = Book.objects.create(
+            seller=self.seller,
+            title="Pending Seller Book",
+            author="Test Author",
+            isbn="9781234567897",
+            description="A pending listing.",
+            category="Technology",
+            price="250.00",
+            stock_quantity=5,
+            approval_status=Book.ApprovalStatus.PENDING,
+            is_available=False,
+        )
+
+        self.approved_book = Book.objects.create(
+            seller=self.seller,
+            title="Approved Seller Book",
+            author="Test Author",
+            isbn="9781234567880",
+            description="An approved listing.",
+            category="Technology",
+            price="350.00",
+            stock_quantity=3,
+            approval_status=Book.ApprovalStatus.APPROVED,
+            is_available=True,
+        )
+
+        self.other_seller_book = Book.objects.create(
+            title="Another Seller Book",
+            author="Other Author",
+            isbn="9781234567873",
+            price="150.00",
+            stock_quantity=2,
+        )
+
+    def test_seller_can_view_own_listings(self):
+        self.client.login(
+            username="mylistings_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(
+            reverse("books:my_listings")
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(
+            response,
+            "books/my_listings.html",
+        )
+        self.assertContains(response, "Pending Seller Book")
+        self.assertContains(response, "Approved Seller Book")
+        self.assertNotContains(response, "Another Seller Book")
+
+    def test_seller_sees_approval_statuses(self):
+        self.client.login(
+            username="mylistings_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(
+            reverse("books:my_listings")
+        )
+
+        self.assertContains(response, "Pending Approval")
+        self.assertContains(response, "Approved")
+
+    def test_buyer_cannot_view_seller_listings(self):
+        self.client.login(
+            username="mylistings_buyer",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(
+            reverse("books:my_listings")
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("books:book_catalogue"),
+        )
+
+    def test_anonymous_user_is_redirected_to_login(self):
+        response = self.client.get(
+            reverse("books:my_listings")
+        )
+
+        self.assertRedirects(
+            response,
+            f"{reverse('login')}?next={reverse('books:my_listings')}",
+        )
+
+    def test_seller_with_no_listings_sees_empty_state(self):
+        empty_seller = User.objects.create_user(
+            username="empty_seller",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=empty_seller,
+            role=Profile.Role.SELLER,
+        )
+
+        self.client.login(
+            username="empty_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(
+            reverse("books:my_listings")
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "You haven't created any book listings yet.",
+        )
+
+class SellerEditListingTests(TestCase):
+    def setUp(self):
+        self.seller = User.objects.create_user(
+            username="edit_seller",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.seller,
+            role=Profile.Role.SELLER,
+        )
+
+        self.other_seller = User.objects.create_user(
+            username="other_edit_seller",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.other_seller,
+            role=Profile.Role.SELLER,
+        )
+
+        self.buyer = User.objects.create_user(
+            username="edit_buyer",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        self.book = Book.objects.create(
+            seller=self.seller,
+            title="Original Book",
+            author="Original Author",
+            isbn="9781234567897",
+            description="Original description",
+            category="Programming",
+            price="500.00",
+            stock_quantity=10,
+            approval_status=Book.ApprovalStatus.APPROVED,
+            is_available=True,
+        )
+
+        self.url = reverse(
+            "books:edit_listing",
+            args=[self.book.id],
+        )
+
+    def test_seller_can_open_edit_page(self):
+        self.client.login(
+            username="edit_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Original Book")
+
+    def test_seller_can_edit_own_listing(self):
+        self.client.login(
+            username="edit_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.post(
+            self.url,
+            {
+                "title": "Updated Book",
+                "author": "Updated Author",
+                "isbn": "9781234567804",
+                "description": "Updated description",
+                "category": "Technology",
+                "price": "650.00",
+                "stock_quantity": 15,
+                "cover_image_url": "",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("books:my_listings"),
+        )
+
+        self.book.refresh_from_db()
+
+        self.assertEqual(self.book.title, "Updated Book")
+        self.assertEqual(self.book.author, "Updated Author")
+        self.assertEqual(self.book.price, Decimal("650.00"))
+        self.assertEqual(self.book.stock_quantity, 15)
+        self.assertEqual(
+            self.book.approval_status,
+            Book.ApprovalStatus.PENDING,
+        )
+        self.assertFalse(self.book.is_available)
+
+    def test_invalid_edit_does_not_change_listing(self):
+        self.client.login(
+            username="edit_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.post(
+            self.url,
+            {
+                "title": "",
+                "author": "Updated Author",
+                "isbn": "9781234567804",
+                "description": "",
+                "category": "Technology",
+                "price": "650.00",
+                "stock_quantity": 15,
+                "cover_image_url": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.book.refresh_from_db()
+
+        self.assertEqual(self.book.title, "Original Book")
+        self.assertEqual(
+            self.book.approval_status,
+            Book.ApprovalStatus.APPROVED,
+        )
+        self.assertTrue(self.book.is_available)
+
+    def test_seller_cannot_edit_another_sellers_listing(self):
+        self.client.login(
+            username="other_edit_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_buyer_cannot_edit_listing(self):
+        self.client.login(
+            username="edit_buyer",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(self.url)
+
+        self.assertRedirects(
+            response,
+            reverse("books:book_catalogue"),
+        )
+
+    def test_anonymous_user_is_redirected_to_login(self):
+        response = self.client.get(self.url)
+
+        self.assertRedirects(
+            response,
+            f"{reverse('login')}?next={self.url}",
+        )
+
+class SellerDeleteListingTests(TestCase):
+    def setUp(self):
+        self.seller = User.objects.create_user(
+            username="delete_seller",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.seller,
+            role=Profile.Role.SELLER,
+        )
+
+        self.other_seller = User.objects.create_user(
+            username="other_delete_seller",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.other_seller,
+            role=Profile.Role.SELLER,
+        )
+
+        self.buyer = User.objects.create_user(
+            username="delete_buyer",
+            password="TestPassword123!",
+        )
+        Profile.objects.create(
+            user=self.buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        self.book = Book.objects.create(
+            seller=self.seller,
+            title="Book to Delete",
+            author="Test Author",
+            isbn="9781234567811",
+            description="Test description",
+            category="Programming",
+            price="500.00",
+            stock_quantity=10,
+            approval_status=Book.ApprovalStatus.PENDING,
+            is_available=False,
+        )
+
+        self.url = reverse(
+            "books:delete_listing",
+            args=[self.book.id],
+        )
+
+    def test_seller_can_open_delete_confirmation(self):
+        self.client.login(
+            username="delete_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Book to Delete")
+
+        self.book.refresh_from_db()
+        self.assertTrue(Book.objects.filter(pk=self.book.pk).exists())
+
+    def test_seller_can_delete_own_listing(self):
+        self.client.login(
+            username="delete_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.post(self.url)
+
+        self.assertRedirects(
+            response,
+            reverse("books:my_listings"),
+        )
+        self.assertFalse(
+            Book.objects.filter(pk=self.book.pk).exists()
+        )
+
+    def test_seller_cannot_delete_another_sellers_listing(self):
+        self.client.login(
+            username="other_delete_seller",
+            password="TestPassword123!",
+        )
+
+        response = self.client.post(self.url)
+
+        self.assertEqual(response.status_code, 404)
+        self.assertTrue(
+            Book.objects.filter(pk=self.book.pk).exists()
+        )
+
+    def test_buyer_cannot_delete_listing(self):
+        self.client.login(
+            username="delete_buyer",
+            password="TestPassword123!",
+        )
+
+        response = self.client.post(self.url)
+
+        self.assertRedirects(
+            response,
+            reverse("books:book_catalogue"),
+        )
+        self.assertTrue(
+            Book.objects.filter(pk=self.book.pk).exists()
+        )
+
+    def test_anonymous_user_is_redirected_to_login(self):
+        response = self.client.get(self.url)
+
+        self.assertRedirects(
+            response,
+            f"{reverse('login')}?next={self.url}",
+        )
+        self.assertTrue(
+            Book.objects.filter(pk=self.book.pk).exists()
+        )
+
+    def test_ordered_book_cannot_be_deleted(self):
+        self.client.login(
+            username="delete_seller",
+            password="TestPassword123!",
+        )
+
+        order = Order.objects.create(
+            user=self.buyer,
+            full_name="Test Buyer",
+            address_line_1="123 Test Street",
+            city="Bengaluru",
+            state="Karnataka",
+            postal_code="560001",
+            country="India",
+            phone_number="9876543210",
+            total_amount=Decimal("500.00"),
+        )
+
+        order_item = OrderItem.objects.create(
+            order=order,
+            book=self.book,
+            book_title=self.book.title,
+            unit_price=self.book.price,
+            quantity=1,
+        )
+
+        response = self.client.post(self.url, follow=True)
+
+        self.assertRedirects(
+            response,
+            reverse("books:my_listings"),
+        )
+
+        self.assertTrue(
+            Book.objects.filter(pk=self.book.pk).exists()
+        )
+
+        self.assertTrue(
+            OrderItem.objects.filter(pk=order_item.pk).exists()
+        )
+
+        self.assertContains(response, "cannot be deleted")
