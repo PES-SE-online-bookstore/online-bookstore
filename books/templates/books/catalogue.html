@@ -40,7 +40,7 @@
         .search-form {
             display: flex;
             gap: 10px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .search-form input {
@@ -50,6 +50,40 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
+        }
+
+        .filter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: end;
+            margin-bottom: 25px;
+            padding: 18px;
+            background-color: white;
+            border: 1px solid #e1e5ea;
+            border-radius: 8px;
+        }
+
+        .filter-field {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 150px;
+        }
+
+        .filter-field label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .filter-field input,
+        .filter-field select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
         }
 
         button {
@@ -63,6 +97,34 @@
 
         button:hover {
             background-color: #334e68;
+        }
+
+        .filter-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .reset-button {
+            display: inline-block;
+            padding: 12px 16px;
+            background-color: #e1e5ea;
+            color: #243b53;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .reset-button:hover {
+            background-color: #d0d7de;
+        }
+
+        .price-error {
+            margin-bottom: 20px;
+            padding: 12px;
+            background-color: #fff0f0;
+            color: #a61b1b;
+            border: 1px solid #e0a0a0;
+            border-radius: 5px;
         }
 
         .book-grid {
@@ -86,6 +148,15 @@
 
         .author {
             color: #52606d;
+        }
+
+        .category {
+            display: inline-block;
+            padding: 5px 9px;
+            background-color: #e8eef5;
+            color: #243b53;
+            border-radius: 4px;
+            font-size: 13px;
         }
 
         .price {
@@ -113,6 +184,20 @@
             .search-form button {
                 width: 100%;
             }
+
+            .filter-field {
+                min-width: 100%;
+            }
+
+            .filter-actions {
+                width: 100%;
+            }
+
+            .filter-actions button,
+            .filter-actions .reset-button {
+                flex: 1;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -126,16 +211,79 @@
     <main>
         <h2>Book Catalogue</h2>
 
-        <form class="search-form" method="get">
-            <input
-                type="search"
-                name="q"
-                placeholder="Search by title, author, or ISBN..."
-                value="{{ query }}"
-                aria-label="Search books"
-            >
-            <button type="submit">Search</button>
+        <form method="get">
+            <div class="search-form">
+                <input
+                    type="search"
+                    name="q"
+                    placeholder="Search by title, author, ISBN, or keyword..."
+                    value="{{ query }}"
+                    aria-label="Search books"
+                >
+                <button type="submit">Search</button>
+            </div>
+
+            <div class="filter-form">
+                <div class="filter-field">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="">All categories</option>
+
+                        {% for item in categories %}
+                            <option
+                                value="{{ item }}"
+                                {% if category == item %}selected{% endif %}
+                            >
+                                {{ item }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="min_price">Minimum price (₹)</label>
+                    <input
+                        type="number"
+                        id="min_price"
+                        name="min_price"
+                        min="0"
+                        step="0.01"
+                        placeholder="e.g. 100"
+                        value="{{ min_price }}"
+                    >
+                </div>
+
+                <div class="filter-field">
+                    <label for="max_price">Maximum price (₹)</label>
+                    <input
+                        type="number"
+                        id="max_price"
+                        name="max_price"
+                        min="0"
+                        step="0.01"
+                        placeholder="e.g. 500"
+                        value="{{ max_price }}"
+                    >
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit">Apply Filters</button>
+
+                    <a
+                        class="reset-button"
+                        href="{% url 'book_catalogue' %}"
+                    >
+                        Reset
+                    </a>
+                </div>
+            </div>
         </form>
+
+        {% if price_error %}
+            <p class="price-error" role="alert">
+                {{ price_error }}
+            </p>
+        {% endif %}
 
         {% if books %}
             <div class="book-grid">
@@ -147,7 +295,15 @@
                             By {{ book.author }}
                         </p>
 
-                        <p>{{ book.description|default:"No description available." }}</p>
+                        {% if book.category %}
+                            <p class="category">
+                                {{ book.category }}
+                            </p>
+                        {% endif %}
+
+                        <p>
+                            {{ book.description|default:"No description available." }}
+                        </p>
 
                         <p class="price">
                             ₹{{ book.price }}
@@ -163,11 +319,8 @@
             </div>
         {% else %}
             <p class="empty-message">
-                {% if query %}
-                    No books found matching "{{ query }}".
-                {% else %}
-                    No books are currently available in the catalogue.
-                {% endif %}
+                No books match your search and filters.
+                Try changing your search terms or filter values.
             </p>
         {% endif %}
     </main>

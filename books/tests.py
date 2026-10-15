@@ -12,8 +12,31 @@ class BookCatalogueTests(TestCase):
             author="Robert C. Martin",
             isbn="9780132350884",
             description="A guide to writing clean code.",
+            category="Programming",
             price="450.00",
             stock_quantity=10,
+            is_available=True,
+        )
+
+        cls.python_book = Book.objects.create(
+            title="Python Crash Course",
+            author="Eric Matthes",
+            isbn="9781593279288",
+            description="A hands-on introduction to Python programming.",
+            category="Programming",
+            price="350.00",
+            stock_quantity=5,
+            is_available=True,
+        )
+
+        cls.cheap_book = Book.objects.create(
+            title="The Alchemist",
+            author="Paulo Coelho",
+            isbn="9780062315007",
+            description="A novel about following your dreams.",
+            category="Fiction",
+            price="200.00",
+            stock_quantity=8,
             is_available=True,
         )
 
@@ -22,6 +45,7 @@ class BookCatalogueTests(TestCase):
             author="Test Author",
             isbn="9781234567890",
             description="This book is unavailable.",
+            category="Programming",
             price="250.00",
             stock_quantity=0,
             is_available=False,
@@ -39,6 +63,7 @@ class BookCatalogueTests(TestCase):
         self.assertContains(response, "Clean Code")
         self.assertContains(response, "Robert C. Martin")
         self.assertContains(response, "450.00")
+        self.assertContains(response, "Programming")
 
     def test_unavailable_books_are_excluded(self):
         response = self.client.get(reverse("book_catalogue"))
@@ -53,7 +78,7 @@ class BookCatalogueTests(TestCase):
         )
 
         self.assertContains(response, "Clean Code")
-        self.assertNotContains(response, "Unavailable Book")
+        self.assertNotContains(response, "Python Crash Course")
 
     def test_search_by_author(self):
         response = self.client.get(
@@ -62,6 +87,7 @@ class BookCatalogueTests(TestCase):
         )
 
         self.assertContains(response, "Clean Code")
+        self.assertNotContains(response, "Python Crash Course")
 
     def test_search_by_isbn(self):
         response = self.client.get(
@@ -70,6 +96,25 @@ class BookCatalogueTests(TestCase):
         )
 
         self.assertContains(response, "Clean Code")
+        self.assertNotContains(response, "Python Crash Course")
+
+    def test_search_by_description_keyword(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"q": "introduction"},
+        )
+
+        self.assertContains(response, "Python Crash Course")
+        self.assertNotContains(response, "Clean Code")
+
+    def test_search_is_case_insensitive(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"q": "CLEAN CODE"},
+        )
+
+        self.assertContains(response, "Clean Code")
+        self.assertNotContains(response, "Python Crash Course")
 
     def test_unmatched_search_displays_message(self):
         response = self.client.get(
@@ -80,7 +125,7 @@ class BookCatalogueTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            'No books found matching "Nonexistent Book XYZ".',
+            "No books match your search and filters.",
         )
 
     def test_empty_catalogue_displays_message(self):
@@ -91,5 +136,186 @@ class BookCatalogueTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            "No books are currently available in the catalogue.",
+            "No books match your search and filters.",
+        )
+
+    def test_filter_by_category(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"category": "Programming"},
+        )
+
+        self.assertContains(response, "Clean Code")
+        self.assertContains(response, "Python Crash Course")
+        self.assertNotContains(response, "The Alchemist")
+
+    def test_category_filter_is_case_insensitive(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"category": "programming"},
+        )
+
+        self.assertContains(response, "Clean Code")
+        self.assertContains(response, "Python Crash Course")
+        self.assertNotContains(response, "The Alchemist")
+
+    def test_category_filter_excludes_unavailable_books(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"category": "Programming"},
+        )
+
+        self.assertNotContains(response, "Unavailable Book")
+
+    def test_filter_by_minimum_price(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"min_price": "350"},
+        )
+
+        self.assertContains(response, "Clean Code")
+        self.assertContains(response, "Python Crash Course")
+        self.assertNotContains(response, "The Alchemist")
+
+    def test_filter_by_maximum_price(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"max_price": "350"},
+        )
+
+        self.assertContains(response, "Python Crash Course")
+        self.assertContains(response, "The Alchemist")
+        self.assertNotContains(response, "Clean Code")
+
+    def test_filter_by_price_range(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {
+                "min_price": "300",
+                "max_price": "400",
+            },
+        )
+
+        self.assertContains(response, "Python Crash Course")
+        self.assertNotContains(response, "Clean Code")
+        self.assertNotContains(response, "The Alchemist")
+
+    def test_price_boundaries_are_inclusive(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {
+                "min_price": "350",
+                "max_price": "350",
+            },
+        )
+
+        self.assertContains(response, "Python Crash Course")
+        self.assertNotContains(response, "Clean Code")
+        self.assertNotContains(response, "The Alchemist")
+
+    def test_filter_by_category_and_price_together(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {
+                "category": "Programming",
+                "min_price": "400",
+            },
+        )
+
+        self.assertContains(response, "Clean Code")
+        self.assertNotContains(response, "Python Crash Course")
+        self.assertNotContains(response, "The Alchemist")
+
+    def test_search_and_filters_work_together(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {
+                "q": "programming",
+                "category": "Programming",
+                "max_price": "400",
+            },
+        )
+
+        self.assertContains(response, "Python Crash Course")
+        self.assertNotContains(response, "Clean Code")
+        self.assertNotContains(response, "The Alchemist")
+
+    def test_invalid_minimum_price_does_not_crash(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"min_price": "invalid"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Enter a valid, non-negative minimum price.",
+        )
+
+    def test_negative_minimum_price_is_rejected(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"min_price": "-10"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Enter a valid, non-negative minimum price.",
+        )
+
+    def test_invalid_maximum_price_does_not_crash(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"max_price": "invalid"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Enter a valid, non-negative maximum price.",
+        )
+
+    def test_non_finite_price_is_rejected(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {"min_price": "NaN"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Enter a valid, non-negative minimum price.",
+        )
+
+    def test_minimum_price_greater_than_maximum_is_rejected(self):
+        response = self.client.get(
+            reverse("book_catalogue"),
+            {
+                "min_price": "500",
+                "max_price": "100",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Minimum price cannot exceed maximum price.",
+        )
+        self.assertContains(response, "Clean Code")
+        self.assertContains(response, "Python Crash Course")
+        self.assertContains(response, "The Alchemist")
+
+    def test_results_are_ordered_by_title(self):
+        response = self.client.get(reverse("book_catalogue"))
+
+        books = list(response.context["books"])
+
+        self.assertEqual(
+            [book.title for book in books],
+            [
+                "Clean Code",
+                "Python Crash Course",
+                "The Alchemist",
+            ],
         )
