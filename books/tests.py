@@ -1024,3 +1024,179 @@ class SellerDeleteListingTests(TestCase):
         )
 
         self.assertContains(response, "cannot be deleted")
+
+class AdminListingApprovalTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.admin_user = User.objects.create_superuser(
+            username="listing_admin",
+            email="listing_admin@example.com",
+            password="TestAdminPassword123!",
+        )
+
+        cls.seller = User.objects.create_user(
+            username="approval_seller",
+            password="TestSellerPassword123!",
+        )
+
+        Profile.objects.create(
+            user=cls.seller,
+            role=Profile.Role.SELLER,
+        )
+
+        cls.pending_book = Book.objects.create(
+            seller=cls.seller,
+            title="Pending Approval Book",
+            author="Approval Author",
+            isbn="9781234567828",
+            description="A listing waiting for approval.",
+            category="Technology",
+            price="300.00",
+            stock_quantity=5,
+            approval_status=Book.ApprovalStatus.PENDING,
+            is_available=False,
+        )
+
+        cls.pending_out_of_stock_book = Book.objects.create(
+            seller=cls.seller,
+            title="Pending Out of Stock Book",
+            author="Approval Author",
+            isbn="9781234567835",
+            description="A listing without stock.",
+            category="Technology",
+            price="200.00",
+            stock_quantity=0,
+            approval_status=Book.ApprovalStatus.PENDING,
+            is_available=False,
+        )
+
+    def setUp(self):
+        self.client.force_login(self.admin_user)
+        self.changelist_url = reverse("admin:books_book_changelist")
+
+    def run_admin_action(self, action, book_ids):
+        data = {
+            "action": action,
+            "index": "0",
+            "_selected_action": [
+                str(book_id) for book_id in book_ids
+            ],
+        }
+
+        return self.client.post(
+            self.changelist_url,
+            data,
+            follow=True,
+        )
+
+    def test_admin_can_open_book_listing_management(self):
+        response = self.client.get(self.changelist_url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Pending Approval Book")
+
+    def test_admin_can_approve_pending_listing(self):
+        response = self.run_admin_action(
+            "approve_listings",
+            [self.pending_book.pk],
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.pending_book.refresh_from_db()
+
+        self.assertEqual(
+            self.pending_book.approval_status,
+            Book.ApprovalStatus.APPROVED,
+        )
+        self.assertTrue(self.pending_book.is_available)
+        self.assertContains(response, "1 listing(s) approved")
+
+    def test_approved_listing_appears_in_public_catalogue(self):
+        self.run_admin_action(
+            "approve_listings",
+            [self.pending_book.pk],
+        )
+
+        response = self.client.get(
+            reverse("books:book_catalogue"),
+        )
+
+        self.assertContains(response, "Pending Approval Book")
+
+    def test_admin_can_reject_pending_listing(self):
+        response = self.run_admin_action(
+            "reject_listings",
+            [self.pending_book.pk],
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.pending_book.refresh_from_db()
+
+        self.assertEqual(
+            self.pending_book.approval_status,
+            Book.ApprovalStatus.REJECTED,
+        )
+        self.assertFalse(self.pending_book.is_available)
+        self.assertContains(response, "1 listing(s) rejected")
+
+    def test_rejected_listing_does_not_appear_in_public_catalogue(self):
+        self.run_admin_action(
+            "reject_listings",
+            [self.pending_book.pk],
+        )
+
+        response = self.client.get(
+            reverse("books:book_catalogue"),
+        )
+
+        self.assertNotContains(response, "Pending Approval Book")
+
+    def test_approved_listing_without_stock_remains_unavailable(self):
+        self.run_admin_action(
+            "approve_listings",
+            [self.pending_out_of_stock_book.pk],
+        )
+
+        self.pending_out_of_stock_book.refresh_from_db()
+
+        self.assertEqual(
+            self.pending_out_of_stock_book.approval_status,
+            Book.ApprovalStatus.APPROVED,
+        )
+        self.assertFalse(
+            self.pending_out_of_stock_book.is_available,
+        )
+
+    def test_non_staff_user_cannot_access_admin_listing_management(self):
+        buyer = User.objects.create_user(
+            username="nonstaff_buyer",
+            password="TestBuyerPassword123!",
+        )
+
+        Profile.objects.create(
+            user=buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        self.client.force_login(buyer)
+
+        response = self.client.get(self.changelist_url)
+
+        self.assertEqual(response.status_code, 302)
+
+        self.pending_book.refresh_from_db()
+
+        self.assertEqual(
+            self.pending_book.approval_status,
+            Book.ApprovalStatus.PENDING,
+        )
+
+    def test_anonymous_user_cannot_access_admin_listing_management(self):
+        self.client.logout()
+
+        response = self.client.get(self.changelist_url)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/admin/login/", response.url)
