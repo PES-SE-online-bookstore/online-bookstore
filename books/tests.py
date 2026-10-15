@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth.models import User
 
+from accounts.models import Profile
 from .models import Book
 
 
@@ -420,4 +422,148 @@ class BookDetailTests(TestCase):
         self.assertContains(
             response,
             reverse("books:book_detail", args=[self.book.id]),
+        )
+
+
+class SellerCreateListingTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.seller = User.objects.create_user(
+            username="test_seller",
+            password="TestSellerPass123!",
+        )
+        Profile.objects.create(
+            user=cls.seller,
+            role=Profile.Role.SELLER,
+        )
+
+        cls.buyer = User.objects.create_user(
+            username="test_buyer",
+            password="TestBuyerPass123!",
+        )
+        Profile.objects.create(
+            user=cls.buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        cls.valid_listing_data = {
+            "title": "Test Seller Book",
+            "author": "Test Author",
+            "isbn": "9781234567897",
+            "description": "A test book listing.",
+            "category": "Programming",
+            "price": "299.99",
+            "stock_quantity": "5",
+            "cover_image_url": "https://example.com/test-book.jpg",
+        }
+
+    def test_seller_can_access_listing_form(self):
+        self.client.force_login(self.seller)
+        response = self.client.get(reverse("books:create_listing"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "books/create_listing.html")
+
+    def test_seller_can_create_pending_listing(self):
+        self.client.force_login(self.seller)
+        response = self.client.post(
+            reverse("books:create_listing"),
+            self.valid_listing_data,
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("books:book_catalogue"),
+        )
+
+        book = Book.objects.get(isbn="9781234567897")
+        self.assertEqual(book.seller, self.seller)
+        self.assertEqual(
+            book.approval_status,
+            Book.ApprovalStatus.PENDING,
+        )
+        self.assertFalse(book.is_available)
+
+    def test_buyer_cannot_access_listing_form(self):
+        self.client.force_login(self.buyer)
+        response = self.client.get(reverse("books:create_listing"))
+
+        self.assertRedirects(
+            response,
+            reverse("books:book_catalogue"),
+        )
+
+    def test_buyer_cannot_create_listing(self):
+        self.client.force_login(self.buyer)
+        response = self.client.post(
+            reverse("books:create_listing"),
+            self.valid_listing_data,
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("books:book_catalogue"),
+        )
+        self.assertFalse(
+            Book.objects.filter(isbn="9781234567897").exists()
+        )
+
+    def test_anonymous_user_is_redirected_to_login(self):
+        response = self.client.get(reverse("books:create_listing"))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/accounts/login/", response.url)
+
+    def test_invalid_isbn_is_rejected(self):
+        self.client.force_login(self.seller)
+        data = self.valid_listing_data.copy()
+        data["isbn"] = "invalid-isbn"
+
+        response = self.client.post(
+            reverse("books:create_listing"),
+            data,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFormError(
+            response.context["form"],
+            "isbn",
+            "Enter a valid ISBN containing 10 or 13 digits.",
+        )
+
+    def test_zero_price_is_rejected(self):
+        self.client.force_login(self.seller)
+        data = self.valid_listing_data.copy()
+        data["price"] = "0"
+
+        response = self.client.post(
+            reverse("books:create_listing"),
+            data,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFormError(
+            response.context["form"],
+            "price",
+            "Price must be greater than zero.",
+        )
+
+    def test_duplicate_isbn_is_rejected(self):
+        Book.objects.create(
+            title="Existing Book",
+            author="Existing Author",
+            isbn="9781234567897",
+            price="100.00",
+            stock_quantity=1,
+        )
+
+        self.client.force_login(self.seller)
+        response = self.client.post(
+            reverse("books:create_listing"),
+            self.valid_listing_data,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(
+            Book.objects.filter(title="Test Seller Book").exists()
         )

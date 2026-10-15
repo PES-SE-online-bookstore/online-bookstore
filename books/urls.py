@@ -11,4 +11,9 @@ urlpatterns = [
         views.book_detail,
         name="book_detail",
     ),
+    path(
+        "seller/create/",
+        views.create_listing,
+        name="create_listing",
+    ),
 ]

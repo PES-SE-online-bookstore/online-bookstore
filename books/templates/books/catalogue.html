@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Book Catalogue | Online Bookstore</title>
 
     <style>
@@ -57,6 +58,42 @@
             max-width: 1100px;
             margin: 35px auto;
             padding: 0 20px;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid;
+            line-height: 1.5;
+        }
+
+        .message.success {
+            background-color: #e8f7ed;
+            color: #176b35;
+            border-color: #a8d8b5;
+        }
+
+        .message.error {
+            background-color: #fff0f0;
+            color: #a61b1b;
+            border-color: #e0a0a0;
+        }
+
+        .message.warning {
+            background-color: #fff8e5;
+            color: #805b00;
+            border-color: #ead18a;
+        }
+
+        .message.info {
+            background-color: #eaf3ff;
+            color: #174f8a;
+            border-color: #b5d0f0;
         }
 
         .search-form {
@@ -227,13 +264,14 @@
 <body>
     <header>
         <h1>Online Bookstore</h1>
+
         <p>Discover your next great read.</p>
 
         {% if user.is_authenticated %}
             {% if user.profile.role == "BUYER" %}
                 <nav class="header-links" aria-label="Buyer navigation">
                     <a href="{% url 'cart:cart_detail' %}">
-                        🛒 Cart
+                        Shopping Cart
                     </a>
                 </nav>
             {% endif %}
@@ -241,6 +279,16 @@
     </header>
 
     <main>
+        {% if messages %}
+            <div class="messages" role="status" aria-live="polite">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <h2>Book Catalogue</h2>
 
         <form method="get">
@@ -275,7 +323,7 @@
                 </div>
 
                 <div class="filter-field">
-                    <label for="min_price">Minimum price (₹)</label>
+                    <label for="min_price">Minimum price (INR)</label>
 
                     <input
                         type="number"
@@ -289,7 +337,7 @@
                 </div>
 
                 <div class="filter-field">
-                    <label for="max_price">Maximum price (₹)</label>
+                    <label for="max_price">Maximum price (INR)</label>
 
                     <input
                         type="number"
@@ -349,7 +397,7 @@
                         </p>
 
                         <p class="price">
-                            ₹{{ book.price }}
+                            INR {{ book.price }}
                         </p>
 
                         {% if book.stock_quantity > 0 %}

@@ -1,8 +1,11 @@
 from decimal import Decimal, InvalidOperation
 
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
+from .forms import BookListingForm
 from .models import Book
 
 
@@ -12,7 +15,10 @@ def book_catalogue(request):
     min_price_input = request.GET.get("min_price", "").strip()
     max_price_input = request.GET.get("max_price", "").strip()
 
-    books = Book.objects.filter(is_available=True)
+    books = Book.objects.filter(
+        is_available=True,
+        approval_status=Book.ApprovalStatus.APPROVED,
+    )
 
     # Search by title, author, ISBN, or individual description keywords.
     if query:
@@ -77,9 +83,12 @@ def book_catalogue(request):
     # Sort results alphabetically by title.
     books = books.order_by("title")
 
-    # Retrieve categories available in the catalogue.
+    # Retrieve categories available in the approved catalogue.
     categories = (
-        Book.objects.filter(is_available=True)
+        Book.objects.filter(
+            is_available=True,
+            approval_status=Book.ApprovalStatus.APPROVED,
+        )
         .exclude(category="")
         .values_list("category", flat=True)
         .distinct()
@@ -100,11 +109,12 @@ def book_catalogue(request):
 
 
 def book_detail(request, book_id):
-    # Only display books that are available in the catalogue.
+    # Only display approved books that are available in the catalogue.
     book = get_object_or_404(
         Book,
         id=book_id,
         is_available=True,
+        approval_status=Book.ApprovalStatus.APPROVED,
     )
 
     context = {
@@ -112,3 +122,39 @@ def book_detail(request, book_id):
     }
 
     return render(request, "books/book_detail.html", context)
+
+
+@login_required
+def create_listing(request):
+    # Only sellers may create listings.
+    if not hasattr(request.user, "profile"):
+        messages.error(request, "Your account profile was not found.")
+        return redirect("books:book_catalogue")
+
+    if request.user.profile.role != "SELLER":
+        messages.error(request, "Only sellers can create book listings.")
+        return redirect("books:book_catalogue")
+
+    if request.method == "POST":
+        form = BookListingForm(request.POST)
+
+        if form.is_valid():
+            book = form.save(commit=False)
+            book.seller = request.user
+            book.approval_status = Book.ApprovalStatus.PENDING
+            book.is_available = False
+            book.save()
+
+            messages.success(
+                request,
+                "Your book listing was submitted for admin approval.",
+            )
+            return redirect("books:book_catalogue")
+    else:
+        form = BookListingForm()
+
+    return render(
+        request,
+        "books/create_listing.html",
+        {"form": form},
+    )
