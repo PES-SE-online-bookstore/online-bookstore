@@ -1200,3 +1200,181 @@ class AdminListingApprovalTests(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertIn("/admin/login/", response.url)
+
+class AdminInventoryManagementTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.admin_user = User.objects.create_superuser(
+            username="inventory_admin",
+            email="inventory_admin@example.com",
+            password="TestAdminPassword123!",
+        )
+
+        cls.seller = User.objects.create_user(
+            username="inventory_seller",
+            password="TestSellerPassword123!",
+        )
+
+        Profile.objects.create(
+            user=cls.seller,
+            role=Profile.Role.SELLER,
+        )
+
+        cls.approved_book = Book.objects.create(
+            seller=cls.seller,
+            title="Inventory Test Book",
+            author="Inventory Author",
+            isbn="9781234567842",
+            description="A book for inventory management tests.",
+            category="Technology",
+            price="400.00",
+            stock_quantity=5,
+            approval_status=Book.ApprovalStatus.APPROVED,
+            is_available=True,
+        )
+
+        cls.pending_book = Book.objects.create(
+            seller=cls.seller,
+            title="Pending Inventory Book",
+            author="Inventory Author",
+            isbn="9781234567859",
+            description="A book awaiting approval.",
+            category="Technology",
+            price="300.00",
+            stock_quantity=5,
+            approval_status=Book.ApprovalStatus.PENDING,
+            is_available=False,
+        )
+
+    def setUp(self):
+        self.client.force_login(self.admin_user)
+        self.changelist_url = reverse("admin:books_book_changelist")
+
+    def run_admin_action(self, action, book_ids):
+        return self.client.post(
+            self.changelist_url,
+            {
+                "action": action,
+                "index": "0",
+                "_selected_action": [
+                    str(book_id) for book_id in book_ids
+                ],
+            },
+            follow=True,
+        )
+
+    def test_admin_can_update_stock_quantity(self):
+        response = self.client.post(
+            reverse(
+                "admin:books_book_change",
+                args=[self.approved_book.pk],
+            ),
+            {
+                "title": self.approved_book.title,
+                "author": self.approved_book.author,
+                "isbn": self.approved_book.isbn,
+                "description": self.approved_book.description,
+                "category": self.approved_book.category,
+                "price": str(self.approved_book.price),
+                "stock_quantity": "20",
+                "cover_image_url": self.approved_book.cover_image_url,
+                "seller": str(self.seller.pk),
+                "approval_status": Book.ApprovalStatus.APPROVED,
+                "is_available": "on",
+            },
+            follow=True,
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.approved_book.refresh_from_db()
+        self.assertEqual(self.approved_book.stock_quantity, 20)
+
+    def test_admin_can_deactivate_listing(self):
+        response = self.run_admin_action(
+            "deactivate_listings",
+            [self.approved_book.pk],
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.approved_book.refresh_from_db()
+        self.assertFalse(self.approved_book.is_available)
+
+    def test_deactivated_listing_is_hidden_from_catalogue(self):
+        self.run_admin_action(
+            "deactivate_listings",
+            [self.approved_book.pk],
+        )
+
+        response = self.client.get(
+            reverse("books:book_catalogue"),
+        )
+
+        self.assertNotContains(response, "Inventory Test Book")
+
+    def test_admin_can_reactivate_approved_listing_with_stock(self):
+        self.approved_book.is_available = False
+        self.approved_book.save(update_fields=["is_available"])
+
+        response = self.run_admin_action(
+            "activate_listings",
+            [self.approved_book.pk],
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.approved_book.refresh_from_db()
+        self.assertTrue(self.approved_book.is_available)
+
+    def test_pending_listing_cannot_be_activated(self):
+        response = self.run_admin_action(
+            "activate_listings",
+            [self.pending_book.pk],
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.pending_book.refresh_from_db()
+        self.assertFalse(self.pending_book.is_available)
+        self.assertEqual(
+            self.pending_book.approval_status,
+            Book.ApprovalStatus.PENDING,
+        )
+
+    def test_out_of_stock_listing_cannot_be_activated(self):
+        self.approved_book.stock_quantity = 0
+        self.approved_book.is_available = False
+        self.approved_book.save(
+            update_fields=["stock_quantity", "is_available"]
+        )
+
+        response = self.run_admin_action(
+            "activate_listings",
+            [self.approved_book.pk],
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.approved_book.refresh_from_db()
+        self.assertFalse(self.approved_book.is_available)
+
+    def test_non_staff_user_cannot_manage_inventory(self):
+        buyer = User.objects.create_user(
+            username="inventory_buyer",
+            password="TestBuyerPassword123!",
+        )
+
+        Profile.objects.create(
+            user=buyer,
+            role=Profile.Role.BUYER,
+        )
+
+        self.client.force_login(buyer)
+
+        response = self.client.get(self.changelist_url)
+
+        self.assertEqual(response.status_code, 302)
+
+        self.approved_book.refresh_from_db()
+        self.assertEqual(self.approved_book.stock_quantity, 5)
