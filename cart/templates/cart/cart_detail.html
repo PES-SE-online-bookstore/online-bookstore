@@ -221,10 +221,9 @@
         <section class="panel summary">
             <p>Total items: {{ cart.total_items }}</p>
             <h2>Cart Total: ₹{{ cart.total_price|floatformat:2 }}</h2>
-            <p class="muted">
-                Checkout will be available when the checkout feature is implemented.
-            </p>
-            <button type="button" disabled>Proceed to Checkout</button>
+            <a class="button" href="{% url 'cart:checkout' %}">
+				Proceed to Checkout
+			</a>
         </section>
     {% else %}
         <section class="panel empty">

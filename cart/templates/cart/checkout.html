@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Online Bookstore</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        a {
+            color: #2457c5;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .checkbox-group,
+        .radio-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .radio-option label {
+            cursor: pointer;
+        }
+
+        .muted {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .messages {
+            padding: 0;
+            list-style: none;
+        }
+
+        .messages li {
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background: #e8f5e9;
+        }
+
+        .messages .error {
+            background: #ffebee;
+        }
+
+        .errorlist,
+        .field-error {
+            color: #b42318;
+            font-size: 14px;
+            margin: 4px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        button,
+        .button {
+            display: inline-block;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 5px;
+            background: #2457c5;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover,
+        .button:hover {
+            background: #1946a3;
+            text-decoration: none;
+        }
+
+        .secondary {
+            background: #555;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .address-card {
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .address-card.selected {
+            border-color: #2457c5;
+            background: #f5f8ff;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 14px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .total {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <header>
+        <h1>Checkout</h1>
+        <a href="{% url 'cart:cart_detail' %}">Return to Cart</a>
+    </header>
+
+    {% if messages %}
+        <ul class="messages" aria-live="polite">
+            {% for message in messages %}
+                <li class="{% if message.tags == 'error' %}error{% endif %}">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if checkout_pending %}
+        <section class="panel">
+            <h2>Checkout details validated</h2>
+            <p>
+                Your shipping address and payment-method selection have been
+                validated.
+            </p>
+            <p class="muted">
+                Payment processing is not yet available. No payment has been
+                made and no order has been confirmed.
+            </p>
+
+            <a class="button" href="{% url 'cart:cart_detail' %}">
+                Return to Cart
+            </a>
+        </section>
+    {% else %}
+
+        <section class="panel">
+            <h2>Order Summary</h2>
+
+            {% for item in items %}
+                <div class="cart-item">
+                    <div>
+                        <strong>{{ item.book.title }}</strong>
+                        <p class="muted">
+                            Quantity: {{ item.quantity }}
+                        </p>
+                    </div>
+
+                    <span>
+                        ₹{{ item.total_price|floatformat:2 }}
+                    </span>
+                </div>
+            {% endfor %}
+
+            <p class="total">
+                Total: ₹{{ cart.total_price|floatformat:2 }}
+            </p>
+        </section>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <section class="panel">
+                <h2>Shipping Address</h2>
+
+                {{ checkout_form.non_field_errors }}
+
+                {% if addresses %}
+                    <p>Select a saved address:</p>
+
+                    {% for address in addresses %}
+                        <div class="address-card {% if selected_address.id == address.id %}selected{% endif %}">
+                            <div class="radio-option">
+                                <input
+                                    type="radio"
+                                    name="address_id"
+                                    id="address-{{ address.id }}"
+                                    value="{{ address.id }}"
+                                    {% if selected_address.id == address.id %}checked{% endif %}
+                                >
+
+                                <label for="address-{{ address.id }}">
+                                    <strong>{{ address.full_name }}</strong><br>
+                                    {{ address.address_line_1 }}<br>
+
+                                    {% if address.address_line_2 %}
+                                        {{ address.address_line_2 }}<br>
+                                    {% endif %}
+
+                                    {{ address.city }}, {{ address.state }}
+                                    {{ address.postal_code }}<br>
+
+                                    {{ address.country }}<br>
+                                    Phone: {{ address.phone_number }}
+
+                                    {% if address.is_default %}
+                                        <br><strong>Default address</strong>
+                                    {% endif %}
+                                </label>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="muted">
+                        You haven't saved a shipping address yet.
+                    </p>
+                {% endif %}
+
+                <hr>
+
+                <div class="checkbox-group">
+                    <input
+                        type="checkbox"
+                        name="use_new_address"
+                        id="use_new_address"
+                        value="yes"
+                    >
+                    <label for="use_new_address">
+                        Enter a new shipping address
+                    </label>
+                </div>
+
+                <div id="new-address-fields" hidden>
+                    <div class="form-grid">
+                        {% for field in address_form %}
+                            <div class="form-group {% if field.name == 'address_line_1' or field.name == 'address_line_2' %}full-width{% endif %}">
+                                {{ field.label_tag }}
+                                {{ field }}
+
+                                {% if field.help_text %}
+                                    <small class="muted">
+                                        {{ field.help_text }}
+                                    </small>
+                                {% endif %}
+
+                                {% for error in field.errors %}
+                                    <p class="field-error">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Payment Method</h2>
+
+                <p class="muted">
+                    Test-mode selection only. No real payment will be made.
+                </p>
+
+                {% for radio in checkout_form.payment_method %}
+                    <div class="radio-option">
+                        {{ radio.tag }}
+                        <label for="{{ radio.id_for_label }}">
+                            {{ radio.choice_label }}
+                        </label>
+                    </div>
+                {% endfor %}
+
+                {% for error in checkout_form.payment_method.errors %}
+                    <p class="field-error">{{ error }}</p>
+                {% endfor %}
+            </section>
+
+            <div class="actions">
+                <button type="submit">Validate Checkout Details</button>
+
+                <a
+                    class="button secondary"
+                    href="{% url 'cart:cart_detail' %}"
+                >
+                    Cancel
+                </a>
+            </div>
+        </form>
+
+        <script>
+            const checkbox = document.getElementById("use_new_address");
+            const addressFields = document.getElementById("new-address-fields");
+            const savedAddressRadios = document.querySelectorAll(
+                'input[name="address_id"]'
+            );
+
+            function updateAddressSelection() {
+                addressFields.hidden = !checkbox.checked;
+
+                savedAddressRadios.forEach(function (radio) {
+                    radio.disabled = checkbox.checked;
+                });
+
+                addressFields.querySelectorAll("input, select, textarea").forEach(
+                    function (field) {
+                        if (field.name !== "address_line_2" &&
+                            field.name !== "is_default") {
+                            field.required = checkbox.checked;
+                        }
+                    }
+                );
+            }
+
+            checkbox.addEventListener("change", updateAddressSelection);
+            updateAddressSelection();
+        </script>
+
+    {% endif %}
+
+</div>
+</body>
+</html>

@@ -7,7 +7,8 @@ from django.views.decorators.http import require_POST
 from accounts.models import Profile
 from books.models import Book
 
-from .models import Cart, CartItem
+from .forms import CheckoutForm, ShippingAddressForm
+from .models import Cart, CartItem, ShippingAddress
 
 
 def is_buyer(user):
@@ -158,3 +159,123 @@ def remove_from_cart(request, item_id):
 
     messages.success(request, f'"{title}" was removed from your cart.')
     return redirect("cart:cart_detail")
+
+
+@login_required
+def checkout(request):
+    if not is_buyer(request.user):
+        messages.error(request, "Only buyers can proceed to checkout.")
+        return redirect("book_catalogue")
+
+    cart, _ = Cart.objects.get_or_create(user=request.user)
+    items = cart.items.select_related("book").all()
+
+    if not items.exists():
+        messages.error(
+            request,
+            "Your cart is empty. Add books before proceeding to checkout.",
+        )
+        return redirect("cart:cart_detail")
+
+    addresses = ShippingAddress.objects.filter(user=request.user)
+
+    selected_address = None
+    address_id = request.POST.get("address_id") if request.method == "POST" else None
+
+    if address_id:
+        selected_address = addresses.filter(id=address_id).first()
+
+    if request.method == "POST":
+        checkout_form = CheckoutForm(request.POST)
+
+        use_new_address = request.POST.get("use_new_address") == "yes"
+
+        if use_new_address:
+            address_form = ShippingAddressForm(request.POST)
+            address_valid = address_form.is_valid()
+
+            if checkout_form.is_valid() and address_valid:
+                with transaction.atomic():
+                    address = address_form.save(commit=False)
+                    address.user = request.user
+
+                    if address.is_default:
+                        ShippingAddress.objects.filter(
+                            user=request.user,
+                            is_default=True,
+                        ).update(is_default=False)
+
+                    address.save()
+
+                messages.success(
+                    request,
+                    "Shipping address saved. Payment processing will be "
+                    "available when the secure payment feature is implemented.",
+                )
+
+                return render(
+                    request,
+                    "cart/checkout.html",
+                    {
+                        "cart": cart,
+                        "items": items,
+                        "addresses": addresses,
+                        "selected_address": address,
+                        "address_form": ShippingAddressForm(),
+                        "checkout_form": checkout_form,
+                        "checkout_pending": True,
+                    },
+                )
+
+        else:
+            address_form = ShippingAddressForm()
+
+            if (
+                checkout_form.is_valid()
+                and selected_address is not None
+            ):
+                messages.success(
+                    request,
+                    "Checkout details validated. Payment processing will be "
+                    "available when the secure payment feature is implemented.",
+                )
+
+                return render(
+                    request,
+                    "cart/checkout.html",
+                    {
+                        "cart": cart,
+                        "items": items,
+                        "addresses": addresses,
+                        "selected_address": selected_address,
+                        "address_form": address_form,
+                        "checkout_form": checkout_form,
+                        "checkout_pending": True,
+                    },
+                )
+
+            if not selected_address:
+                checkout_form.add_error(
+                    None,
+                    "Please select one of your saved shipping addresses "
+                    "or enter a new address.",
+                )
+
+    else:
+        checkout_form = CheckoutForm()
+        address_form = ShippingAddressForm()
+        selected_address = addresses.filter(is_default=True).first()
+
+    return render(
+        request,
+        "cart/checkout.html",
+        {
+            "cart": cart,
+            "items": items,
+            "addresses": addresses,
+            "selected_address": selected_address,
+            "address_form": address_form,
+            "checkout_form": checkout_form,
+            "checkout_pending": False,
+        },
+    )
