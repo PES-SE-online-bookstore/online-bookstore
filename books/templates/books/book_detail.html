@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ book.title }} | Online Bookstore</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #243b53;
+            color: white;
+            padding: 24px 8%;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #243b53;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .book-details {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+            gap: 35px;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #e1e5ea;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .cover-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .cover-image {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            max-height: 420px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .cover-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 300px;
+            min-height: 300px;
+            padding: 20px;
+            background-color: #e8eef5;
+            color: #52606d;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .book-information h2 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 30px;
+            line-height: 1.3;
+        }
+
+        .author {
+            margin-top: 0;
+            color: #52606d;
+            font-size: 18px;
+        }
+
+        .category {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #e8eef5;
+            color: #243b53;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .description {
+            margin-top: 25px;
+            white-space: pre-line;
+        }
+
+        .price {
+            margin-top: 25px;
+            color: #243b53;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .availability {
+            font-weight: bold;
+        }
+
+        .in-stock {
+            color: #247a45;
+        }
+
+        .out-of-stock {
+            color: #a61b1b;
+        }
+
+        .isbn {
+            overflow-wrap: anywhere;
+        }
+
+        .browse-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background-color: #243b53;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .browse-button:hover {
+            background-color: #334e68;
+        }
+
+        @media (max-width: 650px) {
+            .book-details {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .cover-image {
+                max-height: 350px;
+            }
+
+            .book-information h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Online Bookstore</h1>
+        <p>Discover your next great read.</p>
+    </header>
+
+    <main>
+        <a class="back-link" href="{% url 'book_catalogue' %}">
+            &larr; Back to catalogue
+        </a>
+
+        <article class="book-details">
+            <div class="cover-container">
+                {% if book.cover_image_url %}
+                    <img
+                        class="cover-image"
+                        src="{{ book.cover_image_url }}"
+                        alt="Cover of {{ book.title }}"
+                    >
+                {% else %}
+                    <div class="cover-placeholder">
+                        No cover image available
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="book-information">
+                <h2>{{ book.title }}</h2>
+
+                <p class="author">
+                    By {{ book.author }}
+                </p>
+
+                {% if book.category %}
+                    <p class="category">
+                        {{ book.category }}
+                    </p>
+                {% endif %}
+
+                <p class="description">
+                    {{ book.description|default:"No description available." }}
+                </p>
+
+                <p class="isbn">
+                    <strong>ISBN:</strong> {{ book.isbn }}
+                </p>
+
+                <p>
+                    <strong>Category:</strong>
+                    {{ book.category|default:"Not specified" }}
+                </p>
+
+                <p class="price">
+                    ₹{{ book.price }}
+                </p>
+
+                {% if book.stock_quantity > 0 %}
+                    <p class="availability in-stock">
+                        In stock ({{ book.stock_quantity }} available)
+                    </p>
+                {% else %}
+                    <p class="availability out-of-stock">
+                        Currently out of stock
+                    </p>
+                {% endif %}
+
+                <a
+                    class="browse-button"
+                    href="{% url 'book_catalogue' %}"
+                >
+                    Back to catalogue
+                </a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>

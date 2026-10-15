@@ -289,7 +289,14 @@
             <div class="book-grid">
                 {% for book in books %}
                     <article class="book-card">
-                        <h2>{{ book.title }}</h2>
+						<h2>
+							<a
+							href="{% url 'book_detail' book.id %}"
+							style="color: #243b53; text-decoration: none;"
+							>
+								{{ book.title }}
+							</a>
+						</h2>
 
                         <p class="author">
                             By {{ book.author }}

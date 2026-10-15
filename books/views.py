@@ -1,7 +1,7 @@
 from decimal import Decimal, InvalidOperation
 
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import Book
 
@@ -97,3 +97,18 @@ def book_catalogue(request):
     }
 
     return render(request, "books/catalogue.html", context)
+
+
+def book_detail(request, book_id):
+    # Only display books that are available in the catalogue.
+    book = get_object_or_404(
+        Book,
+        id=book_id,
+        is_available=True,
+    )
+
+    context = {
+        "book": book,
+    }
+
+    return render(request, "books/book_detail.html", context)

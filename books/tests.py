@@ -319,3 +319,105 @@ class BookCatalogueTests(TestCase):
                 "The Alchemist",
             ],
         )
+
+
+class BookDetailTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.book = Book.objects.create(
+            title="Clean Code",
+            author="Robert C. Martin",
+            isbn="9780132350884",
+            description="A practical guide to writing clean code.",
+            category="Programming",
+            price="450.00",
+            stock_quantity=10,
+            cover_image_url="https://example.com/clean-code.jpg",
+            is_available=True,
+        )
+
+        cls.unavailable_book = Book.objects.create(
+            title="Unavailable Book",
+            author="Test Author",
+            isbn="9781234567890",
+            description="This book is unavailable.",
+            category="Programming",
+            price="250.00",
+            stock_quantity=0,
+            is_available=False,
+        )
+
+    def test_book_detail_page_loads(self):
+        response = self.client.get(
+            reverse("book_detail", args=[self.book.id])
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "books/book_detail.html")
+
+    def test_book_detail_displays_book_information(self):
+        response = self.client.get(
+            reverse("book_detail", args=[self.book.id])
+        )
+
+        self.assertContains(response, "Clean Code")
+        self.assertContains(response, "Robert C. Martin")
+        self.assertContains(response, "9780132350884")
+        self.assertContains(response, "Programming")
+        self.assertContains(
+            response,
+            "A practical guide to writing clean code.",
+        )
+        self.assertContains(response, "450.00")
+        self.assertContains(response, "10 available")
+
+    def test_book_detail_displays_cover_image(self):
+        response = self.client.get(
+            reverse("book_detail", args=[self.book.id])
+        )
+
+        self.assertContains(
+            response,
+            "https://example.com/clean-code.jpg",
+        )
+        self.assertContains(response, "Cover of Clean Code")
+
+    def test_book_detail_shows_placeholder_without_cover_image(self):
+        book_without_cover = Book.objects.create(
+            title="Book Without Cover",
+            author="Test Author",
+            isbn="9781234567891",
+            description="A book without a cover image.",
+            category="Fiction",
+            price="100.00",
+            stock_quantity=2,
+            is_available=True,
+        )
+
+        response = self.client.get(
+            reverse("book_detail", args=[book_without_cover.id])
+        )
+
+        self.assertContains(response, "No cover image available")
+
+    def test_book_detail_returns_404_for_nonexistent_book(self):
+        response = self.client.get(
+            reverse("book_detail", args=[999999])
+        )
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_unavailable_book_detail_returns_404(self):
+        response = self.client.get(
+            reverse("book_detail", args=[self.unavailable_book.id])
+        )
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_catalogue_links_to_book_details(self):
+        response = self.client.get(reverse("book_catalogue"))
+
+        self.assertContains(
+            response,
+            reverse("book_detail", args=[self.book.id]),
+        )
