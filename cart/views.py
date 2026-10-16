@@ -202,16 +202,47 @@ def checkout(request):
             if checkout_form.is_valid() and address_valid:
                 try:
                     with transaction.atomic():
-                        address = address_form.save(commit=False)
-                        address.user = request.user
+                        address_data = address_form.save(commit=False)
 
-                        if address.is_default:
-                            ShippingAddress.objects.filter(
-                                user=request.user,
-                                is_default=True,
-                            ).update(is_default=False)
+                        # Find an identical address belonging to this buyer.
+                        address = ShippingAddress.objects.filter(
+                            user=request.user,
+                            full_name=address_data.full_name,
+                            address_line_1=address_data.address_line_1,
+                            address_line_2=address_data.address_line_2,
+                            city=address_data.city,
+                            state=address_data.state,
+                            postal_code=address_data.postal_code,
+                            country=address_data.country,
+                            phone_number=address_data.phone_number,
+                        ).first()
 
-                        address.save()
+                        if address is not None:
+                            # Reuse the existing address instead of
+                            # creating another identical database record.
+                            if address_data.is_default:
+                                ShippingAddress.objects.filter(
+                                    user=request.user,
+                                    is_default=True,
+                                ).exclude(pk=address.pk).update(
+                                    is_default=False
+                                )
+
+                                address.is_default = True
+                                address.save(update_fields=["is_default"])
+                        else:
+                            # This address has not previously been saved
+                            # for this buyer, so create a new record.
+                            address = address_data
+                            address.user = request.user
+
+                            if address.is_default:
+                                ShippingAddress.objects.filter(
+                                    user=request.user,
+                                    is_default=True,
+                                ).update(is_default=False)
+
+                            address.save()
 
                         order, payment = create_order_from_cart(
                             user=request.user,
