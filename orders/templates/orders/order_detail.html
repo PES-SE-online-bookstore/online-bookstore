@@ -184,7 +184,8 @@
             border-radius: 4px;
         }
 
-        .tracking-current p { margin: 0; }
+        .tracking-current p { margin: 0 0 6px; }
+        .tracking-current p:last-child { margin-bottom: 0; }
 
         .tracking-cancelled {
             padding: 16px;
@@ -252,6 +253,72 @@
             border-radius: 5px;
         }
 
+        /* Cancellation and return-request styling */
+
+        .action-button {
+            display: inline-block;
+            padding: 11px 16px;
+            border: 0;
+            border-radius: 5px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .cancel-button { background-color: #b42318; }
+        .cancel-button:hover { background-color: #912018; }
+
+        .return-button { background-color: #243b53; }
+        .return-button:hover { background-color: #334e68; }
+
+        .action-form { margin-top: 14px; }
+
+        .action-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .action-form textarea {
+            display: block;
+            width: 100%;
+            max-width: 650px;
+            min-height: 110px;
+            margin-bottom: 12px;
+            padding: 10px;
+            border: 1px solid #bcccdc;
+            border-radius: 5px;
+            font: inherit;
+        }
+
+        .policy-note {
+            margin: 10px 0;
+            color: #52606d;
+        }
+
+        .message-list {
+            margin: 0 0 22px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .message-list li {
+            margin-bottom: 8px;
+            padding: 12px 14px;
+            border-radius: 5px;
+            background-color: #e8eef5;
+        }
+
+        .message-list .success {
+            background-color: #e7f6ec;
+            border-left: 4px solid #218838;
+        }
+
+        .message-list .error {
+            background-color: #fef3f2;
+            border-left: 4px solid #b42318;
+        }
+
         @media (max-width: 600px) {
             .section-card { padding: 16px; }
 
@@ -311,17 +378,130 @@
     <main>
         <h2>Order #{{ order.id }}</h2>
 
+        {% if messages %}
+            <ul class="message-list" aria-label="Notifications">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}" role="status">
+                        {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <!-- Cancellation and return requests -->
+
+        <section class="section-card" aria-labelledby="actions-heading">
+            <h2 id="actions-heading">Cancellation and Returns</h2>
+
+            {% if can_cancel %}
+                <p>
+                    You may cancel this order until
+                    {{ cancellation_deadline|date:"d M Y, H:i" }}.
+                    Cancellation is unavailable once the order has shipped.
+                </p>
+
+                <form method="post"
+                      action="{% url 'orders:cancel' order.id %}"
+                      class="action-form">
+                    {% csrf_token %}
+
+                    <button type="submit"
+                            class="action-button cancel-button"
+                            onclick="return confirm('Are you sure you want to cancel this order?');">
+                        Cancel Order
+                    </button>
+                </form>
+
+            {% elif order.status == "PENDING" or order.status == "CONFIRMED" or order.status == "PROCESSING" %}
+                <p class="policy-note">
+                    This order can no longer be cancelled because the
+                    cancellation policy window has expired.
+                </p>
+
+            {% elif order.status == "SHIPPED" %}
+                <p class="policy-note">
+                    This order has shipped and can no longer be cancelled.
+                </p>
+            {% endif %}
+
+            {% if can_request_return %}
+                <hr>
+
+                <p>
+                    You may request a return until
+                    {{ return_deadline|date:"d M Y, H:i" }}.
+                    Please explain why you would like to return this order.
+                </p>
+
+                <form method="post"
+                      action="{% url 'orders:request_return' order.id %}"
+                      class="action-form">
+                    {% csrf_token %}
+
+                    <label for="return-reason">Reason for return</label>
+
+                    <textarea id="return-reason"
+                              name="reason"
+                              required
+                              maxlength="5000"
+                              placeholder="Explain the reason for your return"></textarea>
+
+                    <button type="submit"
+                            class="action-button return-button">
+                        Submit Return Request
+                    </button>
+                </form>
+
+            {% elif order.status == "DELIVERED" and not return_request %}
+                <p class="policy-note">
+                    The return policy window has expired or the delivery date
+                    is unavailable, so a return request cannot be submitted.
+                </p>
+            {% endif %}
+
+            {% if return_request %}
+                <div class="detail-item" style="margin-top: 16px;">
+                    <span class="detail-label">Return Request Status</span>
+
+                    <span class="status">
+                        {{ return_request.get_status_display }}
+                    </span>
+
+                    <p>
+                        <strong>Reason:</strong>
+                        {{ return_request.reason }}
+                    </p>
+
+                    <p>
+                        <strong>Submitted:</strong>
+                        {{ return_request.requested_at|date:"d M Y, H:i" }}
+                    </p>
+
+                    {% if return_request.admin_notes %}
+                        <p>
+                            <strong>Admin notes:</strong>
+                            {{ return_request.admin_notes }}
+                        </p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </section>
+
+        <!-- Shipment tracking -->
+
         <section class="section-card" aria-labelledby="tracking-heading">
             <h2 id="tracking-heading">Shipment Tracking</h2>
 
             {% if order.status == "CANCELLED" %}
                 <div class="tracking-cancelled" role="status">
                     <h3>Order Cancelled</h3>
+
                     <p>
                         This order has been cancelled. It will not progress
                         through the shipment stages shown below.
                     </p>
                 </div>
+
             {% else %}
                 <p class="tracking-intro">
                     Follow your order's progress through the fulfilment process.
@@ -337,8 +517,13 @@
                             completed
                         {% endif %}">
                         <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'PENDING' %}1{% else %}&#10003;{% endif %}
+                            {% if order.status == 'PENDING' %}
+                                1
+                            {% else %}
+                                &#10003;
+                            {% endif %}
                         </span>
+
                         <span class="tracking-label">Order Received</span>
                     </li>
 
@@ -355,6 +540,7 @@
                                 2
                             {% endif %}
                         </span>
+
                         <span class="tracking-label">Confirmed</span>
                     </li>
 
@@ -371,6 +557,7 @@
                                 3
                             {% endif %}
                         </span>
+
                         <span class="tracking-label">Processing</span>
                     </li>
 
@@ -381,8 +568,13 @@
                             completed
                         {% endif %}">
                         <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'DELIVERED' %}&#10003;{% else %}4{% endif %}
+                            {% if order.status == 'DELIVERED' %}
+                                &#10003;
+                            {% else %}
+                                4
+                            {% endif %}
                         </span>
+
                         <span class="tracking-label">Shipped</span>
                     </li>
 
@@ -391,8 +583,13 @@
                             current completed
                         {% endif %}">
                         <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'DELIVERED' %}&#10003;{% else %}5{% endif %}
+                            {% if order.status == 'DELIVERED' %}
+                                &#10003;
+                            {% else %}
+                                5
+                            {% endif %}
                         </span>
+
                         <span class="tracking-label">Delivered</span>
                     </li>
                 </ol>
@@ -402,6 +599,7 @@
                         <strong>Current status:</strong>
                         {{ order.get_status_display }}
                     </p>
+
                     <p>
                         <strong>Last updated:</strong>
                         {{ order.updated_at|date:"d M Y, H:i" }}
@@ -409,11 +607,14 @@
                 </div>
             {% endif %}
 
-            <p class="tracking-intro" style="margin-top: 18px; margin-bottom: 0;">
+            <p class="tracking-intro"
+               style="margin-top: 18px; margin-bottom: 0;">
                 Tracking is based on the order status recorded by the bookstore.
                 Live courier location and carrier tracking are not available.
             </p>
         </section>
+
+        <!-- Order summary -->
 
         <section class="section-card">
             <h2>Order Summary</h2>
@@ -428,7 +629,9 @@
 
                 <div class="detail-item">
                     <span class="detail-label">Order Status</span>
-                    <span class="status">{{ order.get_status_display }}</span>
+                    <span class="status">
+                        {{ order.get_status_display }}
+                    </span>
                 </div>
 
                 <div class="detail-item">
@@ -439,6 +642,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- Items ordered -->
 
         <section class="section-card">
             <h2>Items Ordered</h2>
@@ -453,6 +658,7 @@
                             <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for item in order.items.all %}
                             <tr>
@@ -476,6 +682,8 @@
                 Order Total: ₹{{ order.total_amount|floatformat:2 }}
             </p>
         </section>
+
+        <!-- Shipping address -->
 
         <section class="section-card">
             <h2>Shipping Address</h2>
@@ -525,6 +733,8 @@
             </div>
         </section>
 
+        <!-- Payment information -->
+
         <section class="section-card">
             <h2>Payment Information</h2>
 
@@ -532,17 +742,23 @@
                 <div class="details-grid">
                     <div class="detail-item">
                         <span class="detail-label">Payment Method</span>
-                        <span class="detail-value">{{ payment.get_method_display }}</span>
+                        <span class="detail-value">
+                            {{ payment.get_method_display }}
+                        </span>
                     </div>
 
                     <div class="detail-item">
                         <span class="detail-label">Payment Status</span>
-                        <span class="status">{{ payment.get_status_display }}</span>
+                        <span class="status">
+                            {{ payment.get_status_display }}
+                        </span>
                     </div>
 
                     <div class="detail-item">
                         <span class="detail-label">Payment Amount</span>
-                        <span class="detail-value">₹{{ payment.amount|floatformat:2 }}</span>
+                        <span class="detail-value">
+                            ₹{{ payment.amount|floatformat:2 }}
+                        </span>
                     </div>
 
                     <div class="detail-item">
@@ -555,10 +771,13 @@
                     {% if payment.failure_reason %}
                         <div class="detail-item">
                             <span class="detail-label">Failure Reason</span>
-                            <span class="detail-value">{{ payment.failure_reason }}</span>
+                            <span class="detail-value">
+                                {{ payment.failure_reason }}
+                            </span>
                         </div>
                     {% endif %}
                 </div>
+
             {% empty %}
                 <p class="empty-message">
                     No payment record is available for this order.
