@@ -530,69 +530,76 @@
                 </p>
             {% endif %}
 
-            <div class="review-form">
-                <h3>Write a Review</h3>
+            {% comment %}
+                Only Buyers and anonymous visitors see the review-writing area.
+                Sellers can still read customer reviews.
+            {% endcomment %}
 
-                {% if can_review and review_form %}
-                    <form
-                        method="post"
-                        action="{% url 'books:submit_review' book.id %}"
-                    >
-                        {% csrf_token %}
+            {% if not user.is_authenticated or user.profile.role == "BUYER" %}
+                <div class="review-form">
+                    <h3>Write a Review</h3>
 
-                        {% if review_form.non_field_errors %}
-                            <div class="field-errors">
-                                {{ review_form.non_field_errors }}
-                            </div>
-                        {% endif %}
-
-                        <label for="{{ review_form.rating.id_for_label }}">
-                            Your Rating
-                        </label>
-
-                        {{ review_form.rating }}
-
-                        {% if review_form.rating.errors %}
-                            <div class="field-errors">
-                                {{ review_form.rating.errors }}
-                            </div>
-                        {% endif %}
-
-                        <label for="{{ review_form.comment.id_for_label }}">
-                            Your Review
-                        </label>
-
-                        {{ review_form.comment }}
-
-                        {% if review_form.comment.errors %}
-                            <div class="field-errors">
-                                {{ review_form.comment.errors }}
-                            </div>
-                        {% endif %}
-
-                        <button
-                            type="submit"
-                            class="submit-review-button"
+                    {% if can_review and review_form %}
+                        <form
+                            method="post"
+                            action="{% url 'books:submit_review' book.id %}"
                         >
-                            Submit Review
-                        </button>
-                    </form>
+                            {% csrf_token %}
 
-                {% elif not user.is_authenticated %}
-                    <p>
-                        <a href="{% url 'login' %}">Log in</a>
-                        to submit a review after purchasing this book.
-                    </p>
+                            {% if review_form.non_field_errors %}
+                                <div class="field-errors">
+                                    {{ review_form.non_field_errors }}
+                                </div>
+                            {% endif %}
 
-                {% elif has_reviewed %}
-                    <p>You have already reviewed this book. Thank you!</p>
+                            <label for="{{ review_form.rating.id_for_label }}">
+                                Your Rating
+                            </label>
 
-                {% else %}
-                    <p>
-                        You can review this book after purchasing it.
-                    </p>
-                {% endif %}
-            </div>
+                            {{ review_form.rating }}
+
+                            {% if review_form.rating.errors %}
+                                <div class="field-errors">
+                                    {{ review_form.rating.errors }}
+                                </div>
+                            {% endif %}
+
+                            <label for="{{ review_form.comment.id_for_label }}">
+                                Your Review
+                            </label>
+
+                            {{ review_form.comment }}
+
+                            {% if review_form.comment.errors %}
+                                <div class="field-errors">
+                                    {{ review_form.comment.errors }}
+                                </div>
+                            {% endif %}
+
+                            <button
+                                type="submit"
+                                class="submit-review-button"
+                            >
+                                Submit Review
+                            </button>
+                        </form>
+
+                    {% elif not user.is_authenticated %}
+                        <p>
+                            <a href="{% url 'login' %}">Log in</a>
+                            to submit a review after purchasing this book.
+                        </p>
+
+                    {% elif has_reviewed %}
+                        <p>You have already reviewed this book. Thank you!</p>
+
+                    {% else %}
+                        <p>
+                            You can review this book after purchasing it.
+                        </p>
+                    {% endif %}
+                </div>
+            {% endif %}
         </section>
     </main>
 </body>

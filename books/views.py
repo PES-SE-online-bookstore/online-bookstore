@@ -137,28 +137,32 @@ def book_detail(request, book_id):
     is_in_wishlist = False
 
     if request.user.is_authenticated:
-        has_reviewed = Review.objects.filter(
-            book=book,
-            buyer=request.user,
-        ).exists()
-
-        has_purchased = OrderItem.objects.filter(
-            book=book,
-            order__user=request.user,
-        ).exclude(
-            order__status=Order.Status.CANCELLED,
-        ).exists()
-
-        can_review = has_purchased and not has_reviewed
-
-        if can_review:
-            review_form = ReviewForm()
-
-        # Only buyers can have wishlist items.
-        if (
+        # Only users with a Buyer profile may submit reviews.
+        is_buyer = (
             hasattr(request.user, "profile")
             and request.user.profile.role == "BUYER"
-        ):
+        )
+
+        if is_buyer:
+            has_reviewed = Review.objects.filter(
+                book=book,
+                buyer=request.user,
+            ).exists()
+
+            has_purchased = OrderItem.objects.filter(
+                book=book,
+                order__user=request.user,
+            ).exclude(
+                order__status=Order.Status.CANCELLED,
+            ).exists()
+
+            can_review = has_purchased and not has_reviewed
+
+            if can_review:
+                review_form = ReviewForm()
+
+        # Only buyers can have wishlist items.
+        if is_buyer:
             is_in_wishlist = WishlistItem.objects.filter(
                 buyer=request.user,
                 book=book,
@@ -189,6 +193,17 @@ def submit_review(request, book_id):
         is_available=True,
         approval_status=Book.ApprovalStatus.APPROVED,
     )
+
+    # Only users with a Buyer profile may submit reviews.
+    if (
+        not hasattr(request.user, "profile")
+        or request.user.profile.role != "BUYER"
+    ):
+        messages.error(
+            request,
+            "Only buyers can submit book reviews.",
+        )
+        return redirect("books:book_detail", book_id=book.pk)
 
     # Only buyers with a non-cancelled order containing this book may review.
     has_purchased = OrderItem.objects.filter(
@@ -226,14 +241,10 @@ def submit_review(request, book_id):
             average_rating=Avg("rating"),
         )
 
-        is_in_wishlist = (
-            hasattr(request.user, "profile")
-            and request.user.profile.role == "BUYER"
-            and WishlistItem.objects.filter(
-                buyer=request.user,
-                book=book,
-            ).exists()
-        )
+        is_in_wishlist = WishlistItem.objects.filter(
+            buyer=request.user,
+            book=book,
+        ).exists()
 
         context = {
             "book": book,
@@ -305,6 +316,7 @@ def create_listing(request):
                 "Your book listing was submitted for admin approval.",
             )
             return redirect("books:book_catalogue")
+
     else:
         form = BookListingForm()
 
@@ -371,6 +383,7 @@ def edit_listing(request, book_id):
                 "Your listing was updated and submitted for admin approval.",
             )
             return redirect("books:my_listings")
+
     else:
         form = BookListingForm(instance=book)
 
