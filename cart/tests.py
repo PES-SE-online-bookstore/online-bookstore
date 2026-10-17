@@ -157,6 +157,45 @@ class CartTests(TestCase):
             CartItem.objects.filter(cart=self.cart, book=self.book).exists()
         )
 
+    def test_extremely_long_quantity_is_rejected(self):
+        excessive_quantity = "9" * 5000
+
+        add_response = self.client.post(
+            reverse("cart:add_to_cart", args=[self.book.id]),
+            {"quantity": excessive_quantity},
+        )
+
+        self.assertRedirects(
+            add_response,
+            reverse("books:book_detail", args=[self.book.id]),
+        )
+
+        self.assertFalse(
+            CartItem.objects.filter(
+                cart=self.cart,
+                book=self.book,
+            ).exists()
+        )
+
+        item = CartItem.objects.create(
+            cart=self.cart,
+            book=self.book,
+            quantity=1,
+        )
+
+        update_response = self.client.post(
+            reverse("cart:update_cart_item", args=[item.id]),
+            {"quantity": excessive_quantity},
+        )
+
+        self.assertRedirects(
+            update_response,
+            reverse("cart:cart_detail"),
+        )
+
+        item.refresh_from_db()
+        self.assertEqual(item.quantity, 1)
+
     def test_buyer_can_update_quantity(self):
         item = CartItem.objects.create(
             cart=self.cart,

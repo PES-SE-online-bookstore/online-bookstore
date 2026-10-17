@@ -534,6 +534,25 @@ class SellerCreateListingTests(TestCase):
             "Enter a valid ISBN containing 10 or 13 digits.",
         )
 
+    def test_javascript_cover_image_url_is_rejected(self):
+        from books.forms import BookListingForm
+
+        data = {
+            "title": "Security Test Book",
+            "author": "Test Author",
+            "isbn": "9781234567892",
+            "description": "A book used to test URL validation.",
+            "category": "Testing",
+            "price": "299.99",
+            "stock_quantity": "5",
+            "cover_image_url": "javascript:alert(1)",
+        }
+
+        form = BookListingForm(data=data)
+
+        self.assertFalse(form.is_valid())
+        self.assertIn("cover_image_url", form.errors)
+
     def test_zero_price_is_rejected(self):
         self.client.force_login(self.seller)
         data = self.valid_listing_data.copy()
@@ -1593,6 +1612,19 @@ class BookReviewTests(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn("comment", form.errors)
 
+    def test_comment_over_2000_characters_is_rejected(self):
+        from books.forms import ReviewForm
+
+        form = ReviewForm(
+            data={
+                "rating": "5",
+                "comment": "A" * 2001,
+            }
+        )
+
+        self.assertFalse(form.is_valid())
+        self.assertIn("comment", form.errors)
+
     def test_review_is_displayed_on_book_detail_page(self):
         from books.models import Review
 
@@ -1612,6 +1644,36 @@ class BookReviewTests(TestCase):
         self.assertEqual(
             response.context["average_rating"],
             5.0,
+        )
+
+    def test_review_comment_html_is_escaped_on_book_detail_page(self):
+        from books.models import Review
+
+        malicious_comment = '<script>alert("xss")</script>'
+
+        Review.objects.create(
+            book=self.book,
+            buyer=self.buyer,
+            rating=5,
+            comment=malicious_comment,
+        )
+
+        response = self.client.get(self.detail_url)
+
+        self.assertEqual(response.status_code, 200)
+
+        # The submitted HTML must be displayed as escaped text.
+        self.assertContains(
+            response,
+            "&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;",
+            html=False,
+        )
+
+        # The raw script element must not appear in the response.
+        self.assertNotContains(
+            response,
+            malicious_comment,
+            html=False,
         )
 
     def test_anonymous_user_is_redirected_to_login(self):

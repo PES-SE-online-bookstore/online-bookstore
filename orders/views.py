@@ -175,6 +175,13 @@ def request_return(request, order_id):
         )
         return redirect("orders:detail", order_id=order_id)
 
+    if len(reason) > 2000:
+        messages.error(
+            request,
+            "Your return reason must not exceed 2000 characters.",
+        )
+        return redirect("orders:detail", order_id=order_id)
+
     with transaction.atomic():
         order = get_object_or_404(
             Order.objects.select_for_update(),

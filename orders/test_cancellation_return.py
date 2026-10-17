@@ -275,6 +275,28 @@ class OrderCancellationReturnTests(TestCase):
             ).exists()
         )
 
+    def test_return_request_rejects_reason_over_2000_characters(self):
+        delivered_order = self.create_order(
+            status=Order.Status.DELIVERED,
+            delivered_at=timezone.now() - timedelta(days=1),
+        )
+
+        response = self.client.post(
+            reverse(
+                "orders:request_return",
+                args=[delivered_order.pk],
+            ),
+            {"reason": "A" * 2001},
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(
+            ReturnRequest.objects.filter(
+                order=delivered_order
+            ).exists()
+        )
+
     def test_return_request_rejected_for_undelivered_order(self):
         response = self.client.post(
             reverse(
@@ -461,3 +483,37 @@ class OrderCancellationReturnTests(TestCase):
         self.assertContains(response, "Return Request Status")
         self.assertContains(response, "Pending")
         self.assertContains(response, "The book arrived damaged.")
+
+    def test_return_reason_html_is_escaped_on_order_detail_page(self):
+        delivered_order = self.create_order(
+            status=Order.Status.DELIVERED,
+            delivered_at=timezone.now() - timedelta(days=1),
+        )
+
+        malicious_reason = '<script>alert("xss")</script>'
+
+        ReturnRequest.objects.create(
+            order=delivered_order,
+            buyer=self.buyer,
+            reason=malicious_reason,
+        )
+
+        response = self.client.get(
+            reverse("orders:detail", args=[delivered_order.pk])
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        # The HTML must be displayed as escaped text.
+        self.assertContains(
+            response,
+            "&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;",
+            html=False,
+        )
+
+        # The raw script element must not appear in the response.
+        self.assertNotContains(
+            response,
+            malicious_reason,
+            html=False,
+        )
