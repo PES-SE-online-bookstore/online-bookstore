@@ -2,6 +2,7 @@ from decimal import Decimal, InvalidOperation
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db import transaction
 from django.db.models import Avg, Q
 from django.db.models.deletion import ProtectedError
@@ -84,8 +85,12 @@ def book_catalogue(request):
     if max_price is not None:
         books = books.filter(price__lte=max_price)
 
-    # Sort results alphabetically by title.
-    books = books.order_by("title")
+    # Sort results consistently before pagination.
+    books = books.order_by("title", "id")
+
+    # Display at most 12 books per page.
+    paginator = Paginator(books, 12)
+    page_obj = paginator.get_page(request.GET.get("page"))
 
     # Retrieve categories available in the approved catalogue.
     categories = (
@@ -100,7 +105,9 @@ def book_catalogue(request):
     )
 
     context = {
-        "books": books,
+        "books": page_obj.object_list,
+        "page_obj": page_obj,
+        "paginator": paginator,
         "query": query,
         "category": category,
         "categories": categories,

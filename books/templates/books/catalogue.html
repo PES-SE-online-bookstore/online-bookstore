@@ -235,6 +235,50 @@
             border-radius: 8px;
         }
 
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 30px 0;
+        }
+
+        .pagination a,
+        .pagination .current-page {
+            display: inline-block;
+            min-width: 40px;
+            padding: 10px 13px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #cbd2d9;
+            border-radius: 5px;
+        }
+
+        .pagination a {
+            color: #243b53;
+            background-color: white;
+        }
+
+        .pagination a:hover {
+            background-color: #e8eef5;
+        }
+
+        .pagination .current-page {
+            color: white;
+            background-color: #243b53;
+            border-color: #243b53;
+            font-weight: bold;
+        }
+
+        .pagination-summary {
+            width: 100%;
+            text-align: center;
+            color: #52606d;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
         @media (max-width: 500px) {
             .search-form {
                 flex-direction: column;
@@ -256,6 +300,10 @@
             .filter-actions .reset-button {
                 flex: 1;
                 text-align: center;
+            }
+
+            .book-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -410,6 +458,65 @@
                     </article>
                 {% endfor %}
             </div>
+
+            {% if page_obj.paginator.num_pages > 1 %}
+                <nav class="pagination" aria-label="Catalogue pagination">
+                    <p class="pagination-summary">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                        — {{ page_obj.paginator.count }} books found
+                    </p>
+
+                    {% if page_obj.has_previous %}
+                        <a
+                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page=1"
+                            aria-label="First page"
+                        >
+                            First
+                        </a>
+
+                        <a
+                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_obj.previous_page_number }}"
+                            aria-label="Previous page"
+                        >
+                            Previous
+                        </a>
+                    {% endif %}
+
+                    {% for page_number in page_obj.paginator.page_range %}
+                        {% if page_number == page_obj.number %}
+                            <span
+                                class="current-page"
+                                aria-current="page"
+                            >
+                                {{ page_number }}
+                            </span>
+                        {% elif page_number >= page_obj.number|add:"-2" and page_number <= page_obj.number|add:"2" %}
+                            <a
+                                href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_number }}"
+                                aria-label="Page {{ page_number }}"
+                            >
+                                {{ page_number }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <a
+                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_obj.next_page_number }}"
+                            aria-label="Next page"
+                        >
+                            Next
+                        </a>
+
+                        <a
+                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_obj.paginator.num_pages }}"
+                            aria-label="Last page"
+                        >
+                            Last
+                        </a>
+                    {% endif %}
+                </nav>
+            {% endif %}
         {% else %}
             <p class="empty-message">
                 No books match your search and filters.
