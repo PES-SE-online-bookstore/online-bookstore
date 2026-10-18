@@ -32,6 +32,11 @@ ALLOWED_HOSTS = [
     if host.strip()
 ]
 
+# Render automatically provides the actual public hostname.
+_render_hostname = os.getenv("RENDER_EXTERNAL_HOSTNAME")
+if _render_hostname and _render_hostname not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(_render_hostname)
+
 if DEBUG and not ALLOWED_HOSTS:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
 
