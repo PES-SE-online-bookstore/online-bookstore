@@ -1,6 +1,6 @@
 databases:
   - name: online-bookstore-db
-    plan: basic-256mb
+    plan: free
     databaseName: online_bookstore
     user: bookstore_user
 
@@ -8,11 +8,10 @@ services:
   - type: web
     name: online-bookstore
     runtime: python
-    plan: starter
+    plan: free
 
     buildCommand: "bash build.sh"
-    preDeployCommand: "python manage.py migrate --noinput"
-    startCommand: "gunicorn config.wsgi:application"
+    startCommand: "python manage.py migrate --noinput && gunicorn config.wsgi:application"
 
     healthCheckPath: /health/
 
