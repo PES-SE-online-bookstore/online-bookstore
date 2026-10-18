@@ -1,0 +1,116 @@
+name: Daily Database Backup
+
+on:
+  schedule:
+    - cron: "30 2 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backup-and-restore-test:
+    name: Backup and Restore Verification
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: restore_test_db
+          POSTGRES_USER: restore_test_user
+          POSTGRES_PASSWORD: restore_test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U restore_test_user -d restore_test_db"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      PGPASSWORD: restore_test_password
+
+    steps:
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Check required secret
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::DATABASE_URL repository secret is missing."
+            exit 1
+          fi
+
+      - name: Create database backup
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p backups
+
+          BACKUP_FILE="backups/online_bookstore_$(date -u +%Y%m%d_%H%M%S).dump"
+
+          pg_dump \
+            --dbname="$DATABASE_URL" \
+            --format=custom \
+            --no-owner \
+            --no-acl \
+            --file="$BACKUP_FILE"
+
+          if [ ! -s "$BACKUP_FILE" ]; then
+            echo "::error::The database backup is empty."
+            exit 1
+          fi
+
+          pg_restore --list "$BACKUP_FILE" > /tmp/backup-contents.txt
+
+          if [ ! -s /tmp/backup-contents.txt ]; then
+            echo "::error::The backup archive could not be validated."
+            exit 1
+          fi
+
+          echo "BACKUP_FILE=$BACKUP_FILE" >> "$GITHUB_ENV"
+
+          echo "Backup archive validated successfully."
+          ls -lh "$BACKUP_FILE"
+
+      - name: Restore backup into temporary database
+        run: |
+          set -euo pipefail
+
+          RESTORE_URL="postgresql://restore_test_user:restore_test_password@localhost:5432/restore_test_db"
+
+          pg_restore \
+            --dbname="$RESTORE_URL" \
+            --no-owner \
+            --no-acl \
+            --exit-on-error \
+            "$BACKUP_FILE"
+
+          TABLE_COUNT=$(psql "$RESTORE_URL" -Atc \
+            "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE';")
+
+          echo "Restored public tables: $TABLE_COUNT"
+
+          if [ "$TABLE_COUNT" -lt 1 ]; then
+            echo "::error::Restore completed, but no public tables were found."
+            exit 1
+          fi
+
+          echo "Backup restoration verification passed."
+
+      - name: Upload database backup
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: online-bookstore-database-backup
+          path: backups/*.dump
+          if-no-files-found: error
+          retention-days: 7
