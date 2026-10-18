@@ -1,0 +1,64 @@
+databases:
+  - name: online-bookstore-db
+    plan: basic-256mb
+    databaseName: online_bookstore
+    user: bookstore_user
+
+services:
+  - type: web
+    name: online-bookstore
+    runtime: python
+    plan: starter
+
+    buildCommand: "bash build.sh"
+    preDeployCommand: "python manage.py migrate --noinput"
+    startCommand: "gunicorn config.wsgi:application"
+
+    healthCheckPath: /health/
+
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+
+      - key: DJANGO_DEBUG
+        value: "False"
+
+      - key: DJANGO_ALLOWED_HOSTS
+        value: online-bookstore.onrender.com
+
+      - key: DJANGO_SECURE_SSL_REDIRECT
+        value: "True"
+
+      - key: DJANGO_SECURE_HSTS_SECONDS
+        value: "0"
+
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: https://online-bookstore.onrender.com
+
+      - key: DB_NAME
+        fromDatabase:
+          name: online-bookstore-db
+          property: database
+
+      - key: DB_USER
+        fromDatabase:
+          name: online-bookstore-db
+          property: user
+
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: online-bookstore-db
+          property: password
+
+      - key: DB_HOST
+        fromDatabase:
+          name: online-bookstore-db
+          property: host
+
+      - key: DB_PORT
+        fromDatabase:
+          name: online-bookstore-db
+          property: port
+
+      - key: PYTHON_VERSION
+        value: "3.11.9"
