@@ -36,7 +36,6 @@ jobs:
       - name: Install PostgreSQL 18 client
         run: |
           sudo apt-get update
-          sudo apt-get install -y curl ca-certificates gnupg
 
           sudo install -d /usr/share/postgresql-common/pgdg
 
@@ -49,8 +48,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql-client-18
 
-          pg_dump --version
-          pg_restore --version
+          echo "/usr/lib/postgresql/18/bin" >> "$GITHUB_PATH"
+
+          /usr/lib/postgresql/18/bin/pg_dump --version
+          /usr/lib/postgresql/18/bin/pg_restore --version
 
       - name: Check required secret
         env:
