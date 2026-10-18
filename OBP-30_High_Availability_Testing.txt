@@ -1,0 +1,80 @@
+﻿OBP-30: HIGH AVAILABILITY - TESTING CHECKLIST
+=============================================
+
+Project: Online Bookstore
+Jira Issue: OBP-30
+Requirement: High Availability
+
+OBJECTIVE
+---------
+Verify that the Online Bookstore remains accessible and operates
+reliably, including when application or database failures occur.
+
+DEPLOYED APPLICATION
+--------------------
+Application:
+https://online-bookstore-10nn.onrender.com/
+
+Health Check:
+https://online-bookstore-10nn.onrender.com/health/
+
+IMPLEMENTATION COMPLETED BY DEVELOPER
+-------------------------------------
+1. Application deployed on Render.
+2. Health-check endpoint implemented.
+3. Health endpoint verified to return:
+   status: healthy
+   database: available
+4. Persistent database connections configured with connection
+   health checks.
+
+TESTING TEAM: REQUIRED VERIFICATION
+-----------------------------------
+1. Uptime Monitoring
+   - Configure an external uptime monitor for the health endpoint.
+   - Record availability and downtime.
+   - Configure alerts for service outages.
+
+2. Availability Target
+   - Verify the requirement of 99.5% monthly availability,
+     excluding scheduled maintenance.
+   - Document the monitoring period and measured availability.
+   - Do not claim compliance without sufficient evidence.
+
+3. Application Failure Handling
+   - Verify application behaviour when the service is unavailable.
+   - Confirm that recovery restores normal operation.
+   - Record failures, recovery behaviour, and observations.
+
+4. Database Failure Handling
+   - Test behaviour when the database is unavailable, using a
+     controlled test environment or an approved test procedure.
+   - Verify that the health endpoint returns HTTP 503 and reports
+     an unhealthy database state.
+   - Verify recovery after database connectivity is restored.
+   - Do not interrupt the production database without authorization.
+
+5. Evidence and Reporting
+   - Record test dates, results, downtime, and recovery observations.
+   - Attach monitoring reports and relevant test evidence to OBP-30.
+   - Report any unmet acceptance criteria.
+
+ACCEPTANCE CRITERIA
+-------------------
+- Application availability is measured against the 99.5% monthly
+  availability target.
+- Uptime monitoring provides evidence of availability.
+- Failure handling and recovery are tested and documented.
+- Any unmet acceptance criteria are reported.
+
+IMPORTANT NOTES
+---------------
+- A successful health check confirms service health only at the
+  time of the request; it does not prove monthly availability.
+- Availability must be established from monitoring evidence.
+- Render free-tier limitations should be considered when evaluating
+  measured availability.
+- This checklist documents work for the testing team; it does not
+  itself establish that the acceptance criteria have passed.
+
+Status: Testing and availability evidence pending.
