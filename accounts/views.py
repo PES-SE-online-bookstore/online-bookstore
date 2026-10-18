@@ -23,7 +23,7 @@ def register(request):
                 "Your account has been created successfully. You can now log in.",
             )
 
-            return redirect("register")
+            return redirect("login")
 
     else:
         form = RegistrationForm()
@@ -83,7 +83,7 @@ def login_view(request):
                 request,
                 "You have logged in successfully.",
             )
-            return redirect("register")
+            return redirect("books:book_catalogue")
 
         # Record failed attempts for an existing account.
         if user_record is not None:

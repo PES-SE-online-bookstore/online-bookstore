@@ -1,0 +1,129 @@
+<style>
+    .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px 20px;
+        padding: 16px clamp(16px, 4vw, 48px);
+        background: #ffffff;
+        border-bottom: 1px solid #d8dee8;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+    }
+
+    .site-nav *,
+    .site-nav *::before,
+    .site-nav *::after {
+        box-sizing: border-box;
+    }
+
+    .site-nav .site-brand {
+        color: #163d70;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .site-nav .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 16px;
+    }
+
+    .site-nav a {
+        color: #174ea6;
+        text-underline-offset: 3px;
+    }
+
+    .site-nav a:hover {
+        color: #0b3275;
+    }
+
+    .site-nav .nav-user {
+        color: #475467;
+    }
+
+    .site-nav .nav-logout-form {
+        display: inline;
+        margin: 0;
+    }
+
+    .site-nav .nav-button,
+    .site-nav .nav-register {
+        display: inline-block;
+        padding: 8px 12px;
+        border: 1px solid #174ea6;
+        border-radius: 6px;
+        background: #174ea6;
+        color: #ffffff;
+        font: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .site-nav .nav-button:hover,
+    .site-nav .nav-register:hover {
+        background: #0b3275;
+        color: #ffffff;
+    }
+
+    .site-nav a:focus-visible,
+    .site-nav button:focus-visible {
+        outline: 3px solid #f4a900;
+        outline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+        .site-nav {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .site-nav .nav-links {
+            justify-content: flex-start;
+            width: 100%;
+        }
+    }
+</style>
+
+<nav class="site-nav" aria-label="Main navigation">
+    <a class="site-brand" href="{% url 'home' %}">
+        Online Bookstore
+    </a>
+
+    <div class="nav-links">
+        <a href="{% url 'books:book_catalogue' %}">Browse Books</a>
+
+        {% if user.is_authenticated %}
+            {% if user.profile.role == "BUYER" %}
+                <a href="{% url 'books:wishlist' %}">My Wishlist</a>
+                <a href="{% url 'cart:cart_detail' %}">Shopping Cart</a>
+                <a href="{% url 'orders:history' %}">My Orders</a>
+            {% elif user.profile.role == "SELLER" %}
+                <a href="{% url 'books:create_listing' %}">Add a Book</a>
+                <a href="{% url 'books:my_listings' %}">My Listings</a>
+            {% endif %}
+
+            <span class="nav-user">
+                Signed in as {{ user.username }}
+            </span>
+
+            <form class="nav-logout-form"
+                  method="post"
+                  action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="nav-button">
+                    Log Out
+                </button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Log In</a>
+            <a class="nav-register" href="{% url 'register' %}">
+                Create Account
+            </a>
+        {% endif %}
+    </div>
+</nav>

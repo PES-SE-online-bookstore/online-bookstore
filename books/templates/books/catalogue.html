@@ -1,528 +1,468 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+﻿{% extends "base.html" %}
 
-    <title>Book Catalogue | Online Bookstore</title>
+{% block title %}Book Catalogue | Online Bookstore{% endblock %}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+{% block meta_description %}
+Browse the online bookstore catalogue. Search books by title, author, ISBN, or keyword and filter by category and price.
+{% endblock %}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f7fa;
-            color: #222;
-        }
+{% block extra_head %}
+<style>
+    .catalogue-header {
+        margin-bottom: 1.5rem;
+    }
 
-        header {
-            background-color: #243b53;
-            color: white;
-            padding: 24px 8%;
-        }
+    .catalogue-header h1 {
+        margin: 0 0 .4rem;
+        line-height: 1.3;
+    }
 
-        header h1 {
-            margin: 0 0 8px;
-        }
+    .catalogue-header p {
+        margin: 0;
+        color: #475467;
+    }
 
-        header p {
-            margin: 0;
-        }
+    .catalogue-search {
+        margin-bottom: 1.5rem;
+    }
 
-        .header-links {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        }
+    .search-form {
+        display: flex;
+        gap: .75rem;
+        margin-bottom: 1rem;
+    }
 
-        .header-links a {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            padding: 9px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 5px;
-            transition: background-color 0.2s ease;
-        }
+    .search-form input {
+        flex: 1;
+        min-width: 0;
+        min-height: 44px;
+        padding: .7rem;
+        border: 1px solid #667085;
+        border-radius: 6px;
+        background: #fff;
+        color: #202938;
+    }
 
-        .header-links a:hover {
-            background-color: #334e68;
-        }
+    .filter-form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        gap: 1rem;
+        padding: 1.25rem;
+        background: #fff;
+        border: 1px solid #d8dee8;
+        border-radius: 8px;
+    }
 
-        main {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 20px;
-        }
+    .filter-field {
+        display: flex;
+        flex: 1 1 150px;
+        flex-direction: column;
+        gap: .4rem;
+        min-width: 0;
+    }
 
-        .messages {
-            margin-bottom: 20px;
-        }
+    .filter-field label {
+        font-weight: 600;
+    }
 
-        .message {
-            padding: 14px 16px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid;
-            line-height: 1.5;
-        }
+    .filter-field input,
+    .filter-field select {
+        width: 100%;
+        min-height: 44px;
+        padding: .65rem;
+        border: 1px solid #667085;
+        border-radius: 6px;
+        background: #fff;
+        color: #202938;
+    }
 
-        .message.success {
-            background-color: #e8f7ed;
-            color: #176b35;
-            border-color: #a8d8b5;
-        }
+    .filter-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
 
-        .message.error {
-            background-color: #fff0f0;
-            color: #a61b1b;
-            border-color: #e0a0a0;
-        }
+    .catalogue-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: .65rem 1rem;
+        border: 1px solid #174ea6;
+        border-radius: 6px;
+        background: #174ea6;
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-        .message.warning {
-            background-color: #fff8e5;
-            color: #805b00;
-            border-color: #ead18a;
-        }
+    .catalogue-button:hover {
+        background: #0b3275;
+        border-color: #0b3275;
+        color: #fff;
+    }
 
-        .message.info {
-            background-color: #eaf3ff;
-            color: #174f8a;
-            border-color: #b5d0f0;
-        }
+    .catalogue-button.secondary {
+        background: #fff;
+        color: #174ea6;
+    }
 
+    .catalogue-button.secondary:hover {
+        background: #edf4ff;
+        color: #0b3275;
+    }
+
+    .price-error {
+        margin: 1rem 0;
+        padding: .9rem 1rem;
+        border: 1px solid #d88b8b;
+        border-radius: 6px;
+        background: #fff0f0;
+        color: #861717;
+        overflow-wrap: anywhere;
+    }
+
+    .results-heading {
+        margin: 1.5rem 0 1rem;
+    }
+
+    .book-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+        gap: 1.25rem;
+    }
+
+    .book-card {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        padding: 1.25rem;
+        border: 1px solid #d8dee8;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgb(0 0 0 / 5%);
+        overflow-wrap: anywhere;
+    }
+
+    .book-card h3 {
+        margin: 0 0 .6rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .book-card h3 a {
+        color: #174ea6;
+        text-underline-offset: .2em;
+    }
+
+    .book-card p {
+        margin: .5rem 0;
+    }
+
+    .book-author {
+        color: #475467;
+    }
+
+    .book-category {
+        display: inline-block;
+        align-self: flex-start;
+        padding: .25rem .55rem;
+        border-radius: 4px;
+        background: #edf2f7;
+        color: #344054;
+        font-size: .875rem;
+    }
+
+    .book-description {
+        flex: 1;
+        overflow-wrap: anywhere;
+    }
+
+    .book-price {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #163d70;
+    }
+
+    .in-stock {
+        color: #176b35;
+        font-weight: 600;
+    }
+
+    .out-of-stock {
+        color: #861717;
+        font-weight: 600;
+    }
+
+    .empty-message {
+        padding: 1.5rem;
+        border: 1px solid #d8dee8;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .pagination {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+        margin: 2rem 0;
+    }
+
+    .pagination-summary {
+        flex-basis: 100%;
+        margin: 0 0 .5rem;
+        text-align: center;
+        color: #475467;
+    }
+
+    .pagination a,
+    .pagination .current-page {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        padding: .6rem .8rem;
+        border: 1px solid #b7c1ce;
+        border-radius: 6px;
+    }
+
+    .pagination a {
+        background: #fff;
+        color: #174ea6;
+        text-underline-offset: .2em;
+    }
+
+    .pagination a:hover {
+        background: #edf4ff;
+    }
+
+    .pagination .current-page {
+        background: #174ea6;
+        border-color: #174ea6;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
         .search-form {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            flex-direction: column;
         }
 
-        .search-form input {
-            flex: 1;
-            min-width: 0;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
+        .search-form .catalogue-button {
+            width: 100%;
         }
 
         .filter-form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: end;
-            margin-bottom: 25px;
-            padding: 18px;
-            background-color: white;
-            border: 1px solid #e1e5ea;
-            border-radius: 8px;
+            padding: 1rem;
         }
 
         .filter-field {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            gap: 6px;
-            min-width: 150px;
-        }
-
-        .filter-field label {
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .filter-field input,
-        .filter-field select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 15px;
-        }
-
-        button {
-            padding: 12px 20px;
-            background-color: #243b53;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #334e68;
+            flex-basis: 100%;
         }
 
         .filter-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .reset-button {
-            display: inline-block;
-            padding: 12px 16px;
-            background-color: #e1e5ea;
-            color: #243b53;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .reset-button:hover {
-            background-color: #d0d7de;
-        }
-
-        .price-error {
-            margin-bottom: 20px;
-            padding: 12px;
-            background-color: #fff0f0;
-            color: #a61b1b;
-            border: 1px solid #e0a0a0;
-            border-radius: 5px;
-        }
-
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .book-card {
-            padding: 22px;
-            background-color: white;
-            border: 1px solid #e1e5ea;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .book-card h2 {
-            margin-top: 0;
-            font-size: 21px;
-        }
-
-        .author {
-            color: #52606d;
-        }
-
-        .category {
-            display: inline-block;
-            padding: 5px 9px;
-            background-color: #e8eef5;
-            color: #243b53;
-            border-radius: 4px;
-            font-size: 13px;
-        }
-
-        .price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #243b53;
-        }
-
-        .availability {
-            color: #247a45;
-            font-weight: bold;
-        }
-
-        .empty-message {
-            padding: 25px;
-            background: white;
-            border-radius: 8px;
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 30px 0;
-        }
-
-        .pagination a,
-        .pagination .current-page {
-            display: inline-block;
-            min-width: 40px;
-            padding: 10px 13px;
-            text-align: center;
-            text-decoration: none;
-            border: 1px solid #cbd2d9;
-            border-radius: 5px;
-        }
-
-        .pagination a {
-            color: #243b53;
-            background-color: white;
-        }
-
-        .pagination a:hover {
-            background-color: #e8eef5;
-        }
-
-        .pagination .current-page {
-            color: white;
-            background-color: #243b53;
-            border-color: #243b53;
-            font-weight: bold;
-        }
-
-        .pagination-summary {
             width: 100%;
+        }
+
+        .filter-actions > * {
+            flex: 1;
             text-align: center;
-            color: #52606d;
-            font-size: 14px;
-            margin-bottom: 8px;
         }
+    }
+</style>
+{% endblock %}
 
-        @media (max-width: 500px) {
-            .search-form {
-                flex-direction: column;
-            }
+{% block content %}
+<header class="catalogue-header">
+    <h1>Book Catalogue</h1>
+    <p>Discover your next great read.</p>
+</header>
 
-            .search-form button {
-                width: 100%;
-            }
+<form method="get"
+      class="catalogue-search"
+      role="search"
+      aria-label="Search and filter books">
 
-            .filter-field {
-                min-width: 100%;
-            }
+    <div class="search-form">
+        <label for="book-search" class="visually-hidden">
+            Search books by title, author, ISBN, or keyword
+        </label>
 
-            .filter-actions {
-                width: 100%;
-            }
+        <input
+            type="search"
+            id="book-search"
+            name="q"
+            placeholder="Search by title, author, ISBN, or keyword..."
+            value="{{ query }}"
+        >
 
-            .filter-actions button,
-            .filter-actions .reset-button {
-                flex: 1;
-                text-align: center;
-            }
+        <button class="catalogue-button" type="submit">
+            Search
+        </button>
+    </div>
 
-            .book-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
+    <div class="filter-form">
+        <div class="filter-field">
+            <label for="category">Category</label>
 
-<body>
-    <header>
-        <h1>Online Bookstore</h1>
+            <select id="category" name="category">
+                <option value="">All categories</option>
 
-        <p>Discover your next great read.</p>
-
-        {% if user.is_authenticated %}
-            {% if user.profile.role == "BUYER" %}
-                <nav class="header-links" aria-label="Buyer navigation">
-                    <a href="{% url 'cart:cart_detail' %}">
-                        Shopping Cart
-                    </a>
-                </nav>
-            {% endif %}
-        {% endif %}
-    </header>
-
-    <main>
-        {% if messages %}
-            <div class="messages" role="status" aria-live="polite">
-                {% for message in messages %}
-                    <div class="message {{ message.tags }}">
-                        {{ message }}
-                    </div>
+                {% for item in categories %}
+                    <option
+                        value="{{ item }}"
+                        {% if category == item %}selected{% endif %}
+                    >{{ item }}</option>
                 {% endfor %}
-            </div>
-        {% endif %}
+            </select>
+        </div>
 
-        <h2>Book Catalogue</h2>
+        <div class="filter-field">
+            <label for="min_price">Minimum price (INR)</label>
 
-        <form method="get">
-            <div class="search-form">
-                <input
-                    type="search"
-                    name="q"
-                    placeholder="Search by title, author, ISBN, or keyword..."
-                    value="{{ query }}"
-                    aria-label="Search books"
-                >
+            <input
+                type="number"
+                id="min_price"
+                name="min_price"
+                min="0"
+                step="0.01"
+                placeholder="e.g. 100"
+                value="{{ min_price }}"
+            >
+        </div>
 
-                <button type="submit">Search</button>
-            </div>
+        <div class="filter-field">
+            <label for="max_price">Maximum price (INR)</label>
 
-            <div class="filter-form">
-                <div class="filter-field">
-                    <label for="category">Category</label>
+            <input
+                type="number"
+                id="max_price"
+                name="max_price"
+                min="0"
+                step="0.01"
+                placeholder="e.g. 500"
+                value="{{ max_price }}"
+            >
+        </div>
 
-                    <select id="category" name="category">
-                        <option value="">All categories</option>
+        <div class="filter-actions">
+            <button class="catalogue-button" type="submit">
+                Apply Filters
+            </button>
 
-                        {% for item in categories %}
-                            <option
-                                value="{{ item }}"
-                                {% if category == item %}selected{% endif %}
-                            >
-                                {{ item }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <a class="catalogue-button secondary"
+               href="{% url 'books:book_catalogue' %}">
+                Reset
+            </a>
+        </div>
+    </div>
+</form>
 
-                <div class="filter-field">
-                    <label for="min_price">Minimum price (INR)</label>
+{% if price_error %}
+    <p class="price-error" role="alert">
+        {{ price_error }}
+    </p>
+{% endif %}
 
-                    <input
-                        type="number"
-                        id="min_price"
-                        name="min_price"
-                        min="0"
-                        step="0.01"
-                        placeholder="e.g. 100"
-                        value="{{ min_price }}"
-                    >
-                </div>
+<h2 class="results-heading">Available Books</h2>
 
-                <div class="filter-field">
-                    <label for="max_price">Maximum price (INR)</label>
-
-                    <input
-                        type="number"
-                        id="max_price"
-                        name="max_price"
-                        min="0"
-                        step="0.01"
-                        placeholder="e.g. 500"
-                        value="{{ max_price }}"
-                    >
-                </div>
-
-                <div class="filter-actions">
-                    <button type="submit">Apply Filters</button>
-
-                    <a
-                        class="reset-button"
-                        href="{% url 'books:book_catalogue' %}"
-                    >
-                        Reset
+{% if books %}
+    <div class="book-grid">
+        {% for book in books %}
+            <article class="book-card">
+                <h3>
+                    <a href="{% url 'books:book_detail' book.id %}">
+                        {{ book.title }}
                     </a>
-                </div>
-            </div>
-        </form>
+                </h3>
 
-        {% if price_error %}
-            <p class="price-error" role="alert">
-                {{ price_error }}
-            </p>
-        {% endif %}
+                <p class="book-author">
+                    By {{ book.author }}
+                </p>
 
-        {% if books %}
-            <div class="book-grid">
-                {% for book in books %}
-                    <article class="book-card">
-                        <h2>
-                            <a
-                                href="{% url 'books:book_detail' book.id %}"
-                                style="color: #243b53; text-decoration: none;"
-                            >
-                                {{ book.title }}
-                            </a>
-                        </h2>
-
-                        <p class="author">
-                            By {{ book.author }}
-                        </p>
-
-                        {% if book.category %}
-                            <p class="category">
-                                {{ book.category }}
-                            </p>
-                        {% endif %}
-
-                        <p>
-                            {{ book.description|default:"No description available." }}
-                        </p>
-
-                        <p class="price">
-                            INR {{ book.price }}
-                        </p>
-
-                        {% if book.stock_quantity > 0 %}
-                            <p class="availability">
-                                In stock
-                            </p>
-                        {% else %}
-                            <p>Currently out of stock</p>
-                        {% endif %}
-                    </article>
-                {% endfor %}
-            </div>
-
-            {% if page_obj.paginator.num_pages > 1 %}
-                <nav class="pagination" aria-label="Catalogue pagination">
-                    <p class="pagination-summary">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                        — {{ page_obj.paginator.count }} books found
+                {% if book.category %}
+                    <p class="book-category">
+                        {{ book.category }}
                     </p>
+                {% endif %}
 
-                    {% if page_obj.has_previous %}
-                        <a
-                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page=1"
-                            aria-label="First page"
-                        >
-                            First
-                        </a>
+                <p class="book-description">
+                    {{ book.description|default:"No description available." }}
+                </p>
 
-                        <a
-                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_obj.previous_page_number }}"
-                            aria-label="Previous page"
-                        >
-                            Previous
-                        </a>
-                    {% endif %}
+                <p class="book-price">
+                    INR {{ book.price }}
+                </p>
 
-                    {% for page_number in page_obj.paginator.page_range %}
-                        {% if page_number == page_obj.number %}
-                            <span
-                                class="current-page"
-                                aria-current="page"
-                            >
-                                {{ page_number }}
-                            </span>
-                        {% elif page_number >= page_obj.number|add:"-2" and page_number <= page_obj.number|add:"2" %}
-                            <a
-                                href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_number }}"
-                                aria-label="Page {{ page_number }}"
-                            >
-                                {{ page_number }}
-                            </a>
-                        {% endif %}
-                    {% endfor %}
+                {% if book.stock_quantity > 0 %}
+                    <p class="in-stock">In stock</p>
+                {% else %}
+                    <p class="out-of-stock">Currently out of stock</p>
+                {% endif %}
 
-                    {% if page_obj.has_next %}
-                        <a
-                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_obj.next_page_number }}"
-                            aria-label="Next page"
-                        >
-                            Next
-                        </a>
+                <p>
+                    <a class="catalogue-button"
+                       href="{% url 'books:book_detail' book.id %}">
+                        View Book Details
+                    </a>
+                </p>
+            </article>
+        {% endfor %}
+    </div>
 
-                        <a
-                            href="?q={{ query|urlencode }}&category={{ category|urlencode }}&min_price={{ min_price|urlencode }}&max_price={{ max_price|urlencode }}&page={{ page_obj.paginator.num_pages }}"
-                            aria-label="Last page"
-                        >
-                            Last
-                        </a>
-                    {% endif %}
-                </nav>
-            {% endif %}
-        {% else %}
-            <p class="empty-message">
-                No books match your search and filters.
-                Try changing your search terms or filter values.
+    {% if page_obj.paginator.num_pages > 1 %}
+        <nav class="pagination" aria-label="Catalogue pagination">
+            <p class="pagination-summary" aria-live="polite">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                — {{ page_obj.paginator.count }} books found
             </p>
-        {% endif %}
-    </main>
-</body>
-</html>
+
+            {% if page_obj.has_previous %}
+                <a href="?q={{ query|urlencode }}&amp;category={{ category|urlencode }}&amp;min_price={{ min_price|urlencode }}&amp;max_price={{ max_price|urlencode }}&amp;page=1">
+                    First
+                </a>
+
+                <a href="?q={{ query|urlencode }}&amp;category={{ category|urlencode }}&amp;min_price={{ min_price|urlencode }}&amp;max_price={{ max_price|urlencode }}&amp;page={{ page_obj.previous_page_number }}">
+                    Previous
+                </a>
+            {% endif %}
+
+            {% for page_number in page_obj.paginator.page_range %}
+                {% if page_number == page_obj.number %}
+                    <span class="current-page"
+                          aria-current="page"
+                          aria-label="Current page, {{ page_number }}">
+                        {{ page_number }}
+                    </span>
+                {% elif page_number >= page_obj.number|add:"-2" and page_number <= page_obj.number|add:"2" %}
+                    <a href="?q={{ query|urlencode }}&amp;category={{ category|urlencode }}&amp;min_price={{ min_price|urlencode }}&amp;max_price={{ max_price|urlencode }}&amp;page={{ page_number }}"
+                       aria-label="Page {{ page_number }}">
+                        {{ page_number }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?q={{ query|urlencode }}&amp;category={{ category|urlencode }}&amp;min_price={{ min_price|urlencode }}&amp;max_price={{ max_price|urlencode }}&amp;page={{ page_obj.next_page_number }}">
+                    Next
+                </a>
+
+                <a href="?q={{ query|urlencode }}&amp;category={{ category|urlencode }}&amp;min_price={{ min_price|urlencode }}&amp;max_price={{ max_price|urlencode }}&amp;page={{ page_obj.paginator.num_pages }}">
+                    Last
+                </a>
+            {% endif %}
+        </nav>
+    {% endif %}
+{% else %}
+    <p class="empty-message" role="status" aria-live="polite">
+        No books match your search and filters.
+        Try changing your search terms or filter values.
+    </p>
+{% endif %}
+{% endblock %}

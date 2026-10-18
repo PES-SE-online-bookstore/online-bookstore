@@ -1,158 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Book Listing | Online Bookstore</title>
+﻿{% extends "base.html" %}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+{% block title %}Edit Book Listing | Online Bookstore{% endblock %}
 
-        body {
-            margin: 0;
-            padding: 30px 20px;
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #222;
-        }
+{% block extra_head %}
+<style>
+    .edit-listing-container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
 
-        main {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 28px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-        }
+    .edit-listing-container h1 {
+        margin-top: 0;
+        line-height: 1.3;
+    }
 
-        h1 {
-            margin-top: 0;
-        }
+    .notice {
+        margin: 1.25rem 0;
+        padding: 1rem;
+        border: 1px solid #e6ca79;
+        border-radius: 6px;
+        background: #fff8df;
+        color: #664d03;
+        line-height: 1.6;
+    }
 
-        .notice {
-            padding: 12px;
-            margin-bottom: 22px;
-            border-radius: 6px;
-            background: #fff2cc;
-            color: #785800;
-            line-height: 1.5;
-        }
+    .edit-form {
+        padding: clamp(1rem, 3vw, 2rem);
+        border: 1px solid #d8dee8;
+        border-radius: 8px;
+        background: #fff;
+    }
 
-        .field {
-            margin-bottom: 18px;
-        }
+    .field {
+        margin-bottom: 1.25rem;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: bold;
-        }
+    .field label {
+        display: block;
+        margin-bottom: .4rem;
+        font-weight: 600;
+    }
 
-        input,
-        textarea,
-        select {
+    .field input,
+    .field textarea,
+    .field select {
+        width: 100%;
+        min-height: 44px;
+        padding: .7rem;
+        border: 1px solid #667085;
+        border-radius: 6px;
+        background: #fff;
+        color: #202938;
+    }
+
+    .field textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .help {
+        display: block;
+        margin-top: .4rem;
+        color: #475467;
+    }
+
+    .errors {
+        margin-top: .4rem;
+        color: #861717;
+    }
+
+    .form-errors {
+        margin-bottom: 1rem;
+        padding: .8rem 1rem;
+        border: 1px solid #e2a2a2;
+        border-radius: 6px;
+        background: #fff0f0;
+        color: #861717;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .75rem;
+        margin-top: 1.5rem;
+    }
+
+    .form-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: .7rem 1rem;
+        border: 1px solid #174ea6;
+        border-radius: 6px;
+        background: #174ea6;
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .form-button:hover {
+        background: #0b3275;
+        color: #fff;
+    }
+
+    .form-button.secondary {
+        border-color: #667085;
+        background: #fff;
+        color: #202938;
+    }
+
+    .form-button.secondary:hover {
+        background: #edf2f7;
+    }
+
+    @media (max-width: 480px) {
+        .actions > * {
             width: 100%;
-            padding: 11px;
-            border: 1px solid #bbb;
-            border-radius: 6px;
-            font: inherit;
+            text-align: center;
         }
+    }
+</style>
+{% endblock %}
 
-        textarea {
-            resize: vertical;
-        }
+{% block content %}
+<section class="edit-listing-container" aria-labelledby="edit-listing-heading">
+    <h1 id="edit-listing-heading">Edit Book Listing</h1>
 
-        .errors {
-            margin-top: 6px;
-            color: #b42318;
-            font-size: 14px;
-        }
+    <div class="notice" role="note">
+        After you update this listing, it will become unavailable in the
+        public catalogue until an administrator approves it again.
+    </div>
 
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 24px;
-        }
+    <form method="post" class="edit-form">
+        {% csrf_token %}
 
-        .button {
-            display: inline-block;
-            padding: 11px 17px;
-            border: none;
-            border-radius: 6px;
-            background: #2457a7;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .secondary {
-            background: #e5eaf2;
-            color: #22324a;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 15px 10px;
-            }
-
-            main {
-                padding: 20px 15px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <main>
-        <h1>Edit Book Listing</h1>
-
-        <div class="notice">
-            After you update this listing, it will become unavailable
-            in the public catalogue until an administrator approves it again.
-        </div>
-
-        <form method="post">
-            {% csrf_token %}
-
-            {% for field in form %}
-                <div class="field">
-                    {{ field.label_tag }}
-                    {{ field }}
-
-                    {% if field.help_text %}
-                        <small>{{ field.help_text }}</small>
-                    {% endif %}
-
-                    {% for error in field.errors %}
-                        <div class="errors">{{ error }}</div>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-
-            {% if form.non_field_errors %}
-                <div class="errors">
-                    {{ form.non_field_errors }}
-                </div>
-            {% endif %}
-
-            <div class="actions">
-                <button class="button" type="submit">
-                    Save Changes
-                </button>
-
-                <a
-                    class="button secondary"
-                    href="{% url 'books:my_listings' %}"
-                >
-                    Cancel
-                </a>
+        {% if form.non_field_errors %}
+            <div class="form-errors" role="alert">
+                {{ form.non_field_errors }}
             </div>
-        </form>
-    </main>
-</body>
-</html>
+        {% endif %}
+
+        {% for field in form %}
+            <div class="field">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}{% if field.field.required %} <span aria-hidden="true">*</span>{% endif %}
+                </label>
+
+                {{ field }}
+
+                {% if field.help_text %}
+                    <small class="help">{{ field.help_text }}</small>
+                {% endif %}
+
+                {% if field.errors %}
+                    <div class="errors" role="alert">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <div class="actions">
+            <button class="form-button" type="submit">
+                Save Changes
+            </button>
+
+            <a class="form-button secondary"
+               href="{% url 'books:my_listings' %}">
+                Cancel
+            </a>
+        </div>
+    </form>
+</section>
+{% endblock %}

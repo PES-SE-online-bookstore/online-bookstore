@@ -1,799 +1,381 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Details | Online Bookstore</title>
+﻿{% extends "base.html" %}
 
-    <style>
-        * { box-sizing: border-box; }
+{% block title %}Order #{{ order.id }} | Online Bookstore{% endblock %}
+{% block meta_description %}Review order details, shipment status, cancellation eligibility, return requests, and payment status.{% endblock %}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f7fa;
-            color: #222;
-            line-height: 1.5;
-        }
+{% block extra_head %}
+<style>
+    .order-container { max-width: 1000px; margin: 0 auto; }
+    .page-heading { margin-bottom: 24px; }
+    .section-card { margin-bottom: 22px; padding: 22px; background: #fff; border: 1px solid #d8dee8; border-radius: 8px; }
+    .section-card h2 { margin-top: 0; color: #202938; }
+    .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .detail-item { min-width: 0; padding: 12px; background: #f5f7fa; border-radius: 5px; overflow-wrap: anywhere; }
+    .detail-label { display: block; margin-bottom: 6px; color: #475467; }
+    .detail-value { font-weight: 700; }
+    .status { display: inline-block; padding: 5px 9px; background: #edf2f7; color: #202938; border-radius: 4px; }
+    .tracking-intro { color: #475467; }
+    .tracking-timeline { display: flex; align-items: flex-start; margin: 28px 0 12px; padding: 0; list-style: none; }
+    .tracking-step { position: relative; flex: 1; min-width: 0; text-align: center; }
+    .tracking-step:not(:last-child)::after { position: absolute; top: 15px; left: calc(50% + 17px); width: calc(100% - 34px); height: 4px; background: #d8dee8; content: ""; }
+    .tracking-step.completed:not(:last-child)::after { background: #218838; }
+    .tracking-marker { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; margin: 0 auto 10px; border: 3px solid #d8dee8; border-radius: 50%; background: #fff; color: #475467; font-weight: 700; }
+    .tracking-step.completed .tracking-marker { border-color: #218838; background: #218838; color: #fff; }
+    .tracking-step.current .tracking-marker { border-color: #174ea6; background: #174ea6; color: #fff; box-shadow: 0 0 0 4px #e1edff; }
+    .tracking-label { display: block; padding: 0 4px; color: #475467; font-size: .85rem; overflow-wrap: anywhere; }
+    .tracking-step.completed .tracking-label, .tracking-step.current .tracking-label { color: #202938; font-weight: 700; }
+    .tracking-current { margin-top: 22px; padding: 14px; border-left: 4px solid #174ea6; background: #edf4ff; border-radius: 4px; }
+    .tracking-current p { margin: 0 0 6px; }
+    .tracking-current p:last-child { margin-bottom: 0; }
+    .tracking-cancelled { padding: 16px; border-left: 4px solid #b42318; background: #fff0f0; border-radius: 4px; }
+    .tracking-cancelled h3 { margin-top: 0; color: #b42318; }
+    .table-wrapper { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px; text-align: left; vertical-align: top; border-bottom: 1px solid #d8dee8; }
+    th { background: #edf2f7; }
+    .total-row { margin-bottom: 0; font-size: 1.15rem; font-weight: 700; text-align: right; }
+    .payment-notice { margin-top: 18px; padding: 14px; background: #fff8df; border: 1px solid #e6ca79; border-radius: 5px; }
+    .empty-message { padding: 15px; background: #f5f7fa; border-radius: 5px; }
+    .action-button { display: inline-block; padding: 11px 16px; border: 1px solid #174ea6; border-radius: 5px; background: #174ea6; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+    .cancel-button { background: #b42318; border-color: #b42318; }
+    .cancel-button:hover { background: #912018; }
+    .return-button:hover { background: #0b3275; }
+    .action-form { margin-top: 14px; }
+    .action-form label { display: block; margin-bottom: 6px; font-weight: 700; }
+    .action-form textarea { display: block; width: 100%; max-width: 650px; min-height: 110px; margin-bottom: 12px; padding: 10px; border: 1px solid #98a2b3; border-radius: 5px; font: inherit; }
+    .policy-note { margin: 10px 0; color: #475467; }
+    .primary-link { display: inline-block; padding: 12px 18px; border: 1px solid #174ea6; border-radius: 6px; background: #174ea6; color: #fff; font-weight: 600; text-decoration: none; }
+    .primary-link:hover { background: #0b3275; color: #fff; }
+    @media (max-width: 600px) {
+        .section-card { padding: 16px; }
+        .tracking-timeline { flex-direction: column; margin-left: 8px; }
+        .tracking-step { display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; column-gap: 12px; min-height: 58px; text-align: left; }
+        .tracking-step:not(:last-child)::after { top: 34px; left: 15px; width: 4px; height: 24px; }
+        .tracking-marker { margin: 0; grid-column: 1; grid-row: 1; }
+        .tracking-label { grid-column: 2; grid-row: 1; padding: 0; font-size: .9rem; }
+        th, td { padding: 9px; font-size: .9rem; }
+        .total-row { text-align: left; }
+    }
+</style>
+{% endblock %}
 
-        header {
-            background-color: #243b53;
-            color: white;
-            padding: 24px 8%;
-        }
-
-        header h1 { margin: 0 0 8px; }
-        header p { margin: 0; }
-
-        .header-links {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .header-links a {
-            display: inline-block;
-            padding: 9px 14px;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 5px;
-        }
-
-        .header-links a:hover { background-color: #334e68; }
-
-        main {
-            max-width: 1000px;
-            margin: 35px auto;
-            padding: 0 20px;
-        }
-
-        .section-card {
-            margin-bottom: 22px;
-            padding: 22px;
-            background-color: white;
-            border: 1px solid #e1e5ea;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .section-card h2 {
-            margin-top: 0;
-            color: #243b53;
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .detail-item {
-            min-width: 0;
-            padding: 12px;
-            background-color: #f5f7fa;
-            border-radius: 5px;
-            overflow-wrap: anywhere;
-        }
-
-        .detail-label {
-            display: block;
-            margin-bottom: 6px;
-            color: #52606d;
-            font-size: 14px;
-        }
-
-        .detail-value { font-weight: bold; }
-
-        .status {
-            display: inline-block;
-            padding: 5px 9px;
-            background-color: #e8eef5;
-            color: #243b53;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .tracking-intro {
-            margin-top: -8px;
-            margin-bottom: 24px;
-            color: #52606d;
-        }
-
-        .tracking-timeline {
-            display: flex;
-            align-items: flex-start;
-            gap: 0;
-            margin: 28px 0 12px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .tracking-step {
-            position: relative;
-            flex: 1;
-            min-width: 0;
-            text-align: center;
-        }
-
-        .tracking-step:not(:last-child)::after {
-            position: absolute;
-            top: 15px;
-            left: calc(50% + 17px);
-            width: calc(100% - 34px);
-            height: 4px;
-            background-color: #d9e2ec;
-            content: "";
-        }
-
-        .tracking-step.completed:not(:last-child)::after {
-            background-color: #218838;
-        }
-
-        .tracking-marker {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            margin: 0 auto 10px;
-            border: 3px solid #d9e2ec;
-            border-radius: 50%;
-            background-color: white;
-            color: #52606d;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .tracking-step.completed .tracking-marker {
-            border-color: #218838;
-            background-color: #218838;
-            color: white;
-        }
-
-        .tracking-step.current .tracking-marker {
-            border-color: #243b53;
-            background-color: #243b53;
-            color: white;
-            box-shadow: 0 0 0 4px #d9e8f5;
-        }
-
-        .tracking-label {
-            display: block;
-            padding: 0 4px;
-            color: #52606d;
-            font-size: 13px;
-            overflow-wrap: anywhere;
-        }
-
-        .tracking-step.completed .tracking-label,
-        .tracking-step.current .tracking-label {
-            color: #243b53;
-            font-weight: bold;
-        }
-
-        .tracking-current {
-            margin-top: 22px;
-            padding: 14px;
-            border-left: 4px solid #243b53;
-            background-color: #f0f5fa;
-            border-radius: 4px;
-        }
-
-        .tracking-current p { margin: 0 0 6px; }
-        .tracking-current p:last-child { margin-bottom: 0; }
-
-        .tracking-cancelled {
-            padding: 16px;
-            border-left: 4px solid #b42318;
-            background-color: #fef3f2;
-            border-radius: 4px;
-        }
-
-        .tracking-cancelled h3 {
-            margin-top: 0;
-            color: #b42318;
-        }
-
-        .tracking-cancelled p { margin-bottom: 0; }
-
-        .table-wrapper { overflow-x: auto; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #e1e5ea;
-        }
-
-        th {
-            background-color: #e8eef5;
-            color: #243b53;
-        }
-
-        .total-row {
-            margin-bottom: 0;
-            font-size: 18px;
-            font-weight: bold;
-            color: #243b53;
-            text-align: right;
-        }
-
-        .payment-notice {
-            margin-top: 18px;
-            padding: 14px;
-            background-color: #fff8e1;
-            border: 1px solid #e6cf85;
-            border-radius: 5px;
-            line-height: 1.5;
-        }
-
-        .primary-link {
-            display: inline-block;
-            padding: 12px 18px;
-            background-color: #243b53;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .primary-link:hover { background-color: #334e68; }
-
-        .empty-message {
-            padding: 15px;
-            background-color: #f5f7fa;
-            border-radius: 5px;
-        }
-
-        /* Cancellation and return-request styling */
-
-        .action-button {
-            display: inline-block;
-            padding: 11px 16px;
-            border: 0;
-            border-radius: 5px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        .cancel-button { background-color: #b42318; }
-        .cancel-button:hover { background-color: #912018; }
-
-        .return-button { background-color: #243b53; }
-        .return-button:hover { background-color: #334e68; }
-
-        .action-form { margin-top: 14px; }
-
-        .action-form label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        .action-form textarea {
-            display: block;
-            width: 100%;
-            max-width: 650px;
-            min-height: 110px;
-            margin-bottom: 12px;
-            padding: 10px;
-            border: 1px solid #bcccdc;
-            border-radius: 5px;
-            font: inherit;
-        }
-
-        .policy-note {
-            margin: 10px 0;
-            color: #52606d;
-        }
-
-        .message-list {
-            margin: 0 0 22px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .message-list li {
-            margin-bottom: 8px;
-            padding: 12px 14px;
-            border-radius: 5px;
-            background-color: #e8eef5;
-        }
-
-        .message-list .success {
-            background-color: #e7f6ec;
-            border-left: 4px solid #218838;
-        }
-
-        .message-list .error {
-            background-color: #fef3f2;
-            border-left: 4px solid #b42318;
-        }
-
-        @media (max-width: 600px) {
-            .section-card { padding: 16px; }
-
-            .tracking-timeline {
-                flex-direction: column;
-                margin-left: 8px;
-            }
-
-            .tracking-step {
-                display: grid;
-                grid-template-columns: 34px 1fr;
-                align-items: center;
-                column-gap: 12px;
-                min-height: 58px;
-                text-align: left;
-            }
-
-            .tracking-step:not(:last-child)::after {
-                top: 34px;
-                left: 15px;
-                width: 4px;
-                height: 24px;
-            }
-
-            .tracking-marker {
-                margin: 0;
-                grid-column: 1;
-                grid-row: 1;
-            }
-
-            .tracking-label {
-                grid-column: 2;
-                grid-row: 1;
-                padding: 0;
-                font-size: 14px;
-            }
-
-            th, td {
-                padding: 9px;
-                font-size: 14px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <h1>Online Bookstore</h1>
+{% block content %}
+<div class="order-container">
+    <div class="page-heading">
+        <h1>Order #{{ order.id }}</h1>
         <p>Review your order information and track its progress.</p>
+        <a href="{% url 'orders:history' %}">Back to My Orders</a>
+    </div>
 
-        <nav class="header-links" aria-label="Main navigation">
-            <a href="{% url 'orders:history' %}">My Orders</a>
-            <a href="{% url 'books:book_catalogue' %}">Book Catalogue</a>
-        </nav>
-    </header>
+    {% if messages %}
+        <ul class="messages" aria-label="Notifications">
+            {% for message in messages %}
+                <li class="{{ message.tags }}" role="status">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-    <main>
-        <h2>Order #{{ order.id }}</h2>
+    <section class="section-card" aria-labelledby="actions-heading">
+        <h2 id="actions-heading">Cancellation and Returns</h2>
 
-        {% if messages %}
-            <ul class="message-list" aria-label="Notifications">
-                {% for message in messages %}
-                    <li class="{{ message.tags }}" role="status">
-                        {{ message }}
-                    </li>
-                {% endfor %}
-            </ul>
+        {% if can_cancel %}
+            <p>
+                You may cancel this order until
+                {{ cancellation_deadline|date:"d M Y, H:i" }}.
+                Cancellation is unavailable once the order has shipped.
+            </p>
+
+            <form method="post" action="{% url 'orders:cancel' order.id %}" class="action-form">
+                {% csrf_token %}
+                <button
+                    type="submit"
+                    class="action-button cancel-button"
+                    onclick="return confirm('Are you sure you want to cancel this order?');"
+                >
+                    Cancel Order
+                </button>
+            </form>
+
+        {% elif order.status == "PENDING" or order.status == "CONFIRMED" or order.status == "PROCESSING" %}
+            <p class="policy-note">
+                This order can no longer be cancelled because the cancellation
+                policy window has expired.
+            </p>
+
+        {% elif order.status == "SHIPPED" %}
+            <p class="policy-note">
+                This order has shipped and can no longer be cancelled.
+            </p>
         {% endif %}
 
-        <!-- Cancellation and return requests -->
+        {% if can_request_return %}
+            <hr>
 
-        <section class="section-card" aria-labelledby="actions-heading">
-            <h2 id="actions-heading">Cancellation and Returns</h2>
-
-            {% if can_cancel %}
-                <p>
-                    You may cancel this order until
-                    {{ cancellation_deadline|date:"d M Y, H:i" }}.
-                    Cancellation is unavailable once the order has shipped.
-                </p>
-
-                <form method="post"
-                      action="{% url 'orders:cancel' order.id %}"
-                      class="action-form">
-                    {% csrf_token %}
-
-                    <button type="submit"
-                            class="action-button cancel-button"
-                            onclick="return confirm('Are you sure you want to cancel this order?');">
-                        Cancel Order
-                    </button>
-                </form>
-
-            {% elif order.status == "PENDING" or order.status == "CONFIRMED" or order.status == "PROCESSING" %}
-                <p class="policy-note">
-                    This order can no longer be cancelled because the
-                    cancellation policy window has expired.
-                </p>
-
-            {% elif order.status == "SHIPPED" %}
-                <p class="policy-note">
-                    This order has shipped and can no longer be cancelled.
-                </p>
-            {% endif %}
-
-            {% if can_request_return %}
-                <hr>
-
-                <p>
-                    You may request a return until
-                    {{ return_deadline|date:"d M Y, H:i" }}.
-                    Please explain why you would like to return this order.
-                </p>
-
-                <form method="post"
-                      action="{% url 'orders:request_return' order.id %}"
-                      class="action-form">
-                    {% csrf_token %}
-
-                    <label for="return-reason">Reason for return</label>
-
-                    <textarea id="return-reason"
-                              name="reason"
-                              required
-                              maxlength="5000"
-                              placeholder="Explain the reason for your return"></textarea>
-
-                    <button type="submit"
-                            class="action-button return-button">
-                        Submit Return Request
-                    </button>
-                </form>
-
-            {% elif order.status == "DELIVERED" and not return_request %}
-                <p class="policy-note">
-                    The return policy window has expired or the delivery date
-                    is unavailable, so a return request cannot be submitted.
-                </p>
-            {% endif %}
-
-            {% if return_request %}
-                <div class="detail-item" style="margin-top: 16px;">
-                    <span class="detail-label">Return Request Status</span>
-
-                    <span class="status">
-                        {{ return_request.get_status_display }}
-                    </span>
-
-                    <p>
-                        <strong>Reason:</strong>
-                        {{ return_request.reason }}
-                    </p>
-
-                    <p>
-                        <strong>Submitted:</strong>
-                        {{ return_request.requested_at|date:"d M Y, H:i" }}
-                    </p>
-
-                    {% if return_request.admin_notes %}
-                        <p>
-                            <strong>Admin notes:</strong>
-                            {{ return_request.admin_notes }}
-                        </p>
-                    {% endif %}
-                </div>
-            {% endif %}
-        </section>
-
-        <!-- Shipment tracking -->
-
-        <section class="section-card" aria-labelledby="tracking-heading">
-            <h2 id="tracking-heading">Shipment Tracking</h2>
-
-            {% if order.status == "CANCELLED" %}
-                <div class="tracking-cancelled" role="status">
-                    <h3>Order Cancelled</h3>
-
-                    <p>
-                        This order has been cancelled. It will not progress
-                        through the shipment stages shown below.
-                    </p>
-                </div>
-
-            {% else %}
-                <p class="tracking-intro">
-                    Follow your order's progress through the fulfilment process.
-                </p>
-
-                <ol class="tracking-timeline"
-                    aria-label="Order shipment progress">
-
-                    <li class="tracking-step
-                        {% if order.status == 'PENDING' %}
-                            current
-                        {% else %}
-                            completed
-                        {% endif %}">
-                        <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'PENDING' %}
-                                1
-                            {% else %}
-                                &#10003;
-                            {% endif %}
-                        </span>
-
-                        <span class="tracking-label">Order Received</span>
-                    </li>
-
-                    <li class="tracking-step
-                        {% if order.status == 'CONFIRMED' %}
-                            current
-                        {% elif order.status == 'PROCESSING' or order.status == 'SHIPPED' or order.status == 'DELIVERED' %}
-                            completed
-                        {% endif %}">
-                        <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'PROCESSING' or order.status == 'SHIPPED' or order.status == 'DELIVERED' %}
-                                &#10003;
-                            {% else %}
-                                2
-                            {% endif %}
-                        </span>
-
-                        <span class="tracking-label">Confirmed</span>
-                    </li>
-
-                    <li class="tracking-step
-                        {% if order.status == 'PROCESSING' %}
-                            current
-                        {% elif order.status == 'SHIPPED' or order.status == 'DELIVERED' %}
-                            completed
-                        {% endif %}">
-                        <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'SHIPPED' or order.status == 'DELIVERED' %}
-                                &#10003;
-                            {% else %}
-                                3
-                            {% endif %}
-                        </span>
-
-                        <span class="tracking-label">Processing</span>
-                    </li>
-
-                    <li class="tracking-step
-                        {% if order.status == 'SHIPPED' %}
-                            current
-                        {% elif order.status == 'DELIVERED' %}
-                            completed
-                        {% endif %}">
-                        <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'DELIVERED' %}
-                                &#10003;
-                            {% else %}
-                                4
-                            {% endif %}
-                        </span>
-
-                        <span class="tracking-label">Shipped</span>
-                    </li>
-
-                    <li class="tracking-step
-                        {% if order.status == 'DELIVERED' %}
-                            current completed
-                        {% endif %}">
-                        <span class="tracking-marker" aria-hidden="true">
-                            {% if order.status == 'DELIVERED' %}
-                                &#10003;
-                            {% else %}
-                                5
-                            {% endif %}
-                        </span>
-
-                        <span class="tracking-label">Delivered</span>
-                    </li>
-                </ol>
-
-                <div class="tracking-current" role="status">
-                    <p>
-                        <strong>Current status:</strong>
-                        {{ order.get_status_display }}
-                    </p>
-
-                    <p>
-                        <strong>Last updated:</strong>
-                        {{ order.updated_at|date:"d M Y, H:i" }}
-                    </p>
-                </div>
-            {% endif %}
-
-            <p class="tracking-intro"
-               style="margin-top: 18px; margin-bottom: 0;">
-                Tracking is based on the order status recorded by the bookstore.
-                Live courier location and carrier tracking are not available.
+            <p>
+                You may request a return until
+                {{ return_deadline|date:"d M Y, H:i" }}.
+                Please explain why you would like to return this order.
             </p>
-        </section>
 
-        <!-- Order summary -->
+            <form method="post" action="{% url 'orders:request_return' order.id %}" class="action-form">
+                {% csrf_token %}
+                <label for="return-reason">Reason for return</label>
+                <textarea
+                    id="return-reason"
+                    name="reason"
+                    required
+                    maxlength="5000"
+                    placeholder="Explain the reason for your return"
+                ></textarea>
+                <button type="submit" class="action-button return-button">
+                    Submit Return Request
+                </button>
+            </form>
 
-        <section class="section-card">
-            <h2>Order Summary</h2>
+        {% elif order.status == "DELIVERED" and not return_request %}
+            <p class="policy-note">
+                The return policy window has expired or the delivery date is
+                unavailable, so a return request cannot be submitted.
+            </p>
+        {% endif %}
 
-            <div class="details-grid">
-                <div class="detail-item">
-                    <span class="detail-label">Order Date</span>
-                    <span class="detail-value">
-                        {{ order.created_at|date:"d M Y, H:i" }}
-                    </span>
-                </div>
+        {% if return_request %}
+            <div class="detail-item" style="margin-top: 16px;">
+                <span class="detail-label">Return Request Status</span>
+                <span class="status">{{ return_request.get_status_display }}</span>
 
-                <div class="detail-item">
-                    <span class="detail-label">Order Status</span>
-                    <span class="status">
-                        {{ order.get_status_display }}
-                    </span>
-                </div>
+                <p><strong>Reason:</strong> {{ return_request.reason }}</p>
+                <p>
+                    <strong>Submitted:</strong>
+                    {{ return_request.requested_at|date:"d M Y, H:i" }}
+                </p>
 
-                <div class="detail-item">
-                    <span class="detail-label">Last Updated</span>
-                    <span class="detail-value">
-                        {{ order.updated_at|date:"d M Y, H:i" }}
-                    </span>
-                </div>
+                {% if return_request.admin_notes %}
+                    <p><strong>Admin notes:</strong> {{ return_request.admin_notes }}</p>
+                {% endif %}
             </div>
-        </section>
+        {% endif %}
+    </section>
 
-        <!-- Items ordered -->
+    <section class="section-card" aria-labelledby="tracking-heading">
+        <h2 id="tracking-heading">Shipment Tracking</h2>
 
-        <section class="section-card">
-            <h2>Items Ordered</h2>
+        {% if order.status == "CANCELLED" %}
+            <div class="tracking-cancelled" role="status">
+                <h3>Order Cancelled</h3>
+                <p>
+                    This order has been cancelled. It will not progress through
+                    the shipment stages shown below.
+                </p>
+            </div>
+        {% else %}
+            <p class="tracking-intro">
+                Follow your order's progress through the fulfilment process.
+            </p>
 
-            <div class="table-wrapper">
-                <table>
-                    <thead>
+            <ol class="tracking-timeline" aria-label="Order shipment progress">
+                <li class="tracking-step {% if order.status == 'PENDING' %}current{% else %}completed{% endif %}">
+                    <span class="tracking-marker" aria-hidden="true">
+                        {% if order.status == "PENDING" %}1{% else %}&#10003;{% endif %}
+                    </span>
+                    <span class="tracking-label">Order Received</span>
+                </li>
+
+                <li class="tracking-step {% if order.status == 'CONFIRMED' %}current{% elif order.status == 'PROCESSING' or order.status == 'SHIPPED' or order.status == 'DELIVERED' %}completed{% endif %}">
+                    <span class="tracking-marker" aria-hidden="true">
+                        {% if order.status == "PROCESSING" or order.status == "SHIPPED" or order.status == "DELIVERED" %}&#10003;{% else %}2{% endif %}
+                    </span>
+                    <span class="tracking-label">Confirmed</span>
+                </li>
+
+                <li class="tracking-step {% if order.status == 'PROCESSING' %}current{% elif order.status == 'SHIPPED' or order.status == 'DELIVERED' %}completed{% endif %}">
+                    <span class="tracking-marker" aria-hidden="true">
+                        {% if order.status == "SHIPPED" or order.status == "DELIVERED" %}&#10003;{% else %}3{% endif %}
+                    </span>
+                    <span class="tracking-label">Processing</span>
+                </li>
+
+                <li class="tracking-step {% if order.status == 'SHIPPED' %}current{% elif order.status == 'DELIVERED' %}completed{% endif %}">
+                    <span class="tracking-marker" aria-hidden="true">
+                        {% if order.status == "DELIVERED" %}&#10003;{% else %}4{% endif %}
+                    </span>
+                    <span class="tracking-label">Shipped</span>
+                </li>
+
+                <li class="tracking-step {% if order.status == 'DELIVERED' %}current completed{% endif %}">
+                    <span class="tracking-marker" aria-hidden="true">
+                        {% if order.status == "DELIVERED" %}&#10003;{% else %}5{% endif %}
+                    </span>
+                    <span class="tracking-label">Delivered</span>
+                </li>
+            </ol>
+
+            <div class="tracking-current" role="status">
+                <p><strong>Current status:</strong> {{ order.get_status_display }}</p>
+                <p><strong>Last updated:</strong> {{ order.updated_at|date:"d M Y, H:i" }}</p>
+            </div>
+        {% endif %}
+
+        <p class="tracking-intro">
+            Tracking is based on the order status recorded by the bookstore.
+            Live courier location and carrier tracking are not available.
+        </p>
+    </section>
+
+    <section class="section-card" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Order Summary</h2>
+
+        <div class="details-grid">
+            <div class="detail-item">
+                <span class="detail-label">Order Date</span>
+                <span class="detail-value">{{ order.created_at|date:"d M Y, H:i" }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Order Status</span>
+                <span class="status">{{ order.get_status_display }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Last Updated</span>
+                <span class="detail-value">{{ order.updated_at|date:"d M Y, H:i" }}</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="items-heading">
+        <h2 id="items-heading">Items Ordered</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Book</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in order.items.all %}
                         <tr>
-                            <th scope="col">Book</th>
-                            <th scope="col">Unit Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Subtotal</th>
+                            <td>{{ item.book_title }}</td>
+                            <td>₹{{ item.unit_price|floatformat:2 }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>₹{{ item.subtotal|floatformat:2 }}</td>
                         </tr>
-                    </thead>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4" class="empty-message">
+                                No items are associated with this order.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-                    <tbody>
-                        {% for item in order.items.all %}
-                            <tr>
-                                <td>{{ item.book_title }}</td>
-                                <td>₹{{ item.unit_price|floatformat:2 }}</td>
-                                <td>{{ item.quantity }}</td>
-                                <td>₹{{ item.subtotal|floatformat:2 }}</td>
-                            </tr>
-                        {% empty %}
-                            <tr>
-                                <td colspan="4" class="empty-message">
-                                    No items are associated with this order.
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+        <p class="total-row">
+            Order Total: ₹{{ order.total_amount|floatformat:2 }}
+        </p>
+    </section>
+
+    <section class="section-card" aria-labelledby="address-heading">
+        <h2 id="address-heading">Shipping Address</h2>
+
+        <div class="details-grid">
+            <div class="detail-item">
+                <span class="detail-label">Recipient</span>
+                <span class="detail-value">{{ order.full_name }}</span>
             </div>
 
-            <p class="total-row">
-                Order Total: ₹{{ order.total_amount|floatformat:2 }}
-            </p>
-        </section>
+            <div class="detail-item">
+                <span class="detail-label">Phone</span>
+                <span class="detail-value">{{ order.phone_number }}</span>
+            </div>
 
-        <!-- Shipping address -->
+            <div class="detail-item">
+                <span class="detail-label">Address Line 1</span>
+                <span class="detail-value">{{ order.address_line_1 }}</span>
+            </div>
 
-        <section class="section-card">
-            <h2>Shipping Address</h2>
+            {% if order.address_line_2 %}
+                <div class="detail-item">
+                    <span class="detail-label">Address Line 2</span>
+                    <span class="detail-value">{{ order.address_line_2 }}</span>
+                </div>
+            {% endif %}
 
+            <div class="detail-item">
+                <span class="detail-label">City</span>
+                <span class="detail-value">{{ order.city }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">State</span>
+                <span class="detail-value">{{ order.state }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Postal Code</span>
+                <span class="detail-value">{{ order.postal_code }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Country</span>
+                <span class="detail-value">{{ order.country }}</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="payment-heading">
+        <h2 id="payment-heading">Payment Information</h2>
+
+        {% for payment in order.payments.all %}
             <div class="details-grid">
                 <div class="detail-item">
-                    <span class="detail-label">Recipient</span>
-                    <span class="detail-value">{{ order.full_name }}</span>
+                    <span class="detail-label">Payment Method</span>
+                    <span class="detail-value">{{ payment.get_method_display }}</span>
                 </div>
 
                 <div class="detail-item">
-                    <span class="detail-label">Phone</span>
-                    <span class="detail-value">{{ order.phone_number }}</span>
+                    <span class="detail-label">Payment Status</span>
+                    <span class="status">{{ payment.get_status_display }}</span>
                 </div>
 
                 <div class="detail-item">
-                    <span class="detail-label">Address Line 1</span>
-                    <span class="detail-value">{{ order.address_line_1 }}</span>
+                    <span class="detail-label">Payment Amount</span>
+                    <span class="detail-value">₹{{ payment.amount|floatformat:2 }}</span>
                 </div>
 
-                {% if order.address_line_2 %}
+                <div class="detail-item">
+                    <span class="detail-label">Transaction Reference</span>
+                    <span class="detail-value">{{ payment.transaction_reference|default:"Not available" }}</span>
+                </div>
+
+                {% if payment.failure_reason %}
                     <div class="detail-item">
-                        <span class="detail-label">Address Line 2</span>
-                        <span class="detail-value">{{ order.address_line_2 }}</span>
+                        <span class="detail-label">Failure Reason</span>
+                        <span class="detail-value">{{ payment.failure_reason }}</span>
                     </div>
                 {% endif %}
-
-                <div class="detail-item">
-                    <span class="detail-label">City</span>
-                    <span class="detail-value">{{ order.city }}</span>
-                </div>
-
-                <div class="detail-item">
-                    <span class="detail-label">State</span>
-                    <span class="detail-value">{{ order.state }}</span>
-                </div>
-
-                <div class="detail-item">
-                    <span class="detail-label">Postal Code</span>
-                    <span class="detail-value">{{ order.postal_code }}</span>
-                </div>
-
-                <div class="detail-item">
-                    <span class="detail-label">Country</span>
-                    <span class="detail-value">{{ order.country }}</span>
-                </div>
             </div>
-        </section>
+        {% empty %}
+            <p class="empty-message">
+                No payment record is available for this order.
+            </p>
+        {% endfor %}
 
-        <!-- Payment information -->
+        <div class="payment-notice">
+            <strong>Test payment notice:</strong>
+            This project uses a mock payment workflow. It does not charge real
+            money or verify payments through a real payment provider.
+        </div>
+    </section>
 
-        <section class="section-card">
-            <h2>Payment Information</h2>
-
-            {% for payment in order.payments.all %}
-                <div class="details-grid">
-                    <div class="detail-item">
-                        <span class="detail-label">Payment Method</span>
-                        <span class="detail-value">
-                            {{ payment.get_method_display }}
-                        </span>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Payment Status</span>
-                        <span class="status">
-                            {{ payment.get_status_display }}
-                        </span>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Payment Amount</span>
-                        <span class="detail-value">
-                            ₹{{ payment.amount|floatformat:2 }}
-                        </span>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Transaction Reference</span>
-                        <span class="detail-value">
-                            {{ payment.transaction_reference|default:"Not available" }}
-                        </span>
-                    </div>
-
-                    {% if payment.failure_reason %}
-                        <div class="detail-item">
-                            <span class="detail-label">Failure Reason</span>
-                            <span class="detail-value">
-                                {{ payment.failure_reason }}
-                            </span>
-                        </div>
-                    {% endif %}
-                </div>
-
-            {% empty %}
-                <p class="empty-message">
-                    No payment record is available for this order.
-                </p>
-            {% endfor %}
-
-            <div class="payment-notice">
-                <strong>Test payment notice:</strong>
-                This project uses a mock payment workflow. It does not charge
-                real money or verify payments through a real payment provider.
-            </div>
-        </section>
-
-        <a class="primary-link" href="{% url 'orders:history' %}">
-            Back to My Orders
-        </a>
-    </main>
-</body>
-</html>
+    <a class="primary-link" href="{% url 'orders:history' %}">
+        Back to My Orders
+    </a>
+</div>
+{% endblock %}

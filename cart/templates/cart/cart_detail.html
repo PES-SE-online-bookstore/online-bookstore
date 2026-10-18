@@ -1,229 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart | Online Bookstore</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+﻿{% extends "base.html" %}
 
-        body {
-            margin: 0;
-            padding: 24px;
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #222;
-        }
+{% block title %}Shopping Cart | Online Bookstore{% endblock %}
+{% block meta_description %}Review your shopping cart, update quantities, and proceed to checkout.{% endblock %}
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+{% block extra_head %}
+<style>
+    .cart-container { max-width: 1000px; margin: 0 auto; }
+    .page-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .page-heading h1 { margin: 0; }
+    .panel, .cart-item { background: #fff; border: 1px solid #d8dee8; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .book-info { flex: 1; min-width: 180px; }
+    .book-info h2 { margin: 0 0 8px; font-size: 1.2rem; }
+    .muted { color: #475467; }
+    .price { font-weight: 700; }
+    .actions { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+    .actions form { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 8px; }
+    .quantity-field { display: flex; flex-direction: column; gap: 4px; }
+    input[type="number"] { width: 90px; max-width: 100%; padding: 8px; border: 1px solid #98a2b3; border-radius: 5px; }
+    .button { display: inline-block; padding: 10px 15px; border: 1px solid #174ea6; border-radius: 6px; background: #174ea6; color: #fff; font-weight: 600; text-decoration: none; cursor: pointer; }
+    .button:hover { background: #0b3275; color: #fff; }
+    .button-danger { background: #b42318; border-color: #b42318; }
+    .button-danger:hover { background: #912018; border-color: #912018; }
+    .summary { text-align: right; }
+    .summary h2 { margin-top: 0; }
+    .empty { text-align: center; padding: 40px 20px; }
+    @media (max-width: 600px) {
+        .cart-item { align-items: flex-start; }
+        .actions, .actions form { width: 100%; }
+        .summary { text-align: left; }
+    }
+</style>
+{% endblock %}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 28px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        a {
-            color: #2457c5;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .panel, .cart-item {
-            background: white;
-            border-radius: 10px;
-            padding: 22px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .book-info {
-            flex: 1;
-            min-width: 180px;
-        }
-
-        .book-info h2 {
-            margin: 0 0 8px;
-            font-size: 20px;
-        }
-
-        .muted {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .price {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .actions {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        input[type="number"] {
-            width: 80px;
-            padding: 9px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button, .button {
-            display: inline-block;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background: #2457c5;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .danger {
-            background: #b42318;
-        }
-
-        .summary {
-            text-align: right;
-        }
-
-        .summary h2 {
-            margin-top: 0;
-        }
-
-        .messages {
-            padding: 0;
-            list-style: none;
-        }
-
-        .messages li {
-            background: #e8f5e9;
-            padding: 12px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .messages .error {
-            background: #ffebee;
-        }
-
-        .empty {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 14px;
-            }
-
-            .cart-item {
-                align-items: flex-start;
-            }
-
-            .summary {
-                text-align: left;
-            }
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <header>
+{% block content %}
+<div class="cart-container">
+    <div class="page-heading">
         <h1>Shopping Cart</h1>
         <a href="{% url 'books:book_catalogue' %}">Continue Shopping</a>
-    </header>
-
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{% if message.tags == 'error' %}error{% endif %}">
-                    {{ message }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    </div>
 
     {% if items %}
         {% for item in items %}
-            <section class="cart-item">
+            <section class="cart-item" aria-labelledby="cart-item-{{ item.id }}">
                 <div class="book-info">
-                    <h2>
+                    <h2 id="cart-item-{{ item.id }}">
                         <a href="{% url 'books:book_detail' item.book.id %}">
                             {{ item.book.title }}
                         </a>
                     </h2>
 
                     <p class="muted">By {{ item.book.author }}</p>
-
                     <p>Unit price: ₹{{ item.book.price|floatformat:2 }}</p>
-
-                    <p class="price">
-                        Subtotal: ₹{{ item.total_price|floatformat:2 }}
-                    </p>
+                    <p class="price">Subtotal: ₹{{ item.total_price|floatformat:2 }}</p>
                 </div>
 
                 <div class="actions">
-                    <form method="post"
-                          action="{% url 'cart:update_cart_item' item.id %}">
+                    <form method="post" action="{% url 'cart:update_cart_item' item.id %}">
                         {% csrf_token %}
-
-                        <label for="quantity-{{ item.id }}">Quantity</label>
-
-                        <input
-                            type="number"
-                            id="quantity-{{ item.id }}"
-                            name="quantity"
-                            value="{{ item.quantity }}"
-                            min="1"
-                            max="{{ item.book.stock_quantity }}"
-                            required
-                        >
-
-                        <button type="submit">Update</button>
+                        <div class="quantity-field">
+                            <label for="quantity-{{ item.id }}">Quantity</label>
+                            <input
+                                type="number"
+                                id="quantity-{{ item.id }}"
+                                name="quantity"
+                                value="{{ item.quantity }}"
+                                min="1"
+                                max="{{ item.book.stock_quantity }}"
+                                required
+                            >
+                        </div>
+                        <button class="button" type="submit">Update</button>
                     </form>
 
-                    <form method="post"
-                          action="{% url 'cart:remove_from_cart' item.id %}">
+                    <form method="post" action="{% url 'cart:remove_from_cart' item.id %}">
                         {% csrf_token %}
-                        <button type="submit" class="danger">Remove</button>
+                        <button class="button button-danger" type="submit">
+                            Remove
+                        </button>
                     </form>
                 </div>
             </section>
         {% endfor %}
 
-        <section class="panel summary">
+        <section class="panel summary" aria-labelledby="cart-summary-heading">
+            <h2 id="cart-summary-heading">Cart Summary</h2>
             <p>Total items: {{ cart.total_items }}</p>
-            <h2>Cart Total: ₹{{ cart.total_price|floatformat:2 }}</h2>
+            <p><strong>Cart Total: ₹{{ cart.total_price|floatformat:2 }}</strong></p>
             <a class="button" href="{% url 'cart:checkout' %}">
-				Proceed to Checkout
-			</a>
+                Proceed to Checkout
+            </a>
         </section>
     {% else %}
         <section class="panel empty">
@@ -237,5 +103,4 @@
         </section>
     {% endif %}
 </div>
-</body>
-</html>
+{% endblock %}

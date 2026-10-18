@@ -1,606 +1,505 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+﻿{% extends "base.html" %}
 
-    <title>{{ book.title }} | Online Bookstore</title>
+{% block title %}{{ book.title }} | Online Bookstore{% endblock %}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+{% block meta_description %}
+View {{ book.title }} by {{ book.author }}, including its description, price, availability, and customer reviews.
+{% endblock %}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f7fa;
-            color: #222;
-            line-height: 1.6;
-        }
+{% block extra_head %}
+<style>
+    .back-link {
+        display: inline-block;
+        margin-bottom: 1.25rem;
+        font-weight: 600;
+        text-underline-offset: .2em;
+    }
 
-        header {
-            background-color: #243b53;
-            color: white;
-            padding: 24px 8%;
-        }
+    .book-details,
+    .reviews-section {
+        padding: clamp(1rem, 3vw, 2rem);
+        border: 1px solid #d8dee8;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+    }
 
-        header h1 {
-            margin: 0 0 8px;
-        }
+    .book-details {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+        align-items: start;
+        gap: clamp(1.25rem, 4vw, 2.5rem);
+    }
 
-        header p {
-            margin: 0;
-        }
+    .cover-container {
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+    }
 
-        main {
-            max-width: 1000px;
-            margin: 35px auto;
-            padding: 0 20px 40px;
-        }
+    .cover-image {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        max-height: 420px;
+        object-fit: contain;
+        border-radius: 5px;
+    }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #243b53;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .cover-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 300px;
+        min-height: 250px;
+        padding: 1.25rem;
+        border-radius: 5px;
+        background: #edf2f7;
+        color: #475467;
+        text-align: center;
+    }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
+    .book-information {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
 
+    .book-information h1 {
+        margin: 0 0 .5rem;
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        line-height: 1.3;
+    }
+
+    .author {
+        color: #475467;
+        font-size: 1.1rem;
+    }
+
+    .category {
+        display: inline-block;
+        padding: .3rem .6rem;
+        border-radius: 4px;
+        background: #edf2f7;
+        color: #344054;
+    }
+
+    .description {
+        margin-top: 1.5rem;
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+    }
+
+    .price {
+        margin: 1.25rem 0;
+        color: #163d70;
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+
+    .availability {
+        font-weight: 600;
+    }
+
+    .in-stock {
+        color: #176b35;
+    }
+
+    .out-of-stock {
+        color: #861717;
+    }
+
+    .isbn {
+        overflow-wrap: anywhere;
+    }
+
+    .book-action {
+        margin-top: 1rem;
+    }
+
+    .book-action label {
+        display: block;
+        margin-bottom: .4rem;
+        font-weight: 600;
+    }
+
+    .book-action input,
+    .review-form select,
+    .review-form textarea {
+        width: 100%;
+        max-width: 100%;
+        min-height: 44px;
+        padding: .65rem;
+        border: 1px solid #667085;
+        border-radius: 6px;
+        background: #fff;
+        color: #202938;
+        font: inherit;
+    }
+
+    .book-action input[type="number"] {
+        width: 120px;
+    }
+
+    .detail-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        margin-top: .75rem;
+        padding: .65rem 1rem;
+        border: 1px solid #174ea6;
+        border-radius: 6px;
+        background: #174ea6;
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .detail-button:hover {
+        border-color: #0b3275;
+        background: #0b3275;
+        color: #fff;
+    }
+
+    .detail-button.wishlist {
+        border-color: #9f1239;
+        background: #9f1239;
+    }
+
+    .detail-button.wishlist:hover {
+        border-color: #881337;
+        background: #881337;
+    }
+
+    .wishlist-link {
+        display: inline-block;
+        margin: .75rem 0;
+        font-weight: 600;
+    }
+
+    .login-note {
+        margin-top: 1rem;
+        padding: .9rem;
+        border-radius: 6px;
+        background: #edf4ff;
+    }
+
+    .reviews-section {
+        margin-top: 1.5rem;
+    }
+
+    .reviews-section > h2 {
+        margin-top: 0;
+    }
+
+    .rating-summary {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: 6px;
+        background: #f5f7fa;
+    }
+
+    .rating-number {
+        color: #163d70;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .review-card {
+        padding: 1.25rem 0;
+        border-top: 1px solid #d8dee8;
+    }
+
+    .review-card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        overflow-wrap: anywhere;
+    }
+
+    .review-rating {
+        font-weight: 600;
+    }
+
+    .review-date {
+        color: #475467;
+        font-size: .9rem;
+    }
+
+    .review-comment {
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+    }
+
+    .empty-reviews {
+        color: #475467;
+    }
+
+    .review-form {
+        margin-top: 1.5rem;
+        padding: clamp(1rem, 3vw, 1.5rem);
+        border-radius: 6px;
+        background: #f5f7fa;
+    }
+
+    .review-form h3 {
+        margin-top: 0;
+    }
+
+    .review-form label {
+        display: block;
+        margin: 1rem 0 .4rem;
+        font-weight: 600;
+    }
+
+    .review-form textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .field-errors {
+        margin: .5rem 0;
+        color: #861717;
+    }
+
+    @media (max-width: 650px) {
         .book-details {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
-            gap: 35px;
-            padding: 30px;
-            background-color: white;
-            border: 1px solid #e1e5ea;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .cover-container {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
+            grid-template-columns: minmax(0, 1fr);
         }
 
         .cover-image {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            max-height: 420px;
-            object-fit: contain;
-            border-radius: 5px;
+            max-height: 350px;
         }
+    }
+</style>
+{% endblock %}
 
-        .cover-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 300px;
-            min-height: 300px;
-            padding: 20px;
-            background-color: #e8eef5;
-            color: #52606d;
-            border-radius: 5px;
-            text-align: center;
-        }
+{% block content %}
+<a class="back-link" href="{% url 'books:book_catalogue' %}">
+    &larr; Back to catalogue
+</a>
 
-        .book-information h2 {
-            margin-top: 0;
-            margin-bottom: 5px;
-            font-size: 30px;
-            line-height: 1.3;
-        }
+<article class="book-details" aria-labelledby="book-title">
+    <div class="cover-container">
+        {% if book.cover_image_url %}
+            <img
+                class="cover-image"
+                src="{{ book.cover_image_url }}"
+                alt="Cover of {{ book.title }}"
+                loading="lazy"
+            >
+        {% else %}
+            <div class="cover-placeholder">
+                No cover image available
+            </div>
+        {% endif %}
+    </div>
 
-        .author {
-            margin-top: 0;
-            color: #52606d;
-            font-size: 18px;
-        }
+    <div class="book-information">
+        <h1 id="book-title">{{ book.title }}</h1>
 
-        .category {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #e8eef5;
-            color: #243b53;
-            border-radius: 4px;
-            font-size: 14px;
-        }
+        <p class="author">By {{ book.author }}</p>
 
-        .description {
-            margin-top: 25px;
-            white-space: pre-line;
-        }
-
-        .price {
-            margin-top: 25px;
-            color: #243b53;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .availability {
-            font-weight: bold;
-        }
-
-        .in-stock {
-            color: #247a45;
-        }
-
-        .out-of-stock {
-            color: #a61b1b;
-        }
-
-        .isbn {
-            overflow-wrap: anywhere;
-        }
-
-        .browse-button,
-        .add-to-cart-button,
-        .submit-review-button,
-        .wishlist-button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 15px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .browse-button {
-            background-color: #243b53;
-            color: white;
-        }
-
-        .browse-button:hover {
-            background-color: #334e68;
-        }
-
-        .add-to-cart-button,
-        .submit-review-button {
-            background-color: #3157c8;
-            color: white;
-        }
-
-        .add-to-cart-button:hover,
-        .submit-review-button:hover {
-            background-color: #2445a5;
-        }
-
-        .wishlist-button {
-            margin-left: 8px;
-            background-color: #9f1239;
-            color: white;
-        }
-
-        .wishlist-button:hover {
-            background-color: #881337;
-        }
-
-        .wishlist-link {
-            display: inline-block;
-            margin-top: 15px;
-            margin-left: 8px;
-            color: #243b53;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .wishlist-link:hover {
-            text-decoration: underline;
-        }
-
-        .quantity-field {
-            display: block;
-            margin-top: 12px;
-        }
-
-        .quantity-field label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .quantity-field input {
-            width: 100px;
-            padding: 10px;
-            border: 1px solid #cbd2d9;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .message {
-            margin: 15px 0;
-            padding: 12px;
-            border-radius: 5px;
-            background-color: #e8eef5;
-        }
-
-        .login-note {
-            margin-top: 15px;
-        }
-
-        .reviews-section {
-            margin-top: 30px;
-            padding: 30px;
-            background-color: white;
-            border: 1px solid #e1e5ea;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .reviews-section h2 {
-            margin-top: 0;
-            color: #243b53;
-        }
-
-        .rating-summary {
-            padding: 15px;
-            margin-bottom: 25px;
-            background-color: #f5f7fa;
-            border-radius: 6px;
-        }
-
-        .rating-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #243b53;
-        }
-
-        .review-card {
-            padding: 20px 0;
-            border-top: 1px solid #e1e5ea;
-        }
-
-        .review-card h3 {
-            margin: 0;
-            font-size: 17px;
-        }
-
-        .review-rating {
-            color: #a66a00;
-            font-weight: bold;
-        }
-
-        .review-date {
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        .review-comment {
-            white-space: pre-line;
-            overflow-wrap: anywhere;
-        }
-
-        .review-form {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #f5f7fa;
-            border-radius: 6px;
-        }
-
-        .review-form label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: bold;
-        }
-
-        .review-form select,
-        .review-form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd2d9;
-            border-radius: 5px;
-            font: inherit;
-        }
-
-        .review-form textarea {
-            resize: vertical;
-        }
-
-        .field-errors {
-            color: #a61b1b;
-            margin: 5px 0;
-        }
-
-        .empty-reviews {
-            color: #52606d;
-        }
-
-        @media (max-width: 650px) {
-            .book-details {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-
-            .cover-image {
-                max-height: 350px;
-            }
-
-            .book-information h2 {
-                font-size: 25px;
-            }
-
-            .reviews-section {
-                padding: 20px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <h1>Online Bookstore</h1>
-        <p>Discover your next great read.</p>
-    </header>
-
-    <main>
-        <a class="back-link" href="{% url 'books:book_catalogue' %}">
-            &larr; Back to catalogue
-        </a>
-
-        {% if messages %}
-            {% for message in messages %}
-                <div class="message" role="status">
-                    {{ message }}
-                </div>
-            {% endfor %}
+        {% if book.category %}
+            <p class="category">{{ book.category }}</p>
         {% endif %}
 
-        <article class="book-details">
-            <div class="cover-container">
-                {% if book.cover_image_url %}
-                    <img
-                        class="cover-image"
-                        src="{{ book.cover_image_url }}"
-                        alt="Cover of {{ book.title }}"
+        <div class="description">
+            {{ book.description|default:"No description available." }}
+        </div>
+
+        <p class="isbn">
+            <strong>ISBN:</strong> {{ book.isbn }}
+        </p>
+
+        <p>
+            <strong>Category:</strong>
+            {{ book.category|default:"Not specified" }}
+        </p>
+
+        <p class="price">INR {{ book.price }}</p>
+
+        {% if book.stock_quantity > 0 %}
+            <p class="availability in-stock">
+                In stock ({{ book.stock_quantity }} available)
+            </p>
+        {% else %}
+            <p class="availability out-of-stock">
+                Currently out of stock
+            </p>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            {% if user.profile.role == "BUYER" %}
+                {% if book.is_available and book.stock_quantity > 0 %}
+                    <form
+                        class="book-action"
+                        method="post"
+                        action="{% url 'cart:add_to_cart' book.id %}"
                     >
-                {% else %}
-                    <div class="cover-placeholder">
-                        No cover image available
-                    </div>
-                {% endif %}
-            </div>
+                        {% csrf_token %}
 
-            <div class="book-information">
-                <h2>{{ book.title }}</h2>
-
-                <p class="author">
-                    By {{ book.author }}
-                </p>
-
-                {% if book.category %}
-                    <p class="category">
-                        {{ book.category }}
-                    </p>
-                {% endif %}
-
-                <p class="description">
-                    {{ book.description|default:"No description available." }}
-                </p>
-
-                <p class="isbn">
-                    <strong>ISBN:</strong> {{ book.isbn }}
-                </p>
-
-                <p>
-                    <strong>Category:</strong>
-                    {{ book.category|default:"Not specified" }}
-                </p>
-
-                <p class="price">
-                    ₹{{ book.price }}
-                </p>
-
-                {% if book.stock_quantity > 0 %}
-                    <p class="availability in-stock">
-                        In stock ({{ book.stock_quantity }} available)
-                    </p>
-                {% else %}
-                    <p class="availability out-of-stock">
-                        Currently out of stock
-                    </p>
-                {% endif %}
-
-                {% if user.is_authenticated %}
-                    {% if user.profile.role == "BUYER" %}
-                        {% if book.is_available and book.stock_quantity > 0 %}
-                            <form
-                                method="post"
-                                action="{% url 'cart:add_to_cart' book.id %}"
-                            >
-                                {% csrf_token %}
-
-                                <div class="quantity-field">
-                                    <label for="quantity">Quantity</label>
-                                    <input
-                                        type="number"
-                                        id="quantity"
-                                        name="quantity"
-                                        value="1"
-                                        min="1"
-                                        max="{{ book.stock_quantity }}"
-                                        required
-                                    >
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    class="add-to-cart-button"
-                                >
-                                    Add to Cart
-                                </button>
-                            </form>
-                        {% endif %}
-                    {% endif %}
-                {% else %}
-                    <p class="login-note">
-                        <a href="{% url 'login' %}">Log in</a>
-                        as a buyer to add this book to your cart or wishlist.
-                    </p>
-                {% endif %}
-
-                {% if user.is_authenticated %}
-                    {% if user.profile.role == "BUYER" %}
-                        {% if is_in_wishlist %}
-                            <a
-                                class="wishlist-link"
-                                href="{% url 'books:wishlist' %}"
-                            >
-                                View My Wishlist
-                            </a>
-                        {% else %}
-                            <form
-                                method="post"
-                                action="{% url 'books:add_to_wishlist' book.id %}"
-                            >
-                                {% csrf_token %}
-
-                                <button
-                                    type="submit"
-                                    class="wishlist-button"
-                                >
-                                    Add to Wishlist
-                                </button>
-                            </form>
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
-
-                <a
-                    class="browse-button"
-                    href="{% url 'books:book_catalogue' %}"
-                >
-                    Back to catalogue
-                </a>
-            </div>
-        </article>
-
-        <section class="reviews-section" aria-labelledby="reviews-heading">
-            <h2 id="reviews-heading">Customer Reviews</h2>
-
-            <div class="rating-summary">
-                {% if review_count %}
-                    <div class="rating-number">
-                        {{ average_rating|floatformat:1 }} / 5
-                    </div>
-
-                    <div aria-label="Average rating">
-                        {% with rounded_rating=average_rating|floatformat:0 %}
-                            Average customer rating
-                        {% endwith %}
-                    </div>
-
-                    <p>
-                        Based on {{ review_count }}
-                        review{{ review_count|pluralize }}
-                    </p>
-                {% else %}
-                    <p>No reviews yet. Be the first to review this book!</p>
-                {% endif %}
-            </div>
-
-            {% if reviews %}
-                {% for review in reviews %}
-                    <article class="review-card">
-                        <h3>{{ review.buyer.username }}</h3>
-
-                        <p class="review-rating">
-                            {{ review.rating }} / 5 stars
-                        </p>
-
-                        <p class="review-date">
-                            Reviewed on {{ review.created_at|date:"F j, Y" }}
-                        </p>
-
-                        <p class="review-comment">{{ review.comment }}</p>
-                    </article>
-                {% endfor %}
-            {% else %}
-                <p class="empty-reviews">
-                    There are no customer reviews for this book yet.
-                </p>
-            {% endif %}
-
-            {% comment %}
-                Only Buyers and anonymous visitors see the review-writing area.
-                Sellers can still read customer reviews.
-            {% endcomment %}
-
-            {% if not user.is_authenticated or user.profile.role == "BUYER" %}
-                <div class="review-form">
-                    <h3>Write a Review</h3>
-
-                    {% if can_review and review_form %}
-                        <form
-                            method="post"
-                            action="{% url 'books:submit_review' book.id %}"
+                        <label for="quantity">Quantity</label>
+                        <input
+                            type="number"
+                            id="quantity"
+                            name="quantity"
+                            value="1"
+                            min="1"
+                            max="{{ book.stock_quantity }}"
+                            required
                         >
-                            {% csrf_token %}
 
-                            {% if review_form.non_field_errors %}
-                                <div class="field-errors">
-                                    {{ review_form.non_field_errors }}
-                                </div>
-                            {% endif %}
-
-                            <label for="{{ review_form.rating.id_for_label }}">
-                                Your Rating
-                            </label>
-
-                            {{ review_form.rating }}
-
-                            {% if review_form.rating.errors %}
-                                <div class="field-errors">
-                                    {{ review_form.rating.errors }}
-                                </div>
-                            {% endif %}
-
-                            <label for="{{ review_form.comment.id_for_label }}">
-                                Your Review
-                            </label>
-
-                            {{ review_form.comment }}
-
-                            {% if review_form.comment.errors %}
-                                <div class="field-errors">
-                                    {{ review_form.comment.errors }}
-                                </div>
-                            {% endif %}
-
-                            <button
-                                type="submit"
-                                class="submit-review-button"
-                            >
-                                Submit Review
-                            </button>
-                        </form>
-
-                    {% elif not user.is_authenticated %}
-                        <p>
-                            <a href="{% url 'login' %}">Log in</a>
-                            to submit a review after purchasing this book.
-                        </p>
-
-                    {% elif has_reviewed %}
-                        <p>You have already reviewed this book. Thank you!</p>
-
-                    {% else %}
-                        <p>
-                            You can review this book after purchasing it.
-                        </p>
-                    {% endif %}
-                </div>
+                        <button class="detail-button" type="submit">
+                            Add to Cart
+                        </button>
+                    </form>
+                {% endif %}
             {% endif %}
-        </section>
-    </main>
-</body>
-</html>
+        {% else %}
+            <p class="login-note">
+                <a href="{% url 'login' %}">Log in</a>
+                as a buyer to add this book to your cart or wishlist.
+            </p>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            {% if user.profile.role == "BUYER" %}
+                {% if is_in_wishlist %}
+                    <p>
+                        <a class="wishlist-link"
+                           href="{% url 'books:wishlist' %}">
+                            View My Wishlist
+                        </a>
+                    </p>
+                {% else %}
+                    <form method="post"
+                          action="{% url 'books:add_to_wishlist' book.id %}">
+                        {% csrf_token %}
+
+                        <button
+                            class="detail-button wishlist"
+                            type="submit"
+                        >
+                            Add to Wishlist
+                        </button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+        <p>
+            <a class="detail-button"
+               href="{% url 'books:book_catalogue' %}">
+                Back to Catalogue
+            </a>
+        </p>
+    </div>
+</article>
+
+<section class="reviews-section" aria-labelledby="reviews-heading">
+    <h2 id="reviews-heading">Customer Reviews</h2>
+
+    <div class="rating-summary">
+        {% if review_count %}
+            <p class="rating-number">
+                {{ average_rating|floatformat:1 }} / 5
+            </p>
+
+            <p>Average customer rating</p>
+
+            <p>
+                Based on {{ review_count }}
+                review{{ review_count|pluralize }}
+            </p>
+        {% else %}
+            <p>No reviews yet. Be the first to review this book!</p>
+        {% endif %}
+    </div>
+
+    {% if reviews %}
+        {% for review in reviews %}
+            <article class="review-card">
+                <h3>{{ review.buyer.username }}</h3>
+
+                <p class="review-rating">
+                    {{ review.rating }} / 5 stars
+                </p>
+
+                <p class="review-date">
+                    Reviewed on {{ review.created_at|date:"F j, Y" }}
+                </p>
+
+                <p class="review-comment">{{ review.comment }}</p>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p class="empty-reviews">
+            There are no customer reviews for this book yet.
+        </p>
+    {% endif %}
+
+    {% if not user.is_authenticated or user.profile.role == "BUYER" %}
+        <div class="review-form">
+            <h3>Write a Review</h3>
+
+            {% if can_review and review_form %}
+                <form
+                    method="post"
+                    action="{% url 'books:submit_review' book.id %}"
+                >
+                    {% csrf_token %}
+
+                    {% if review_form.non_field_errors %}
+                        <div class="field-errors" role="alert">
+                            {{ review_form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <label for="{{ review_form.rating.id_for_label }}">
+                        Your Rating
+                    </label>
+
+                    {{ review_form.rating }}
+
+                    {% if review_form.rating.errors %}
+                        <div class="field-errors" role="alert">
+                            {{ review_form.rating.errors }}
+                        </div>
+                    {% endif %}
+
+                    <label for="{{ review_form.comment.id_for_label }}">
+                        Your Review
+                    </label>
+
+                    {{ review_form.comment }}
+
+                    {% if review_form.comment.errors %}
+                        <div class="field-errors" role="alert">
+                            {{ review_form.comment.errors }}
+                        </div>
+                    {% endif %}
+
+                    <button class="detail-button" type="submit">
+                        Submit Review
+                    </button>
+                </form>
+
+            {% elif not user.is_authenticated %}
+                <p>
+                    <a href="{% url 'login' %}">Log in</a>
+                    to submit a review after purchasing this book.
+                </p>
+
+            {% elif has_reviewed %}
+                <p>You have already reviewed this book. Thank you!</p>
+
+            {% else %}
+                <p>You can review this book after purchasing it.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
