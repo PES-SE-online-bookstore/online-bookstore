@@ -1,4 +1,3 @@
-```yaml
 name: Django CI
 
 on:
@@ -64,4 +63,3 @@ jobs:
 
       - name: Run automated tests
         run: python manage.py test --verbosity 2
-```
