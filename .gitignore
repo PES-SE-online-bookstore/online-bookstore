@@ -219,3 +219,6 @@ __marimo__/
 
 # Collected Django static files
 staticfiles/
+
+# Generated QA evidence; publish reviewed reports separately.
+qa-results/

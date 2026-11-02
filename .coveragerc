@@ -1,0 +1,17 @@
+[run]
+branch = True
+source =
+    accounts
+    books
+    cart
+    orders
+    config
+omit =
+    */migrations/*
+    */tests.py
+    */tests_*.py
+    */test_*.py
+
+[report]
+show_missing = True
+precision = 2
