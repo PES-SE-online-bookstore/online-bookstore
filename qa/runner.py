@@ -7,6 +7,7 @@ import unittest
 from pathlib import Path
 
 from django.test.runner import DiscoverRunner
+from qa.catalog import describe_test
 
 
 class EvidenceResult(unittest.TextTestResult):
@@ -20,10 +21,12 @@ class EvidenceResult(unittest.TextTestResult):
         self.active[id(test)] = time.monotonic()
 
     def record(self, test, status, detail=""):
+        level, requirements, basis = describe_test(test)
         self.records.append({
             "test_id": test.id(),
-            "level": getattr(test, "qa_level", "Unclassified"),
-            "requirements": list(getattr(test, "qa_requirements", ())),
+            "level": level,
+            "requirements": requirements,
+            "mapping_basis": basis,
             "status": status,
             "detail": detail,
             "seconds": round(time.monotonic() - self.active.get(id(test), time.monotonic()), 6),

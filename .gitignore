@@ -222,3 +222,4 @@ staticfiles/
 
 # Generated QA evidence; publish reviewed reports separately.
 qa-results/
+.qa-venv/
