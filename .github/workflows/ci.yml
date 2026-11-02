@@ -64,8 +64,38 @@ jobs:
       - name: Collect static files
         run: python manage.py collectstatic --noinput
 
-      - name: Run automated tests
-        run: python manage.py test --verbosity 2
+      - name: Install coverage tool
+        run: python -m pip install coverage
+
+      - name: Run automated tests with branch coverage
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p qa-results
+          git rev-parse HEAD > qa-results/commit.txt
+          python --version > qa-results/python-version.txt
+          python -m pip freeze > qa-results/packages.txt
+          python -m coverage run \
+            --branch \
+            --source=accounts,books,cart,orders \
+            --omit="*/migrations/*,*/tests.py,*/test_*.py" \
+            manage.py test --verbosity 2 \
+            2>&1 | tee qa-results/tests.txt
+
+      - name: Generate coverage reports
+        if: ${{ always() }}
+        run: |
+          python -m coverage report -m > qa-results/coverage.txt
+          python -m coverage xml -o qa-results/coverage.xml
+          python -m coverage html -d qa-results/html
+
+      - name: Upload QA results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-results-${{ github.sha }}
+          path: qa-results/
+          if-no-files-found: warn
 
   health-check:
     name: Production Health Check
