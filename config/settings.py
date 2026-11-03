@@ -197,6 +197,10 @@ EMAIL_BACKEND = os.getenv(
     "DJANGO_EMAIL_BACKEND",
     "django.core.mail.backends.console.EmailBackend",
 )
+GMAIL_API_CLIENT_ID = os.getenv("GMAIL_API_CLIENT_ID", "")
+GMAIL_API_CLIENT_SECRET = os.getenv("GMAIL_API_CLIENT_SECRET", "")
+GMAIL_API_REFRESH_TOKEN = os.getenv("GMAIL_API_REFRESH_TOKEN", "")
+EMAIL_API_TIMEOUT = int(os.getenv("EMAIL_API_TIMEOUT", "10"))
 DEFAULT_FROM_EMAIL = os.getenv(
     "DEFAULT_FROM_EMAIL",
     "noreply@onlinebookstore.local",
