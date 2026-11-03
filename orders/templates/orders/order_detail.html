@@ -383,6 +383,5 @@
 {% endblock %}
 
 {% block extra_scripts %}
-{% get_static_prefix as STATIC_PREFIX %}
-<script src="{{ STATIC_PREFIX }}js/order-confirm.js" defer></script>
+<script src="{% static 'js/order-confirm.js' %}" defer></script>
 {% endblock %}

@@ -218,6 +218,5 @@
 {% endblock %}
 
 {% block extra_scripts %}
-{% get_static_prefix as STATIC_PREFIX %}
-<script src="{{ STATIC_PREFIX }}js/checkout.js" defer></script>
+<script src="{% static 'js/checkout.js' %}" defer></script>
 {% endblock %}
