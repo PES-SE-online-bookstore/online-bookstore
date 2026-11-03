@@ -230,7 +230,12 @@ def main():
     }
     source_files = [path for package in ("accounts", "books", "cart", "orders", "config", "qa")
                     for path in (ROOT / package).rglob("*.py")]
-    source_files += [ROOT / ".coveragerc", ROOT / "requirements.txt", ROOT / ".github/workflows/ci.yml"]
+    source_files += [
+        ROOT / ".coveragerc",
+        ROOT / "requirements.txt",
+        ROOT / "render.yaml",
+        ROOT / ".github/workflows/ci.yml",
+    ]
     (directory / "source-fingerprints.json").write_text(json.dumps({
         str(path.relative_to(ROOT)).replace("\\", "/"): hashlib.sha256(path.read_bytes()).hexdigest()
         for path in sorted(source_files)

@@ -62,6 +62,21 @@ The four Markdown files are editable report drafts, not final signed PDFs.
 System/browser, email delivery, performance/load, accessibility, monthly uptime,
 recovery and defect-retest evidence must be added before acceptance.
 
+## Deployed connection/security evidence
+
+After deploying the reviewed commit, run `python manage.py verify_postgres_tls`
+in the Render web service shell. It queries `pg_stat_ssl` for the current
+Django PostgreSQL connection and prints only the TLS version and cipher (never
+connection credentials). Save the command output with the QA run evidence.
+Production settings require PostgreSQL TLS with `sslmode=require`; this encrypts
+the connection but does not authenticate the database certificate hostname.
+
+For provider TLS, cite `config/email_backends.py`: both OAuth token refresh and
+Gmail API requests use a `requests.Session` with certificate verification
+enabled. Pair that implementation evidence with a successful delivery to a
+controlled mailbox. The automated test suite mocks HTTP and is not a live TLS
+handshake test.
+
 ## Classification and traceability
 
 Legacy database/request/service classes are reviewed in qa/catalog.py and are

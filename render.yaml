@@ -29,7 +29,10 @@ services:
         value: "True"
 
       - key: DJANGO_SECURE_HSTS_SECONDS
-        value: "0"
+        value: "3600"
+
+      - key: DJANGO_CSP_ENFORCE
+        value: "True"
 
       - key: DJANGO_CSRF_TRUSTED_ORIGINS
         value: https://online-bookstore.onrender.com
