@@ -1,16 +1,18 @@
 ﻿{% extends "base.html" %}
+{% load static %}
 
 {% block title %}Order #{{ order.id }} | Online Bookstore{% endblock %}
 {% block meta_description %}Review order details, shipment status, cancellation eligibility, return requests, and payment status.{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .order-container { max-width: 1000px; margin: 0 auto; }
     .page-heading { margin-bottom: 24px; }
     .section-card { margin-bottom: 22px; padding: 22px; background: #fff; border: 1px solid #d8dee8; border-radius: 8px; }
     .section-card h2 { margin-top: 0; color: #202938; }
     .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
     .detail-item { min-width: 0; padding: 12px; background: #f5f7fa; border-radius: 5px; overflow-wrap: anywhere; }
+    .return-request-details { margin-top: 16px; }
     .detail-label { display: block; margin-bottom: 6px; color: #475467; }
     .detail-value { font-weight: 700; }
     .status { display: inline-block; padding: 5px 9px; background: #edf2f7; color: #202938; border-radius: 4px; }
@@ -90,7 +92,7 @@
                 <button
                     type="submit"
                     class="action-button cancel-button"
-                    onclick="return confirm('Are you sure you want to cancel this order?');"
+                    data-confirm="Are you sure you want to cancel this order?"
                 >
                     Cancel Order
                 </button>
@@ -140,7 +142,7 @@
         {% endif %}
 
         {% if return_request %}
-            <div class="detail-item" style="margin-top: 16px;">
+            <div class="detail-item return-request-details">
                 <span class="detail-label">Return Request Status</span>
                 <span class="status">{{ return_request.get_status_display }}</span>
 
@@ -378,4 +380,9 @@
         Back to My Orders
     </a>
 </div>
+{% endblock %}
+
+{% block extra_scripts %}
+{% get_static_prefix as STATIC_PREFIX %}
+<script src="{{ STATIC_PREFIX }}js/order-confirm.js" defer></script>
 {% endblock %}

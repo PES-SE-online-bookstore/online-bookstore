@@ -3,7 +3,7 @@
 {% block title %}Delete Listing | Online Bookstore{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .delete-container {
         max-width: 650px;
         margin: 0 auto;

@@ -7,7 +7,7 @@ Browse the online bookstore catalogue. Search books by title, author, ISBN, or k
 {% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .catalogue-header {
         margin-bottom: 1.5rem;
     }

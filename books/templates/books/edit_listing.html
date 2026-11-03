@@ -3,7 +3,7 @@
 {% block title %}Edit Book Listing | Online Bookstore{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .edit-listing-container {
         max-width: 760px;
         margin: 0 auto;

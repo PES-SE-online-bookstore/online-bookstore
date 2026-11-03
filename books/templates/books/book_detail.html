@@ -7,7 +7,7 @@ View {{ book.title }} by {{ book.author }}, including its description, price, av
 {% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .back-link {
         display: inline-block;
         margin-bottom: 1.25rem;

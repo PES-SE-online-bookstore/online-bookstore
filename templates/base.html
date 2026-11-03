@@ -9,7 +9,7 @@
 
     <title>{% block title %}Online Bookstore{% endblock %}</title>
 
-    <style>
+    <style nonce="{{ request.csp_nonce }}">
         :root {
             color-scheme: light;
             font-family: Arial, Helvetica, sans-serif;

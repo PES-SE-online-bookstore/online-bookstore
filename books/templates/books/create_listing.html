@@ -3,7 +3,7 @@
 {% block title %}Create Book Listing | Online Bookstore{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .listing-form-container {
         max-width: 760px;
         margin: 0 auto;

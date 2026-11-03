@@ -5,6 +5,7 @@ Django settings for config project.
 import os
 from pathlib import Path
 
+from csp.constants import NONE, NONCE, SELF
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "csp.middleware.CSPMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -65,6 +67,36 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+# Begin in report-only mode. Set DJANGO_CSP_ENFORCE=True only after verifying
+# the report-only policy against the deployed catalogue and buyer workflows.
+_csp_policy = {
+    "DIRECTIVES": {
+        "default-src": [SELF],
+        "base-uri": [SELF],
+        "object-src": [NONE],
+        "frame-ancestors": [NONE],
+        "form-action": [SELF],
+        "script-src": [SELF, NONCE],
+        "script-src-attr": [NONE],
+        "style-src": [SELF, NONCE],
+        "style-src-attr": [NONE],
+        # Book cover URLs are seller-supplied HTTPS URLs; allow secure external
+        # image hosts while preventing insecure HTTP images.
+        "img-src": [SELF, "https:"],
+        "font-src": [SELF],
+        "connect-src": [SELF],
+    }
+}
+
+if os.getenv("DJANGO_CSP_ENFORCE", "False").lower() in (
+    "true",
+    "1",
+    "yes",
+):
+    CONTENT_SECURITY_POLICY = _csp_policy
+else:
+    CONTENT_SECURITY_POLICY_REPORT_ONLY = _csp_policy
 
 ROOT_URLCONF = "config.urls"
 

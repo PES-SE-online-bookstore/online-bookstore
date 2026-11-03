@@ -4,7 +4,7 @@
 {% block meta_description %}Review your previous bookstore orders and check their statuses.{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .orders-container { max-width: 1200px; margin: 0 auto; }
     .page-heading { margin-bottom: 24px; }
     .page-heading h1 { margin-top: 0; }

@@ -3,7 +3,7 @@
 {% block title %}My Listings | Online Bookstore{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .listings-page {
         max-width: 1000px;
         margin: 0 auto;

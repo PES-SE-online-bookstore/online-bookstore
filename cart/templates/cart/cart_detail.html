@@ -4,7 +4,7 @@
 {% block meta_description %}Review your shopping cart, update quantities, and proceed to checkout.{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .cart-container { max-width: 1000px; margin: 0 auto; }
     .page-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
     .page-heading h1 { margin: 0; }

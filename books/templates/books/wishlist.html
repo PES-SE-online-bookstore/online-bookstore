@@ -7,7 +7,7 @@ View and manage your saved books in the Online Bookstore wishlist.
 {% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ request.csp_nonce }}">
     .wishlist-page {
         max-width: 1100px;
         margin: 0 auto;
