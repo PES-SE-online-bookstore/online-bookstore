@@ -111,11 +111,28 @@ The original CI artifact is preserved locally under qa-results/baselines/AUTO-00
 with a SHA-256 manifest. It must not be edited. Its overall totals are usable as
 baseline evidence, but its original basename-only XML per-file tables are invalid.
 
-## Expected OBP-41 acceptance failures
+## OBP-41/42 acceptance findings and their disposition
 
-accounts/test_authentication.py contains literal SRS checks for email login and
-30-minute reset expiry. They may make CI red until the developer fixes the
-implementation or the requirements owner formally changes the requirement. No
-expectedFailure decorators or timeout overrides hide these findings. In-memory
-email tests prove generation/consumption, not real mailbox delivery. Browser and
+Run 20261103T063353040577Z recorded four SRS failures; the record is preserved
+in `qa/history/2026-11-03_run_29049b0.md` and must not be edited.
+
+- Email login (BOOK-F-002): requirement revised to username/password —
+  `qa/REQUIREMENT_REVISIONS.md` R-001 (approval pending). The test now asserts
+  the revised behaviour, including that an email identifier is rejected.
+- 30-minute reset expiry (BOOK-F-004), seller on book detail (BOOK-F-007) and
+  catalogue cover image (BOOK-F-005): fixed in application code; the original
+  assertions are unchanged.
+
+No expectedFailure decorators or timeout overrides are used. In-memory email
+tests prove generation/consumption, not real mailbox delivery. Browser and
 real-email results remain outstanding; do not close OBP-41 on these tests alone.
+
+## Test classification for email/TLS and security
+
+- `config.test_email_backend` (5 tests): Unit, BOOK-F-020; the HTTPS send test
+  also maps BOOK-SR-001. HTTP is mocked — no live handshake.
+- `accounts.test_database_tls` (3 tests): Unit, BOOK-SR-001. The connection is
+  mocked; deployed TLS needs `verify_postgres_tls` on Render.
+- `books.test_security` (15 tests, OBP-47): Integration, BOOK-SR-002/004/005,
+  BOOK-F-001/002/019. Not a penetration test.
+- Mock payments: see `qa/REQUIREMENT_REVISIONS.md` R-002.

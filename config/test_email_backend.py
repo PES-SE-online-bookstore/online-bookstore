@@ -7,6 +7,8 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.mail import EmailMessage
 from django.test import SimpleTestCase, override_settings
 
+from qa.catalog import requirement
+
 from config.email_backends import (
     GmailAPIEmailBackend,
     GmailAPIEmailBackendError,
@@ -14,6 +16,15 @@ from config.email_backends import (
 
 
 class GmailAPIEmailBackendTests(SimpleTestCase):
+    """Unit tests with HTTP mocked: no live Google handshake or mailbox delivery.
+
+    Live delivery evidence is the controlled-mailbox test recorded separately.
+    """
+
+    qa_level = "Unit"
+    qa_requirements = ("BOOK-F-020",)
+
+    @requirement("BOOK-F-020", "BOOK-SR-001")
     @override_settings(
         GMAIL_API_CLIENT_ID="client-id",
         GMAIL_API_CLIENT_SECRET="client-secret",

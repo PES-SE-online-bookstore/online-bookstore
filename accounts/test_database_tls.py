@@ -7,6 +7,15 @@ from django.test import SimpleTestCase
 
 
 class VerifyPostgresTlsCommandTests(SimpleTestCase):
+    """Unit tests of the verifier with the DB connection mocked.
+
+    They prove the command's reporting logic only. Actual Render PostgreSQL TLS
+    requires running `manage.py verify_postgres_tls` on the deployed service.
+    """
+
+    qa_level = "Unit"
+    qa_requirements = ("BOOK-SR-001",)
+
     @patch("accounts.management.commands.verify_postgres_tls.connection")
     def test_reports_tls_version_and_cipher(self, connection):
         connection.vendor = "postgresql"

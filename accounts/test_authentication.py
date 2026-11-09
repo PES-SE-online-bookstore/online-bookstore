@@ -151,15 +151,20 @@ class LoginIntegrationTests(AuthenticationFixture):
     def test_login_page_loads(self):
         self.assertEqual(self.client.get(reverse("login")).status_code, 200)
 
-    def test_current_username_login_establishes_session(self):
-        """Characterization of current username interface; not proof of email-login acceptance."""
+    def test_revised_username_and_password_establish_session(self):
+        """BOOK-F-002 (revision R-001, qa/REQUIREMENT_REVISIONS.md): username + password login."""
         self.login()
         self.assertEqual(int(self.client.session["_auth_user_id"]), self.user.pk)
 
-    def test_srs_email_and_password_establish_session(self):
-        """BOOK-F-002 requires email login; do not weaken to username login."""
+    def test_email_identifier_is_not_accepted_under_revised_requirement(self):
+        """Revision R-001 replaced the original SRS email-login criterion.
+
+        The original email-login assertion failed in run 20261103T063353040577Z
+        (qa/history/). This test keeps the revised behaviour explicit instead of
+        silently dropping the email-login check.
+        """
         self.login(username=self.user.email)
-        self.assertIn("_auth_user_id", self.client.session, "SRS email login did not establish a session")
+        self.assertNotIn("_auth_user_id", self.client.session)
 
     def test_wrong_password_does_not_establish_session(self):
         self.login(password=NEW_PASSWORD)

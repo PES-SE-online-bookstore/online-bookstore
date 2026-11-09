@@ -193,6 +193,10 @@ STORAGES = {
 }
 
 
+# BOOK-F-004: password reset links expire after 30 minutes.
+PASSWORD_RESET_TIMEOUT = 30 * 60
+
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

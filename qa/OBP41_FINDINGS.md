@@ -28,6 +28,17 @@ the environment-specific evidence. No real emails were sent.
 - Recommendation: developer configures expiry to match the agreed requirement.
   Retest valid-before-expiry, expired-after-boundary, tampering, reuse and successful reset.
 
+## Disposition (added 2026-11-09; findings above left as originally written)
+
+- Both findings were confirmed on PostgreSQL / Python 3.11.9 in run
+  20261103T063353040577Z (`qa/history/2026-11-03_run_29049b0.md`).
+- QA-AUTH-001: resolved by requirement revision R-001
+  (`qa/REQUIREMENT_REVISIONS.md`, approval pending), not by code. The email-login
+  test was replaced by revised-requirement tests; one asserts an email
+  identifier is rejected, so the change is visible rather than hidden.
+- QA-AUTH-002: fixed by `PASSWORD_RESET_TIMEOUT = 1800` in `config/settings.py`.
+  The +1801 s assertion is unchanged. Retest results must cite a new run ID.
+
 ## Remaining OBP-41 evidence
 
 - PostgreSQL CI execution and final source/deployment commit alignment.
