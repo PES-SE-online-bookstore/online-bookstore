@@ -1,0 +1,69 @@
+name: QA Isolated Recovery Rehearsal
+on:
+  workflow_dispatch:
+    inputs:
+      application_sha:
+        description: Full approved application commit SHA
+        required: true
+        default: afdb5b14bec00e3f36d287284bd03d3a116fe7f4
+      expected_database_name:
+        description: Approved source database name (not its connection URL)
+        required: true
+permissions:
+  contents: read
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: qa_recovery_test
+          POSTGRES_USER: qa_restore
+          POSTGRES_PASSWORD: disposable_ci_only
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd 'pg_isready -U qa_restore -d qa_recovery_test'
+          --health-interval 10s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.application_sha }}
+          path: application
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project dependencies and PostgreSQL 18 client
+        run: |
+          python -m pip install -r application/requirements.txt
+          sudo apt-get update
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl --fail --silent --show-error -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(. /etc/os-release && echo "$VERSION_CODENAME")-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-18
+          echo '/usr/lib/postgresql/18/bin' >> "$GITHUB_PATH"
+      - name: Private snapshot and isolated application recovery
+        working-directory: application
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          QA_EXPECTED_DB_NAME: ${{ inputs.expected_database_name }}
+          QA_APP_SHA: ${{ inputs.application_sha }}
+          QA_RESTORE_URL: postgresql://qa_restore:disposable_ci_only@127.0.0.1:5432/qa_recovery_test
+          QA_EVIDENCE_DIR: ${{ github.workspace }}/recovery-evidence
+          PYTHONPATH: ${{ github.workspace }}/harness/qa/nfr
+          DJANGO_SECRET_KEY: isolated-disposable-recovery-key-not-production
+          DJANGO_DEBUG: 'False'
+        run: python ../harness/qa/nfr/recovery_probe.py
+      - name: Upload sanitized recovery summary only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-recovery-summary-${{ github.run_id }}
+          path: recovery-evidence/recovery-result.json
+          if-no-files-found: warn
+          retention-days: 7
