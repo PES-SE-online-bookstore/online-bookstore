@@ -68,8 +68,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# Begin in report-only mode. Set DJANGO_CSP_ENFORCE=True only after verifying
-# the report-only policy against the deployed catalogue and buyer workflows.
+# Enforcement is selected by DJANGO_CSP_ENFORCE. Keep the production Blueprint
+# value aligned with Render so a Blueprint sync cannot revert enforcement.
 _csp_policy = {
     "DIRECTIVES": {
         "default-src": [SELF],
@@ -132,6 +132,11 @@ DATABASES = {
     }
 }
 
+# Require encrypted PostgreSQL connections in production. Local development and
+# CI may use a local PostgreSQL server without TLS, so retain its driver default.
+if not DEBUG:
+    DATABASES["default"]["OPTIONS"] = {"sslmode": "require"}
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -186,6 +191,10 @@ STORAGES = {
         ),
     },
 }
+
+
+# BOOK-F-004: password reset links expire after 30 minutes.
+PASSWORD_RESET_TIMEOUT = 30 * 60
 
 
 # Default primary key field type

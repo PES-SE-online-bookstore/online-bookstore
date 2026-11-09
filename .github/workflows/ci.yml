@@ -57,6 +57,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
+          python -m pip install coverage==7.13.4
+
+      - name: Check QA reporting tools
+        run: python -m qa.check_pipeline
 
       - name: Run Django system checks
         run: python manage.py check
@@ -64,8 +68,17 @@ jobs:
       - name: Collect static files
         run: python manage.py collectstatic --noinput
 
-      - name: Run automated tests
-        run: python manage.py test --verbosity 2
+      - name: Run automated tests and generate QA reports
+        run: python -m qa.run_validation
+
+      - name: Upload QA evidence and reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-results-${{ github.sha }}-${{ github.run_attempt }}
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30
 
   health-check:
     name: Production Health Check

@@ -302,6 +302,11 @@ View {{ book.title }} by {{ book.author }}, including its description, price, av
 
         <p class="author">By {{ book.author }}</p>
 
+        <p class="seller">
+            <strong>Sold by:</strong>
+            {{ book.seller.username|default:"Online Bookstore" }}
+        </p>
+
         {% if book.category %}
             <p class="category">{{ book.category }}</p>
         {% endif %}
