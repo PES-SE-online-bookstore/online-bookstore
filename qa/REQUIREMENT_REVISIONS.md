@@ -1,8 +1,7 @@
 # Requirement and scope revisions (against SRS v1.0, 06-08-2025)
 
-These record team decisions relayed to development on 2026-11-09 (OBP-47
-handoff). They take effect for QA once the requirements owner fills in the
-approval fields; development has not filled them in on anyone's behalf.
+These record decisions made by QA and relayed to development in the OBP-47
+handoff on 2026-11-09. Original SRS wording is quoted so the change is traceable.
 
 ## R-001 — BOOK-F-002 login identifier
 
@@ -21,7 +20,10 @@ approval fields; development has not filled them in on anyone's behalf.
   `LoginIntegrationTests.test_revised_username_and_password_establish_session`
   and `test_email_identifier_is_not_accepted_under_revised_requirement`, which
   keep the revised behaviour explicit.
-- **Approved by / date:** _pending — requirements owner_
+- **Status:** Decided
+- **Decision authority:** Abdullah Faruqui (QA Lead); Deepthi A E (Test Engineer)
+- **Decision date:** 2026-11-09
+- **Source:** OBP-47 handoff message from the QA Lead to development
 
 ## R-002 — BOOK-F-010 / BOOK-SR-003 payment scope
 
@@ -36,4 +38,7 @@ approval fields; development has not filled them in on anyone's behalf.
   `qa/catalog.py`). They do **not** verify gateway acceptance, tokenisation
   (BOOK-SR-003) or payment-confirmation email for BOOK-F-010. Those remain
   "Not verified" until a sandbox gateway is integrated.
-- **Approved by / date:** _pending — requirements owner_
+- **Status:** Decided
+- **Decision authority:** Abdullah Faruqui (QA Lead); Deepthi A E (Test Engineer)
+- **Decision date:** 2026-11-09
+- **Source:** OBP-47 handoff message from the QA Lead to development

@@ -117,7 +117,7 @@ Run 20261103T063353040577Z recorded four SRS failures; the record is preserved
 in `qa/history/2026-11-03_run_29049b0.md` and must not be edited.
 
 - Email login (BOOK-F-002): requirement revised to username/password —
-  `qa/REQUIREMENT_REVISIONS.md` R-001 (approval pending). The test now asserts
+  `qa/REQUIREMENT_REVISIONS.md` R-001 (decided 2026-11-09). The test now asserts
   the revised behaviour, including that an email identifier is rejected.
 - 30-minute reset expiry (BOOK-F-004), seller on book detail (BOOK-F-007) and
   catalogue cover image (BOOK-F-005): fixed in application code; the original

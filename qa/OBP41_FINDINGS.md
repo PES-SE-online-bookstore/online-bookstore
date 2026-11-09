@@ -33,7 +33,7 @@ the environment-specific evidence. No real emails were sent.
 - Both findings were confirmed on PostgreSQL / Python 3.11.9 in run
   20261103T063353040577Z (`qa/history/2026-11-03_run_29049b0.md`).
 - QA-AUTH-001: resolved by requirement revision R-001
-  (`qa/REQUIREMENT_REVISIONS.md`, approval pending), not by code. The email-login
+  (`qa/REQUIREMENT_REVISIONS.md`; decided 2026-11-09 by the QA Lead and Test Engineer), not by code. The email-login
   test was replaced by revised-requirement tests; one asserts an email
   identifier is rejected, so the change is visible rather than hidden.
 - QA-AUTH-002: fixed by `PASSWORD_RESET_TIMEOUT = 1800` in `config/settings.py`.
