@@ -10,6 +10,7 @@ import hmac
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import subprocess
 import sys
@@ -63,10 +64,62 @@ def fingerprint(connection, key):
         output[table] = {"rows": len(encoded), "hmac_sha256": digest.hexdigest()}
     return output
 
-def pg_command(arguments, connection_url):
-    env = dict(os.environ, PGDATABASE=connection_url, PGCONNECT_TIMEOUT="20")
-    completed = subprocess.run(arguments, env=env, capture_output=True, timeout=600)
-    require(completed.returncode == 0, arguments[0] + " failed; private diagnostics not published")
+def pg_error_category(stderr):
+    """Classify errors without publishing raw stderr, SQL rows or credentials."""
+    message = stderr.decode("utf-8", errors="replace").lower()
+    patterns = [
+        ("server version mismatch", "client_server_version_mismatch"),
+        ("unsupported version", "unsupported_archive_version"),
+        ("password authentication failed", "authentication_failed"),
+        ("no password supplied", "authentication_failed"),
+        ("no pg_hba.conf entry", "connection_access_policy"),
+        ("permission denied", "permission_denied"),
+        ("invalid snapshot", "snapshot_import_failed"),
+        ("snapshot identifier", "snapshot_import_failed"),
+        ("set transaction snapshot", "snapshot_import_failed"),
+        ("ssl", "tls_connection_failed"),
+        ("could not connect", "connection_failed"),
+        ("connection to server", "connection_failed"),
+        ("could not translate host name", "connection_failed"),
+        ("could not open output file", "backup_output_failed"),
+        ("no space left", "backup_output_failed"),
+        ("does not appear to be a valid archive", "invalid_backup_archive"),
+        ("duplicate key", "restored_data_constraint_failed"),
+        ("violates foreign key", "restored_data_constraint_failed"),
+    ]
+    return next((category for marker, category in patterns if marker in message),
+                "unclassified_postgresql_error")
+
+def pg_command(arguments, connection_url, report):
+    tool = arguments[0]
+    require(tool in {"pg_dump", "pg_restore"}, "Unexpected PostgreSQL tool")
+    if tool == "pg_restore":
+        target = urlparse(connection_url)
+        require(target.hostname in {"localhost", "127.0.0.1"} and target.path == "/qa_recovery_test",
+                "Refusing non-local PostgreSQL restore")
+    env = dict(os.environ, PGCONNECT_TIMEOUT="20")
+    env.pop("PGDATABASE", None)
+    entry = {"tool": tool}
+    report.setdefault("postgres_commands", []).append(entry)
+    try:
+        version = subprocess.run([tool, "--version"], capture_output=True, timeout=10)
+        match = re.search(rb"\(PostgreSQL\)\s+([0-9.]+)", version.stdout)
+        entry["client_version"] = match.group(1).decode() if match else "not identified"
+        # Explicit --dbname also selects pg_restore's direct database-restore mode.
+        # No shell is used, and the private command/connection URL is never logged.
+        command = [tool, "--dbname", connection_url, "--no-password", *arguments[1:]]
+        completed = subprocess.run(command, env=env, capture_output=True, timeout=600)
+        entry["exit_code"] = completed.returncode
+        if completed.returncode:
+            entry["error_category"] = pg_error_category(completed.stderr)
+            raise RuntimeError(tool + " failed (" + entry["error_category"] + "); raw diagnostics not published")
+        entry["status"] = "Passed"
+    except subprocess.TimeoutExpired:
+        entry["error_category"] = "command_timeout"
+        raise RuntimeError(tool + " timed out; private command not published") from None
+    except OSError:
+        entry["error_category"] = "tool_could_not_start"
+        raise RuntimeError(tool + " could not start") from None
 
 server = None
 try:
@@ -86,6 +139,7 @@ try:
             source.execute("SET TIME ZONE 'UTC'")
             source.execute("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY")
             verify_source_identity(source, os.environ["QA_EXPECTED_DB_NAME"], result)
+            result["source_postgresql_version_num"] = source.info.server_version
             snapshot = source.execute("SELECT pg_export_snapshot()").fetchone()[0]
             result["snapshot_at_utc"] = datetime.now(timezone.utc).isoformat()
             baseline = fingerprint(source, key)
@@ -94,14 +148,14 @@ try:
             require(baseline["orders_order"]["rows"] > 0 and baseline["orders_payment"]["rows"] > 0,
                     "No baseline orders/payments; cannot establish recovery integrity")
             pg_command(["pg_dump", "--format=custom", "--no-owner", "--no-acl",
-                        "--snapshot=" + snapshot, "--file=" + str(dump)], source_url)
+                        "--snapshot=" + snapshot, "--file=" + str(dump)], source_url, result)
             source.execute("ROLLBACK")
         require(dump.stat().st_size > 0, "Backup empty")
         result["backup_bytes"] = dump.stat().st_size
         result["backup_sha256"] = hashlib.sha256(dump.read_bytes()).hexdigest()
         result["restore_started_at_utc"] = datetime.now(timezone.utc).isoformat()
         restore_start = time.monotonic()
-        pg_command(["pg_restore", "--no-owner", "--no-acl", "--exit-on-error", str(dump)], target_url)
+        pg_command(["pg_restore", "--no-owner", "--no-acl", "--exit-on-error", str(dump)], target_url, result)
         with psycopg.connect(target_url, autocommit=True) as restored:
             restored.execute("SET TIME ZONE 'UTC'")
             actual = fingerprint(restored, key)
