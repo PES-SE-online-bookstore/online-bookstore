@@ -7,6 +7,7 @@ uploaded. Review and run in the proposed disposable GitHub Actions job first.
 """
 import hashlib
 import hmac
+import io
 import json
 import os
 from pathlib import Path
@@ -47,6 +48,35 @@ def verify_source_identity(connection, expected_name, report):
     report["source_identity_match"] = connected_name == expected_name
     require(report["source_identity_match"],
             "Source database identity does not match approved expected name")
+
+def prepare_static_assets(report):
+    """Perform the production static build before starting the recovered app."""
+    from django.core.management import call_command
+    from django.contrib.staticfiles.storage import staticfiles_storage
+    assets = ["js/checkout.js", "js/order-confirm.js"]
+    try:
+        call_command("collectstatic", interactive=False, verbosity=0,
+                     stdout=io.StringIO(), stderr=io.StringIO())
+        for asset in assets:
+            require(staticfiles_storage.exists(asset), "Recovered static asset missing")
+            staticfiles_storage.url(asset)  # Strict manifest lookup must succeed.
+    except Exception as error:
+        report["static_assets"] = {"status": "Failed", "error_type": type(error).__name__}
+        raise RuntimeError("Recovered app static build failed (" + type(error).__name__ + ")") from None
+    report["static_assets"] = {"status": "Passed", "checked": assets,
+                              "storage_backend": type(staticfiles_storage).__name__}
+
+def check_http_result(report, method, requested_path, response, expected_path=None):
+    """Record only method/path/status; never response bodies, cookies or queries."""
+    final_path = urlparse(response.url).path
+    expected_path = expected_path or requested_path
+    entry = {"method": method, "path": requested_path, "status": response.status_code,
+             "final_path": final_path, "expected_final_path": expected_path}
+    entry["passed"] = response.status_code == 200 and final_path == expected_path
+    report.setdefault("http_checks", []).append(entry)
+    require(entry["passed"], "Recovered " + method + " " + requested_path + " failed: HTTP "
+            + str(response.status_code) + "; final path " + final_path)
+    return response
 
 def fingerprint(connection, key):
     """HMAC complete rows, keeping PII/hash values only in process memory."""
@@ -167,8 +197,8 @@ try:
         sys.path.insert(0, str(Path.cwd()))
         import django
         django.setup()
+        prepare_static_assets(result)
         from django.contrib.auth import get_user_model
-        from django.test import Client
         from accounts.models import Profile
         from books.models import Book
         from orders.models import Order, Payment
@@ -204,22 +234,21 @@ try:
             result["restored_http_health"] = True
             def get(url):
                 response = session.get(origin + url, timeout=20)
-                require(response.status_code == 200, "Recovered GET failed")
-                return response
-            def post(url, values):
+                return check_http_result(result, "GET", url, response)
+            def post(url, values, expected_path):
                 values = dict(values, csrfmiddlewaretoken=session.cookies.get("csrftoken"))
                 response = session.post(origin + url, data=values, headers={"Referer": origin + url}, timeout=20)
-                require(response.status_code == 200, "Recovered POST failed")
-                return response
+                return check_http_result(result, "POST", url, response, expected_path)
             get("/accounts/login/")
-            post("/accounts/login/", {"username": user.username, "password": password})
+            post("/accounts/login/", {"username": user.username, "password": password}, "/books/")
             require("sessionid" in session.cookies, "Recovered login failed")
             get("/books/")
-            post(f"/cart/add/{book.pk}/", {"quantity": "1"})
+            post(f"/cart/add/{book.pk}/", {"quantity": "1"}, "/cart/")
             get("/cart/checkout/")
             post("/cart/checkout/", {"use_new_address": "yes", "payment_method": "TEST_CARD",
                  "full_name": "Recovery QA", "address_line_1": "Isolated test", "city": "Test",
-                 "state": "Test", "postal_code": "000000", "country": "Test", "phone_number": "0000000000"})
+                 "state": "Test", "postal_code": "000000", "country": "Test", "phone_number": "0000000000"},
+                 "/cart/checkout/")
             order = Order.objects.get(user=user)
             require(order.total_amount == 1 and order.items.get().quantity == 1, "Recovered checkout order incorrect")
             require(Payment.objects.filter(order=order, amount=1, status="PENDING").exists(), "Recovered mock payment incorrect")
