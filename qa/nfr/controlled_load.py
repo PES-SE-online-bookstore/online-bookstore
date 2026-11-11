@@ -14,6 +14,7 @@ import locust  # Monkey-patch before requests/socket imports.
 from locust import HttpUser, between, task
 from locust.env import Environment
 from locust.event import Events
+from locust.exception import StopUser
 import gevent
 import csv
 from datetime import datetime, timezone
@@ -61,6 +62,8 @@ class ReadOnlyBuyer(HttpUser):
             raise RuntimeError("Public test window not confirmed")
 
     def checked_get(self, path, name):
+        if not ACTIVE.get("accepting_requests", True):
+            raise StopUser()
         ACTIVE["requests_started"] += 1
         context = {"phase": ACTIVE["phase"], "started_users": self.environment.runner.user_count}
         with self.client.get(path, name=name, timeout=15, allow_redirects=False,
@@ -97,6 +100,25 @@ def stage_gate(stage, steady):
                       and row["p90_ms"] is not None and row["p90_ms"] <= 3000
                       for row in metrics.values()))
     return passed, metrics
+
+def drain_requests(stage, timeout=35, on_progress=None):
+    """Stop initiating requests, then account for work already started.
+
+    Locust user shutdown happens only after this drain. Counters are never
+    adjusted to hide missing requests; a timeout/mismatch remains inconclusive.
+    """
+    stage["accepting_requests"] = False
+    stage["phase"] = "draining"
+    stage["requests_inflight_at_cutoff"] = stage["requests_started"]-stage["requests_completed"]
+    started = time.monotonic()
+    deadline = started+timeout
+    while stage["requests_completed"] < stage["requests_started"] and time.monotonic() < deadline:
+        if on_progress:
+            on_progress()
+        gevent.sleep(.05)
+    stage["drain_elapsed_seconds"] = round(time.monotonic()-started,3)
+    stage["requests_unaccounted_after_drain"] = stage["requests_started"]-stage["requests_completed"]
+    stage["drain_status"] = "All started requests accounted" if stage["requests_unaccounted_after_drain"] == 0 else "Unreconciled requests remain"
 
 def save():
     payload = dict(REPORT)
@@ -151,7 +173,8 @@ def run_stage(users, rate, hold):
     global ACTIVE
     stage = {"users": users, "spawn_rate_per_second": rate, "steady_target_seconds": hold,
              "warmup_seconds_after_target_reached": 10, "started_at_utc": now(), "phase": "ramp",
-             "requests_started": 0, "requests_completed": 0, "max_actual_users": 0, "max_generator_cpu_percent": 0,
+             "requests_started": 0, "requests_completed": 0, "accepting_requests": True,
+             "max_actual_users": 0, "max_generator_cpu_percent": 0,
              "max_generator_rss_mb": 0, "_samples": [], "_steady_users": []}
     ACTIVE = stage
     REPORT["stages"].append(stage)
@@ -235,10 +258,11 @@ def run_stage(users, rate, hold):
                 stage["steady_complete"] = True
                 break
     finally:
+        drain_requests(stage, on_progress=save)
         stage["phase"] = "stopping"
         runner.quit()
         if stage["requests_started"] != stage["requests_completed"]:
-            stage["abort_reason"] = "Some started requests did not complete; results inconclusive"
+            stage.setdefault("abort_reason", "Some started requests did not complete; results inconclusive")
         if browser is not None:
             if browser.poll() is None:
                 browser.terminate()
@@ -269,6 +293,7 @@ def run_stage(users, rate, hold):
     return passed
 
 def check():
+    global ACTIVE
     assert correctness(200, HOST+"/books/", "<h1>Book Catalogue</h1>") is None
     assert correctness(503, HOST+"/books/", "<h1>Book Catalogue</h1>")
     assert correctness(200, HOST+"/accounts/login/", "<h1>Book Catalogue</h1>")
@@ -282,6 +307,24 @@ def check():
     bad=[(0,name,4000,False,"steady") for name in ["catalogue_http","search_http"] for _ in range(20)]
     assert not stage_gate(stage,bad)[0]
     assert p90([1,2,3,4,5,6,7,8,9,100]) == 9
+    pending = {"requests_started":2,"requests_completed":1}
+    gevent.spawn_later(.05, lambda: pending.update(requests_completed=2))
+    drain_requests(pending, timeout=.5)
+    assert pending["requests_unaccounted_after_drain"] == 0 and pending["drain_elapsed_seconds"] > 0
+    assert pending["requests_started"] == 2 and not pending["accepting_requests"]
+    missing = {"requests_started":2,"requests_completed":1}
+    drain_requests(missing,timeout=.05)
+    assert missing["requests_unaccounted_after_drain"] == 1
+    assert missing["requests_started"] == 2 and missing["requests_completed"] == 1
+    previous = ACTIVE
+    ACTIVE = {"accepting_requests":False,"requests_started":0}
+    try:
+        try: ReadOnlyBuyer.checked_get(None,"/books/","catalogue_http")
+        except StopUser: pass
+        else: raise AssertionError("A request was allowed after the cutoff")
+        assert ACTIVE["requests_started"] == 0
+    finally:
+        ACTIVE = previous
     print("Offline correctness/abort/incomplete-duration/latency gates Passed; zero network calls")
 
 def main():
