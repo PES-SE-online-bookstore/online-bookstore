@@ -193,6 +193,46 @@ STORAGES = {
 }
 
 
+# Catalogue query-result cache (OBP-48). In-process; caches database results
+# only, never rendered pages. 0 disables it. Default: 30 s in production,
+# off under DEBUG (local development and the test suite, whose cache tests
+# enable it explicitly).
+CATALOGUE_CACHE_SECONDS = int(
+    os.getenv("CATALOGUE_CACHE_SECONDS", "0" if DEBUG else "30")
+)
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "bookstore-default",
+    },
+    "catalogue": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "bookstore-catalogue",
+        "OPTIONS": {"MAX_ENTRIES": 500},
+    },
+}
+
+# Only the catalogue diagnostics logger is configured; other loggers keep
+# Python's default behaviour.
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "loggers": {
+        "books.catalogue": {
+            "handlers": ["console"],
+            "level": os.getenv(
+                "CATALOGUE_LOG_LEVEL", "WARNING" if DEBUG else "INFO"
+            ),
+            "propagate": False,
+        },
+    },
+}
+
+
 # BOOK-F-004: password reset links expire after 30 minutes.
 PASSWORD_RESET_TIMEOUT = 30 * 60
 

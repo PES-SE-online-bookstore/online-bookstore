@@ -1,5 +1,6 @@
 from django.contrib import admin, messages
 
+from . import catalogue_cache
 from .models import Book
 
 
@@ -97,6 +98,8 @@ class BookAdmin(admin.ModelAdmin):
     @admin.action(description="Deactivate selected book listings")
     def deactivate_listings(self, request, queryset):
         deactivated_count = queryset.update(is_available=False)
+        # QuerySet.update() bypasses post_save, so invalidate explicitly.
+        catalogue_cache.invalidate()
 
         self.message_user(
             request,
