@@ -1,0 +1,57 @@
+name: QA Controlled Browsing Load
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployed_commit:
+        description: Full commit currently live on Render (for evidence attribution)
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bookstore-public-load
+  cancel-in-progress: false
+
+jobs:
+  browsing-load:
+    name: Staged catalogue/search load and browser timing
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      QA_PUBLIC_LOAD_WINDOW_CONFIRMED: 'YES'
+      QA_PROJECT_ROOT: ${{ github.workspace }}
+      QA_LOAD_RUN_ID: LOAD-GHA-${{ github.run_id }}-${{ github.run_attempt }}
+      QA_LOAD_OUTPUT: ${{ github.workspace }}/qa-load-evidence
+      QA_REPORTED_DEPLOYED_SHA: ${{ inputs.deployed_commit }}
+      QA_LOAD_BROWSER_SCRIPT: ${{ github.workspace }}/qa/nfr/normal_load_browser.cjs
+      QA_NODE_MODULES: ${{ github.workspace }}/qa-load-tools/node_modules
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/qa-load-browsers
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated load and browser tooling
+        run: |
+          python -m pip install locust==2.47.0
+          npm install --prefix "$GITHUB_WORKSPACE/qa-load-tools" --no-save playwright@1.62.1
+          node "$GITHUB_WORKSPACE/qa-load-tools/node_modules/playwright/cli.js" install --with-deps chromium --only-shell
+          echo "QA_NODE_EXECUTABLE=$(command -v node)" >> "$GITHUB_ENV"
+      - name: Validate safety and response gates offline
+        run: python qa/nfr/controlled_load.py --check
+      - name: Run monitored staged browsing test
+        run: python qa/nfr/controlled_load.py --run
+      - name: Upload actual results including stopped or failed stages
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-load-summary-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ github.workspace }}/qa-load-evidence/
+          if-no-files-found: warn
+          retention-days: 7
