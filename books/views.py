@@ -1,17 +1,23 @@
+import logging
+import time
 from decimal import Decimal, InvalidOperation
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.db import transaction
+from django.db import connection, transaction
 from django.db.models import Avg, Q
 from django.db.models.deletion import ProtectedError
 from django.shortcuts import get_object_or_404, redirect, render
 
 from orders.models import Order, OrderItem
 
+from . import catalogue_cache
 from .forms import BookListingForm, ReviewForm
 from .models import Book, Review, WishlistItem
+
+
+catalogue_logger = logging.getLogger("books.catalogue")
 
 
 def book_catalogue(request):
@@ -88,21 +94,27 @@ def book_catalogue(request):
     # Sort results consistently before pagination.
     books = books.order_by("title", "id")
 
-    # Display at most 12 books per page.
-    paginator = Paginator(books, 12)
-    page_obj = paginator.get_page(request.GET.get("page"))
+    # Only validated filter values reach the cache key (never user/session).
+    filters = {
+        "q": " ".join(query.split()),
+        "category": category,
+        "min_price": "" if min_price is None else str(min_price),
+        "max_price": "" if max_price is None else str(max_price),
+    }
 
-    # Retrieve categories available in the approved catalogue.
-    categories = (
-        Book.objects.filter(
-            is_available=True,
-            approval_status=Book.ApprovalStatus.APPROVED,
+    started = time.perf_counter()
+    query_count = [0]
+
+    def count_queries(execute, sql, params, many, context):
+        query_count[0] += 1
+        return execute(sql, params, many, context)
+
+    with connection.execute_wrapper(count_queries):
+        paginator, page_obj, categories, cache_status = _catalogue_results(
+            books, filters, request.GET.get("page")
         )
-        .exclude(category="")
-        .values_list("category", flat=True)
-        .distinct()
-        .order_by("category")
-    )
+
+    data_ms = (time.perf_counter() - started) * 1000
 
     context = {
         "books": page_obj.object_list,
@@ -116,7 +128,83 @@ def book_catalogue(request):
         "price_error": price_error,
     }
 
-    return render(request, "books/catalogue.html", context)
+    response = render(request, "books/catalogue.html", context)
+    total_ms = (time.perf_counter() - started) * 1000
+
+    # Diagnostics (OBP-48): no cookies, headers, query text or user data.
+    response["X-Catalogue-Cache"] = cache_status
+    response["Server-Timing"] = (
+        f"data;dur={data_ms:.1f}, app;dur={total_ms:.1f}"
+    )
+    catalogue_logger.info(
+        "catalogue cache=%s queries=%d data_ms=%.1f app_ms=%.1f search=%s page=%s",
+        cache_status,
+        query_count[0],
+        data_ms,
+        total_ms,
+        "yes" if filters["q"] else "no",
+        page_obj.number,
+    )
+
+    return response
+
+
+def _approved_categories():
+    return list(
+        Book.objects.filter(
+            is_available=True,
+            approval_status=Book.ApprovalStatus.APPROVED,
+        )
+        .exclude(category="")
+        .values_list("category", flat=True)
+        .distinct()
+        .order_by("category")
+    )
+
+
+def _catalogue_results(books, filters, page_param):
+    """Return (paginator, page, categories, cache status) for the catalogue.
+
+    With the cache enabled, a full hit performs no database queries; a full
+    miss performs the same three queries as before (count, page, categories).
+    """
+    if not catalogue_cache.is_enabled():
+        paginator = Paginator(books, catalogue_cache.PAGE_SIZE)
+        page_obj = paginator.get_page(page_param)
+        page_obj.object_list = list(page_obj.object_list)
+        return paginator, page_obj, _approved_categories(), "BYPASS"
+
+    hit = True
+
+    count_key = catalogue_cache.make_key("count", **filters)
+    count = catalogue_cache.fetch(count_key)
+    if count is None:
+        hit = False
+        count = books.count()
+        catalogue_cache.store(count_key, count)
+
+    paginator = Paginator(books, catalogue_cache.PAGE_SIZE)
+    # Paginator.count is a cached_property; seed it so page-number
+    # validation does not query again.
+    paginator.__dict__["count"] = count
+    page_obj = paginator.get_page(page_param)
+
+    page_key = catalogue_cache.make_key("page", number=page_obj.number, **filters)
+    rows = catalogue_cache.fetch(page_key)
+    if rows is None:
+        hit = False
+        rows = list(page_obj.object_list)
+        catalogue_cache.store(page_key, rows)
+    page_obj.object_list = rows
+
+    categories_key = catalogue_cache.make_key("categories")
+    categories = catalogue_cache.fetch(categories_key)
+    if categories is None:
+        hit = False
+        categories = _approved_categories()
+        catalogue_cache.store(categories_key, categories)
+
+    return paginator, page_obj, categories, "HIT" if hit else "MISS"
 
 
 def book_detail(request, book_id):

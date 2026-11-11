@@ -11,7 +11,7 @@ services:
     plan: free
 
     buildCommand: "bash build.sh"
-    startCommand: "python manage.py migrate --noinput && gunicorn config.wsgi:application"
+    startCommand: "python manage.py migrate --noinput && python manage.py verify_postgres_tls && gunicorn config.wsgi:application"
 
     healthCheckPath: /health/
 
@@ -33,6 +33,9 @@ services:
 
       - key: DJANGO_CSP_ENFORCE
         value: "True"
+
+      - key: CATALOGUE_CACHE_SECONDS
+        value: "30"
 
       - key: DJANGO_CSRF_TRUSTED_ORIGINS
         value: https://online-bookstore.onrender.com
