@@ -31,7 +31,15 @@ from urllib.parse import urlparse
 HOST = "https://online-bookstore-10nn.onrender.com"
 RUN_ID = os.environ.get("QA_LOAD_RUN_ID", "LOAD-001")
 OUT = Path(os.environ.get("QA_LOAD_OUTPUT", PROJECT / "deliverables/06_NFR_and_Recovery/Runs" / RUN_ID)).resolve()
-PROFILES = [(1, 1, 60), (10, 1, 300), (50, 5, 120), (100, 10, 120), (250, 10, 120), (500, 10, 600)]
+PROFILE_NAME = os.environ.get("QA_LOAD_PROFILE", "full")
+PROFILE_OPTIONS = {
+    "full": [(1, 1, 60), (10, 1, 300), (50, 5, 120), (100, 10, 120), (250, 10, 120), (500, 10, 600)],
+    "targeted-100-250": [(100, 10, 120), (250, 10, 120)],
+}
+if PROFILE_NAME not in PROFILE_OPTIONS:
+    raise SystemExit("Unknown QA_LOAD_PROFILE")
+PROFILES = PROFILE_OPTIONS[PROFILE_NAME]
+WARMUP_SECONDS = 10
 ACTIVE = None
 REPORT = None
 WRITER = None
@@ -52,6 +60,59 @@ def correctness(status, url, text):
     if not re.search(r"<h1[^>]*>\s*Book Catalogue\s*</h1>", text, re.I):
         return "Expected catalogue heading missing"
     return None
+
+def response_diagnostics(response, client_ms):
+    """Allowlisted metadata only; never retain response bodies or cookies."""
+    headers = response.headers if response is not None else {}
+    cache = headers.get("X-Catalogue-Cache", "").strip().upper()
+    timings = {}
+    for metric in headers.get("Server-Timing", "").split(","):
+        parts = metric.strip().split(";")
+        if parts[0].strip() not in ("data", "app"):
+            continue
+        for part in parts[1:]:
+            key, separator, value = part.strip().partition("=")
+            if key == "dur" and separator:
+                try:
+                    duration = float(value.strip('"'))
+                    if math.isfinite(duration) and duration >= 0:
+                        timings[parts[0].strip()] = duration
+                except ValueError:
+                    pass
+    safe_headers = {}
+    for name in ["Server", "X-Render-Origin-Server", "Rndr-Id", "CF-Ray", "Retry-After"]:
+        value = headers.get(name)
+        if value is not None:
+            safe_headers[name.lower()] = re.sub(r"[^A-Za-z0-9 ._:/;=,+-]", "?", value[:180])
+    app = timings.get("app")
+    return {"cache_header_present": "X-Catalogue-Cache" in headers,
+            "cache_status": cache if cache in ("HIT", "MISS", "BYPASS") else "MISSING_OR_INVALID",
+            "server_timing_present": "Server-Timing" in headers,
+            "data_ms": timings.get("data"), "app_ms": app,
+            "client_minus_instrumented_app_ms": round(client_ms-app,3) if app is not None else None,
+            "safe_response_headers": safe_headers}
+
+def diagnostic_summary(records):
+    output = {}
+    for name in ["catalogue_http", "search_http"]:
+        matching = [r for r in records if r["endpoint"] == name]
+        successful = [r for r in matching if not r["failed"] and r["status"] == 200]
+        counts = {label:sum(r["cache_status"] == label for r in successful)
+                  for label in ["HIT", "MISS", "BYPASS", "MISSING_OR_INVALID"]}
+        marked = counts["HIT"] + counts["MISS"]
+        output[name] = {"attempts":len(matching), "successful_responses":len(successful),
+            "http_status_counts":{str(status):sum(r["status"] == status for r in matching)
+                                  for status in sorted({r["status"] for r in matching})},
+            "cache_status_counts_on_successful_responses":counts,
+            "hit_share_of_successful_responses":round(counts["HIT"]/len(successful),6) if successful else None,
+            "hit_share_of_hit_or_miss_responses":round(counts["HIT"]/marked,6) if marked else None,
+            "successful_responses_missing_required_diagnostics":sum(
+                r["cache_status"] not in ("HIT", "MISS") or r["data_ms"] is None or r["app_ms"] is None
+                for r in successful)}
+        for field in ["data_ms", "app_ms", "client_minus_instrumented_app_ms"]:
+            values = [r[field] for r in successful if r[field] is not None]
+            output[name][field] = {"samples":len(values), "p90":round(p90(values),3) if values else None}
+    return output
 
 class ReadOnlyBuyer(HttpUser):
     host = HOST
@@ -140,12 +201,22 @@ def observe(request_type, name, response_time, response_length, response=None,
     stage["_samples"].append((timestamp, name, response_time, failed, phase))
     stage["requests_completed"] += 1
     status = response.status_code if response is not None else 0
+    diagnostic = response_diagnostics(response, response_time)
+    entry = dict(diagnostic, endpoint=name, status=status, failed=failed, phase=phase)
+    stage["_diagnostics"].append(entry)
     WRITER.writerow([stage["users"], phase, now(), context.get("started_users"), request_type,
                      name, round(response_time, 3), status, failed,
-                     type(exception).__name__ if exception is not None else ""])
+                     type(exception).__name__ if exception is not None else "",
+                     diagnostic["cache_header_present"], diagnostic["cache_status"], diagnostic["server_timing_present"],
+                     diagnostic["data_ms"], diagnostic["app_ms"], diagnostic["client_minus_instrumented_app_ms"],
+                     json.dumps(diagnostic["safe_response_headers"],sort_keys=True)])
     if failed and not stage.get("abort_reason"):
         stage["abort_reason"] = f"HTTP/correctness failure at {name}; status {status}; {type(exception).__name__}"
-        stage["first_failure"] = {"endpoint": name, "status": status, "exception_type": type(exception).__name__}
+        stage["first_failure"] = dict(entry, exception_type=type(exception).__name__)
+    if (PROFILE_NAME == "targeted-100-250" and not failed and status == 200
+            and (diagnostic["cache_status"] not in ("HIT", "MISS")
+                 or diagnostic["data_ms"] is None or diagnostic["app_ms"] is None)):
+        stage.setdefault("abort_reason", "Required enabled-cache/timing diagnostics missing; targeted attribution inconclusive")
 
 def preflight():
     for endpoint in ["/health/", "/books/"]:
@@ -161,6 +232,12 @@ def preflight():
                 item["healthy"] = response.status_code == 200 and response.json().get("database") == "available"
             else:
                 item["healthy"] = correctness(response.status_code, response.url, response.text) is None
+                diagnostic = response_diagnostics(response, item["elapsed_ms"])
+                item["diagnostics"] = diagnostic
+                if PROFILE_NAME == "targeted-100-250":
+                    item["targeted_diagnostics_available"] = (diagnostic["cache_status"] in ("HIT", "MISS")
+                        and diagnostic["data_ms"] is not None and diagnostic["app_ms"] is not None)
+                    item["healthy"] = item["healthy"] and item["targeted_diagnostics_available"]
         except Exception as error:
             item.update(healthy=False, exception_type=type(error).__name__, elapsed_ms=round((time.monotonic()-started)*1000,3))
         REPORT["preflight"].append(item)
@@ -172,10 +249,10 @@ def preflight():
 def run_stage(users, rate, hold):
     global ACTIVE
     stage = {"users": users, "spawn_rate_per_second": rate, "steady_target_seconds": hold,
-             "warmup_seconds_after_target_reached": 10, "started_at_utc": now(), "phase": "ramp",
+             "warmup_seconds_after_target_reached": WARMUP_SECONDS, "started_at_utc": now(), "phase": "ramp",
              "requests_started": 0, "requests_completed": 0, "accepting_requests": True,
              "max_actual_users": 0, "max_generator_cpu_percent": 0,
-             "max_generator_rss_mb": 0, "_samples": [], "_steady_users": []}
+             "max_generator_rss_mb": 0, "_samples": [], "_steady_users": [], "_diagnostics": []}
     ACTIVE = stage
     REPORT["stages"].append(stage)
     environment = Environment(user_classes=[ReadOnlyBuyer], host=HOST, events=Events(), stop_timeout=17)
@@ -209,7 +286,7 @@ def run_stage(users, rate, hold):
                 target_reached = clock
                 stage["target_reached_at_utc"] = now()
                 stage["phase"] = "warmup"
-            if target_reached is not None and steady_start is None and clock-target_reached >= 10:
+            if target_reached is not None and steady_start is None and clock-target_reached >= WARMUP_SECONDS:
                 steady_start = clock
                 stage["phase"] = "steady"
                 stage["steady_started_at_utc"] = now()
@@ -284,6 +361,9 @@ def run_stage(users, rate, hold):
         passed, metrics = stage_gate(stage, steady)
         stage["steady_metrics"] = metrics
         stage["all_phase_metrics"] = aggregates(stage["_samples"])
+        stage["steady_diagnostics"] = diagnostic_summary([r for r in stage["_diagnostics"] if r["phase"] == "steady"])
+        stage["all_phase_diagnostics"] = diagnostic_summary(stage["_diagnostics"])
+        stage["failure_diagnostics"] = [r for r in stage["_diagnostics"] if r["failed"]]
         stage["steady_min_actual_users"] = min(stage["_steady_users"]) if stage["_steady_users"] else None
         stage["status"] = "Passed scoped browsing stage" if passed else "Stopped / target not demonstrated"
         stage["finished_at_utc"] = now()
@@ -307,6 +387,20 @@ def check():
     bad=[(0,name,4000,False,"steady") for name in ["catalogue_http","search_http"] for _ in range(20)]
     assert not stage_gate(stage,bad)[0]
     assert p90([1,2,3,4,5,6,7,8,9,100]) == 9
+    assert PROFILE_OPTIONS["targeted-100-250"] == [(100,10,120),(250,10,120)]
+    from types import SimpleNamespace
+    headers = requests.structures.CaseInsensitiveDict({"X-Catalogue-Cache":"HIT",
+        "Server-Timing":"data;dur=1.0, app;dur=2.0", "Server":"fixture", "Set-Cookie":"private"})
+    diagnostic = response_diagnostics(SimpleNamespace(headers=headers),12)
+    assert diagnostic["cache_status"] == "HIT" and diagnostic["app_ms"] == 2
+    assert diagnostic["client_minus_instrumented_app_ms"] == 10
+    assert diagnostic["safe_response_headers"] == {"server":"fixture"}
+    assert response_diagnostics(None,12)["app_ms"] is None
+    malformed = SimpleNamespace(headers={"Server-Timing":"app;dur=nan, data;dur=-1"})
+    assert response_diagnostics(malformed,12)["app_ms"] is None
+    summary = diagnostic_summary([dict(diagnostic,endpoint="catalogue_http",status=200,failed=False)])
+    assert summary["catalogue_http"]["hit_share_of_successful_responses"] == 1
+    assert summary["search_http"]["hit_share_of_successful_responses"] is None
     pending = {"requests_started":2,"requests_completed":1}
     gevent.spawn_later(.05, lambda: pending.update(requests_completed=2))
     drain_requests(pending, timeout=.5)
@@ -340,6 +434,7 @@ def main():
     if reported_sha and not re.fullmatch(r"[0-9a-fA-F]{40}", reported_sha):
         raise SystemExit("Reported deployed SHA must be a full 40-character commit")
     REPORT = {"run_id":RUN_ID, "started_at_utc":now(), "target":HOST,
+       "profile_name":PROFILE_NAME,
        "status":"Running", "locust_version":locust.__version__, "python":sys.version,
        "package_versions":{name:importlib.metadata.version(name) for name in ["locust","gevent","requests","psutil"]},
        "readiness":"User reports Render logs open and ready; permissions assumed per user instruction",
@@ -349,18 +444,22 @@ def main():
        "runtime_sha_verification":"Deployment SHA is operator supplied; the application does not expose a build identifier",
        "workload":"Anonymous catalogue/search HTML GET only; 3:2 random task weighting; 1-3s think time",
        "measurement":"HTTP request timing, not rendered browser page timing; independent sessions per virtual user",
-       "instrumentation_browser":"Up to one additional sequential browser may measure page loads during the 10-VU stage; report its traffic separately (10 VUs plus one measurement browser).",
+       "instrumentation_browser":"No browser in targeted-100-250 profile. Full profile may add one measurement browser during its ten-VU stage.",
+       "diagnostic_measurement":"Server-Timing app covers only the instrumented view interval. Client minus app includes network, proxy, queueing and other uninstrumented time; it is not isolated queue time. Header absence does not alone establish response origin.",
+       "diagnostic_hit_share_denominators":"Reported separately over all successful responses and over successful responses marked HIT or MISS. Failed-response metadata is retained separately.",
        "latency_gate":"p90 <=3000ms per browsing endpoint; comparison to one-user baseline will also be reported. This is an operational stop/acceptance threshold, not proof of every interpretation of no degradation.",
        "profiles":[{"users":u,"spawn_rate":r,"steady_seconds":s} for u,r,s in PROFILES],
        "stop_conditions":["Any HTTP/timeout/correctness error","Sustained p90>3000ms","Generator saturation","Operator STOP file"],
        "limitations":["No authenticated checkout workload","Not a full-system 500-user acceptance test",
-                       "Current public deployed SHA not exposed by app; last reviewed application baseline afdb5b14",
+                       "Current public deployed SHA not exposed by app; deployment SHA is operator supplied",
                        "Warmup/ramp excluded only from steady metrics; all requests retained in CSV",
                        "Generator resources are measured; Render resources/log observations come from operator"],
        "preflight":[], "stages":[]}
     CSV_FILE = (OUT / "requests.csv").open("w",newline="",encoding="utf-8")
     WRITER = csv.writer(CSV_FILE)
-    WRITER.writerow(["stage_users","phase","utc","active_users_at_request_start","method","endpoint","response_ms","status","failed","error_type"])
+    WRITER.writerow(["stage_users","phase","utc","active_users_at_request_start","method","endpoint","response_ms","status","failed","error_type",
+                     "cache_header_present","cache_status","server_timing_present","data_ms","app_ms",
+                     "client_minus_instrumented_app_ms","safe_response_headers"])
     try:
         save()
         if not preflight():
