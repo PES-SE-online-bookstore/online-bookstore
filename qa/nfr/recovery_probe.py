@@ -36,6 +36,17 @@ def require(condition, name):
     if not condition:
         raise RuntimeError(name)
 
+def verify_source_identity(connection, expected_name, report):
+    """Record only database names; keep the exact-match guard before pg_dump."""
+    connected_name = connection.execute("SELECT current_database()").fetchone()[0]
+    report["database_identity"] = {
+        "expected_name": expected_name,
+        "connected_name": connected_name,
+    }
+    report["source_identity_match"] = connected_name == expected_name
+    require(report["source_identity_match"],
+            "Source database identity does not match approved expected name")
+
 def fingerprint(connection, key):
     """HMAC complete rows, keeping PII/hash values only in process memory."""
     tables = connection.execute("SELECT tablename FROM pg_tables WHERE schemaname='public' ORDER BY tablename").fetchall()
@@ -74,9 +85,7 @@ try:
         with psycopg.connect(source_url, autocommit=True) as source:
             source.execute("SET TIME ZONE 'UTC'")
             source.execute("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY")
-            require(source.execute("SELECT current_database()").fetchone()[0] == os.environ["QA_EXPECTED_DB_NAME"],
-                    "Source database identity does not match approved expected name")
-            result["source_identity_match"] = True
+            verify_source_identity(source, os.environ["QA_EXPECTED_DB_NAME"], result)
             snapshot = source.execute("SELECT pg_export_snapshot()").fetchone()[0]
             result["snapshot_at_utc"] = datetime.now(timezone.utc).isoformat()
             baseline = fingerprint(source, key)
