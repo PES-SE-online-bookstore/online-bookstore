@@ -1,0 +1,220 @@
+{
+  "line_percent": 91.85,
+  "branch_percent": 84.01,
+  "lines_covered": 1183,
+  "lines_valid": 1288,
+  "branches_covered": 247,
+  "branches_valid": 294,
+  "files": [
+    {
+      "file": "accounts/__init__.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/admin.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/apps.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/forms.py",
+      "line_percent": 97.5,
+      "branch_percent": 90.0
+    },
+    {
+      "file": "accounts/models.py",
+      "line_percent": 89.47,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/urls.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/views.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/management/__init__.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/management/commands/__init__.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "accounts/management/commands/verify_postgres_tls.py",
+      "line_percent": 93.75,
+      "branch_percent": 83.33
+    },
+    {
+      "file": "books/__init__.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "books/admin.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "books/apps.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "books/catalogue_cache.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "books/forms.py",
+      "line_percent": 93.33,
+      "branch_percent": 78.57
+    },
+    {
+      "file": "books/models.py",
+      "line_percent": 95.45,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "books/signals.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "books/urls.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "books/views.py",
+      "line_percent": 88.35,
+      "branch_percent": 85.11
+    },
+    {
+      "file": "cart/__init__.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "cart/admin.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "cart/apps.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "cart/forms.py",
+      "line_percent": 90.62,
+      "branch_percent": 70.0
+    },
+    {
+      "file": "cart/models.py",
+      "line_percent": 93.33,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "cart/urls.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "cart/views.py",
+      "line_percent": 88.0,
+      "branch_percent": 80.43
+    },
+    {
+      "file": "config/__init__.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "config/asgi.py",
+      "line_percent": 0.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "config/email_backends.py",
+      "line_percent": 94.44,
+      "branch_percent": 83.33
+    },
+    {
+      "file": "config/health.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "config/settings.py",
+      "line_percent": 78.69,
+      "branch_percent": 50.0
+    },
+    {
+      "file": "config/urls.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "config/wsgi.py",
+      "line_percent": 0.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "orders/__init__.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "orders/admin.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "orders/apps.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "orders/email_notifications.py",
+      "line_percent": 88.0,
+      "branch_percent": 66.67
+    },
+    {
+      "file": "orders/models.py",
+      "line_percent": 95.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "orders/services.py",
+      "line_percent": 93.62,
+      "branch_percent": 83.33
+    },
+    {
+      "file": "orders/signals.py",
+      "line_percent": 88.37,
+      "branch_percent": 83.33
+    },
+    {
+      "file": "orders/urls.py",
+      "line_percent": 100.0,
+      "branch_percent": 100.0
+    },
+    {
+      "file": "orders/views.py",
+      "line_percent": 97.59,
+      "branch_percent": 100.0
+    }
+  ]
+}

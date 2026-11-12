@@ -92,6 +92,10 @@ This project uses Django 5.2, Python 3.11, and PostgreSQL. The production site i
 - [Software Requirements Specification](docs/online-bookstore_SRS.pdf)
 - [Software Architecture Document](docs/Online_Bookstore_SAD.pdf)
 - [Online Bookstore Test Plan](docs/Online_Bookstore_Test_Plan.pdf)
+- [Deviations from the SRS, SAD and Test Plan](docs/Deviations_from_SRS_SAD_TestPlan.md)
+- [Test Plan addendum (test-case table)](docs/Test_Plan_Addendum.md)
+- [Test reports: unit, system validation, code and branch coverage](docs/test-reports/)
+- [Documents index and status](docs/README.md)
 - [High Availability Testing Notes](OBP-30_High_Availability_Testing.txt)
 - [Project board](https://pes-1ug24-am311.atlassian.net/jira/software/c/projects/OBP/boards/68/backlog)
 

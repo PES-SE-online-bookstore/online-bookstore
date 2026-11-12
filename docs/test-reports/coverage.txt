@@ -1,0 +1,47 @@
+COMMAND: /opt/hostedtoolcache/Python/3.11.18/x64/bin/python -m coverage report -m
+Name                                                  Stmts   Miss Branch BrPart   Cover   Missing
+--------------------------------------------------------------------------------------------------
+accounts/__init__.py                                      0      0      0      0 100.00%
+accounts/admin.py                                        22      0      2      0 100.00%
+accounts/apps.py                                          4      0      0      0 100.00%
+accounts/forms.py                                        40      1     10      1  96.00%   77
+accounts/management/__init__.py                           0      0      0      0 100.00%
+accounts/management/commands/__init__.py                  0      0      0      0 100.00%
+accounts/management/commands/verify_postgres_tls.py      16      1      6      1  90.91%   23
+accounts/models.py                                       19      2      0      0  89.47%   25, 45
+accounts/urls.py                                          4      0      0      0 100.00%
+accounts/views.py                                        54      0     20      0 100.00%
+books/__init__.py                                         0      0      0      0 100.00%
+books/admin.py                                           43      0      8      0 100.00%
+books/apps.py                                             6      0      0      0 100.00%
+books/catalogue_cache.py                                 26      0      0      0 100.00%
+books/forms.py                                           45      3     14      3  89.83%   57, 65, 135
+books/models.py                                          44      2      0      0  95.45%   85, 116
+books/signals.py                                          8      0      0      0 100.00%
+books/urls.py                                             4      0      0      0 100.00%
+books/views.py                                          266     31     94     12  87.50%   71, 283, 329-355, 372-382, 392-393, 429-430, 451-452, 498-499, 541-542, 545-546, 568-569, 608-609, 623-625
+cart/__init__.py                                          0      0      0      0 100.00%
+cart/admin.py                                             1      0      0      0 100.00%
+cart/apps.py                                              4      0      0      0 100.00%
+cart/forms.py                                            32      3     10      3  85.71%   83, 93, 103
+cart/models.py                                           45      3      0      0  93.33%   31, 44, 86
+cart/urls.py                                              4      0      0      0 100.00%
+cart/views.py                                           150     18     46      7  86.22%   18, 22-23, 106-107, 114, 129-130, 150-151, 223-232, 239->245, 256-257, 302-303
+config/__init__.py                                        0      0      0      0 100.00%
+config/asgi.py                                            4      4      0      0   0.00%   10-16
+config/email_backends.py                                 54      3     12      2  92.42%   33, 70, 109
+config/health.py                                         15      0      0      0 100.00%
+config/settings.py                                       61     13     12      6  73.97%   22, 39, 41->46, 97, 138, 270-288
+config/urls.py                                            5      0      0      0 100.00%
+config/wsgi.py                                            4      4      0      0   0.00%   10-16
+orders/__init__.py                                        0      0      0      0 100.00%
+orders/admin.py                                          20      0      0      0 100.00%
+orders/apps.py                                            6      0      0      0 100.00%
+orders/email_notifications.py                            25      3      6      2  83.87%   46, 51-56
+orders/models.py                                         80      4      0      0  95.00%   59, 105, 156, 195
+orders/services.py                                       47      3     18      3  90.77%   72, 75, 78
+orders/signals.py                                        43      5     18      3  86.89%   36-37, 46, 47->exit, 87-88
+orders/urls.py                                            4      0      0      0 100.00%
+orders/views.py                                          83      2     18      0  98.02%   33-34
+--------------------------------------------------------------------------------------------------
+TOTAL                                                  1288    105    294     43  90.39%

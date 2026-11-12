@@ -1,0 +1,22 @@
+[run]
+branch = True
+relative_files = True
+source = .
+omit =
+    */migrations/*
+    */tests.py
+    */tests_*.py
+    */test_*.py
+    .qa-venv/*
+    .venv/*
+    qa-results/*
+
+[report]
+include =
+    accounts/*
+    books/*
+    cart/*
+    orders/*
+    config/*
+show_missing = True
+precision = 2

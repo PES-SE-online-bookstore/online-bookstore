@@ -1,0 +1,34 @@
+{
+  "run_id": "20261112T072332130989Z",
+  "started_utc": "2026-11-12T07:23:32.130978+00:00",
+  "commit": "f6d7d85eb6c93599c5e0bd05f6b6560aa1e88da3",
+  "tracked_changes": "",
+  "untracked_files": "",
+  "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+  "python": "3.11.18",
+  "labels": [
+    "Full Django discovery"
+  ],
+  "settings": "config.settings",
+  "github_run_id": "43174812573",
+  "github_run_attempt": "1",
+  "test_command": [
+    "/opt/hostedtoolcache/Python/3.11.18/x64/bin/python",
+    "-m",
+    "coverage",
+    "run",
+    "manage.py",
+    "test",
+    "--noinput",
+    "--verbosity",
+    "2",
+    "--testrunner=qa.runner.EvidenceRunner"
+  ],
+  "test_exit_code": 0,
+  "coverage_exit_codes": {
+    "text": 0,
+    "xml": 0,
+    "html": 0
+  },
+  "finished_utc": "2026-11-12T07:24:32.258466+00:00"
+}
