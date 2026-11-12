@@ -1,0 +1,14 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {configFromEnv,readable,safeTarget}=require('./accessibility_scan.cjs');
+for(const path of ['/cart/','/cart/checkout/','/orders/9/','/books/seller/listings/1/edit/','/admin/orders/order/9/change/'])assert(readable(path));
+for(const path of ['/cart/add/1/','/orders/9/cancel/','/admin/logout/','/books/seller/listings/1/delete/'])assert(!readable(path));
+const base={QA_REPORTED_DEPLOYED_SHA:'a'.repeat(40),QA_A11Y_BOOK_TITLE:'QA Test Book',QA_A11Y_ORDER_ID:'9',QA_A11Y_OUTPUT:'fixture',QA_PERF_USERNAME:'qa_perf_fixture',QA_PERF_PASSWORD:'fixture-private-password'};
+assert.equal(configFromEnv(base).host,'https://online-bookstore-10nn.onrender.com');
+assert.throws(()=>configFromEnv({...base,QA_A11Y_ORDER_ID:'../admin'}));
+assert.throws(()=>configFromEnv({...base,QA_PERF_PASSWORD:''}));
+const sanitized=safeTarget(['input[value="private-value"][data-email="a@example.com"]']);
+assert(!sanitized.selector.includes('private-value'));assert(!sanitized.selector.includes('example.com'));
+assert(sanitized.selector.startsWith('input'));
+assert.equal(sanitized.selector_sha256.length,64);
+console.log('Offline route/configuration/selector sanitization checks Passed; zero network requests');

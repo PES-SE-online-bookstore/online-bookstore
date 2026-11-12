@@ -1,0 +1,70 @@
+name: QA Authenticated Accessibility
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployed_commit:
+        description: Full SHA currently live on Render
+        type: string
+        required: true
+      book_title:
+        description: Exact visible QA catalogue title
+        type: string
+        required: true
+        default: QA Python Advanced
+      buyer_order_id:
+        description: Existing order belonging to the QA_PERF buyer (no new checkout)
+        type: string
+        required: true
+        default: '9'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bookstore-public-load
+  cancel-in-progress: false
+
+jobs:
+  accessibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      QA_REPORTED_DEPLOYED_SHA: ${{ inputs.deployed_commit }}
+      QA_A11Y_BOOK_TITLE: ${{ inputs.book_title }}
+      QA_A11Y_ORDER_ID: ${{ inputs.buyer_order_id }}
+      QA_A11Y_OUTPUT: ${{ github.workspace }}/qa-accessibility-evidence
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Configure isolated tooling paths
+        run: |
+          echo "QA_NODE_MODULES=$RUNNER_TEMP/qa-a11y/node_modules" >> "$GITHUB_ENV"
+          echo "PLAYWRIGHT_BROWSERS_PATH=$RUNNER_TEMP/qa-browsers" >> "$GITHUB_ENV"
+      - name: Install pinned accessibility tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/qa-a11y" --no-audit --no-fund playwright@1.62.1 @axe-core/playwright@4.11.3 axe-core@4.11.4
+          "$RUNNER_TEMP/qa-a11y/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Validate scanner syntax and read-only route guards offline
+        run: |
+          node --check qa/nfr/accessibility_scan.cjs
+          node qa/nfr/check_accessibility_guards.cjs
+      - name: Scan sampled public, buyer, seller and admin states sequentially
+        env:
+          QA_PERF_USERNAME: ${{ secrets.QA_PERF_USERNAME }}
+          QA_PERF_PASSWORD: ${{ secrets.QA_PERF_PASSWORD }}
+          QA_A11Y_SELLER_USERNAME: ${{ secrets.QA_A11Y_SELLER_USERNAME }}
+          QA_A11Y_SELLER_PASSWORD: ${{ secrets.QA_A11Y_SELLER_PASSWORD }}
+          QA_A11Y_ADMIN_USERNAME: ${{ secrets.QA_A11Y_ADMIN_USERNAME }}
+          QA_A11Y_ADMIN_PASSWORD: ${{ secrets.QA_A11Y_ADMIN_PASSWORD }}
+        run: node qa/nfr/accessibility_scan.cjs
+      - name: Preserve findings and incomplete scans
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-accessibility-summary-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ github.workspace }}/qa-accessibility-evidence/
+          if-no-files-found: warn
+          retention-days: 7
