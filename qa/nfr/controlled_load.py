@@ -35,6 +35,7 @@ PROFILE_NAME = os.environ.get("QA_LOAD_PROFILE", "full")
 PROFILE_OPTIONS = {
     "full": [(1, 1, 60), (10, 1, 300), (50, 5, 120), (100, 10, 120), (250, 10, 120), (500, 10, 600)],
     "targeted-100-250": [(100, 10, 120), (250, 10, 120)],
+    "checkout-normal-10": [(10, 1, 300)],
 }
 if PROFILE_NAME not in PROFILE_OPTIONS:
     raise SystemExit("Unknown QA_LOAD_PROFILE")
@@ -350,7 +351,10 @@ def run_stage(users, rate, hold):
             if browser_result.exists():
                 stage["measurement_browser"] = json.loads(browser_result.read_text(encoding="utf-8"))
                 summaries = stage["measurement_browser"].get("summaries", [])
-                if (stage["measurement_browser"].get("status") != "Passed declared normal-load browser sample"
+                if PROFILE_NAME == "checkout-normal-10":
+                    if not checkout_browser_passed(stage["measurement_browser"]):
+                        stage["abort_reason"] = "Completed-checkout browser measurement did not pass"
+                elif (stage["measurement_browser"].get("status") != "Passed declared normal-load browser sample"
                         or len(summaries) != 2
                         or not all(row.get("samples") == 20 and row.get("sample_target_met")
                                    and row.get("p90_load_ms", 1e9) <= 3000 for row in summaries)):
@@ -372,6 +376,23 @@ def run_stage(users, rate, hold):
         print(json.dumps({key: value for key,value in stage.items() if not key.startswith("_")}), flush=True)
     return passed
 
+
+def checkout_browser_passed(result):
+    """Require all completed transactions, exact gate and no hidden attempts."""
+    samples = result.get("samples", [])
+    values = [row.get("load_ms") for row in samples]
+    ids = [row.get("order_id") for row in samples]
+    return (result.get("status") == "Passed completed mock checkout sample"
+            and result.get("target_samples") == 20
+            and result.get("threshold_ms") == 5000
+            and result.get("submitted_attempts") == 20
+            and not result.get("errors") and len(samples) == 20
+            and all(row.get("correct") and row.get("request_dispatched") and row.get("normal_load_active_at_start")
+                    and row.get("normal_load_active_at_end") for row in samples)
+            and all(isinstance(value, (int, float)) and math.isfinite(value) and value > 0 for value in values)
+            and all(isinstance(value, int) and value > 0 for value in ids)
+            and len(set(ids)) == 20 and p90(values) <= 5000)
+
 def check():
     global ACTIVE
     assert correctness(200, HOST+"/books/", "<h1>Book Catalogue</h1>") is None
@@ -388,6 +409,16 @@ def check():
     assert not stage_gate(stage,bad)[0]
     assert p90([1,2,3,4,5,6,7,8,9,100]) == 9
     assert PROFILE_OPTIONS["targeted-100-250"] == [(100,10,120),(250,10,120)]
+    assert PROFILE_OPTIONS["checkout-normal-10"] == [(10,1,300)]
+    result = {"status":"Passed completed mock checkout sample", "target_samples":20,
+              "threshold_ms":5000,"submitted_attempts":20,"errors":[],
+              "samples":[{"load_ms":5000,"correct":True,"request_dispatched":True,"order_id":i+1,
+                          "normal_load_active_at_start":True,"normal_load_active_at_end":True} for i in range(20)]}
+    assert checkout_browser_passed(result)
+    assert not checkout_browser_passed(dict(result,submitted_attempts=21))
+    assert not checkout_browser_passed(dict(result,samples=result["samples"][:-1]))
+    result["samples"][0]["normal_load_active_at_end"] = False
+    assert not checkout_browser_passed(result)
     from types import SimpleNamespace
     headers = requests.structures.CaseInsensitiveDict({"X-Catalogue-Cache":"HIT",
         "Server-Timing":"data;dur=1.0, app;dur=2.0", "Server":"fixture", "Set-Cookie":"private"})
@@ -427,6 +458,8 @@ def main():
         check(); return
     if "--run" not in sys.argv or os.environ.get("QA_PUBLIC_LOAD_WINDOW_CONFIRMED") != "YES":
         raise SystemExit("Use --run only during the declared monitored test window")
+    if PROFILE_NAME == "checkout-normal-10" and not os.environ.get("QA_LOAD_BROWSER_SCRIPT"):
+        raise SystemExit("Checkout profile requires its measurement browser; no requests sent")
     if (OUT / "summary.json").exists():
         raise SystemExit("Run output exists; preserve results rather than overwrite")
     OUT.mkdir(parents=True,exist_ok=True)
@@ -444,13 +477,13 @@ def main():
        "runtime_sha_verification":"Deployment SHA is operator supplied; the application does not expose a build identifier",
        "workload":"Anonymous catalogue/search HTML GET only; 3:2 random task weighting; 1-3s think time",
        "measurement":"HTTP request timing, not rendered browser page timing; independent sessions per virtual user",
-       "instrumentation_browser":"No browser in targeted-100-250 profile. Full profile may add one measurement browser during its ten-VU stage.",
+       "instrumentation_browser":"One sequential authenticated checkout browser during checkout-normal-10; no browser in targeted-100-250. Full profile may add a read-only browser during ten VUs.",
        "diagnostic_measurement":"Server-Timing app covers only the instrumented view interval. Client minus app includes network, proxy, queueing and other uninstrumented time; it is not isolated queue time. Header absence does not alone establish response origin.",
        "diagnostic_hit_share_denominators":"Reported separately over all successful responses and over successful responses marked HIT or MISS. Failed-response metadata is retained separately.",
        "latency_gate":"p90 <=3000ms per browsing endpoint; comparison to one-user baseline will also be reported. This is an operational stop/acceptance threshold, not proof of every interpretation of no degradation.",
        "profiles":[{"users":u,"spawn_rate":r,"steady_seconds":s} for u,r,s in PROFILES],
        "stop_conditions":["Any HTTP/timeout/correctness error","Sustained p90>3000ms","Generator saturation","Operator STOP file"],
-       "limitations":["No authenticated checkout workload","Not a full-system 500-user acceptance test",
+       "limitations":["Authenticated mock checkout only in checkout-normal-10; browsing-only in other profiles","Not a full-system 500-user acceptance test",
                        "Current public deployed SHA not exposed by app; deployment SHA is operator supplied",
                        "Warmup/ramp excluded only from steady metrics; all requests retained in CSV",
                        "Generator resources are measured; Render resources/log observations come from operator"],
