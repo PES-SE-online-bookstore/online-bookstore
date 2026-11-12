@@ -2,7 +2,9 @@ name: Daily Database Backup
 
 on:
   schedule:
-    - cron: "30 2 * * *"
+    # Twelve-hour nominal spacing provides headroom below the 24-hour RPO.
+    # Actual successful snapshot ages must still be checked; cron is not proof.
+    - cron: "30 2,14 * * *"
 
   workflow_dispatch:
 
