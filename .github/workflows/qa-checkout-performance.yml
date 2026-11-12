@@ -1,0 +1,78 @@
+name: QA Completed Checkout Performance
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployed_commit:
+        description: Full commit currently live on Render (operator attribution)
+        type: string
+        required: true
+      expected_book_title:
+        description: Exact QA book title in the dedicated buyer's one-item cart
+        type: string
+        required: true
+      expected_unit_price:
+        description: Current unit price with two decimals, e.g. 1.00 (no currency symbol)
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bookstore-public-load
+  cancel-in-progress: false
+
+jobs:
+  checkout-normal-load:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      QA_PUBLIC_LOAD_WINDOW_CONFIRMED: 'YES'
+      QA_LOAD_PROFILE: checkout-normal-10
+      QA_PROJECT_ROOT: ${{ github.workspace }}
+      QA_LOAD_OUTPUT: ${{ github.workspace }}/qa-checkout-evidence
+      QA_LOAD_RUN_ID: CHECKOUT-GHA-${{ github.run_id }}-${{ github.run_attempt }}
+      QA_REPORTED_DEPLOYED_SHA: ${{ inputs.deployed_commit }}
+      QA_EXPECTED_BOOK: ${{ inputs.expected_book_title }}
+      QA_EXPECTED_UNIT_PRICE: ${{ inputs.expected_unit_price }}
+      QA_NODE_MODULES: ${{ runner.temp }}/qa-browser/node_modules
+      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/qa-browsers
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated pinned QA tooling
+        run: |
+          python -m pip install locust==2.47.0
+          npm install --prefix "$RUNNER_TEMP/qa-browser" --no-audit --no-fund playwright@1.62.1
+          "$RUNNER_TEMP/qa-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Validate controller and browser safeguards on localhost only
+        run: |
+          python qa/nfr/controlled_load.py --check
+          node qa/nfr/check_checkout_fixture.cjs
+      - name: Check dedicated account, one-item cart and synthetic address without placing orders
+        env:
+          QA_PERF_USERNAME: ${{ secrets.QA_PERF_USERNAME }}
+          QA_PERF_PASSWORD: ${{ secrets.QA_PERF_PASSWORD }}
+        run: node qa/nfr/checkout_performance.cjs --preflight
+      - name: Measure at most twenty mock checkouts during five minutes of normal browsing
+        env:
+          QA_PERF_USERNAME: ${{ secrets.QA_PERF_USERNAME }}
+          QA_PERF_PASSWORD: ${{ secrets.QA_PERF_PASSWORD }}
+        run: |
+          export QA_NODE_EXECUTABLE="$(command -v node)"
+          export QA_LOAD_BROWSER_SCRIPT="$GITHUB_WORKSPACE/qa/nfr/checkout_performance.cjs"
+          python qa/nfr/controlled_load.py --run
+      - name: Preserve results even if preparation or measurement fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-checkout-summary-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ github.workspace }}/qa-checkout-evidence/
+          if-no-files-found: warn
+          retention-days: 7
