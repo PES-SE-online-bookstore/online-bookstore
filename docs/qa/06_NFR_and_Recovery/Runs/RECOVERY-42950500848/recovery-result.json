@@ -1,0 +1,20 @@
+{
+  "status": "Failed",
+  "started_at_utc": "2026-11-11T03:07:02.233499+00:00",
+  "source_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "scope": "Disposable PostgreSQL restore and local matching-app recovery rehearsal",
+  "limitations": [
+    "Does not prove historical backup intervals or month availability",
+    "Timed boundary excludes runner provisioning and production Render redeployment",
+    "No external email or real payment verification in this isolated rehearsal"
+  ],
+  "database_identity": {
+    "expected_name": "online_bookstore_uav4",
+    "connected_name": "online_bookstore_uav4"
+  },
+  "source_identity_match": true,
+  "snapshot_at_utc": "2026-11-11T03:07:03.080000+00:00",
+  "failure": "pg_dump failed; private diagnostics not published",
+  "elapsed_seconds": 2.833,
+  "finished_at_utc": "2026-11-11T03:07:05.066596+00:00"
+}

@@ -1,0 +1,34 @@
+{
+  "decision_date": "2026-11-12",
+  "decision_source": "User instructions in this QA chat",
+  "capacity": {
+    "execution_scope": "Stop after existing tests through 250 users; no 500-user run planned",
+    "recorded_250_user_result": "Failed response-time threshold; retained unchanged",
+    "500_user_result": "Not tested",
+    "original_requirement": "BOOK-NF-002 original 500-user target retained for traceability, not claimed satisfied"
+  },
+  "monthly_availability": {
+    "result": "Not tested",
+    "execution_scope": "No full-month availability measurement in this project closeout",
+    "original_requirement": "BOOK-NF-003 original 99.5% monthly target retained, not claimed satisfied"
+  },
+  "checkout": {
+    "case": "OBP48-PERF-003",
+    "result": "Passed declared normal-load mock-checkout scenario",
+    "run": "43180348416",
+    "commit": "f6d7d85eb6c93599c5e0bd05f6b6560aa1e88da3",
+    "completed_orders": 20,
+    "p90_ms": 191.1,
+    "max_ms": 221.3
+  },
+  "remaining_sequence": [
+    "Authenticated accessibility automation",
+    "Applicable manual accessibility checks",
+    "Backup/recovery verification and findings",
+    "Defect retests and final CI",
+    "Workbook, traceability and four-report refresh",
+    "Selected deliverables validation and user publication"
+  ],
+  "jira_disposition": "OBP-48 In Progress until remaining scoped work and final evidence review complete; no all-requirements-Passed claim",
+  "publication": "No commit/push by agent; selected publication packet and aggregate counts await final refresh"
+}

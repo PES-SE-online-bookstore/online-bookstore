@@ -1,0 +1,431 @@
+{
+  "recorded_at_utc": "2026-11-09T09:40:34.241037+00:00",
+  "source_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "url": "http[local path omitted]",
+  "archive_sha256": "9e16efaa99bdcec153acfc53a9ad835687d824dde6fd348746285670debb2940",
+  "extracted_files": [
+    ".coveragerc",
+    ".github/workflows/ci.yml",
+    ".github/workflows/database-backup.yml",
+    "accounts/__init__.py",
+    "accounts/admin.py",
+    "accounts/apps.py",
+    "accounts/forms.py",
+    "accounts/management/__init__.py",
+    "accounts/management/commands/__init__.py",
+    "accounts/management/commands/verify_postgres_tls.py",
+    "accounts/migrations/0001_initial.py",
+    "accounts/migrations/0002_loginattempt.py",
+    "accounts/migrations/__init__.py",
+    "accounts/models.py",
+    "accounts/templates/accounts/login.html",
+    "accounts/templates/accounts/password_reset/password_reset_complete.html",
+    "accounts/templates/accounts/password_reset/password_reset_confirm.html",
+    "accounts/templates/accounts/password_reset/password_reset_done.html",
+    "accounts/templates/accounts/password_reset/password_reset_email.html",
+    "accounts/templates/accounts/password_reset/password_reset_form.html",
+    "accounts/templates/accounts/register.html",
+    "accounts/test_authentication.py",
+    "accounts/test_database_tls.py",
+    "accounts/tests.py",
+    "accounts/urls.py",
+    "accounts/views.py",
+    "books/__init__.py",
+    "books/admin.py",
+    "books/apps.py",
+    "books/forms.py",
+    "books/migrations/0001_initial.py",
+    "books/migrations/0002_book_category.py",
+    "books/migrations/0003_book_approval_status_book_seller.py",
+    "books/migrations/0004_review.py",
+    "books/migrations/0005_wishlistitem.py",
+    "books/migrations/__init__.py",
+    "books/models.py",
+    "books/templates/books/book_detail.html",
+    "books/templates/books/catalogue.html",
+    "books/templates/books/confirm_delete_listing.html",
+    "books/templates/books/create_listing.html",
+    "books/templates/books/edit_listing.html",
+    "books/templates/books/my_listings.html",
+    "books/templates/books/wishlist.html",
+    "books/test_catalogue_validation.py",
+    "books/test_rbac.py",
+    "books/test_security.py",
+    "books/tests.py",
+    "books/urls.py",
+    "books/views.py",
+    "cart/__init__.py",
+    "cart/admin.py",
+    "cart/apps.py",
+    "cart/forms.py",
+    "cart/migrations/0001_initial.py",
+    "cart/migrations/0002_shippingaddress.py",
+    "cart/migrations/__init__.py",
+    "cart/models.py",
+    "cart/templates/cart/cart_detail.html",
+    "cart/templates/cart/checkout.html",
+    "cart/tests.py",
+    "cart/urls.py",
+    "cart/views.py",
+    "config/__init__.py",
+    "config/asgi.py",
+    "config/email_backends.py",
+    "config/health.py",
+    "config/settings.py",
+    "config/test_email_backend.py",
+    "config/tests_health.py",
+    "config/urls.py",
+    "config/wsgi.py",
+    "manage.py",
+    "orders/__init__.py",
+    "orders/admin.py",
+    "orders/apps.py",
+    "orders/email_notifications.py",
+    "orders/migrations/0001_initial.py",
+    "orders/migrations/0002_order_delivered_at_returnrequest.py",
+    "orders/migrations/__init__.py",
+    "orders/models.py",
+    "orders/services.py",
+    "orders/signals.py",
+    "orders/templates/orders/order_detail.html",
+    "orders/templates/orders/order_history.html",
+    "orders/test_cancellation_return.py",
+    "orders/test_notifications.py",
+    "orders/test_tracking.py",
+    "orders/tests.py",
+    "orders/urls.py",
+    "orders/views.py",
+    "qa/__init__.py",
+    "qa/catalog.py",
+    "qa/check_pipeline.py",
+    "qa/run_validation.py",
+    "qa/runner.py",
+    "qa/settings_local.py",
+    "render.yaml",
+    "requirements.txt",
+    "static/js/checkout.js",
+    "static/js/order-confirm.js",
+    "templates/base.html",
+    "templates/partials/navigation.html"
+  ],
+  "matched_hosted_fingerprints": 79,
+  "comparison": [
+    {
+      "path": ".coveragerc",
+      "match": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "match": true
+    },
+    {
+      "path": "accounts/__init__.py",
+      "match": true
+    },
+    {
+      "path": "accounts/admin.py",
+      "match": true
+    },
+    {
+      "path": "accounts/apps.py",
+      "match": true
+    },
+    {
+      "path": "accounts/forms.py",
+      "match": true
+    },
+    {
+      "path": "accounts/management/__init__.py",
+      "match": true
+    },
+    {
+      "path": "accounts/management/commands/__init__.py",
+      "match": true
+    },
+    {
+      "path": "accounts/management/commands/verify_postgres_tls.py",
+      "match": true
+    },
+    {
+      "path": "accounts/migrations/0001_initial.py",
+      "match": true
+    },
+    {
+      "path": "accounts/migrations/0002_loginattempt.py",
+      "match": true
+    },
+    {
+      "path": "accounts/migrations/__init__.py",
+      "match": true
+    },
+    {
+      "path": "accounts/models.py",
+      "match": true
+    },
+    {
+      "path": "accounts/test_authentication.py",
+      "match": true
+    },
+    {
+      "path": "accounts/test_database_tls.py",
+      "match": true
+    },
+    {
+      "path": "accounts/tests.py",
+      "match": true
+    },
+    {
+      "path": "accounts/urls.py",
+      "match": true
+    },
+    {
+      "path": "accounts/views.py",
+      "match": true
+    },
+    {
+      "path": "books/__init__.py",
+      "match": true
+    },
+    {
+      "path": "books/admin.py",
+      "match": true
+    },
+    {
+      "path": "books/apps.py",
+      "match": true
+    },
+    {
+      "path": "books/forms.py",
+      "match": true
+    },
+    {
+      "path": "books/migrations/0001_initial.py",
+      "match": true
+    },
+    {
+      "path": "books/migrations/0002_book_category.py",
+      "match": true
+    },
+    {
+      "path": "books/migrations/0003_book_approval_status_book_seller.py",
+      "match": true
+    },
+    {
+      "path": "books/migrations/0004_review.py",
+      "match": true
+    },
+    {
+      "path": "books/migrations/0005_wishlistitem.py",
+      "match": true
+    },
+    {
+      "path": "books/migrations/__init__.py",
+      "match": true
+    },
+    {
+      "path": "books/models.py",
+      "match": true
+    },
+    {
+      "path": "books/test_catalogue_validation.py",
+      "match": true
+    },
+    {
+      "path": "books/test_rbac.py",
+      "match": true
+    },
+    {
+      "path": "books/test_security.py",
+      "match": true
+    },
+    {
+      "path": "books/tests.py",
+      "match": true
+    },
+    {
+      "path": "books/urls.py",
+      "match": true
+    },
+    {
+      "path": "books/views.py",
+      "match": true
+    },
+    {
+      "path": "cart/__init__.py",
+      "match": true
+    },
+    {
+      "path": "cart/admin.py",
+      "match": true
+    },
+    {
+      "path": "cart/apps.py",
+      "match": true
+    },
+    {
+      "path": "cart/forms.py",
+      "match": true
+    },
+    {
+      "path": "cart/migrations/0001_initial.py",
+      "match": true
+    },
+    {
+      "path": "cart/migrations/0002_shippingaddress.py",
+      "match": true
+    },
+    {
+      "path": "cart/migrations/__init__.py",
+      "match": true
+    },
+    {
+      "path": "cart/models.py",
+      "match": true
+    },
+    {
+      "path": "cart/tests.py",
+      "match": true
+    },
+    {
+      "path": "cart/urls.py",
+      "match": true
+    },
+    {
+      "path": "cart/views.py",
+      "match": true
+    },
+    {
+      "path": "config/__init__.py",
+      "match": true
+    },
+    {
+      "path": "config/asgi.py",
+      "match": true
+    },
+    {
+      "path": "config/email_backends.py",
+      "match": true
+    },
+    {
+      "path": "config/health.py",
+      "match": true
+    },
+    {
+      "path": "config/settings.py",
+      "match": true
+    },
+    {
+      "path": "config/test_email_backend.py",
+      "match": true
+    },
+    {
+      "path": "config/tests_health.py",
+      "match": true
+    },
+    {
+      "path": "config/urls.py",
+      "match": true
+    },
+    {
+      "path": "config/wsgi.py",
+      "match": true
+    },
+    {
+      "path": "orders/__init__.py",
+      "match": true
+    },
+    {
+      "path": "orders/admin.py",
+      "match": true
+    },
+    {
+      "path": "orders/apps.py",
+      "match": true
+    },
+    {
+      "path": "orders/email_notifications.py",
+      "match": true
+    },
+    {
+      "path": "orders/migrations/0001_initial.py",
+      "match": true
+    },
+    {
+      "path": "orders/migrations/0002_order_delivered_at_returnrequest.py",
+      "match": true
+    },
+    {
+      "path": "orders/migrations/__init__.py",
+      "match": true
+    },
+    {
+      "path": "orders/models.py",
+      "match": true
+    },
+    {
+      "path": "orders/services.py",
+      "match": true
+    },
+    {
+      "path": "orders/signals.py",
+      "match": true
+    },
+    {
+      "path": "orders/test_cancellation_return.py",
+      "match": true
+    },
+    {
+      "path": "orders/test_notifications.py",
+      "match": true
+    },
+    {
+      "path": "orders/test_tracking.py",
+      "match": true
+    },
+    {
+      "path": "orders/tests.py",
+      "match": true
+    },
+    {
+      "path": "orders/urls.py",
+      "match": true
+    },
+    {
+      "path": "orders/views.py",
+      "match": true
+    },
+    {
+      "path": "qa/__init__.py",
+      "match": true
+    },
+    {
+      "path": "qa/catalog.py",
+      "match": true
+    },
+    {
+      "path": "qa/check_pipeline.py",
+      "match": true
+    },
+    {
+      "path": "qa/run_validation.py",
+      "match": true
+    },
+    {
+      "path": "qa/runner.py",
+      "match": true
+    },
+    {
+      "path": "qa/settings_local.py",
+      "match": true
+    },
+    {
+      "path": "render.yaml",
+      "match": true
+    },
+    {
+      "path": "requirements.txt",
+      "match": true
+    }
+  ],
+  "source_executed": false
+}

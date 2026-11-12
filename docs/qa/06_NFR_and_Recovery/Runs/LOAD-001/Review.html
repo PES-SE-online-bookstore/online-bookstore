@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Review</title><style>body{font:16px/1.55 Segoe UI,Arial,sans-serif;max-width:1150px;margin:40px auto;padding:0 26px;color:#182334}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:32px}a{color:#1557a0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #d7dee7;padding:9px;text-align:left;vertical-align:top}th{background:#eaf0f7}tr:nth-child(even){background:#f7f9fc}code,pre{font-family:Consolas,monospace}pre{padding:14px;background:#f0f3f7;white-space:pre-wrap;overflow-wrap:anywhere}li{margin-bottom:7px}p{overflow-wrap:anywhere}.status{color:#754400} @media print{body{margin:10mm;font-size:11pt}a{color:inherit}pre,table{font-size:9pt}}</style><body><h1>LOAD-001 local browsing smoke — stopped</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>11 November 2026. Readiness checks returned HTTP 200. The monitored one-user stage ran 04:30:10–04:31:22 UTC (10:00:10–10:01:22 IST), including ramp/warm-up and a 60-second steady sample. The operator reported no Render errors or restarts.</p>
+<table><thead><tr><th>Measurement</th><th>Catalogue</th><th>Search</th></tr></thead><tbody>
+<tr><td>Steady requests</td><td>7</td><td>6</td></tr>
+<tr><td>Steady p90 HTTP response</td><td>3.731 s</td><td>4.191 s</td></tr>
+<tr><td>Within 3 seconds</td><td>6/7</td><td>3/6</td></tr>
+<tr><td>HTTP errors</td><td>0</td><td>0</td></tr>
+</tbody></table>
+<p>All fourteen load requests (including ramp/warm-up) returned HTTP 200. The original timing gate was not met, so no 10/50/100/250/500-user stage ran. Peak generator CPU was 3.1%, memory 64.72 MiB; generator saturation was not observed. These results do not demonstrate failure at 500 users or establish full normal-load acceptance.</p>
+<h2>Independent low-rate diagnostics after stopping</h2>
+<p>Five measured browser navigations per endpoint gave p90 2.254s catalogue and 2.563s search, all below 3s. This was one browser after the load run, not a browser under 10 VUs.</p>
+<p>Six native curl GETs returned HTTP 200. Cumulative DNS/TCP/TLS setup completion was 2.321–4.718s; TLS handshake alone (time_appconnect minus time_connect) was 1.329–2.963s. Curl was HTTP/1.1, used fresh processes, and did not reproduce the browser&#x27;s connection/cache behavior. Those differences and sampling times prevent attributing the full delay to app code. A different generator network path is needed before drawing a server-capacity conclusion.</p>
+<p>The failed gate and all raw measurements remain preserved. No threshold was relaxed. The original local process returned exit code 0 despite its Stopped summary; the future generator now propagates a nonzero result for failed/stopped gates and drains all started requests. No raw response bodies, cookies or credentials are recorded.</p>
+<p>Next execution is the prepared QA Controlled Browsing Load workflow on a GitHub-hosted Ubuntu runner, against the same Render target. It retains the same 3-second browsing gate, request correctness checks, 1–3s think time, staged user counts, stop controls and full raw evidence. It includes a browser during the 10-VU stage. This browsing profile does not cover authenticated checkout or whole-system capacity by itself.</p>
+<p>BOOK-NF-001 remains partial; BOOK-NF-002 remains unexecuted at 500. The case workbook&#x27;s seven full NFR follow-ups remain Not run. The successful recovery rehearsal is unaffected.</p></body></html>

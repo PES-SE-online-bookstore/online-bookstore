@@ -1,0 +1,197 @@
+{
+  "status": "Passed scoped recovery rehearsal",
+  "started_at_utc": "2026-11-11T03:29:45.962570+00:00",
+  "source_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "scope": "Disposable PostgreSQL restore and local matching-app recovery rehearsal",
+  "limitations": [
+    "Does not prove historical backup intervals or month availability",
+    "Timed boundary excludes runner provisioning and production Render redeployment",
+    "No external email or real payment verification in this isolated rehearsal"
+  ],
+  "database_identity": {
+    "expected_name": "online_bookstore_uav4",
+    "connected_name": "online_bookstore_uav4"
+  },
+  "source_identity_match": true,
+  "source_postgresql_version_num": 180006,
+  "snapshot_at_utc": "2026-11-11T03:29:46.713522+00:00",
+  "postgres_commands": [
+    {
+      "tool": "pg_dump",
+      "client_version": "18.6",
+      "exit_code": 0,
+      "status": "Passed"
+    },
+    {
+      "tool": "pg_restore",
+      "client_version": "18.6",
+      "exit_code": 0,
+      "status": "Passed"
+    }
+  ],
+  "backup_bytes": 77481,
+  "backup_sha256": "c60c52c1cdde5195bd21f33525b5c9015ca7347d04bfaa00b02dfc1cbf724d90",
+  "restore_started_at_utc": "2026-11-11T03:29:55.428388+00:00",
+  "table_comparison": {
+    "accounts_loginattempt": {
+      "rows": 0,
+      "exact_match": true
+    },
+    "accounts_profile": {
+      "rows": 4,
+      "exact_match": true
+    },
+    "auth_group": {
+      "rows": 0,
+      "exact_match": true
+    },
+    "auth_group_permissions": {
+      "rows": 0,
+      "exact_match": true
+    },
+    "auth_permission": {
+      "rows": 72,
+      "exact_match": true
+    },
+    "auth_user": {
+      "rows": 5,
+      "exact_match": true
+    },
+    "auth_user_groups": {
+      "rows": 0,
+      "exact_match": true
+    },
+    "auth_user_user_permissions": {
+      "rows": 0,
+      "exact_match": true
+    },
+    "books_book": {
+      "rows": 3,
+      "exact_match": true
+    },
+    "books_review": {
+      "rows": 1,
+      "exact_match": true
+    },
+    "books_wishlistitem": {
+      "rows": 0,
+      "exact_match": true
+    },
+    "cart_cart": {
+      "rows": 2,
+      "exact_match": true
+    },
+    "cart_cartitem": {
+      "rows": 2,
+      "exact_match": true
+    },
+    "cart_shippingaddress": {
+      "rows": 2,
+      "exact_match": true
+    },
+    "django_admin_log": {
+      "rows": 20,
+      "exact_match": true
+    },
+    "django_content_type": {
+      "rows": 18,
+      "exact_match": true
+    },
+    "django_migrations": {
+      "rows": 29,
+      "exact_match": true
+    },
+    "django_session": {
+      "rows": 5,
+      "exact_match": true
+    },
+    "orders_order": {
+      "rows": 6,
+      "exact_match": true
+    },
+    "orders_orderitem": {
+      "rows": 6,
+      "exact_match": true
+    },
+    "orders_payment": {
+      "rows": 6,
+      "exact_match": true
+    },
+    "orders_returnrequest": {
+      "rows": 1,
+      "exact_match": true
+    }
+  },
+  "snapshot_integrity_match": true,
+  "static_assets": {
+    "status": "Passed",
+    "checked": [
+      "js/checkout.js",
+      "js/order-confirm.js"
+    ],
+    "storage_backend": "ConfiguredStorage"
+  },
+  "restored_http_health": true,
+  "http_checks": [
+    {
+      "method": "GET",
+      "path": "/accounts/login/",
+      "status": 200,
+      "final_path": "/accounts/login/",
+      "expected_final_path": "/accounts/login/",
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/accounts/login/",
+      "status": 200,
+      "final_path": "/books/",
+      "expected_final_path": "/books/",
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/books/",
+      "status": 200,
+      "final_path": "/books/",
+      "expected_final_path": "/books/",
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/cart/add/5/",
+      "status": 200,
+      "final_path": "/cart/",
+      "expected_final_path": "/cart/",
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/cart/checkout/",
+      "status": 200,
+      "final_path": "/cart/checkout/",
+      "expected_final_path": "/cart/checkout/",
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/cart/checkout/",
+      "status": 200,
+      "final_path": "/cart/checkout/",
+      "expected_final_path": "/cart/checkout/",
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/orders/8/",
+      "status": 200,
+      "final_path": "/orders/8/",
+      "expected_final_path": "/orders/8/",
+      "passed": true
+    }
+  ],
+  "recovered_buyer_login_cart_mock_checkout_history": true,
+  "rehearsal_restore_to_usable_seconds": 2.371,
+  "elapsed_seconds": 11.841,
+  "finished_at_utc": "2026-11-11T03:29:57.803159+00:00"
+}

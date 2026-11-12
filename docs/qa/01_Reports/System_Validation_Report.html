@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>System_Validation_Report</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui}table{display:block;overflow:auto;border-collapse:collapse}td,th{border:1px solid #ccd4dc;padding:9px;text-align:left;vertical-align:top;overflow-wrap:anywhere}pre{white-space:pre-wrap}</style><main><h1>System Validation Report</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>Final automated source: <code>92247d31739eed30e0d769865869869b384a2ba6</code>. <a href="https://github.com/PES-SE-online-bookstore/online-bookstore/actions/runs/43241415099">CI run</a>. Historical manual and deployed checks retain the distinct builds/dates shown in their evidence.</p>
+<p>Status: <strong>QA execution completed for the revised scope, with findings and untested/unverified targets retained.</strong></p>
+<h2>Execution totals</h2>
+<table><thead><tr><th>Population</th><th>Result</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Final automated suite</td><td>294 Passed: 18 Unit / 276 Integration</td><td>Source 92247d31739eed30e0d769865869869b384a2ba6</td></tr>
+<tr><td>Case register</td><td>373 rows: 368 Passed / 2 Failed / 3 Not run</td><td>Distinct case definitions; manual subchecks and repeated runs are not added as new case totals</td></tr>
+<tr><td>Historical system/operational checkpoints</td><td>70 Passed across dates/builds</td><td>64 user manual/tool-assisted, 4 automated public observations, 2 workflow checkpoints</td></tr>
+<tr><td>Later manual accessibility components</td><td>24 keyboard/zoom/reflow passes plus form/contrast/table reports</td><td>Components of the scoped assessment; not 24 extra independent case-register rows</td></tr>
+<tr><td>Mapped requirements</td><td>31 reviewed; 20 functional requirements</td><td>At least 10 mapped case entries per functional requirement; mapping count is not proof that every criterion Passed</td></tr>
+</tbody></table>
+<h2>Work items</h2>
+<table><thead><tr><th>Item</th><th>Scope</th><th>Execution status</th><th>What was tested / limit</th></tr></thead><tbody>
+<tr><td>OBP-41</td><td>Authentication/account management</td><td>Scoped execution complete</td><td>Registration/login/logout/protected access, lockout/recovery, reset expiry and real reset mail. Username/session revision retained.</td></tr>
+<tr><td>OBP-42</td><td>Catalogue/search</td><td>Scoped execution complete</td><td>Catalogue/search/filter/pagination/detail samples; seller/cover fixes; cache integration tests and separate load evidence.</td></tr>
+<tr><td>OBP-43</td><td>Cart/checkout</td><td>Scoped execution complete</td><td>Cart and mock checkout functional checks; twenty completed checkouts passed normal-load timing. No real gateway payment claimed.</td></tr>
+<tr><td>OBP-44</td><td>Orders/tracking</td><td>Scoped execution complete</td><td>Order history/details, state tracking, cancellation and return samples; mock-order scope retained.</td></tr>
+<tr><td>OBP-45</td><td>Seller/admin management</td><td>Scoped execution complete</td><td>Listing/approval/admin scenarios and role restrictions; seller decision notifications remain unimplemented per D-07.</td></tr>
+<tr><td>OBP-46</td><td>Reviews/wishlist/notifications</td><td>Scoped execution complete</td><td>Review/wishlist samples; order-status emails received with correct details. Paid-purchase-only review enforcement not established.</td></tr>
+<tr><td>OBP-47</td><td>Security</td><td>Scoped execution complete with observations</td><td>Password hashing, sessions, role/protected access, TLS/CSP/HSTS and recorded scans. Broad HTTPS image-source CSP observation and D-08 request-throttling gap retained.</td></tr>
+<tr><td>OBP-48</td><td>Non-functional requirements</td><td>Scoped execution complete with findings/untested targets</td><td>250-user timing Failed; breadcrumb unresolved; 500/monthly Not tested; full production RPO/RTO unverified.</td></tr>
+<tr><td>OBP-49</td><td>End-to-end/regression</td><td>Hybrid execution complete</td><td>Four final historical browser checkpoints plus final 294-test regression. No fresh all-feature manual run on final SHA claimed.</td></tr>
+</tbody></table>
+<h2>Non-functional outcomes</h2>
+<table><thead><tr><th>Requirement</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>BOOK-NF-001</td><td>Passed declared normal-load samples: historical catalogue/search p90 0.136/0.142 s; checkout run 43180348416 p90 0.1911 s, 20/20 correct during 10 browsing VUs. Distinct builds/boundaries retained.</td></tr>
+<tr><td>BOOK-NF-002</td><td>250-user timing Failed; 100-user sample Passed; 500 users Not tested per revised execution scope. Original 500 target not demonstrated.</td></tr>
+<tr><td>BOOK-NF-003</td><td>Monthly availability Not tested per user scope decision; no 99.5% full-month claim.</td></tr>
+<tr><td>BOOK-NF-004</td><td>Executed sampled audit with unresolved admin breadcrumb finding. Manual keyboard/zoom/form/contrast/table follow-up recorded; full conformance and screen-reader speech not established.</td></tr>
+<tr><td>BOOK-NF-005</td><td>Final CI 43241415099: overall statements 1183/1288=91.85%; branches 247/294=84.01%; defined 20-file core 1013/1093=92.68%, exceeds original 70% target.</td></tr>
+<tr><td>BOOK-NF-006</td><td>Twice-daily cron published. Fresh backup/temp restore43243243463 Passed; isolated recovery 43243646709 exact 22 tables/258 rows, usable 2.675 s. Historical &gt;24-hour gap and full production RPO/RTO remain unverified.</td></tr>
+</tbody></table>
+<h2>New deployed evidence</h2>
+<ul>
+<li>Checkout run 43180348416: 20/20 distinct correct mock orders #9–#28; QA Python Advanced quantity 1 at INR 450.00; p90 191.1 ms, maximum 221.3 ms. Ten browsing VUs sustained for 300.568 s; 1,524/1,524 browsing requests HTTP 200. Timing is POST navigation to loaded confirmation; setup and later detail verification excluded.</li>
+<li>Accessibility run 43230895650: all 34 page/viewport samples completed. One <code>link-in-text-block</code> breadcrumb finding affecting three admin order-edit links repeats at desktop/mobile. User retained it unresolved. Original 13 incomplete rule occurrences remain preserved; manual keyboard/zoom/form/contrast/table follow-up is recorded separately. Ratios, exact roles and screen-reader speech were not supplied, so no full WCAG pass is claimed.</li>
+<li>Current backup run 43243243463 and isolated recovery run 43243646709 Passed. Recovery matched 22 tables/258 rows; static assets, health and seven HTTP checks Passed; restore-to-usable 2.675 s, probe 15.056 s. The separate backup ZIP was not inspected. The rehearsal made its own fresh snapshot and restored only to a disposable database; full production outage timing is not established.</li>
+</ul>
+<h2>Functional, security and historical qualifications</h2>
+<p>The four final OBP-49 browser checkpoints retain source afdb5b14 and their recorded context: Order #6 Delivered/details correct, Order #7 created Pending and visible, Order #7 cancellation persisted, and logout protected the cart. The user clarified Order #7 as QA Python Advanced, quantity 1, total <code>1</code>; currency/unit-price breakdown were not supplied and are not replaced with a later fixture price.</p>
+<p>User-reported real reset mail arrived in the same displayed minute, reset/new login succeeded and the original link became unusable after use. Confirmed/Shipped/Delivered emails for Order #6 each arrived in about five seconds with correct details; three observations are not a delivery percentile.</p>
+<p>Historical security evidence includes hashed password storage, protected session-cookie settings, role checks, sanitized log review, TLS/header checks and dependency/static/dynamic scans. Startup output reports PostgreSQL TLS 1.3; CSP/HSTS fixes and live email evidence retain their original builds. ZAP/Bandit findings are triaged rather than reported as zero raw alerts. Broad HTTPS image-source CSP remains an observation. Mock payment initiates Pending records only: no real charge, gateway tokenization or paid-purchase-only review enforcement is established.</p>
+<p>The registration error reference is present in the supplied live screenshot; target existence is user-reported. A separate local missing-target reproduction is retained as local evidence, not a confirmed deployed defect. Speech behavior is untested.</p>
+<h2>Disposition</h2>
+<p>The revised execution plan is complete with the recorded exceptions. This does not satisfy every original SRS acceptance criterion. The 500-user and full-month tests are intentionally unexecuted; 250-user timing and the breadcrumb finding remain Failed. Strict historical production RPO and full production outage RTO remain Not verified. Jira changes and publication are performed by the user.</p>
+<h2>Developer-documented implementation gaps</h2>
+<p>The reconciled deviation register retains two additional acceptance limits reported by the developer: seller approval/rejection notifications are unimplemented (D-07), and application-level login/checkout throttling is unimplemented (D-08). Approval/visibility tests and account lockout do not establish those separate criteria. These are documented implementation gaps, not new deployed findings independently executed by this documentation update. Outstanding decision statuses are retained.</p></main></html>

@@ -1,0 +1,888 @@
+[
+  {
+    "scenario_id": "TC-Auth-01",
+    "requirements": [
+      "BOOK-F-001"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-029",
+      "IT-030",
+      "IT-031",
+      "IT-032",
+      "IT-033",
+      "IT-034",
+      "IT-035",
+      "IT-036",
+      "IT-037",
+      "IT-078",
+      "UT-001",
+      "UT-002",
+      "UT-003",
+      "UT-004",
+      "UT-005",
+      "UT-006",
+      "UT-007",
+      "UT-008",
+      "UT-009",
+      "UT-010",
+      "OBP41-SYS-002",
+      "OBP41-SYS-007",
+      "OBP41-SYS-009",
+      "OBP41-SYS-013",
+      "OBP41-SYS-014",
+      "OBP41-SYS-015"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Auth-02",
+    "requirements": [
+      "BOOK-F-002"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-010",
+      "IT-011",
+      "IT-012",
+      "IT-013",
+      "IT-014",
+      "IT-015",
+      "IT-016",
+      "IT-017",
+      "IT-021",
+      "IT-038",
+      "IT-039",
+      "IT-040",
+      "IT-041",
+      "IT-044",
+      "IT-045",
+      "IT-075",
+      "IT-076",
+      "OBP41-SYS-001",
+      "OBP41-SYS-003",
+      "OBP41-SYS-004",
+      "OBP41-SYS-005",
+      "OBP49-SYS-012"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Auth-03",
+    "requirements": [
+      "BOOK-F-003"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-001",
+      "IT-002",
+      "IT-003",
+      "IT-004",
+      "IT-005",
+      "IT-006",
+      "IT-007",
+      "IT-008",
+      "IT-009",
+      "OBP41-SYS-008",
+      "OBP41-SYS-018"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Auth-04",
+    "requirements": [
+      "BOOK-F-004"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-018",
+      "IT-019",
+      "IT-020",
+      "IT-021",
+      "IT-022",
+      "IT-023",
+      "IT-024",
+      "IT-025",
+      "IT-026",
+      "IT-027",
+      "IT-028",
+      "OBP41-SYS-006"
+    ],
+    "result_summary": "Passed (the expiry check failed on 2026-11-03 and was fixed; see `qa/history/`)",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Cat-01",
+    "requirements": [
+      "BOOK-F-005"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-054",
+      "IT-055",
+      "IT-056",
+      "IT-057",
+      "IT-058",
+      "IT-061",
+      "IT-064",
+      "IT-101",
+      "IT-102",
+      "IT-105",
+      "IT-117",
+      "IT-124",
+      "OBP42-SYS-007",
+      "IT-253",
+      "IT-254",
+      "IT-255",
+      "IT-256",
+      "IT-257",
+      "IT-259",
+      "IT-260",
+      "IT-261",
+      "IT-262",
+      "IT-263",
+      "IT-265",
+      "IT-266",
+      "IT-267",
+      "IT-268",
+      "IT-269",
+      "IT-270"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Cat-02",
+    "requirements": [
+      "BOOK-F-006"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-057",
+      "IT-103",
+      "IT-104",
+      "IT-106",
+      "IT-107",
+      "IT-108",
+      "IT-109",
+      "IT-110",
+      "IT-111",
+      "IT-112",
+      "IT-113",
+      "IT-114",
+      "IT-115",
+      "IT-116",
+      "IT-118",
+      "IT-119",
+      "IT-120",
+      "IT-121",
+      "IT-122",
+      "IT-123",
+      "IT-125",
+      "OBP42-SYS-001",
+      "OBP42-SYS-002",
+      "OBP42-SYS-003",
+      "OBP42-SYS-004",
+      "OBP42-SYS-005",
+      "IT-265",
+      "IT-266",
+      "IT-267",
+      "IT-268",
+      "IT-269",
+      "IT-270"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Cat-03",
+    "requirements": [
+      "BOOK-F-007"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-059",
+      "IT-060",
+      "IT-062",
+      "IT-063",
+      "IT-126",
+      "IT-127",
+      "IT-128",
+      "IT-129",
+      "IT-130",
+      "IT-131",
+      "IT-132",
+      "OBP42-SYS-006"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Cart-01",
+    "requirements": [
+      "BOOK-F-008"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-170",
+      "IT-171",
+      "IT-172",
+      "IT-173",
+      "IT-174",
+      "IT-175",
+      "IT-176",
+      "IT-177",
+      "IT-178",
+      "IT-179",
+      "IT-180",
+      "IT-181",
+      "IT-182",
+      "IT-183",
+      "OBP43-SYS-001",
+      "OBP43-SYS-002",
+      "OBP43-SYS-003",
+      "OBP43-SYS-005"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Cart-02",
+    "requirements": [
+      "BOOK-F-009"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-184",
+      "IT-185",
+      "IT-186",
+      "IT-187",
+      "IT-188",
+      "IT-189",
+      "IT-190",
+      "IT-191",
+      "IT-192",
+      "IT-193",
+      "IT-194",
+      "IT-239",
+      "IT-242",
+      "OBP43-SYS-004",
+      "OBP43-SYS-006",
+      "OBP49-SYS-005"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Cart-03",
+    "requirements": [
+      "BOOK-F-010"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-235",
+      "IT-236",
+      "IT-237",
+      "IT-238",
+      "IT-240",
+      "IT-241",
+      "IT-243",
+      "IT-244",
+      "OBP43-SYS-004",
+      "OBP43-SYS-005",
+      "OBP43-SYS-006",
+      "OBP49-SYS-005"
+    ],
+    "result_summary": "Passed against the **mock** only; gateway acceptance not verified",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Ord-01",
+    "requirements": [
+      "BOOK-F-011"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-245",
+      "IT-246",
+      "IT-247",
+      "IT-248",
+      "IT-249",
+      "IT-250",
+      "OBP44-SYS-001",
+      "OBP44-SYS-002",
+      "OBP49-SYS-008",
+      "OBP49-SYS-005",
+      "OBP49-SYS-006"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Ord-02",
+    "requirements": [
+      "BOOK-F-012"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-228",
+      "IT-229",
+      "IT-230",
+      "IT-231",
+      "IT-232",
+      "IT-233",
+      "IT-234",
+      "OBP44-SYS-003",
+      "OBP44-SYS-004",
+      "OBP44-SYS-005",
+      "OBP44-SYS-006",
+      "OBP49-SYS-008"
+    ],
+    "result_summary": "Passed (manual status, no shipping API: D-06)",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Ord-03",
+    "requirements": [
+      "BOOK-F-013"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-198",
+      "IT-199",
+      "IT-200",
+      "IT-201",
+      "IT-202",
+      "IT-203",
+      "IT-204",
+      "IT-205",
+      "IT-206",
+      "IT-207",
+      "IT-208",
+      "IT-209",
+      "IT-210",
+      "IT-211",
+      "IT-212",
+      "IT-213",
+      "IT-214",
+      "IT-215",
+      "IT-216",
+      "IT-217",
+      "IT-218",
+      "OBP44-SYS-002",
+      "OBP44-SYS-005",
+      "OBP44-SYS-006",
+      "OBP44-SYS-007",
+      "OBP44-SYS-008",
+      "OBP49-SYS-006"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Sell-01",
+    "requirements": [
+      "BOOK-F-014"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-144",
+      "IT-145",
+      "IT-146",
+      "IT-147",
+      "IT-148",
+      "IT-149",
+      "IT-150",
+      "IT-151",
+      "IT-152",
+      "OBP45-SYS-001",
+      "OBP45-SYS-002"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Sell-02",
+    "requirements": [
+      "BOOK-F-015"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-153",
+      "IT-154",
+      "IT-155",
+      "IT-156",
+      "IT-157",
+      "IT-158",
+      "IT-159",
+      "IT-160",
+      "IT-161",
+      "IT-162",
+      "IT-163",
+      "IT-164",
+      "IT-165",
+      "IT-166",
+      "IT-167",
+      "IT-168",
+      "IT-169",
+      "OBP45-SYS-003",
+      "OBP45-SYS-005"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Admin-01",
+    "requirements": [
+      "BOOK-F-016"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-062",
+      "IT-063",
+      "IT-064",
+      "IT-093",
+      "IT-094",
+      "IT-095",
+      "IT-096",
+      "IT-097",
+      "IT-098",
+      "IT-099",
+      "IT-100",
+      "IT-159",
+      "IT-160",
+      "IT-161",
+      "IT-162",
+      "IT-163",
+      "IT-164",
+      "OBP45-SYS-001",
+      "OBP45-SYS-002",
+      "OBP45-SYS-003",
+      "OBP45-SYS-004",
+      "IT-264"
+    ],
+    "result_summary": "Approval/visibility checks Passed. Seller decision notification is unimplemented per developer D-07; full notification criterion not claimed Passed.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Admin-02",
+    "requirements": [
+      "BOOK-F-017"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-011",
+      "IT-046",
+      "IT-047",
+      "IT-048",
+      "IT-049",
+      "IT-050",
+      "IT-051",
+      "IT-052",
+      "IT-053",
+      "IT-086",
+      "IT-087",
+      "IT-088",
+      "IT-089",
+      "IT-090",
+      "IT-091",
+      "IT-092",
+      "IT-258"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Rev-01",
+    "requirements": [
+      "BOOK-F-018"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-065",
+      "IT-066",
+      "IT-067",
+      "IT-068",
+      "IT-069",
+      "IT-070",
+      "IT-133",
+      "IT-134",
+      "IT-135",
+      "IT-136",
+      "IT-137",
+      "IT-138",
+      "IT-139",
+      "IT-140",
+      "IT-141",
+      "IT-142",
+      "IT-143",
+      "OBP46-SYS-001",
+      "OBP46-SYS-005",
+      "OBP46-SYS-006",
+      "OBP46-SYS-008"
+    ],
+    "result_summary": "Passed within ordered-item/mock-payment scope. Verified-paid-purchase-only enforcement is not established.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Rev-02",
+    "requirements": [
+      "BOOK-F-019"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-071",
+      "IT-072",
+      "IT-077",
+      "IT-080",
+      "IT-084",
+      "IT-085",
+      "OBP46-SYS-002",
+      "OBP46-SYS-003",
+      "OBP46-SYS-004",
+      "OBP46-SYS-007"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Rev-03",
+    "requirements": [
+      "BOOK-F-020"
+    ],
+    "level": "Integration + Unit",
+    "case_ids": [
+      "IT-219",
+      "IT-220",
+      "IT-221",
+      "IT-222",
+      "IT-223",
+      "IT-224",
+      "IT-225",
+      "IT-226",
+      "IT-227",
+      "UT-014",
+      "UT-015",
+      "UT-016",
+      "UT-017",
+      "UT-018",
+      "OBP46-SYS-009"
+    ],
+    "result_summary": "Automated checks Passed. User reports correct real Confirmed/Shipped/Delivered messages for Order #6, each arriving in about five seconds. These are samples, not a delivery percentile.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Perf-01",
+    "requirements": [
+      "BOOK-NF-001"
+    ],
+    "level": "System",
+    "case_ids": [
+      "OBP48-PERF-001",
+      "OBP48-PERF-002",
+      "OBP48-PERF-003"
+    ],
+    "result_summary": "Passed those declared samples: catalogue/search p90 0.136/0.142 s; checkout20/20 correct, p90 0.1911 s during ten browsing VUs. Build/timing boundaries retained. Separate 250-user capacity failure is not a normal-load pass.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Perf-02",
+    "requirements": [
+      "BOOK-NF-002"
+    ],
+    "level": "System",
+    "case_ids": [
+      "OBP48-LOAD-001",
+      "IT-251",
+      "IT-252",
+      "IT-253",
+      "IT-254",
+      "IT-255",
+      "IT-256",
+      "IT-257",
+      "IT-258",
+      "IT-259",
+      "IT-260",
+      "IT-261",
+      "IT-262",
+      "IT-263",
+      "IT-264",
+      "IT-265",
+      "IT-266",
+      "IT-267",
+      "IT-268",
+      "IT-269",
+      "IT-270",
+      "IT-271",
+      "IT-272",
+      "IT-273",
+      "IT-274",
+      "IT-275",
+      "IT-276",
+      "OBP48-LOAD-002"
+    ],
+    "result_summary": "500 users Not tested per user execution scope. Latest250-user timing Failed at3.807/3.792s against3s;100-user sample Passed. Earlier503 evidence preserved separately.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Perf-03",
+    "requirements": [
+      "BOOK-NF-002",
+      "BOOK-NF-001"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "OBP48-LOAD-001",
+      "IT-251",
+      "IT-252",
+      "IT-253",
+      "IT-254",
+      "IT-255",
+      "IT-256",
+      "IT-257",
+      "IT-258",
+      "IT-259",
+      "IT-260",
+      "IT-261",
+      "IT-262",
+      "IT-263",
+      "IT-264",
+      "IT-265",
+      "IT-266",
+      "IT-267",
+      "IT-268",
+      "IT-269",
+      "IT-270",
+      "IT-271",
+      "IT-272",
+      "IT-273",
+      "IT-274",
+      "IT-275",
+      "IT-276",
+      "OBP48-LOAD-002",
+      "OBP48-PERF-001",
+      "OBP48-PERF-002",
+      "OBP48-PERF-003"
+    ],
+    "result_summary": "26 cache Integration tests Passed. Correctness support does not establish concurrent-user capacity.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Avail-01",
+    "requirements": [
+      "BOOK-NF-003"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-195",
+      "IT-196",
+      "IT-197",
+      "OBP48-OPS-008"
+    ],
+    "result_summary": "Health integration checks Passed. Full-month99.5% availability Not tested per user scope decision.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-UX-01",
+    "requirements": [
+      "BOOK-NF-004"
+    ],
+    "level": "System",
+    "case_ids": [
+      "OBP48-SYS-001",
+      "OBP48-SYS-002",
+      "OBP48-SYS-003",
+      "OBP48-SYS-004",
+      "OBP48-SYS-005",
+      "OBP48-UX-006"
+    ],
+    "result_summary": "Executed sampled audit:34/34 scans; unresolved admin breadcrumb finding;24 manual keyboard/zoom/reflow passes plus form/contrast/table reports. Original incomplete checks/evidence limits retained; full conformance and speech not established.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Cov-01",
+    "requirements": [
+      "BOOK-NF-005"
+    ],
+    "level": "CI",
+    "case_ids": [],
+    "result_summary": "Defined20-file core:1013/1093=92.68%, exceeds70%. Overall statements91.85%, branches84.01%. Scope listed in Core_Coverage_Scope.json.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Ops-02",
+    "requirements": [
+      "BOOK-NF-006"
+    ],
+    "level": "System",
+    "case_ids": [
+      "OBP48-OPS-006",
+      "OBP48-OPS-007",
+      "OBP48-OPS-009",
+      "OBP48-OPS-010"
+    ],
+    "result_summary": "Fresh backup/temp restore Passed. Isolated recovery matched22 tables/258 rows, usable2.675s. Twice-daily schedule published. Historical>24h gap and complete production RPO/RTO remain unverified.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Sec-01",
+    "requirements": [
+      "BOOK-SR-001"
+    ],
+    "level": "System + Unit",
+    "case_ids": [
+      "UT-011",
+      "UT-012",
+      "UT-013",
+      "UT-018",
+      "OBP41-SYS-017",
+      "OBP47-SYS-003",
+      "OBP47-SYS-004",
+      "OBP47-SYS-006"
+    ],
+    "result_summary": "Passed live; unit tests mock the connection",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Sec-02",
+    "requirements": [
+      "BOOK-SR-002"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-036",
+      "IT-078",
+      "OBP47-SYS-001",
+      "OBP47-SYS-002"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Sec-03",
+    "requirements": [
+      "BOOK-SR-003"
+    ],
+    "level": "System",
+    "case_ids": [
+      "OBP47-SYS-002"
+    ],
+    "result_summary": "**Not verified**",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Sec-04",
+    "requirements": [
+      "BOOK-SR-004"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-034",
+      "IT-038",
+      "IT-039",
+      "IT-040",
+      "IT-041",
+      "IT-044",
+      "IT-045",
+      "IT-053",
+      "IT-065",
+      "IT-066",
+      "IT-067",
+      "IT-068",
+      "IT-069",
+      "IT-070",
+      "IT-071",
+      "IT-075",
+      "IT-076",
+      "IT-077",
+      "IT-080",
+      "IT-090",
+      "IT-096",
+      "IT-099",
+      "IT-133",
+      "IT-135",
+      "IT-142",
+      "IT-144",
+      "IT-145",
+      "IT-146",
+      "IT-153",
+      "IT-154",
+      "IT-158",
+      "IT-159",
+      "IT-160",
+      "IT-164",
+      "IT-165",
+      "IT-166",
+      "IT-182",
+      "IT-183",
+      "IT-184",
+      "IT-193",
+      "IT-198",
+      "IT-199",
+      "IT-203",
+      "IT-204",
+      "IT-247",
+      "UT-001",
+      "OBP41-SYS-001",
+      "OBP41-SYS-003",
+      "OBP41-SYS-004",
+      "OBP41-SYS-009",
+      "OBP41-SYS-010",
+      "OBP41-SYS-011",
+      "OBP41-SYS-012",
+      "OBP41-SYS-016",
+      "OBP41-SYS-017",
+      "OBP46-SYS-007",
+      "OBP46-SYS-008",
+      "OBP49-SYS-012",
+      "IT-271",
+      "IT-272",
+      "IT-273",
+      "IT-274"
+    ],
+    "result_summary": "Passed",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  },
+  {
+    "scenario_id": "TC-Sec-05",
+    "requirements": [
+      "BOOK-SR-005"
+    ],
+    "level": "Integration",
+    "case_ids": [
+      "IT-001",
+      "IT-002",
+      "IT-003",
+      "IT-004",
+      "IT-005",
+      "IT-006",
+      "IT-007",
+      "IT-008",
+      "IT-009",
+      "IT-042",
+      "IT-043",
+      "IT-072",
+      "IT-073",
+      "IT-074",
+      "IT-079",
+      "IT-081",
+      "IT-082",
+      "IT-083",
+      "IT-084",
+      "IT-085",
+      "IT-141",
+      "IT-149",
+      "IT-212",
+      "OBP41-SYS-008",
+      "OBP47-SYS-005",
+      "OBP47-SYS-006",
+      "IT-251",
+      "IT-252"
+    ],
+    "result_summary": "Mapped integration checks Passed. Scoped security/static/dependency/dynamic-scan evidence is retained in the QA packet; comprehensive penetration/fuzz coverage is not established.",
+    "mapping_basis": "Requirement-level cross-reference, not a claim that every linked test independently exercises the full summary scenario"
+  }
+]

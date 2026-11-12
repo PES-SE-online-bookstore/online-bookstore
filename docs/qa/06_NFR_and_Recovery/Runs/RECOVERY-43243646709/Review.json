@@ -1,0 +1,56 @@
+{
+  "run_id": "RECOVERY-43243646709",
+  "result": "Passed scoped isolated recovery rehearsal",
+  "application_sha": "92247d31739eed30e0d769865869869b384a2ba6",
+  "artifact_sha256": "efed1f25fcf8ddf64c2e5a108658a0ec75dad0cbd3450cc948fdd816e18d24dc",
+  "github_artifact_digest_match": true,
+  "workflow_url": "http[local path omitted]",
+  "backup_workflow_url": "http[local path omitted]",
+  "fresh_backup_workflow": "Success including temporary restore step; metadata verified, no dump inspected",
+  "source_identity_match": true,
+  "tables_exactly_matched": 22,
+  "source_rows_exactly_matched": 258,
+  "postgresql_server_version_num": 180006,
+  "client_versions": [
+    {
+      "tool": "pg_dump",
+      "client_version": "18.6",
+      "exit_code": 0,
+      "status": "Passed"
+    },
+    {
+      "tool": "pg_restore",
+      "client_version": "18.6",
+      "exit_code": 0,
+      "status": "Passed"
+    }
+  ],
+  "static_assets": "Passed",
+  "http_flow_checks_passed": 7,
+  "restore_to_usable_seconds": 2.675,
+  "probe_total_seconds": 15.056,
+  "snapshot_at_utc": "2026-11-12T15:04:06.607339+00:00",
+  "snapshot_age_at_probe_finish_seconds": 14.018,
+  "ci_job_seconds": 53.0,
+  "schedule": "Published nominal 02:30/14:30 UTC (08:00/20:00 IST); future actual successful cadence not yet demonstrated",
+  "scope_limits": [
+    "Does not prove historical backup intervals or month availability",
+    "Timed boundary excludes runner provisioning and production Render redeployment",
+    "No external email or real payment verification in this isolated rehearsal",
+    "Rehearsal creates its own fresh source snapshot; it is not an application restore of the separately supplied backup ZIP",
+    "Fresh snapshot age is not historical scheduled-backup RPO evidence",
+    "Historical backup interval >24h remains; full production outage RTO not verified"
+  ],
+  "isolated_test_order": "#29 exists only in disposable restored database",
+  "database_backup_zip": "Left unopened and excluded from QA deliverables",
+  "main_ci_artifact": {
+    "id": 13955675641,
+    "name": "qa-results-92247d31739eed30e0d769865869869b384a2ba6-1",
+    "size_in_bytes": 227563,
+    "expired": false,
+    "digest": "sha256:551a101e4bb6ae72e6a729533e1ba01064fb35853de378a09b8489a4ba869108"
+  },
+  "remaining_action": "User supplies main CI QA-results artifact for final report/workbook refresh",
+  "obp48_disposition": "Scoped checks complete with failed/unresolved/not-tested/not-verified outcomes retained; final documentation pending",
+  "product_git_or_jira_changes": false
+}

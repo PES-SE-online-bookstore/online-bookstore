@@ -1,0 +1,17 @@
+{
+  "case_definitions_reviewed": 373,
+  "requirement_mappings_reviewed": 31,
+  "recorded_passed": 368,
+  "recorded_failed": 2,
+  "not_run": 3,
+  "automated_cases": 294,
+  "historical_checkpoints": 70,
+  "supplemental_nfr_cases": 8,
+  "separate_failed_capacity_case": 1,
+  "historical_expected_and_raw_execution_records_preserved": true,
+  "new_execution_evidence": "Checkout, accessibility/manual follow-up and current-build backup/recovery recorded with distinct sources",
+  "source_methods_verified_unchanged": 294,
+  "source_files_hash_verified": 85,
+  "functional_requirements": 20,
+  "minimum_mapped_case_entries_per_functional_requirement": 10
+}

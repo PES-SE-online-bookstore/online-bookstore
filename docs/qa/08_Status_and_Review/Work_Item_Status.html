@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Work_Item_Status</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui}table{display:block;overflow:auto;border-collapse:collapse}td,th{border:1px solid #ccd4dc;padding:9px;text-align:left;vertical-align:top;overflow-wrap:anywhere}pre{white-space:pre-wrap}</style><main><h1>Testing work item status</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<table><thead><tr><th>Item</th><th>Scope</th><th>Execution status</th><th>Done / qualification</th></tr></thead><tbody>
+<tr><td>OBP-41</td><td>Authentication/account management</td><td>Scoped execution complete</td><td>Registration/login/logout/protected access, lockout/recovery, reset expiry and real reset mail. Username/session revision retained.</td></tr>
+<tr><td>OBP-42</td><td>Catalogue/search</td><td>Scoped execution complete</td><td>Catalogue/search/filter/pagination/detail samples; seller/cover fixes; cache integration tests and separate load evidence.</td></tr>
+<tr><td>OBP-43</td><td>Cart/checkout</td><td>Scoped execution complete</td><td>Cart and mock checkout functional checks; twenty completed checkouts passed normal-load timing. No real gateway payment claimed.</td></tr>
+<tr><td>OBP-44</td><td>Orders/tracking</td><td>Scoped execution complete</td><td>Order history/details, state tracking, cancellation and return samples; mock-order scope retained.</td></tr>
+<tr><td>OBP-45</td><td>Seller/admin management</td><td>Scoped execution complete</td><td>Listing/approval/admin scenarios and role restrictions; seller decision notifications remain unimplemented per D-07.</td></tr>
+<tr><td>OBP-46</td><td>Reviews/wishlist/notifications</td><td>Scoped execution complete</td><td>Review/wishlist samples; order-status emails received with correct details. Paid-purchase-only review enforcement not established.</td></tr>
+<tr><td>OBP-47</td><td>Security</td><td>Scoped execution complete with observations</td><td>Password hashing, sessions, role/protected access, TLS/CSP/HSTS and recorded scans. Broad HTTPS image-source CSP observation and D-08 request-throttling gap retained.</td></tr>
+<tr><td>OBP-48</td><td>Non-functional requirements</td><td>Scoped execution complete with findings/untested targets</td><td>250-user timing Failed; breadcrumb unresolved; 500/monthly Not tested; full production RPO/RTO unverified.</td></tr>
+<tr><td>OBP-49</td><td>End-to-end/regression</td><td>Hybrid execution complete</td><td>Four final historical browser checkpoints plus final 294-test regression. No fresh all-feature manual run on final SHA claimed.</td></tr>
+</tbody></table>
+<p>These are QA evidence dispositions, not remotely changed Jira states. For OBP-48, testing was performed and findings recorded under the revised scope; do not describe all original NFRs as Passed. Documentation is prepared locally and publication remains user-controlled.</p></main></html>

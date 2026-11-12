@@ -1,0 +1,95 @@
+{
+  "recorded_at_utc": "2026-11-09T09:15:24.829916+00:00",
+  "main_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "main_ci_url": "http[local path omitted]",
+  "main_ci_conclusion": "success",
+  "main_ci_test_job": "success",
+  "main_ci_production_health_job": "success",
+  "pr_merged": true,
+  "source_tree_equal_to_inspected_pr_run": true,
+  "source_tree_sha": "edcd676c2d68922af23bc1786f936a7be26a1322",
+  "pr_artifact_review": "../CI-42583278686/Review.json",
+  "main_artifact": {
+    "metadata": "github-artifacts.json",
+    "archive_downloaded_or_inspected": false
+  },
+  "developer_deployment_report": {
+    "source": "User relayed developer deployment report in this chat",
+    "render_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+    "render_short_commit": "afdb5b1",
+    "render_deployment_id": "dep-dboopspsrm7s73clbv20",
+    "status": "live",
+    "finished_utc": "2026-11-09T09:06:39Z",
+    "database_tls": {
+      "command": "python manage.py verify_postgres_tls",
+      "output": "TLS is active: TLSv1.3; cipher: TLS_AES_256_GCM_SHA384",
+      "logged_at_utc": "2026-11-09T09:06:26Z",
+      "basis": "Developer-reported Render startup output; authenticated Render logs not independently accessed"
+    }
+  },
+  "independent_public_observations": {
+    "health": {
+      "observed_at_utc": "2026-11-09T09:13:31.092576+00:00",
+      "url": "http[local path omitted]",
+      "final_url": "http[local path omitted]",
+      "http_status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "content-security-policy": "style-src-attr 'none'; frame-ancestors 'none'; img-src 'self' https:; base-uri 'self'; object-src 'none'; default-src 'self'; script-src-attr 'none'; connect-src 'self'; form-action 'self'; style-src 'self'; script-src 'self'; font-src 'self'",
+        "strict-transport-security": "max-age=3600"
+      },
+      "body_sha256": "27d006944f1f57ce37e5ea772198ca42b6fbcd596b5a4d02221b127aa4fce7b9",
+      "bytes": 46,
+      "response": {
+        "status": "healthy",
+        "database": "available"
+      }
+    },
+    "catalogue": {
+      "observed_at_utc": "2026-11-09T09:13:31.547160+00:00",
+      "url": "http[local path omitted]",
+      "final_url": "http[local path omitted]",
+      "http_status": 200,
+      "headers": {
+        "Content-Type": "text/html; charset=utf-8",
+        "content-security-policy": "style-src-attr 'none'; frame-ancestors 'none'; img-src 'self' https:; base-uri 'self'; object-src 'none'; default-src 'self'; script-src-attr 'none'; connect-src 'self'; form-action 'self'; style-src 'self' 'nonce-kBQCYji8iqRkv6A9OmsJVA=='; script-src 'self' 'nonce-kBQCYji8iqRkv6A9OmsJVA=='; font-src 'self'",
+        "strict-transport-security": "max-age=3600"
+      },
+      "body_sha256": "affcf1defd37c9144b0838fd7f5e258e3e699a94709e93c01d291b44c257df00",
+      "bytes": 20174,
+      "cover_markup_present": false,
+      "cover_img_count": 0,
+      "cover_placeholder_count": 3
+    },
+    "login": {
+      "observed_at_utc": "2026-11-09T09:13:31.372968+00:00",
+      "url": "http[local path omitted]",
+      "final_url": "http[local path omitted]",
+      "http_status": 200,
+      "headers": {
+        "Content-Type": "text/html; charset=utf-8",
+        "content-security-policy": "style-src-attr 'none'; frame-ancestors 'none'; img-src 'self' https:; base-uri 'self'; object-src 'none'; default-src 'self'; script-src-attr 'none'; connect-src 'self'; form-action 'self'; style-src 'self' 'nonce-xkepcdQhoHXkjC010wd0Aw=='; script-src 'self' 'nonce-xkepcdQhoHXkjC010wd0Aw=='; font-src 'self'",
+        "strict-transport-security": "max-age=3600"
+      },
+      "body_sha256": "5ddd24d33a24948edd47e29236689b3f9ad5facb5726ff4aa893b898957b9a51",
+      "bytes": 12574
+    }
+  },
+  "configuration_drift": {
+    "status": "Open",
+    "verified_source": "reviewed-render.yaml",
+    "finding": "Blueprint startCommand omits verify_postgres_tls; a sync would drop the dashboard startup check.",
+    "impact": "Reproducibility/automatic TLS verification drift; supplied current TLS observation remains valid for its observed connection/time.",
+    "developer_followup": "Small PR planned; not performed here."
+  },
+  "open_live_checks": [
+    "Actual password-reset inbox/link/new-password/single-use journey",
+    "Confirmed/Shipped/Delivered email delivery within requirement deadline, with matching order details",
+    "Configured HTTPS cover visibly loads and correct assigned seller is displayed",
+    "Affected checkout/cancellation browser behavior under enforcing CSP",
+    "Scoped post-fix security evidence and feasible OBP-48 results/limitations",
+    "OBP-49 execution remains held until directed"
+  ],
+  "new_mutations_performed": false,
+  "obp49_executed": false
+}

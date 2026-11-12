@@ -1,0 +1,21 @@
+{
+  "review_date_client": "2026-11-11",
+  "artifact_zip_sha256": "992ce42a4bd01fa0170691e835bcb66f7804c04280e39420786282da16d880d8",
+  "run_id_source": "User-supplied filename; remote artifact digest not independently fetched",
+  "case_id": "OBP48-OPS-010",
+  "case_result": "Passed within declared isolated rehearsal scope",
+  "tables_exact_match": 22,
+  "rows_exact_match": 182,
+  "http_checks_passed": 7,
+  "restore_to_usable_seconds": 2.371,
+  "script_elapsed_seconds": 11.841,
+  "limitations": [
+    "Does not prove historical backup intervals or month availability",
+    "Timed boundary excludes runner provisioning and production Render redeployment",
+    "No external email or real payment verification in this isolated rehearsal"
+  ],
+  "operational_rpo_verified": false,
+  "full_production_outage_rto_verified": false,
+  "obp48_done": false,
+  "synthetic_order_8_created_in_disposable_database_only": true
+}

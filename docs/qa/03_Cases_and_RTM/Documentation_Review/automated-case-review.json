@@ -1,0 +1,2654 @@
+{
+  "reviewer": "Assistant automated source/documentation audit",
+  "test_cases_reviewed": 294,
+  "source_modules_checked": 15,
+  "no_new_execution": true,
+  "updates": [
+    {
+      "row": 2,
+      "case_id": "IT-001",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_another_account_is_not_locked",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 259,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 3,
+      "case_id": "IT-002",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_correct_password_is_blocked_during_lockout",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 224,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 4,
+      "case_id": "IT-003",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_correct_password_works_after_expiry",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 235,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 5,
+      "case_id": "IT-004",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_fifth_failure_locks_for_fifteen_minutes",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 216,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 6,
+      "case_id": "IT-005",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_first_failure_is_counted",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 204,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 7,
+      "case_id": "IT-006",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_four_failures_do_not_lock_account",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 210,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 8,
+      "case_id": "IT-007",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_sixth_attempt_shows_lockout_message",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 229,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 9,
+      "case_id": "IT-008",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_success_between_failures_resets_consecutive_count",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 252,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 10,
+      "case_id": "IT-009",
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_wrong_password_after_expiry_starts_new_count",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 243,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 11,
+      "case_id": "IT-010",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_email_identifier_is_not_accepted_under_revised_requirement",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 159,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 12,
+      "case_id": "IT-011",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_inactive_account_cannot_log_in",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 184,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 13,
+      "case_id": "IT-012",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_login_page_loads",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 151,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 14,
+      "case_id": "IT-013",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_missing_credentials_are_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 178,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 15,
+      "case_id": "IT-014",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_revised_username_and_password_establish_session",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 154,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 16,
+      "case_id": "IT-015",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_unknown_account_does_not_create_attempt_record",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 173,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 17,
+      "case_id": "IT-016",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_wrong_password_can_be_followed_by_successful_login",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 190,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 18,
+      "case_id": "IT-017",
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_wrong_password_does_not_establish_session",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 169,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 19,
+      "case_id": "IT-018",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_inactive_account_receives_no_reset_message",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 309,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 20,
+      "case_id": "IT-019",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_link_is_valid_before_thirty_minutes",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 315,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 21,
+      "case_id": "IT-020",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_mismatched_reset_passwords_do_not_change_password",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 343,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 22,
+      "case_id": "IT-021",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_new_password_logs_in_and_old_password_does_not",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 352,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 23,
+      "case_id": "IT-022",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_registered_account_receives_reset_message",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 299,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 24,
+      "case_id": "IT-023",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_reset_request_page_loads",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 296,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 25,
+      "case_id": "IT-024",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_srs_link_expires_after_thirty_minutes",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 319,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 26,
+      "case_id": "IT-025",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_successful_reset_changes_password",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 329,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 27,
+      "case_id": "IT-026",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_tampered_token_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 324,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 28,
+      "case_id": "IT-027",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_unknown_email_discloses_no_account_and_sends_no_message",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 304,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 29,
+      "case_id": "IT-028",
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_used_link_cannot_be_reused",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 336,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 30,
+      "case_id": "IT-029",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_buyer_account_and_profile_are_created",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 90,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 31,
+      "case_id": "IT-030",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_duplicate_email_does_not_create_another_account",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 101,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 32,
+      "case_id": "IT-031",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_duplicate_username_does_not_create_another_account",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 107,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 33,
+      "case_id": "IT-032",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_mismatched_password_creates_no_account_or_profile",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 112,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 34,
+      "case_id": "IT-033",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_missing_required_data_creates_no_account",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 117,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 35,
+      "case_id": "IT-034",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_registration_cannot_create_an_admin",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 131,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 36,
+      "case_id": "IT-035",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_registration_page_loads",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 87,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 37,
+      "case_id": "IT-036",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_registration_stores_verifiable_hash_not_plaintext",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 122,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 38,
+      "case_id": "IT-037",
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_seller_account_and_profile_are_created",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 97,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 39,
+      "case_id": "IT-038",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_anonymous_cart_access_redirects_to_login",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 363,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 40,
+      "case_id": "IT-039",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_get_logout_does_not_change_session",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 382,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 41,
+      "case_id": "IT-040",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_independent_client_has_no_authenticated_session",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 387,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 42,
+      "case_id": "IT-041",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_logged_in_buyer_can_access_cart",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 368,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 43,
+      "case_id": "IT-042",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_login_post_without_csrf_token_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 394,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 44,
+      "case_id": "IT-043",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_logout_post_without_csrf_token_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 399,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 45,
+      "case_id": "IT-044",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_post_logout_removes_authentication",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 372,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 46,
+      "case_id": "IT-045",
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_protected_access_after_logout_is_denied",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 377,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 47,
+      "case_id": "IT-046",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_account_admin_is_registered_with_custom_admin",
+      "source_file": "accounts/tests.py",
+      "source_line": 131,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 48,
+      "case_id": "IT-047",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_can_deactivate_account",
+      "source_file": "accounts/tests.py",
+      "source_line": 39,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 49,
+      "case_id": "IT-048",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_can_deactivate_other_account_without_deactivating_self",
+      "source_file": "accounts/tests.py",
+      "source_line": 75,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 50,
+      "case_id": "IT-049",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_can_reactivate_account",
+      "source_file": "accounts/tests.py",
+      "source_line": 50,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 51,
+      "case_id": "IT-050",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_cannot_deactivate_own_account",
+      "source_file": "accounts/tests.py",
+      "source_line": 64,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 52,
+      "case_id": "IT-051",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_deactivated_user_cannot_authenticate",
+      "source_file": "accounts/tests.py",
+      "source_line": 89,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 53,
+      "case_id": "IT-052",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_deactivated_user_cannot_log_in",
+      "source_file": "accounts/tests.py",
+      "source_line": 104,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 54,
+      "case_id": "IT-053",
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_non_staff_user_cannot_access_user_admin",
+      "source_file": "accounts/tests.py",
+      "source_line": 124,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 55,
+      "case_id": "IT-054",
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_first_page_contains_twelve_books",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 42,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 56,
+      "case_id": "IT-055",
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_invalid_page_input_falls_back_without_error",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 55,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 57,
+      "case_id": "IT-056",
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_out_of_range_page_resolves_to_last_page",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 60,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 58,
+      "case_id": "IT-057",
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_pagination_links_preserve_encoded_search_and_filters",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 66,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 59,
+      "case_id": "IT-058",
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_three_pages_do_not_omit_or_repeat_books",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 48,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 60,
+      "case_id": "IT-059",
+      "test_id": "books.test_catalogue_validation.CatalogueRequiredFieldsIntegrationTests.test_book_detail_displays_computed_average_rating",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 132,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 61,
+      "case_id": "IT-060",
+      "test_id": "books.test_catalogue_validation.CatalogueRequiredFieldsIntegrationTests.test_srs_book_detail_identifies_seller",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 127,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 62,
+      "case_id": "IT-061",
+      "test_id": "books.test_catalogue_validation.CatalogueRequiredFieldsIntegrationTests.test_srs_catalogue_renders_book_cover_image",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 121,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 63,
+      "case_id": "IT-062",
+      "test_id": "books.test_catalogue_validation.CatalogueVisibilityIntegrationTests.test_pending_book_is_inaccessible_by_direct_url",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 100,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 64,
+      "case_id": "IT-063",
+      "test_id": "books.test_catalogue_validation.CatalogueVisibilityIntegrationTests.test_rejected_book_is_inaccessible_by_direct_url",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 104,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 65,
+      "case_id": "IT-064",
+      "test_id": "books.test_catalogue_validation.CatalogueVisibilityIntegrationTests.test_unapproved_books_and_their_categories_are_hidden",
+      "source_file": "books/test_catalogue_validation.py",
+      "source_line": 94,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 66,
+      "case_id": "IT-065",
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_anonymous_user_must_log_in_to_submit_review",
+      "source_file": "books/test_rbac.py",
+      "source_line": 174,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 67,
+      "case_id": "IT-066",
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_buyer_with_purchase_can_submit_review",
+      "source_file": "books/test_rbac.py",
+      "source_line": 89,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 68,
+      "case_id": "IT-067",
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_buyer_with_purchase_sees_review_form",
+      "source_file": "books/test_rbac.py",
+      "source_line": 163,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 69,
+      "case_id": "IT-068",
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_seller_cannot_submit_review_even_after_purchase",
+      "source_file": "books/test_rbac.py",
+      "source_line": 110,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 70,
+      "case_id": "IT-069",
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_seller_does_not_see_review_form_on_book_details",
+      "source_file": "books/test_rbac.py",
+      "source_line": 152,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 71,
+      "case_id": "IT-070",
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_user_without_profile_cannot_submit_review",
+      "source_file": "books/test_rbac.py",
+      "source_line": 131,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 72,
+      "case_id": "IT-071",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_anonymous_wishlist_access_requires_login",
+      "source_file": "books/test_security.py",
+      "source_line": 145,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 73,
+      "case_id": "IT-072",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_get_requests_cannot_add_or_remove_wishlist_entries",
+      "source_file": "books/test_security.py",
+      "source_line": 151,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 74,
+      "case_id": "IT-073",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_login_post_with_valid_csrf_authenticates",
+      "source_file": "books/test_security.py",
+      "source_line": 101,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 75,
+      "case_id": "IT-074",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_login_post_without_csrf_is_rejected",
+      "source_file": "books/test_security.py",
+      "source_line": 95,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 76,
+      "case_id": "IT-075",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_login_rotates_pre_authentication_session",
+      "source_file": "books/test_security.py",
+      "source_line": 71,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 77,
+      "case_id": "IT-076",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_logout_invalidates_copied_authenticated_cookie",
+      "source_file": "books/test_security.py",
+      "source_line": 84,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 78,
+      "case_id": "IT-077",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_other_buyer_cannot_view_or_remove_saved_item",
+      "source_file": "books/test_security.py",
+      "source_line": 124,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 79,
+      "case_id": "IT-078",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_registered_passwords_are_verifiable_salted_hashes",
+      "source_file": "books/test_security.py",
+      "source_line": 52,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 80,
+      "case_id": "IT-079",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_search_reflection_escapes_html_attribute_payload",
+      "source_file": "books/test_security.py",
+      "source_line": 172,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 81,
+      "case_id": "IT-080",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_seller_cannot_add_or_remove_buyer_wishlist_item",
+      "source_file": "books/test_security.py",
+      "source_line": 135,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 82,
+      "case_id": "IT-081",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_sql_like_login_identifier_does_not_bypass_authentication",
+      "source_file": "books/test_security.py",
+      "source_line": 167,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 83,
+      "case_id": "IT-082",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_sql_like_search_is_literal_and_does_not_broaden_results",
+      "source_file": "books/test_security.py",
+      "source_line": 159,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 84,
+      "case_id": "IT-083",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_stored_book_title_is_escaped_in_catalogue_and_detail",
+      "source_file": "books/test_security.py",
+      "source_line": 178,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 85,
+      "case_id": "IT-084",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_valid_csrf_wishlist_add_is_idempotent",
+      "source_file": "books/test_security.py",
+      "source_line": 116,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 86,
+      "case_id": "IT-085",
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_wishlist_post_without_csrf_creates_nothing",
+      "source_file": "books/test_security.py",
+      "source_line": 109,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 87,
+      "case_id": "IT-086",
+      "test_id": "books.tests.AdminInventoryManagementTests.test_admin_can_deactivate_listing",
+      "source_file": "books/tests.py",
+      "source_line": 1316,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 88,
+      "case_id": "IT-087",
+      "test_id": "books.tests.AdminInventoryManagementTests.test_admin_can_reactivate_approved_listing_with_stock",
+      "source_file": "books/tests.py",
+      "source_line": 1339,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 89,
+      "case_id": "IT-088",
+      "test_id": "books.tests.AdminInventoryManagementTests.test_admin_can_update_stock_quantity",
+      "source_file": "books/tests.py",
+      "source_line": 1289,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 90,
+      "case_id": "IT-089",
+      "test_id": "books.tests.AdminInventoryManagementTests.test_deactivated_listing_is_hidden_from_catalogue",
+      "source_file": "books/tests.py",
+      "source_line": 1327,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 91,
+      "case_id": "IT-090",
+      "test_id": "books.tests.AdminInventoryManagementTests.test_non_staff_user_cannot_manage_inventory",
+      "source_file": "books/tests.py",
+      "source_line": 1385,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 92,
+      "case_id": "IT-091",
+      "test_id": "books.tests.AdminInventoryManagementTests.test_out_of_stock_listing_cannot_be_activated",
+      "source_file": "books/tests.py",
+      "source_line": 1368,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 93,
+      "case_id": "IT-092",
+      "test_id": "books.tests.AdminInventoryManagementTests.test_pending_listing_cannot_be_activated",
+      "source_file": "books/tests.py",
+      "source_line": 1353,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 94,
+      "case_id": "IT-093",
+      "test_id": "books.tests.AdminListingApprovalTests.test_admin_can_approve_pending_listing",
+      "source_file": "books/tests.py",
+      "source_line": 1120,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 95,
+      "case_id": "IT-094",
+      "test_id": "books.tests.AdminListingApprovalTests.test_admin_can_open_book_listing_management",
+      "source_file": "books/tests.py",
+      "source_line": 1114,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 96,
+      "case_id": "IT-095",
+      "test_id": "books.tests.AdminListingApprovalTests.test_admin_can_reject_pending_listing",
+      "source_file": "books/tests.py",
+      "source_line": 1149,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 97,
+      "case_id": "IT-096",
+      "test_id": "books.tests.AdminListingApprovalTests.test_anonymous_user_cannot_access_admin_listing_management",
+      "source_file": "books/tests.py",
+      "source_line": 1218,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 98,
+      "case_id": "IT-097",
+      "test_id": "books.tests.AdminListingApprovalTests.test_approved_listing_appears_in_public_catalogue",
+      "source_file": "books/tests.py",
+      "source_line": 1137,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 99,
+      "case_id": "IT-098",
+      "test_id": "books.tests.AdminListingApprovalTests.test_approved_listing_without_stock_remains_unavailable",
+      "source_file": "books/tests.py",
+      "source_line": 1178,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 100,
+      "case_id": "IT-099",
+      "test_id": "books.tests.AdminListingApprovalTests.test_non_staff_user_cannot_access_admin_listing_management",
+      "source_file": "books/tests.py",
+      "source_line": 1194,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 101,
+      "case_id": "IT-100",
+      "test_id": "books.tests.AdminListingApprovalTests.test_rejected_listing_does_not_appear_in_public_catalogue",
+      "source_file": "books/tests.py",
+      "source_line": 1166,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 102,
+      "case_id": "IT-101",
+      "test_id": "books.tests.BookCatalogueTests.test_available_books_are_displayed",
+      "source_file": "books/tests.py",
+      "source_line": 65,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 103,
+      "case_id": "IT-102",
+      "test_id": "books.tests.BookCatalogueTests.test_catalogue_page_loads",
+      "source_file": "books/tests.py",
+      "source_line": 59,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 104,
+      "case_id": "IT-103",
+      "test_id": "books.tests.BookCatalogueTests.test_category_filter_excludes_unavailable_books",
+      "source_file": "books/tests.py",
+      "source_line": 167,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 105,
+      "case_id": "IT-104",
+      "test_id": "books.tests.BookCatalogueTests.test_category_filter_is_case_insensitive",
+      "source_file": "books/tests.py",
+      "source_line": 157,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 106,
+      "case_id": "IT-105",
+      "test_id": "books.tests.BookCatalogueTests.test_empty_catalogue_displays_message",
+      "source_file": "books/tests.py",
+      "source_line": 136,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 107,
+      "case_id": "IT-106",
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_category",
+      "source_file": "books/tests.py",
+      "source_line": 147,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 108,
+      "case_id": "IT-107",
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_category_and_price_together",
+      "source_file": "books/tests.py",
+      "source_line": 221,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 109,
+      "case_id": "IT-108",
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_maximum_price",
+      "source_file": "books/tests.py",
+      "source_line": 185,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 110,
+      "case_id": "IT-109",
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_minimum_price",
+      "source_file": "books/tests.py",
+      "source_line": 175,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 111,
+      "case_id": "IT-110",
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_price_range",
+      "source_file": "books/tests.py",
+      "source_line": 195,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 112,
+      "case_id": "IT-111",
+      "test_id": "books.tests.BookCatalogueTests.test_invalid_maximum_price_does_not_crash",
+      "source_file": "books/tests.py",
+      "source_line": 272,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 113,
+      "case_id": "IT-112",
+      "test_id": "books.tests.BookCatalogueTests.test_invalid_minimum_price_does_not_crash",
+      "source_file": "books/tests.py",
+      "source_line": 248,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 114,
+      "case_id": "IT-113",
+      "test_id": "books.tests.BookCatalogueTests.test_minimum_price_greater_than_maximum_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 296,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 115,
+      "case_id": "IT-114",
+      "test_id": "books.tests.BookCatalogueTests.test_negative_minimum_price_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 260,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 116,
+      "case_id": "IT-115",
+      "test_id": "books.tests.BookCatalogueTests.test_non_finite_price_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 284,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 117,
+      "case_id": "IT-116",
+      "test_id": "books.tests.BookCatalogueTests.test_price_boundaries_are_inclusive",
+      "source_file": "books/tests.py",
+      "source_line": 208,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 118,
+      "case_id": "IT-117",
+      "test_id": "books.tests.BookCatalogueTests.test_results_are_ordered_by_title",
+      "source_file": "books/tests.py",
+      "source_line": 314,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 119,
+      "case_id": "IT-118",
+      "test_id": "books.tests.BookCatalogueTests.test_search_and_filters_work_together",
+      "source_file": "books/tests.py",
+      "source_line": 234,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 120,
+      "case_id": "IT-119",
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_author",
+      "source_file": "books/tests.py",
+      "source_line": 88,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 121,
+      "case_id": "IT-120",
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_description_keyword",
+      "source_file": "books/tests.py",
+      "source_line": 106,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 122,
+      "case_id": "IT-121",
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_isbn",
+      "source_file": "books/tests.py",
+      "source_line": 97,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 123,
+      "case_id": "IT-122",
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_title",
+      "source_file": "books/tests.py",
+      "source_line": 79,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 124,
+      "case_id": "IT-123",
+      "test_id": "books.tests.BookCatalogueTests.test_search_is_case_insensitive",
+      "source_file": "books/tests.py",
+      "source_line": 115,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 125,
+      "case_id": "IT-124",
+      "test_id": "books.tests.BookCatalogueTests.test_unavailable_books_are_excluded",
+      "source_file": "books/tests.py",
+      "source_line": 73,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 126,
+      "case_id": "IT-125",
+      "test_id": "books.tests.BookCatalogueTests.test_unmatched_search_displays_message",
+      "source_file": "books/tests.py",
+      "source_line": 124,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 127,
+      "case_id": "IT-126",
+      "test_id": "books.tests.BookDetailTests.test_book_detail_displays_book_information",
+      "source_file": "books/tests.py",
+      "source_line": 363,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 128,
+      "case_id": "IT-127",
+      "test_id": "books.tests.BookDetailTests.test_book_detail_displays_cover_image",
+      "source_file": "books/tests.py",
+      "source_line": 379,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 129,
+      "case_id": "IT-128",
+      "test_id": "books.tests.BookDetailTests.test_book_detail_page_loads",
+      "source_file": "books/tests.py",
+      "source_line": 355,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 130,
+      "case_id": "IT-129",
+      "test_id": "books.tests.BookDetailTests.test_book_detail_returns_404_for_nonexistent_book",
+      "source_file": "books/tests.py",
+      "source_line": 408,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 131,
+      "case_id": "IT-130",
+      "test_id": "books.tests.BookDetailTests.test_book_detail_shows_placeholder_without_cover_image",
+      "source_file": "books/tests.py",
+      "source_line": 390,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 132,
+      "case_id": "IT-131",
+      "test_id": "books.tests.BookDetailTests.test_catalogue_links_to_book_details",
+      "source_file": "books/tests.py",
+      "source_line": 422,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 133,
+      "case_id": "IT-132",
+      "test_id": "books.tests.BookDetailTests.test_unavailable_book_detail_returns_404",
+      "source_file": "books/tests.py",
+      "source_line": 415,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 134,
+      "case_id": "IT-133",
+      "test_id": "books.tests.BookReviewTests.test_anonymous_user_is_redirected_to_login",
+      "source_file": "books/tests.py",
+      "source_line": 1679,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 135,
+      "case_id": "IT-134",
+      "test_id": "books.tests.BookReviewTests.test_blank_comment_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 1602,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 136,
+      "case_id": "IT-135",
+      "test_id": "books.tests.BookReviewTests.test_buyer_cannot_submit_duplicate_review",
+      "source_file": "books/tests.py",
+      "source_line": 1555,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 137,
+      "case_id": "IT-136",
+      "test_id": "books.tests.BookReviewTests.test_buyer_without_purchase_cannot_submit_review",
+      "source_file": "books/tests.py",
+      "source_line": 1499,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 138,
+      "case_id": "IT-137",
+      "test_id": "books.tests.BookReviewTests.test_cancelled_order_does_not_qualify_for_review",
+      "source_file": "books/tests.py",
+      "source_line": 1525,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 139,
+      "case_id": "IT-138",
+      "test_id": "books.tests.BookReviewTests.test_comment_over_2000_characters_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 1615,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 140,
+      "case_id": "IT-139",
+      "test_id": "books.tests.BookReviewTests.test_invalid_rating_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 1589,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 141,
+      "case_id": "IT-140",
+      "test_id": "books.tests.BookReviewTests.test_purchasing_buyer_can_submit_review",
+      "source_file": "books/tests.py",
+      "source_line": 1473,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 142,
+      "case_id": "IT-141",
+      "test_id": "books.tests.BookReviewTests.test_review_comment_html_is_escaped_on_book_detail_page",
+      "source_file": "books/tests.py",
+      "source_line": 1649,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 143,
+      "case_id": "IT-142",
+      "test_id": "books.tests.BookReviewTests.test_review_does_not_allow_another_buyer_to_review",
+      "source_file": "books/tests.py",
+      "source_line": 1691,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 144,
+      "case_id": "IT-143",
+      "test_id": "books.tests.BookReviewTests.test_review_is_displayed_on_book_detail_page",
+      "source_file": "books/tests.py",
+      "source_line": 1628,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 145,
+      "case_id": "IT-144",
+      "test_id": "books.tests.SellerCreateListingTests.test_anonymous_user_is_redirected_to_login",
+      "source_file": "books/tests.py",
+      "source_line": 514,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 146,
+      "case_id": "IT-145",
+      "test_id": "books.tests.SellerCreateListingTests.test_buyer_cannot_access_listing_form",
+      "source_file": "books/tests.py",
+      "source_line": 490,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 147,
+      "case_id": "IT-146",
+      "test_id": "books.tests.SellerCreateListingTests.test_buyer_cannot_create_listing",
+      "source_file": "books/tests.py",
+      "source_line": 499,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 148,
+      "case_id": "IT-147",
+      "test_id": "books.tests.SellerCreateListingTests.test_duplicate_isbn_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 573,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 149,
+      "case_id": "IT-148",
+      "test_id": "books.tests.SellerCreateListingTests.test_invalid_isbn_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 520,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 150,
+      "case_id": "IT-149",
+      "test_id": "books.tests.SellerCreateListingTests.test_javascript_cover_image_url_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 537,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 151,
+      "case_id": "IT-150",
+      "test_id": "books.tests.SellerCreateListingTests.test_seller_can_access_listing_form",
+      "source_file": "books/tests.py",
+      "source_line": 463,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 152,
+      "case_id": "IT-151",
+      "test_id": "books.tests.SellerCreateListingTests.test_seller_can_create_pending_listing",
+      "source_file": "books/tests.py",
+      "source_line": 470,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 153,
+      "case_id": "IT-152",
+      "test_id": "books.tests.SellerCreateListingTests.test_zero_price_is_rejected",
+      "source_file": "books/tests.py",
+      "source_line": 556,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 154,
+      "case_id": "IT-153",
+      "test_id": "books.tests.SellerDeleteListingTests.test_anonymous_user_is_redirected_to_login",
+      "source_file": "books/tests.py",
+      "source_line": 995,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 155,
+      "case_id": "IT-154",
+      "test_id": "books.tests.SellerDeleteListingTests.test_buyer_cannot_delete_listing",
+      "source_file": "books/tests.py",
+      "source_line": 979,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 156,
+      "case_id": "IT-155",
+      "test_id": "books.tests.SellerDeleteListingTests.test_ordered_book_cannot_be_deleted",
+      "source_file": "books/tests.py",
+      "source_line": 1006,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 157,
+      "case_id": "IT-156",
+      "test_id": "books.tests.SellerDeleteListingTests.test_seller_can_delete_own_listing",
+      "source_file": "books/tests.py",
+      "source_line": 950,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 158,
+      "case_id": "IT-157",
+      "test_id": "books.tests.SellerDeleteListingTests.test_seller_can_open_delete_confirmation",
+      "source_file": "books/tests.py",
+      "source_line": 936,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 159,
+      "case_id": "IT-158",
+      "test_id": "books.tests.SellerDeleteListingTests.test_seller_cannot_delete_another_sellers_listing",
+      "source_file": "books/tests.py",
+      "source_line": 966,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 160,
+      "case_id": "IT-159",
+      "test_id": "books.tests.SellerEditListingTests.test_anonymous_user_is_redirected_to_login",
+      "source_file": "books/tests.py",
+      "source_line": 880,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 161,
+      "case_id": "IT-160",
+      "test_id": "books.tests.SellerEditListingTests.test_buyer_cannot_edit_listing",
+      "source_file": "books/tests.py",
+      "source_line": 867,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 162,
+      "case_id": "IT-161",
+      "test_id": "books.tests.SellerEditListingTests.test_invalid_edit_does_not_change_listing",
+      "source_file": "books/tests.py",
+      "source_line": 826,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 163,
+      "case_id": "IT-162",
+      "test_id": "books.tests.SellerEditListingTests.test_seller_can_edit_own_listing",
+      "source_file": "books/tests.py",
+      "source_line": 789,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 164,
+      "case_id": "IT-163",
+      "test_id": "books.tests.SellerEditListingTests.test_seller_can_open_edit_page",
+      "source_file": "books/tests.py",
+      "source_line": 778,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 165,
+      "case_id": "IT-164",
+      "test_id": "books.tests.SellerEditListingTests.test_seller_cannot_edit_another_sellers_listing",
+      "source_file": "books/tests.py",
+      "source_line": 857,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 166,
+      "case_id": "IT-165",
+      "test_id": "books.tests.SellerMyListingsTests.test_anonymous_user_is_redirected_to_login",
+      "source_file": "books/tests.py",
+      "source_line": 695,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 167,
+      "case_id": "IT-166",
+      "test_id": "books.tests.SellerMyListingsTests.test_buyer_cannot_view_seller_listings",
+      "source_file": "books/tests.py",
+      "source_line": 680,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 168,
+      "case_id": "IT-167",
+      "test_id": "books.tests.SellerMyListingsTests.test_seller_can_view_own_listings",
+      "source_file": "books/tests.py",
+      "source_line": 648,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 169,
+      "case_id": "IT-168",
+      "test_id": "books.tests.SellerMyListingsTests.test_seller_sees_approval_statuses",
+      "source_file": "books/tests.py",
+      "source_line": 667,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 170,
+      "case_id": "IT-169",
+      "test_id": "books.tests.SellerMyListingsTests.test_seller_with_no_listings_sees_empty_state",
+      "source_file": "books/tests.py",
+      "source_line": 705,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 171,
+      "case_id": "IT-170",
+      "test_id": "cart.tests.CartTests.test_adding_same_book_increases_quantity",
+      "source_file": "cart/tests.py",
+      "source_line": 78,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 172,
+      "case_id": "IT-171",
+      "test_id": "cart.tests.CartTests.test_buyer_can_add_book_to_cart",
+      "source_file": "cart/tests.py",
+      "source_line": 64,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 173,
+      "case_id": "IT-172",
+      "test_id": "cart.tests.CartTests.test_buyer_can_remove_item",
+      "source_file": "cart/tests.py",
+      "source_line": 234,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 174,
+      "case_id": "IT-173",
+      "test_id": "cart.tests.CartTests.test_buyer_can_update_quantity",
+      "source_file": "cart/tests.py",
+      "source_line": 199,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 175,
+      "case_id": "IT-174",
+      "test_id": "cart.tests.CartTests.test_buyer_can_view_empty_cart",
+      "source_file": "cart/tests.py",
+      "source_line": 58,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 176,
+      "case_id": "IT-175",
+      "test_id": "cart.tests.CartTests.test_cannot_add_more_than_available_stock",
+      "source_file": "cart/tests.py",
+      "source_line": 97,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 177,
+      "case_id": "IT-176",
+      "test_id": "cart.tests.CartTests.test_cannot_add_unavailable_book",
+      "source_file": "cart/tests.py",
+      "source_line": 126,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 178,
+      "case_id": "IT-177",
+      "test_id": "cart.tests.CartTests.test_cannot_increase_existing_quantity_beyond_stock",
+      "source_file": "cart/tests.py",
+      "source_line": 111,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 179,
+      "case_id": "IT-178",
+      "test_id": "cart.tests.CartTests.test_cannot_update_quantity_beyond_stock",
+      "source_file": "cart/tests.py",
+      "source_line": 219,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 180,
+      "case_id": "IT-179",
+      "test_id": "cart.tests.CartTests.test_cart_totals_are_calculated_correctly",
+      "source_file": "cart/tests.py",
+      "source_line": 277,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 181,
+      "case_id": "IT-180",
+      "test_id": "cart.tests.CartTests.test_extremely_long_quantity_is_rejected",
+      "source_file": "cart/tests.py",
+      "source_line": 160,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 182,
+      "case_id": "IT-181",
+      "test_id": "cart.tests.CartTests.test_invalid_quantity_is_rejected",
+      "source_file": "cart/tests.py",
+      "source_line": 143,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 183,
+      "case_id": "IT-182",
+      "test_id": "cart.tests.CartTests.test_seller_cannot_access_cart",
+      "source_file": "cart/tests.py",
+      "source_line": 251,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 184,
+      "case_id": "IT-183",
+      "test_id": "cart.tests.CartTests.test_seller_cannot_add_book_to_cart",
+      "source_file": "cart/tests.py",
+      "source_line": 261,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 185,
+      "case_id": "IT-184",
+      "test_id": "cart.tests.CheckoutTests.test_address_belonging_to_another_buyer_is_rejected",
+      "source_file": "cart/tests.py",
+      "source_line": 416,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 186,
+      "case_id": "IT-185",
+      "test_id": "cart.tests.CheckoutTests.test_buyer_can_view_checkout",
+      "source_file": "cart/tests.py",
+      "source_line": 349,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 187,
+      "case_id": "IT-186",
+      "test_id": "cart.tests.CheckoutTests.test_checkout_displays_saved_shipping_address",
+      "source_file": "cart/tests.py",
+      "source_line": 356,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 188,
+      "case_id": "IT-187",
+      "test_id": "cart.tests.CheckoutTests.test_checkout_requires_login",
+      "source_file": "cart/tests.py",
+      "source_line": 383,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 189,
+      "case_id": "IT-188",
+      "test_id": "cart.tests.CheckoutTests.test_empty_cart_cannot_proceed_to_checkout",
+      "source_file": "cart/tests.py",
+      "source_line": 363,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 190,
+      "case_id": "IT-189",
+      "test_id": "cart.tests.CheckoutTests.test_invalid_new_shipping_address_is_not_saved",
+      "source_file": "cart/tests.py",
+      "source_line": 509,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 191,
+      "case_id": "IT-190",
+      "test_id": "cart.tests.CheckoutTests.test_invalid_payment_method_is_rejected",
+      "source_file": "cart/tests.py",
+      "source_line": 448,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 192,
+      "case_id": "IT-191",
+      "test_id": "cart.tests.CheckoutTests.test_new_address_with_invalid_payment_method_is_not_saved",
+      "source_file": "cart/tests.py",
+      "source_line": 539,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 193,
+      "case_id": "IT-192",
+      "test_id": "cart.tests.CheckoutTests.test_new_shipping_address_can_be_saved",
+      "source_file": "cart/tests.py",
+      "source_line": 463,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 194,
+      "case_id": "IT-193",
+      "test_id": "cart.tests.CheckoutTests.test_seller_cannot_access_checkout",
+      "source_file": "cart/tests.py",
+      "source_line": 373,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 195,
+      "case_id": "IT-194",
+      "test_id": "cart.tests.CheckoutTests.test_valid_saved_address_and_payment_method_are_accepted",
+      "source_file": "cart/tests.py",
+      "source_line": 391,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 196,
+      "case_id": "IT-195",
+      "test_id": "config.tests_health.HealthCheckTests.test_health_check_rejects_post_requests",
+      "source_file": "config/tests_health.py",
+      "source_line": 36,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 197,
+      "case_id": "IT-196",
+      "test_id": "config.tests_health.HealthCheckTests.test_health_check_returns_200_when_database_is_available",
+      "source_file": "config/tests_health.py",
+      "source_line": 9,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 198,
+      "case_id": "IT-197",
+      "test_id": "config.tests_health.HealthCheckTests.test_health_check_returns_503_when_database_fails",
+      "source_file": "config/tests_health.py",
+      "source_line": 22,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 199,
+      "case_id": "IT-198",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_anonymous_user_cannot_cancel_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 191,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 200,
+      "case_id": "IT-199",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_anonymous_user_cannot_request_return",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 422,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 201,
+      "case_id": "IT-200",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_can_cancel_confirmed_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 102,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 202,
+      "case_id": "IT-201",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_can_cancel_pending_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 88,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 203,
+      "case_id": "IT-202",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_can_request_return_for_delivered_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 222,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 204,
+      "case_id": "IT-203",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_cannot_cancel_another_buyers_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 173,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 205,
+      "case_id": "IT-204",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_cannot_request_return_for_another_buyers_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 399,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 206,
+      "case_id": "IT-205",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_cancellation_endpoint_rejects_get",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 208,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 207,
+      "case_id": "IT-206",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_cancellation_is_rejected_after_policy_window",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 119,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 208,
+      "case_id": "IT-207",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_delivered_order_cannot_be_cancelled",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 156,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 209,
+      "case_id": "IT-208",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_duplicate_return_request_is_rejected",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 368,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 210,
+      "case_id": "IT-209",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_order_detail_shows_cancellation_option_for_eligible_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 457,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 211,
+      "case_id": "IT-210",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_order_detail_shows_return_request_status",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 466,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 212,
+      "case_id": "IT-211",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_endpoint_rejects_get",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 447,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 213,
+      "case_id": "IT-212",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_reason_html_is_escaped_on_order_detail_page",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 487,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 214,
+      "case_id": "IT-213",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejected_after_policy_window",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 317,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 215,
+      "case_id": "IT-214",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejected_for_undelivered_order",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 300,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 216,
+      "case_id": "IT-215",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejected_without_delivery_timestamp",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 341,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 217,
+      "case_id": "IT-216",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejects_reason_over_2000_characters",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 278,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 218,
+      "case_id": "IT-217",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_requires_a_reason",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 254,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 219,
+      "case_id": "IT-218",
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_shipped_order_cannot_be_cancelled",
+      "source_file": "orders/test_cancellation_return.py",
+      "source_line": 139,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 220,
+      "case_id": "IT-219",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_cancelled_status_does_not_send_email",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 124,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 221,
+      "case_id": "IT-220",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_confirmed_status_sends_email",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 68,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 222,
+      "case_id": "IT-221",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_creating_pending_order_does_not_send_email",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 65,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 223,
+      "case_id": "IT-222",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_delivered_status_sends_email",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 102,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 224,
+      "case_id": "IT-223",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_email_contains_order_and_item_details",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 151,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 225,
+      "case_id": "IT-224",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_email_failure_does_not_prevent_status_update",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 131,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 226,
+      "case_id": "IT-225",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_saving_without_status_change_does_not_send_email",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 117,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 227,
+      "case_id": "IT-226",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_shipped_status_sends_email",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 87,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 228,
+      "case_id": "IT-227",
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_transition_from_confirmed_to_shipped_sends_new_email",
+      "source_file": "orders/test_notifications.py",
+      "source_line": 165,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 229,
+      "case_id": "IT-228",
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_cancelled_order_shows_cancellation_message",
+      "source_file": "orders/test_tracking.py",
+      "source_line": 93,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 230,
+      "case_id": "IT-229",
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_confirmed_order_shows_confirmed_status",
+      "source_file": "orders/test_tracking.py",
+      "source_line": 54,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 231,
+      "case_id": "IT-230",
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_delivered_order_shows_delivered_status",
+      "source_file": "orders/test_tracking.py",
+      "source_line": 83,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 232,
+      "case_id": "IT-231",
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_pending_order_shows_order_received_as_current",
+      "source_file": "orders/test_tracking.py",
+      "source_line": 45,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 233,
+      "case_id": "IT-232",
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_processing_order_shows_processing_status",
+      "source_file": "orders/test_tracking.py",
+      "source_line": 63,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 234,
+      "case_id": "IT-233",
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_shipped_order_shows_shipped_status",
+      "source_file": "orders/test_tracking.py",
+      "source_line": 73,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 235,
+      "case_id": "IT-234",
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_tracking_page_explains_live_courier_tracking_is_unavailable",
+      "source_file": "orders/test_tracking.py",
+      "source_line": 106,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 236,
+      "case_id": "IT-235",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_creates_order_items_and_pending_payment",
+      "source_file": "orders/tests.py",
+      "source_line": 58,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 237,
+      "case_id": "IT-236",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_failed_initiation_marks_payment_failed",
+      "source_file": "orders/tests.py",
+      "source_line": 253,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 238,
+      "case_id": "IT-237",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_order_creation_does_not_clear_cart",
+      "source_file": "orders/tests.py",
+      "source_line": 196,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 239,
+      "case_id": "IT-238",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_order_creation_does_not_reduce_inventory",
+      "source_file": "orders/tests.py",
+      "source_line": 179,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 240,
+      "case_id": "IT-239",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_order_preserves_shipping_address_snapshot",
+      "source_file": "orders/tests.py",
+      "source_line": 90,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 241,
+      "case_id": "IT-240",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_deleted_book",
+      "source_file": "orders/tests.py",
+      "source_line": 110,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 242,
+      "case_id": "IT-241",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_insufficient_stock",
+      "source_file": "orders/tests.py",
+      "source_line": 161,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 243,
+      "case_id": "IT-242",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_invalid_payment_method",
+      "source_file": "orders/tests.py",
+      "source_line": 128,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 244,
+      "case_id": "IT-243",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_unavailable_book",
+      "source_file": "orders/tests.py",
+      "source_line": 143,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 245,
+      "case_id": "IT-244",
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_successful_initiation_keeps_payment_pending",
+      "source_file": "orders/tests.py",
+      "source_line": 216,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 246,
+      "case_id": "IT-245",
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_buyer_can_view_order_history",
+      "source_file": "orders/tests.py",
+      "source_line": 349,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 247,
+      "case_id": "IT-246",
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_buyer_can_view_own_order_details",
+      "source_file": "orders/tests.py",
+      "source_line": 382,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 248,
+      "case_id": "IT-247",
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_buyer_cannot_view_another_buyers_order",
+      "source_file": "orders/tests.py",
+      "source_line": 393,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 249,
+      "case_id": "IT-248",
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_order_details_require_login",
+      "source_file": "orders/tests.py",
+      "source_line": 420,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 250,
+      "case_id": "IT-249",
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_order_history_does_not_show_other_buyers_orders",
+      "source_file": "orders/tests.py",
+      "source_line": 359,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 251,
+      "case_id": "IT-250",
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_order_history_requires_login",
+      "source_file": "orders/tests.py",
+      "source_line": 414,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 252,
+      "case_id": "UT-001",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_admin_role_cannot_be_selected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 76,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 253,
+      "case_id": "UT-002",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_duplicate_email_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 57,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 254,
+      "case_id": "UT-003",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_duplicate_username_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 60,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 255,
+      "case_id": "UT-004",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_email_is_normalized",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 50,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 256,
+      "case_id": "UT-005",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_invalid_email_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 72,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 257,
+      "case_id": "UT-006",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_mismatched_password_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 63,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 258,
+      "case_id": "UT-007",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_numeric_password_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 69,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 259,
+      "case_id": "UT-008",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_short_password_is_rejected",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 66,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 260,
+      "case_id": "UT-009",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_username_is_trimmed",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 54,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 261,
+      "case_id": "UT-010",
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_valid_registration_passes_validation",
+      "source_file": "accounts/test_authentication.py",
+      "source_line": 47,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 262,
+      "case_id": "UT-011",
+      "test_id": "accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_fails_when_connection_is_not_encrypted",
+      "source_file": "accounts/test_database_tls.py",
+      "source_line": 34,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 263,
+      "case_id": "UT-012",
+      "test_id": "accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_rejects_non_postgresql_database",
+      "source_file": "accounts/test_database_tls.py",
+      "source_line": 44,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 264,
+      "case_id": "UT-013",
+      "test_id": "accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_reports_tls_version_and_cipher",
+      "source_file": "accounts/test_database_tls.py",
+      "source_line": 20,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 265,
+      "case_id": "UT-014",
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_api_failures_raise_sanitized_backend_error",
+      "source_file": "config/test_email_backend.py",
+      "source_line": 159,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 266,
+      "case_id": "UT-015",
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_empty_message_list_does_not_make_api_requests",
+      "source_file": "config/test_email_backend.py",
+      "source_line": 119,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 267,
+      "case_id": "UT-016",
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_fail_silently_returns_zero_on_api_failure",
+      "source_file": "config/test_email_backend.py",
+      "source_line": 132,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 268,
+      "case_id": "UT-017",
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_missing_oauth_credentials_raise_configuration_error",
+      "source_file": "config/test_email_backend.py",
+      "source_line": 94,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 269,
+      "case_id": "UT-018",
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_sends_email_through_gmail_https_api",
+      "source_file": "config/test_email_backend.py",
+      "source_line": 36,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 348,
+      "case_id": "IT-251",
+      "test_id": "books.test_catalogue_cache.CacheCspTests.test_each_cached_response_has_its_own_matching_nonce",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 303,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 349,
+      "case_id": "IT-252",
+      "test_id": "books.test_catalogue_cache.CacheCspTests.test_response_is_not_marked_publicly_cacheable",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 317,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 350,
+      "case_id": "IT-253",
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_entry_is_rebuilt_after_timeout",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 76,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 351,
+      "case_id": "IT-254",
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_entry_is_still_served_just_before_timeout",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 90,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 352,
+      "case_id": "IT-255",
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_first_request_misses_and_repeat_hits",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 65,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 353,
+      "case_id": "IT-256",
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_hit_runs_no_queries_and_miss_runs_three",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 69,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 354,
+      "case_id": "IT-257",
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_zero_seconds_disables_the_cache",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 102,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 355,
+      "case_id": "IT-258",
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_admin_bulk_deactivate_invalidates_despite_bypassing_save",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 161,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 356,
+      "case_id": "IT-259",
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_approving_a_pending_book_publishes_it",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 138,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 357,
+      "case_id": "IT-260",
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_category_list_follows_new_category",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 172,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 358,
+      "case_id": "IT-261",
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_deleting_a_book_removes_it",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 156,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 359,
+      "case_id": "IT-262",
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_edited_title_and_price_appear_immediately",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 130,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 360,
+      "case_id": "IT-263",
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_new_approved_book_appears_immediately",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 126,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 361,
+      "case_id": "IT-264",
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_rejecting_a_book_removes_it_and_its_category",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 149,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 362,
+      "case_id": "IT-265",
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_categories_do_not_share_entries",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 198,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 363,
+      "case_id": "IT-266",
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_different_searches_get_different_results",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 191,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 364,
+      "case_id": "IT-267",
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_invalid_and_out_of_range_pages_resolve_like_before",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 225,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 365,
+      "case_id": "IT-268",
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_pages_do_not_share_entries",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 217,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 366,
+      "case_id": "IT-269",
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_price_ranges_do_not_share_entries",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 207,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 367,
+      "case_id": "IT-270",
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_search_box_echoes_this_request_not_a_cached_one",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 232,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 368,
+      "case_id": "IT-271",
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_anonymous_hit_after_logged_in_miss_shows_no_user",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 251,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 369,
+      "case_id": "IT-272",
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_anonymous_hit_does_not_create_a_session",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 283,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 370,
+      "case_id": "IT-273",
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_cache_stores_no_user_or_session_data",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 271,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 371,
+      "case_id": "IT-274",
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_each_user_sees_own_navigation_on_shared_entry",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 261,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 372,
+      "case_id": "IT-275",
+      "test_id": "books.test_catalogue_cache.CatalogueDiagnosticsTests.test_log_line_records_cache_status_and_queries_without_search_text",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 337,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    },
+    {
+      "row": 373,
+      "case_id": "IT-276",
+      "test_id": "books.test_catalogue_cache.CatalogueDiagnosticsTests.test_server_timing_header_reports_durations",
+      "source_file": "books/test_catalogue_cache.py",
+      "source_line": 330,
+      "documentation_status": "Reviewed",
+      "review_note": "Automated documentation audit: test ID, pinned method/line, source fingerprint, fixture reference, assertion excerpt, level, requirement metadata and hosted result checked. Exact source remains authoritative; no new execution or human acceptance asserted."
+    }
+  ]
+}

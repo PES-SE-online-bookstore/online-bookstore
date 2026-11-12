@@ -1,0 +1,817 @@
+{
+  "run_id": "CHECKOUT-GHA-43180348416-1",
+  "started_at_utc": "2026-11-12T08:08:12.673074+00:00",
+  "target": "http[local path omitted]",
+  "profile_name": "checkout-normal-10",
+  "status": "Passed declared 10-user browsing sample; full-system capacity still unverified",
+  "locust_version": "2.47.0",
+  "python": "3.11.18 (main, Oct 26 2026, 02:48:29) [GCC 15.2.0]",
+  "package_versions": {
+    "locust": "2.47.0",
+    "gevent": "26.9.0",
+    "requests": "2.34.2",
+    "psutil": "7.2.2"
+  },
+  "readiness": "User reports Render logs open and ready; permissions assumed per user instruction",
+  "reported_deployed_sha": "f6d7d85eb6c93599c5e0bd05f6b6560aa1e88da3",
+  "harness_commit": "f6d7d85eb6c93599c5e0bd05f6b6560aa1e88da3",
+  "github_run_id": "43180348416",
+  "runtime_sha_verification": "Deployment SHA is operator supplied; the application does not expose a build identifier",
+  "workload": "Anonymous catalogue/search HTML GET only; 3:2 random task weighting; 1-3s think time",
+  "measurement": "HTTP request timing, not rendered browser page timing; independent sessions per virtual user",
+  "instrumentation_browser": "One sequential authenticated checkout browser during checkout-normal-10; no browser in targeted-100-250. Full profile may add a read-only browser during ten VUs.",
+  "diagnostic_measurement": "Server-Timing app covers only the instrumented view interval. Client minus app includes network, proxy, queueing and other uninstrumented time; it is not isolated queue time. Header absence does not alone establish response origin.",
+  "diagnostic_hit_share_denominators": "Reported separately over all successful responses and over successful responses marked HIT or MISS. Failed-response metadata is retained separately.",
+  "latency_gate": "p90 <=3000ms per browsing endpoint; comparison to one-user baseline will also be reported. This is an operational stop/acceptance threshold, not proof of every interpretation of no degradation.",
+  "profiles": [
+    {
+      "users": 10,
+      "spawn_rate": 1,
+      "steady_seconds": 300
+    }
+  ],
+  "stop_conditions": [
+    "Any HTTP/timeout/correctness error",
+    "Sustained p90>3000ms",
+    "Generator saturation",
+    "Operator STOP file"
+  ],
+  "limitations": [
+    "Authenticated mock checkout only in checkout-normal-10; browsing-only in other profiles",
+    "Not a full-system 500-user acceptance test",
+    "Current public deployed SHA not exposed by app; deployment SHA is operator supplied",
+    "Warmup/ramp excluded only from steady metrics; all requests retained in CSV",
+    "Generator resources are measured; Render resources/log observations come from operator"
+  ],
+  "preflight": [
+    {
+      "path": "/health/",
+      "started_at_utc": "2026-11-12T08:08:12.675456+00:00",
+      "status": 200,
+      "elapsed_ms": 130.503,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true
+    },
+    {
+      "path": "/books/",
+      "started_at_utc": "2026-11-12T08:08:12.806380+00:00",
+      "status": 200,
+      "elapsed_ms": 113.928,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true,
+      "diagnostics": {
+        "cache_header_present": true,
+        "cache_status": "HIT",
+        "server_timing_present": true,
+        "data_ms": 0.6,
+        "app_ms": 2.6,
+        "client_minus_instrumented_app_ms": 111.328,
+        "safe_response_headers": {
+          "server": "cloudflare",
+          "x-render-origin-server": "gunicorn",
+          "rndr-id": "0a83365d-d519-4734",
+          "cf-ray": "a5940c28280d65a0-ORD"
+        }
+      }
+    }
+  ],
+  "stages": [
+    {
+      "users": 10,
+      "spawn_rate_per_second": 1,
+      "steady_target_seconds": 300,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-12T08:08:12.921897+00:00",
+      "phase": "finished",
+      "requests_started": 1524,
+      "requests_completed": 1524,
+      "accepting_requests": false,
+      "max_actual_users": 10,
+      "max_generator_cpu_percent": 3.0,
+      "max_generator_rss_mb": 61.32,
+      "current_actual_users": 10,
+      "elapsed_seconds": 320.624,
+      "target_reached_at_utc": "2026-11-12T08:08:22.961039+00:00",
+      "steady_started_at_utc": "2026-11-12T08:08:32.978597+00:00",
+      "measurement_browser_started": true,
+      "steady_elapsed_seconds": 300.568,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 0,
+      "drain_elapsed_seconds": 0.0,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "measurement_browser": {
+        "status": "Passed completed mock checkout sample",
+        "started_at_utc": "2026-11-12T08:08:33.303Z",
+        "reported_deployed_sha": "f6d7d85eb6c93599c5e0bd05f6b6560aa1e88da3",
+        "harness_sha": "f6d7d85eb6c93599c5e0bd05f6b6560aa1e88da3",
+        "deployment_attribution": "Operator-supplied SHA; application has no runtime build identifier",
+        "scope": "20 sequential authenticated mock checkouts during 10 anonymous browsing VUs; up to 11 clients",
+        "measurement": "POST navigation start through loadEventEnd of correct Checkout Submitted page, browser assets included; order-detail verification outside timed interval",
+        "target_samples": 20,
+        "threshold_ms": 5000,
+        "fixture": {
+          "book_title": "QA Python Advanced",
+          "quantity": 1,
+          "unit_price": "450.00",
+          "synthetic_address": true
+        },
+        "limitations": [
+          "Mock payment only; no charge or paid/confirmed order acceptance",
+          "One browser and one QA buyer; not concurrent checkout or 500-user capacity",
+          "Warm authenticated browser; setup/login and checkout-form GET excluded from checkout timing",
+          "Same-origin application assets included; third-party assets blocked",
+          "No automatic POST retries or deletion; incomplete submission may have created an order"
+        ],
+        "submitted_attempts": 20,
+        "samples": [
+          {
+            "index": 1,
+            "started_at_utc": "2026-11-12T08:08:43.236Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 178.60000000000582,
+            "ttfb_ms": 96.70000000001164,
+            "dom_ms": 178.60000000000582,
+            "order_id": 9,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 234.873,
+            "finished_at_utc": "2026-11-12T08:08:43.720Z"
+          },
+          {
+            "index": 2,
+            "started_at_utc": "2026-11-12T08:08:55.202Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 182.39999999999418,
+            "ttfb_ms": 100,
+            "dom_ms": 182.29999999998836,
+            "order_id": 10,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 212.119,
+            "finished_at_utc": "2026-11-12T08:08:55.666Z"
+          },
+          {
+            "index": 3,
+            "started_at_utc": "2026-11-12T08:09:07.200Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 168.70000000001164,
+            "ttfb_ms": 88.5,
+            "dom_ms": 168.60000000000582,
+            "order_id": 11,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 202.186,
+            "finished_at_utc": "2026-11-12T08:09:07.641Z"
+          },
+          {
+            "index": 4,
+            "started_at_utc": "2026-11-12T08:09:19.218Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 178.5,
+            "ttfb_ms": 95.30000000004657,
+            "dom_ms": 178.5,
+            "order_id": 12,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 218.23,
+            "finished_at_utc": "2026-11-12T08:09:19.684Z"
+          },
+          {
+            "index": 5,
+            "started_at_utc": "2026-11-12T08:09:31.400Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 191.79999999998836,
+            "ttfb_ms": 91.5,
+            "dom_ms": 191.69999999995343,
+            "order_id": 13,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 202.37,
+            "finished_at_utc": "2026-11-12T08:09:31.863Z"
+          },
+          {
+            "index": 6,
+            "started_at_utc": "2026-11-12T08:09:43.249Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 164.10000000003492,
+            "ttfb_ms": 88,
+            "dom_ms": 164,
+            "order_id": 14,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 206.753,
+            "finished_at_utc": "2026-11-12T08:09:43.690Z"
+          },
+          {
+            "index": 7,
+            "started_at_utc": "2026-11-12T08:09:55.199Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 172,
+            "ttfb_ms": 93,
+            "dom_ms": 172,
+            "order_id": 15,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 226.782,
+            "finished_at_utc": "2026-11-12T08:09:55.669Z"
+          },
+          {
+            "index": 8,
+            "started_at_utc": "2026-11-12T08:10:07.232Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 171.30000000004657,
+            "ttfb_ms": 89.80000000004657,
+            "dom_ms": 171.30000000004657,
+            "order_id": 16,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 206.944,
+            "finished_at_utc": "2026-11-12T08:10:07.681Z"
+          },
+          {
+            "index": 9,
+            "started_at_utc": "2026-11-12T08:10:19.266Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 191.10000000003492,
+            "ttfb_ms": 111.29999999998836,
+            "dom_ms": 191,
+            "order_id": 17,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 213.066,
+            "finished_at_utc": "2026-11-12T08:10:19.740Z"
+          },
+          {
+            "index": 10,
+            "started_at_utc": "2026-11-12T08:10:31.231Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 169.59999999997672,
+            "ttfb_ms": 91.79999999998836,
+            "dom_ms": 169.59999999997672,
+            "order_id": 18,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 212.707,
+            "finished_at_utc": "2026-11-12T08:10:31.701Z"
+          },
+          {
+            "index": 11,
+            "started_at_utc": "2026-11-12T08:10:43.198Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 171.29999999998836,
+            "ttfb_ms": 91.89999999996508,
+            "dom_ms": 171.19999999995343,
+            "order_id": 19,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 229.546,
+            "finished_at_utc": "2026-11-12T08:10:43.669Z"
+          },
+          {
+            "index": 12,
+            "started_at_utc": "2026-11-12T08:10:55.230Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 173.40000000002328,
+            "ttfb_ms": 91.70000000001164,
+            "dom_ms": 173.40000000002328,
+            "order_id": 20,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 208.76,
+            "finished_at_utc": "2026-11-12T08:10:55.684Z"
+          },
+          {
+            "index": 13,
+            "started_at_utc": "2026-11-12T08:11:07.263Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 221.29999999998836,
+            "ttfb_ms": 140.20000000001164,
+            "dom_ms": 221.20000000001164,
+            "order_id": 21,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 221.3,
+            "finished_at_utc": "2026-11-12T08:11:07.776Z"
+          },
+          {
+            "index": 14,
+            "started_at_utc": "2026-11-12T08:11:19.229Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 168.79999999998836,
+            "ttfb_ms": 89.5,
+            "dom_ms": 168.70000000001164,
+            "order_id": 22,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 210.934,
+            "finished_at_utc": "2026-11-12T08:11:19.680Z"
+          },
+          {
+            "index": 15,
+            "started_at_utc": "2026-11-12T08:11:31.229Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 172.60000000003492,
+            "ttfb_ms": 91.70000000001164,
+            "dom_ms": 172.5,
+            "order_id": 23,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 212.061,
+            "finished_at_utc": "2026-11-12T08:11:31.693Z"
+          },
+          {
+            "index": 16,
+            "started_at_utc": "2026-11-12T08:11:43.245Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 170.80000000004657,
+            "ttfb_ms": 92.30000000004657,
+            "dom_ms": 170.80000000004657,
+            "order_id": 24,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 207.879,
+            "finished_at_utc": "2026-11-12T08:11:43.694Z"
+          },
+          {
+            "index": 17,
+            "started_at_utc": "2026-11-12T08:11:55.211Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 175.19999999995343,
+            "ttfb_ms": 92.79999999998836,
+            "dom_ms": 175.09999999997672,
+            "order_id": 25,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 226.939,
+            "finished_at_utc": "2026-11-12T08:11:55.685Z"
+          },
+          {
+            "index": 18,
+            "started_at_utc": "2026-11-12T08:12:07.211Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 175.79999999998836,
+            "ttfb_ms": 92.79999999998836,
+            "dom_ms": 175.70000000001164,
+            "order_id": 26,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 236.211,
+            "finished_at_utc": "2026-11-12T08:12:07.695Z"
+          },
+          {
+            "index": 19,
+            "started_at_utc": "2026-11-12T08:12:19.277Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 172,
+            "ttfb_ms": 90.20000000001164,
+            "dom_ms": 172,
+            "order_id": 27,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 204.597,
+            "finished_at_utc": "2026-11-12T08:12:19.724Z"
+          },
+          {
+            "index": 20,
+            "started_at_utc": "2026-11-12T08:12:31.226Z",
+            "normal_load_active_at_start": true,
+            "correct": true,
+            "submission_state": "Order ID captured",
+            "request_dispatched": true,
+            "load_ms": 175.79999999998836,
+            "ttfb_ms": 97,
+            "dom_ms": 175.79999999998836,
+            "order_id": 28,
+            "normal_load_active_at_end": true,
+            "checks": {
+              "item": true,
+              "quantity": true,
+              "unit_price": true,
+              "total": true,
+              "shipping_snapshot": true,
+              "buyer_identity": true,
+              "order_pending": true,
+              "payment_pending": true,
+              "mock_payment": true
+            },
+            "detail_verification_ms": 213.49,
+            "finished_at_utc": "2026-11-12T08:12:31.686Z"
+          }
+        ],
+        "errors": [],
+        "browser": "151.0.7922.34",
+        "fixture_preflight_passed": true,
+        "summary": {
+          "completed": 20,
+          "p90_load_ms": 191.10000000003492,
+          "max_load_ms": 221.29999999998836,
+          "at_or_below_5000ms": 20
+        },
+        "finished_at_utc": "2026-11-12T08:12:31.719Z"
+      },
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 887,
+          "failures": 0,
+          "p90_ms": 87.231,
+          "max_ms": 1099.381,
+          "at_or_below_3000ms": 887
+        },
+        "search_http": {
+          "attempts": 559,
+          "failures": 0,
+          "p90_ms": 88.101,
+          "max_ms": 1334.909,
+          "at_or_below_3000ms": 559
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 941,
+          "failures": 0,
+          "p90_ms": 87.427,
+          "max_ms": 1099.381,
+          "at_or_below_3000ms": 941
+        },
+        "search_http": {
+          "attempts": 583,
+          "failures": 0,
+          "p90_ms": 88.519,
+          "max_ms": 1334.909,
+          "at_or_below_3000ms": 583
+        }
+      },
+      "steady_diagnostics": {
+        "catalogue_http": {
+          "attempts": 887,
+          "successful_responses": 887,
+          "http_status_counts": {
+            "200": 887
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 874,
+            "MISS": 13,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.985344,
+          "hit_share_of_hit_or_miss_responses": 0.985344,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 887,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 887,
+            "p90": 2.3
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 887,
+            "p90": 85.346
+          }
+        },
+        "search_http": {
+          "attempts": 559,
+          "successful_responses": 559,
+          "http_status_counts": {
+            "200": 559
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 545,
+            "MISS": 14,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.974955,
+          "hit_share_of_hit_or_miss_responses": 0.974955,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 559,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 559,
+            "p90": 2.4
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 559,
+            "p90": 86.356
+          }
+        }
+      },
+      "all_phase_diagnostics": {
+        "catalogue_http": {
+          "attempts": 941,
+          "successful_responses": 941,
+          "http_status_counts": {
+            "200": 941
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 928,
+            "MISS": 13,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.986185,
+          "hit_share_of_hit_or_miss_responses": 0.986185,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 941,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 941,
+            "p90": 2.3
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 941,
+            "p90": 85.625
+          }
+        },
+        "search_http": {
+          "attempts": 583,
+          "successful_responses": 583,
+          "http_status_counts": {
+            "200": 583
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 568,
+            "MISS": 15,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.974271,
+          "hit_share_of_hit_or_miss_responses": 0.974271,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 583,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 583,
+            "p90": 2.4
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 583,
+            "p90": 86.554
+          }
+        }
+      },
+      "failure_diagnostics": [],
+      "steady_min_actual_users": 10,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-12T08:13:33.582298+00:00"
+    }
+  ],
+  "finished_at_utc": "2026-11-12T08:13:38.589007+00:00"
+}

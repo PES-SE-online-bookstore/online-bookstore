@@ -1,0 +1,214 @@
+[
+  {
+    "execution_id": "OBP48-SYS-001-EXEC-001",
+    "case_id": "OBP48-SYS-001",
+    "title": "390x844 mobile layout and controls across five representative pages",
+    "level": "System",
+    "requirements": [
+      "BOOK-NF-004"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T04:12:23.760783+00:00",
+    "execution_timestamp": "Not supplied",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown; possible developer changes during batch not confirmed",
+    "browser_version": "Firefox; exact version not supplied",
+    "execution_mode": "User manual",
+    "actual": {
+      "pages": [
+        "Logged-out login",
+        "Catalogue",
+        "QA Python Basics detail/reviews",
+        "Buyer cart",
+        "Checkout address/payment controls"
+      ],
+      "layout_and_controls_worked": true,
+      "no_issues_reported": true,
+      "evidence_basis": "Explicit user report for instructed step 1; no screenshots by user preference. Exact viewport values are from instructed procedure, not independently measured."
+    },
+    "user_batch_result": "Steps 1 and 2 success; every behavior works as intended; no screenshots saved because hectic. Firefox All Issues checks reported no issues. New backup run reported successful.",
+    "evidence": [],
+    "screenshots": "Not captured by user preference; not required again for these reported samples"
+  },
+  {
+    "execution_id": "OBP48-SYS-002-EXEC-001",
+    "case_id": "OBP48-SYS-002",
+    "title": "320px catalogue and checkout reflow sample",
+    "level": "System",
+    "requirements": [
+      "BOOK-NF-004"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T04:12:23.760783+00:00",
+    "execution_timestamp": "Not supplied",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown; possible developer changes during batch not confirmed",
+    "browser_version": "Firefox; exact version not supplied",
+    "execution_mode": "User manual",
+    "actual": {
+      "pages": [
+        "Catalogue",
+        "Checkout"
+      ],
+      "no_issues_reported": true,
+      "evidence_basis": "User confirms all step 2 behaviors worked; no screenshots or independent viewport measurement."
+    },
+    "user_batch_result": "Steps 1 and 2 success; every behavior works as intended; no screenshots saved because hectic. Firefox All Issues checks reported no issues. New backup run reported successful.",
+    "evidence": [],
+    "screenshots": "Not captured by user preference; not required again for these reported samples"
+  },
+  {
+    "execution_id": "OBP48-SYS-003-EXEC-001",
+    "case_id": "OBP48-SYS-003",
+    "title": "Keyboard navigation, focus visibility and control operation sample",
+    "level": "System",
+    "requirements": [
+      "BOOK-NF-004"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T04:12:23.760783+00:00",
+    "execution_timestamp": "Not supplied",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown; possible developer changes during batch not confirmed",
+    "browser_version": "Firefox; exact version not supplied",
+    "execution_mode": "User manual",
+    "actual": {
+      "pages": [
+        "Login",
+        "Catalogue",
+        "Checkout"
+      ],
+      "no_issues_reported": true,
+      "evidence_basis": "User confirms instructed step 2 succeeded, including keyboard checks. No independent recording of tab order or browser audit."
+    },
+    "user_batch_result": "Steps 1 and 2 success; every behavior works as intended; no screenshots saved because hectic. Firefox All Issues checks reported no issues. New backup run reported successful.",
+    "evidence": [],
+    "screenshots": "Not captured by user preference; not required again for these reported samples"
+  },
+  {
+    "execution_id": "OBP48-SYS-004-EXEC-001",
+    "case_id": "OBP48-SYS-004",
+    "title": "200 percent zoom sample",
+    "level": "System",
+    "requirements": [
+      "BOOK-NF-004"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T04:12:23.760783+00:00",
+    "execution_timestamp": "Not supplied",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown; possible developer changes during batch not confirmed",
+    "browser_version": "Firefox; exact version not supplied",
+    "execution_mode": "User manual",
+    "actual": {
+      "pages": [
+        "Catalogue",
+        "Checkout"
+      ],
+      "no_issues_reported": true,
+      "evidence_basis": "User confirms instructed step 2 succeeded; no screenshots or independent zoom measurement."
+    },
+    "user_batch_result": "Steps 1 and 2 success; every behavior works as intended; no screenshots saved because hectic. Firefox All Issues checks reported no issues. New backup run reported successful.",
+    "evidence": [],
+    "screenshots": "Not captured by user preference; not required again for these reported samples"
+  },
+  {
+    "execution_id": "OBP48-SYS-005-EXEC-001",
+    "case_id": "OBP48-SYS-005",
+    "title": "Firefox built-in All Issues accessibility checks on sample pages",
+    "level": "System",
+    "requirements": [
+      "BOOK-NF-004"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T04:12:23.760783+00:00",
+    "execution_timestamp": "Not supplied",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown; possible developer changes during batch not confirmed",
+    "browser_version": "Firefox; exact version not supplied",
+    "execution_mode": "User manual",
+    "actual": {
+      "pages": [
+        "Login",
+        "Catalogue",
+        "Checkout"
+      ],
+      "reported_issues": "None",
+      "exact_issue_counts_per_page": "Not supplied separately; user reports no issues in All Issues",
+      "evidence_basis": "Explicit user report from built-in checks; no exported audit or screenshots. Does not establish complete WCAG 2.1 AA conformance."
+    },
+    "user_batch_result": "Steps 1 and 2 success; every behavior works as intended; no screenshots saved because hectic. Firefox All Issues checks reported no issues. New backup run reported successful.",
+    "evidence": [],
+    "screenshots": "Not captured by user preference; not required again for these reported samples"
+  },
+  {
+    "execution_id": "OBP48-OPS-006-EXEC-001",
+    "case_id": "OBP48-OPS-006",
+    "title": "Create database backup",
+    "level": "System",
+    "requirements": [
+      "BOOK-NF-006"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T04:12:23.760783+00:00",
+    "execution_timestamp": "2026-11-03T04:05:00Z",
+    "environment": "GitHub Actions; PostgreSQL 18 temporary restore service",
+    "source_commit": "cd55265d654ff22622db64db9869a3b4131720fe",
+    "execution_mode": "User-triggered workflow; agent verified metadata/source",
+    "actual": {
+      "result": "Success",
+      "step": {
+        "name": "Create database backup",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-03T04:05:00Z",
+        "completed_at": "2026-11-03T04:05:03Z"
+      },
+      "scope": "Source database is configured DATABASE_URL; intended production identity not independently verified"
+    },
+    "evidence": [
+      {
+        "url": "http[local path omitted]",
+        "metadata_file": "backup-run-41575929064.json",
+        "sha256": "cfce8099bb1fc6fd51cff7de11a4faa8dada2bac872a7beca4d4719f8691ecec"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP48-OPS-007-EXEC-001",
+    "case_id": "OBP48-OPS-007",
+    "title": "Restore backup into temporary PostgreSQL database",
+    "level": "System",
+    "requirements": [
+      "BOOK-NF-006"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T04:12:23.760783+00:00",
+    "execution_timestamp": "2026-11-03T04:05:03Z",
+    "environment": "GitHub Actions; PostgreSQL 18 temporary restore service",
+    "source_commit": "cd55265d654ff22622db64db9869a3b4131720fe",
+    "execution_mode": "User-triggered workflow; agent verified metadata/source",
+    "actual": {
+      "result": "Success",
+      "step": {
+        "name": "Restore backup into temporary database",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-11-03T04:05:03Z",
+        "completed_at": "2026-11-03T04:05:03Z"
+      },
+      "verification_job_duration_seconds": 37.0,
+      "check_in_tested_workflow": "pg_restore --exit-on-error, followed by public base table count >=1",
+      "scope": "Temporary database only; exact table count/logs not retrieved, order/payment row integrity and usable application recovery unverified"
+    },
+    "evidence": [
+      {
+        "url": "http[local path omitted]",
+        "metadata_file": "backup-run-41575929064.json",
+        "sha256": "cfce8099bb1fc6fd51cff7de11a4faa8dada2bac872a7beca4d4719f8691ecec"
+      }
+    ]
+  }
+]

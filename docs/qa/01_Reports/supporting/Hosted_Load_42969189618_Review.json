@@ -1,0 +1,433 @@
+{
+  "run_id": "LOAD-GHA-42969189618-1",
+  "workflow_url": "http[local path omitted]",
+  "artifact_zip_sha256": "73cba3cc15938ae60eca74e837ce958eae20a6eaf71fb2674f0c60c8e2bce969",
+  "source": "User-supplied local artifact; remote artifact digest not independently fetched",
+  "reported_deployed_sha": "5752e3e02e2507be060d480c411c14f4dd70e5a9",
+  "harness_commit": "5752e3e02e2507be060d480c411c14f4dd70e5a9",
+  "runtime_sha_independently_verified": false,
+  "started_at_utc": "2026-11-11T05:58:49.208963+00:00",
+  "finished_at_utc": "2026-11-11T06:11:09.758881+00:00",
+  "status": "Failed scoped 250-user browsing stage; 500 not run",
+  "recorded_requests": 9606,
+  "http_200": 9600,
+  "http_503": 6,
+  "unaccounted_requests": 0,
+  "passed_scoped_stages": [
+    1,
+    10,
+    50,
+    100
+  ],
+  "failed_stage": 250,
+  "not_executed_stages": [
+    500
+  ],
+  "stages": [
+    {
+      "users": 1,
+      "spawn_rate_per_second": 1,
+      "steady_target_seconds": 60,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T05:58:49.639629+00:00",
+      "phase": "finished",
+      "requests_started": 35,
+      "requests_completed": 35,
+      "accepting_requests": false,
+      "max_actual_users": 1,
+      "max_generator_cpu_percent": 1.0,
+      "max_generator_rss_mb": 57.93,
+      "current_actual_users": 1,
+      "target_reached_at_utc": "2026-11-11T05:58:50.641731+00:00",
+      "elapsed_seconds": 71.311,
+      "steady_started_at_utc": "2026-11-11T05:59:00.660665+00:00",
+      "steady_elapsed_seconds": 60.29,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 0,
+      "drain_elapsed_seconds": 0.0,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 15,
+          "failures": 0,
+          "p90_ms": 88.629,
+          "max_ms": 96.981,
+          "at_or_below_3000ms": 15
+        },
+        "search_http": {
+          "attempts": 14,
+          "failures": 0,
+          "p90_ms": 110.158,
+          "max_ms": 235.287,
+          "at_or_below_3000ms": 14
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 16,
+          "failures": 0,
+          "p90_ms": 89.636,
+          "max_ms": 96.981,
+          "at_or_below_3000ms": 16
+        },
+        "search_http": {
+          "attempts": 19,
+          "failures": 0,
+          "p90_ms": 235.287,
+          "max_ms": 240.915,
+          "at_or_below_3000ms": 19
+        }
+      },
+      "steady_min_actual_users": 1,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:00:00.971602+00:00"
+    },
+    {
+      "users": 10,
+      "spawn_rate_per_second": 1,
+      "steady_target_seconds": 300,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:00:05.977335+00:00",
+      "phase": "finished",
+      "requests_started": 1513,
+      "requests_completed": 1513,
+      "accepting_requests": false,
+      "max_actual_users": 10,
+      "max_generator_cpu_percent": 3.0,
+      "max_generator_rss_mb": 59.39,
+      "current_actual_users": 10,
+      "elapsed_seconds": 320.703,
+      "target_reached_at_utc": "2026-11-11T06:00:16.001774+00:00",
+      "steady_started_at_utc": "2026-11-11T06:00:26.018351+00:00",
+      "measurement_browser_started": true,
+      "steady_elapsed_seconds": 300.662,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 0,
+      "drain_elapsed_seconds": 0.0,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 860,
+          "failures": 0,
+          "p90_ms": 106.93,
+          "max_ms": 4229.091,
+          "at_or_below_3000ms": 859
+        },
+        "search_http": {
+          "attempts": 574,
+          "failures": 0,
+          "p90_ms": 114.074,
+          "max_ms": 3439.661,
+          "at_or_below_3000ms": 572
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 907,
+          "failures": 0,
+          "p90_ms": 107.86,
+          "max_ms": 4229.091,
+          "at_or_below_3000ms": 906
+        },
+        "search_http": {
+          "attempts": 606,
+          "failures": 0,
+          "p90_ms": 120.331,
+          "max_ms": 3439.661,
+          "at_or_below_3000ms": 604
+        }
+      },
+      "steady_min_actual_users": 10,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:05:26.683942+00:00"
+    },
+    {
+      "users": 50,
+      "spawn_rate_per_second": 5,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:05:31.690191+00:00",
+      "phase": "finished",
+      "requests_started": 3169,
+      "requests_completed": 3169,
+      "accepting_requests": false,
+      "max_actual_users": 50,
+      "max_generator_cpu_percent": 7.0,
+      "max_generator_rss_mb": 64.41,
+      "current_actual_users": 50,
+      "elapsed_seconds": 140.319,
+      "target_reached_at_utc": "2026-11-11T06:05:41.711511+00:00",
+      "steady_started_at_utc": "2026-11-11T06:05:51.734312+00:00",
+      "steady_elapsed_seconds": 120.276,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 4,
+      "drain_elapsed_seconds": 0.155,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 1686,
+          "failures": 0,
+          "p90_ms": 286.797,
+          "max_ms": 786.995,
+          "at_or_below_3000ms": 1686
+        },
+        "search_http": {
+          "attempts": 1101,
+          "failures": 0,
+          "p90_ms": 287.74,
+          "max_ms": 686.055,
+          "at_or_below_3000ms": 1101
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 1911,
+          "failures": 0,
+          "p90_ms": 281.95,
+          "max_ms": 786.995,
+          "at_or_below_3000ms": 1911
+        },
+        "search_http": {
+          "attempts": 1258,
+          "failures": 0,
+          "p90_ms": 292.751,
+          "max_ms": 686.055,
+          "at_or_below_3000ms": 1258
+        }
+      },
+      "steady_min_actual_users": 50,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:07:52.172520+00:00"
+    },
+    {
+      "users": 100,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:07:57.180720+00:00",
+      "phase": "finished",
+      "requests_started": 3749,
+      "requests_completed": 3749,
+      "accepting_requests": false,
+      "max_actual_users": 100,
+      "max_generator_cpu_percent": 8.0,
+      "max_generator_rss_mb": 69.22,
+      "current_actual_users": 100,
+      "elapsed_seconds": 140.303,
+      "target_reached_at_utc": "2026-11-11T06:08:07.201628+00:00",
+      "steady_started_at_utc": "2026-11-11T06:08:17.225268+00:00",
+      "steady_elapsed_seconds": 120.259,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 60,
+      "drain_elapsed_seconds": 2.476,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 1932,
+          "failures": 0,
+          "p90_ms": 2204.753,
+          "max_ms": 2878.925,
+          "at_or_below_3000ms": 1932
+        },
+        "search_http": {
+          "attempts": 1286,
+          "failures": 0,
+          "p90_ms": 2204.144,
+          "max_ms": 2937.662,
+          "at_or_below_3000ms": 1286
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 2240,
+          "failures": 0,
+          "p90_ms": 2174.125,
+          "max_ms": 2878.925,
+          "at_or_below_3000ms": 2240
+        },
+        "search_http": {
+          "attempts": 1509,
+          "failures": 0,
+          "p90_ms": 2181.03,
+          "max_ms": 2937.662,
+          "at_or_below_3000ms": 1509
+        }
+      },
+      "steady_min_actual_users": 100,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:10:19.966659+00:00"
+    },
+    {
+      "users": 250,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:10:24.973049+00:00",
+      "phase": "finished",
+      "requests_started": 1140,
+      "requests_completed": 1140,
+      "accepting_requests": false,
+      "max_actual_users": 250,
+      "max_generator_cpu_percent": 9.0,
+      "max_generator_rss_mb": 91.52,
+      "current_actual_users": 250,
+      "elapsed_seconds": 37.086,
+      "target_reached_at_utc": "2026-11-11T06:10:50.032456+00:00",
+      "steady_started_at_utc": "2026-11-11T06:11:00.055395+00:00",
+      "steady_elapsed_seconds": 2.005,
+      "abort_reason": "HTTP/correctness failure at catalogue_http; status 503; CatchResponseError",
+      "first_failure": {
+        "endpoint": "catalogue_http",
+        "status": 503,
+        "exception_type": "CatchResponseError"
+      },
+      "requests_inflight_at_cutoff": 191,
+      "drain_elapsed_seconds": 7.693,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 30,
+          "failures": 3,
+          "p90_ms": 7975.668,
+          "max_ms": 7978.574,
+          "at_or_below_3000ms": 0
+        },
+        "search_http": {
+          "attempts": 20,
+          "failures": 3,
+          "p90_ms": 7948.653,
+          "max_ms": 7979.707,
+          "at_or_below_3000ms": 0
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 693,
+          "failures": 3,
+          "p90_ms": 7884.121,
+          "max_ms": 8103.412,
+          "at_or_below_3000ms": 224
+        },
+        "search_http": {
+          "attempts": 447,
+          "failures": 3,
+          "p90_ms": 7831.237,
+          "max_ms": 8140.525,
+          "at_or_below_3000ms": 161
+        }
+      },
+      "steady_min_actual_users": 250,
+      "status": "Stopped / target not demonstrated",
+      "finished_at_utc": "2026-11-11T06:11:09.757793+00:00"
+    }
+  ],
+  "failures": [
+    {
+      "stage_users": "250",
+      "phase": "steady",
+      "utc": "2026-11-11T06:11:01.998363+00:00",
+      "active_users_at_request_start": "250",
+      "method": "GET",
+      "endpoint": "catalogue_http",
+      "response_ms": "75.44",
+      "status": "503",
+      "failed": "True",
+      "error_type": "CatchResponseError"
+    },
+    {
+      "stage_users": "250",
+      "phase": "steady",
+      "utc": "2026-11-11T06:11:02.064283+00:00",
+      "active_users_at_request_start": "250",
+      "method": "GET",
+      "endpoint": "catalogue_http",
+      "response_ms": "75.293",
+      "status": "503",
+      "failed": "True",
+      "error_type": "CatchResponseError"
+    },
+    {
+      "stage_users": "250",
+      "phase": "steady",
+      "utc": "2026-11-11T06:11:02.094860+00:00",
+      "active_users_at_request_start": "250",
+      "method": "GET",
+      "endpoint": "catalogue_http",
+      "response_ms": "74.163",
+      "status": "503",
+      "failed": "True",
+      "error_type": "CatchResponseError"
+    },
+    {
+      "stage_users": "250",
+      "phase": "steady",
+      "utc": "2026-11-11T06:11:02.125802+00:00",
+      "active_users_at_request_start": "250",
+      "method": "GET",
+      "endpoint": "search_http",
+      "response_ms": "76.109",
+      "status": "503",
+      "failed": "True",
+      "error_type": "CatchResponseError"
+    },
+    {
+      "stage_users": "250",
+      "phase": "steady",
+      "utc": "2026-11-11T06:11:02.126070+00:00",
+      "active_users_at_request_start": "250",
+      "method": "GET",
+      "endpoint": "search_http",
+      "response_ms": "73.827",
+      "status": "503",
+      "failed": "True",
+      "error_type": "CatchResponseError"
+    },
+    {
+      "stage_users": "250",
+      "phase": "steady",
+      "utc": "2026-11-11T06:11:02.133241+00:00",
+      "active_users_at_request_start": "250",
+      "method": "GET",
+      "endpoint": "search_http",
+      "response_ms": "83.893",
+      "status": "503",
+      "failed": "True",
+      "error_type": "CatchResponseError"
+    }
+  ],
+  "normal_load_browser": [
+    {
+      "endpoint": "/books/",
+      "samples": 20,
+      "p90_load_ms": 135.10000000003492,
+      "max_load_ms": 343.20000000001164,
+      "at_or_below_3000ms": 20,
+      "sample_target_met": true
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "samples": 20,
+      "p90_load_ms": 125.40000000002328,
+      "max_load_ms": 233.39999999996508,
+      "at_or_below_3000ms": 20,
+      "sample_target_met": true
+    }
+  ],
+  "render_log_observation": {
+    "attribution": "User report",
+    "window": "2026-11-11 06:10:25\u201306:11:10 UTC / 11:40:25\u201311:41:10 IST",
+    "result": "None visible"
+  },
+  "finding": "Observed service errors and latency degradation under 250-user anonymous browsing load. Origin may be application or infrastructure; root cause not identified from artifact/log observation.",
+  "timing_boundary": "CSV timestamps are completion-event times; phases are captured at request start. Requests initiated before shutdown retain their original phase. The 250-user p90 is a short, aborted-stage diagnostic, not a completed steady-state benchmark; timing aggregates exclude failed responses.",
+  "profile": "Anonymous catalogue/search HTTP GET only, 1\u20133s think time; browser timing at 10 VUs plus one browser. No authenticated checkout or full-system capacity acceptance.",
+  "generator_resources": "Peak sampled CPU 9%, RSS 91.52 MiB; no sampled generator resource stop threshold reached. Does not establish server resource use.",
+  "report_summary": "Latest hosted run 42969189618 passed scoped 1/10/50/100-user browsing stages. At 250 users, six HTTP 503 responses (three catalogue, three search) caused an early stop. Only about two seconds of the planned 120-second steady stage elapsed before the stop decision; the 250-user stage failed and 500 users were not run. All 9,606 started requests were accounted for. The normal-load browser passed again: 20 navigations per endpoint, catalogue/search p90 0.135s/0.125s. The operator saw no relevant Render log errors. The origin/cause of the 503s remains unestablished. See supporting/Hosted_Load_42969189618_Review.json.",
+  "next_action": "Developer investigation; no unchanged public stress rerun or threshold relaxation",
+  "jira_publication": false
+}

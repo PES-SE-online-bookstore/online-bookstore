@@ -1,0 +1,35 @@
+# Authenticated accessibility — run 43230895650
+
+QA Lead: Abdullah Faruqui
+
+Test Engineer: Deepthi A E
+
+Execution completed: 34/34 planned page/viewport samples across public, buyer, seller and admin roles. No missing roles or scan failures; zero sampled horizontal overflow. Exit code 1 is the scanner's finding status, not an execution crash.
+
+Reported live/harness SHA: `cc99379e894c250d0801090d60e502138064d3b4`. Browser: Chromium 151.0.7922.34; axe-core: 4.11.4. Run: 12 November 2026, 13:49:24–13:50:31 UTC (19:19:24–19:20:31 IST).
+
+## Automated finding
+
+One rule/page issue appears in two viewports: `link-in-text-block` on `/admin/orders/order/9/change/`, affecting the same three `.breadcrumbs > a` elements at 1366px and 390px. Tool impact: serious; WCAG 1.4.1. These are two occurrences, not two independent bugs.
+
+The tool flags links as insufficiently distinguishable without color. This is retained as an automated finding pending developer/visual review. No actual contrast ratio was saved in this artifact. A persistent non-color cue such as an underline is a straightforward remediation to assess; do not suppress the rule or claim a measured ratio from these results.
+
+## Manual-review queue
+
+13 incomplete rule occurrences remain: 10 color-contrast checks and three table-header checks, across 10 page/viewport samples. These are not 13 confirmed bugs.
+
+- Buyer order history at 390px: review visible order links, scrolling offscreen links into view.
+- Buyer Order #9 detail at 1366px: review tracking-marker text/appearance; consider decorative/aria-hidden status and whether equivalent visible status labels convey the information.
+- Admin index at both widths: review Add/Change links and recent-action links/text.
+- Admin Books and Orders lists at both widths: review navigation, Add/View links and sortable headers. At desktop also inspect the sidebar app tables and whether table headers have the intended data relationships.
+- Admin Order #9 edit at both widths: review the breadcrumb finding plus flagged links; desktop sidebar app-table relationships also need review.
+
+Use actual rendered styles and applicable exceptions for contrast. Table/sidebar layout requires inspection before declaring failure or not-applicable. Zero automated violations elsewhere does not complete keyboard, focus, zoom, error-state or assistive-technology checks.
+
+## Disposition
+
+OBP48-UX-006 remains incomplete. OBP-48 remains In Progress. The passing checkout, failed 250-user timing, 500-user Not tested and monthly availability Not tested dispositions are unchanged. Do not rerun the unchanged build just to obtain a green job.
+
+Original ZIP, raw sanitized scanner output and a detailed review JSON are preserved alongside this file. Workbook/final report/publication refresh remains pending. No product code, Git state or Jira item was changed by this review.
+
+References: https://dequeuniversity.com/rules/axe/4.11/link-in-text-block and https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html

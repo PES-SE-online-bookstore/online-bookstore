@@ -1,0 +1,29 @@
+{
+  "scope": "Local actual Django registration error-state rendering; synthetic in-memory SQLite",
+  "public_requests": 0,
+  "production_database_accessed": false,
+  "response_status": 200,
+  "accounts_created": 0,
+  "source_commit": "89c2168406ae355c082d143e775548bd726dfcee",
+  "confirm_password_attributes": {
+    "aria-invalid": "true",
+    "aria-describedby": "id_confirm_password_error",
+    "id": "id_confirm_password"
+  },
+  "reference_ids": [
+    "id_confirm_password_error"
+  ],
+  "unresolved_reference_ids": [
+    "id_confirm_password_error"
+  ],
+  "error_containers": [
+    {
+      "class": "field-errors",
+      "role": "alert"
+    }
+  ],
+  "local_error_association": "Broken referenced target",
+  "limitations": "This local reproduction does not independently establish current deployed DOM or screen-reader announcements",
+  "product_changes": false,
+  "committed_or_pushed": false
+}

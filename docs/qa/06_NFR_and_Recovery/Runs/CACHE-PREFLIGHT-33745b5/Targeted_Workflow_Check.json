@@ -1,0 +1,8 @@
+{
+  "workflow_yaml": "Parsed",
+  "manual_dispatch_only": true,
+  "targeted_profile": "100 then 250 users",
+  "always_upload_and_concurrency": "Verified",
+  "controller_syntax_and_copies": "Verified",
+  "public_execution": false
+}

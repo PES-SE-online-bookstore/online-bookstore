@@ -1,0 +1,13 @@
+{
+  "client_date": "2026-11-11",
+  "zip_sha256": "39df14932391afd674e368cc67be285e728412ad81fab71eaced05cfed0bc584",
+  "source_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "backup_and_restore_commands_passed": true,
+  "tables_exact_match": 22,
+  "rows_exact_match": 182,
+  "restored_http_health": true,
+  "hosted_buyer_flow": "Failed; artifact lacks exact failing route/status",
+  "local_reproduction": "Checkout HTTP 500: missing staticfiles manifest entry js/checkout.js; actual updated probe static-build helper fixes checkout/order creation/details on isolated synthetic SQLite app",
+  "local_test_does_not_replace_postgresql_recovery_acceptance": true,
+  "rerun_required": true
+}

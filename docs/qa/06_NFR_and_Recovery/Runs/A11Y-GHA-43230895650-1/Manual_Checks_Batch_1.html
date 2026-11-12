@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Manual_Checks_Batch_1</title><style>body{max-width:1000px;margin:40px auto;padding:0 24px;font:16px/1.6 system-ui;color:#1c2833}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><main><pre># Next manual accessibility checks — batch 1
+
+QA Lead: Abdullah Faruqui
+
+Test Engineer: Deepthi A E
+
+Purpose: inspect keyboard/focus and real browser zoom on the authenticated states while the developer reviews the automated breadcrumb finding. This batch is only part of the complete applicability review; it does not resolve every axe incomplete check or establish full WCAG conformance.
+
+Use Firefox. Record its exact version from Help → About Firefox, the current full deployed SHA and test date. Do not reuse an old SHA if another deployment has occurred. No screenshot is required for a pass; capture one only if useful for a failure and exclude personal information.
+
+Pages: Buyer `/cart/`, `/cart/checkout/`, `/orders/9/`; Seller `/books/seller/listings/`, `/books/seller/create/`; Admin `/admin/`, `/admin/books/book/`, `/admin/orders/order/9/change/`.
+
+For each page:
+
+1. At normal zoom, use Tab and Shift+Tab to traverse the controls. The focus indicator must remain visible, follow a sensible order and not become trapped. Reach below-the-fold content as well. Do not press Enter/Space on purchase, save, delete, cancel or other state-changing actions. Test an ordinary navigation link&#x27;s keyboard activation where it is safe, then return.
+2. Focus a native select, such as the admin order Status field, and inspect keyboard navigation only. Do not save or submit. Leave/reload the form without saving any temporary selection.
+3. Set browser zoom to 200% using Firefox&#x27;s menu. Read the page and reach controls; text/controls must not disappear, overlap or become unusable.
+4. At 400% with a maximized desktop window around 1280px wide, inspect reflow of normal page content. Record actual window/viewport if known. A data table may need horizontal scrolling; do not automatically mark an entire table as a failure. Essential normal content and controls must remain reachable without losing information.
+5. Restore zoom to 100% before moving to the next page. Do not submit forms merely to check layout.
+
+Return one result per page: keyboard/focus Pass/Fail/Not tested, 200% zoom Pass/Fail/Not tested, and 400% reflow Pass/Fail/Not tested, with brief details for any exception. Do not use one blanket &#x27;all works&#x27; response for checks you did not perform.
+
+After this batch, review form error associations, assistive-technology behavior and the saved contrast/table incomplete queue separately. Do not convert those pending checks into passes based on this batch.
+</pre></main></html>

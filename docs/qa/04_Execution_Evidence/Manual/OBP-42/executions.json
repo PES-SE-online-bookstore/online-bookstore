@@ -1,0 +1,234 @@
+[
+  {
+    "execution_id": "OBP42-SYS-001-EXEC-001",
+    "case_id": "OBP42-SYS-001",
+    "title": "Case-insensitive title search",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-006"
+    ],
+    "recorded_at_utc": "2026-11-02T18:53:58.462782+00:00",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "environment": "Render deployment; logged-out public navigation confirmed in supplied screenshots",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "status": "Passed",
+    "actual": {
+      "query": "PYTHON",
+      "titles": [
+        "QA Python Advanced",
+        "QA Python Basics"
+      ],
+      "evidence_basis": "Screenshot verified"
+    },
+    "user_batch_result": "all worked properly. no issues.",
+    "evidence": [
+      {
+        "sha256": "40400b8415edc9e395ddf41f31358e665827380d6087a1a79c90ad9598a1d016"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP42-SYS-002-EXEC-001",
+    "case_id": "OBP42-SYS-002",
+    "title": "Category and maximum-price filter",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-006"
+    ],
+    "recorded_at_utc": "2026-11-02T18:53:58.462782+00:00",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "environment": "Render deployment; logged-out public navigation confirmed in supplied screenshots",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "status": "Passed",
+    "actual": {
+      "category": "Programming",
+      "maximum_price": "300",
+      "titles": [
+        "QA Python Basics"
+      ],
+      "evidence_basis": "Screenshot verified"
+    },
+    "user_batch_result": "all worked properly. no issues.",
+    "evidence": [
+      {
+        "sha256": "92fdfde2cf3605b1d0dc1765329396952ff1e7c6c034be9990f477aead78c8e5"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP42-SYS-003-EXEC-001",
+    "case_id": "OBP42-SYS-003",
+    "title": "Inclusive price-range filter",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-006"
+    ],
+    "recorded_at_utc": "2026-11-02T18:53:58.462782+00:00",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "environment": "Render deployment; logged-out public navigation confirmed in supplied screenshots",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "status": "Passed",
+    "actual": {
+      "expected_titles": [
+        "QA Garden Stories",
+        "QA Python Advanced"
+      ],
+      "actual": "User reports all checks worked properly; exact returned titles not separately supplied",
+      "evidence_basis": "User report only"
+    },
+    "user_batch_result": "all worked properly. no issues.",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP42-SYS-004-EXEC-001",
+    "case_id": "OBP42-SYS-004",
+    "title": "No-match search feedback",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-006"
+    ],
+    "recorded_at_utc": "2026-11-02T18:53:58.462782+00:00",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "environment": "Render deployment; logged-out public navigation confirmed in supplied screenshots",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "status": "Passed",
+    "actual": {
+      "query": "QA_NO_MATCH_20261103",
+      "actual": "User reports expected behavior; exact message not supplied",
+      "evidence_basis": "User report only"
+    },
+    "user_batch_result": "all worked properly. no issues.",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP42-SYS-005-EXEC-001",
+    "case_id": "OBP42-SYS-005",
+    "title": "Reset restores unfiltered catalogue",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-006"
+    ],
+    "recorded_at_utc": "2026-11-02T18:53:58.462782+00:00",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "environment": "Render deployment; logged-out public navigation confirmed in supplied screenshots",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "status": "Passed",
+    "actual": {
+      "actual": "User reports all checks worked properly; reset behavior not separately screenshotted",
+      "evidence_basis": "User report only"
+    },
+    "user_batch_result": "all worked properly. no issues.",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP42-SYS-006-EXEC-001",
+    "case_id": "OBP42-SYS-006",
+    "title": "Book-detail required fields",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-007"
+    ],
+    "recorded_at_utc": "2026-11-02T18:53:58.462782+00:00",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "environment": "Render deployment; logged-out public navigation confirmed in supplied screenshots",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "status": "Failed",
+    "actual": {
+      "url": "http[local path omitted]",
+      "title": "QA Python Basics",
+      "author": "QA Ada",
+      "category": "Programming",
+      "price": "200.00",
+      "stock_quantity": 5,
+      "description": "A beginner guide to python.",
+      "isbn_from_screenshot": "9780000000101",
+      "isbn_proposed": "9780000001016",
+      "seller_identity_visible": false,
+      "cover_state": "No cover image available; expected for blank URL",
+      "review_state": "No reviews yet",
+      "evidence_basis": "Detail screenshot plus user confirmation of saved Seller; saved ISBN remains unreconciled.",
+      "saved_seller_user_confirmed": "qa_seller_20261102_01",
+      "saved_isbn_user_typed": "978000000101",
+      "isbn_verification": "Inconclusive: typed admin value has 12 digits and differs from displayed and proposed values. No ISBN-rendering defect is established.",
+      "seller_identity_check": "Failed: assigned Seller confirmed by user; identity absent from full detail screenshot."
+    },
+    "user_batch_result": "all worked properly. no issues.",
+    "evidence": [
+      {
+        "sha256": "fde288ce3b43b38137ad5d1b4f91431aa0bc2b17a8e92f86e12e9a53182ee248"
+      }
+    ],
+    "assessment_history": [
+      {
+        "previous_status": "Blocked",
+        "reviewed_at_utc": "2026-11-02T18:56:52.417472+00:00",
+        "basis": "User confirmed assigned Seller. Status is reassessed from the original screenshot plus clarification; no new execution occurred."
+      }
+    ]
+  },
+  {
+    "level": "System",
+    "environment": "Render deployed application",
+    "deployment_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+    "deployment_commit_basis": "Latest developer deployment report; no subsequent deployment reported",
+    "browser_version": "Not reconfirmed on this retest",
+    "recorded_at_utc": "2026-11-09T09:39:27.378325+00:00",
+    "execution_timestamp": "Exact execution time not provided",
+    "execution_mode": "User manual",
+    "status": "Passed",
+    "evidence": [],
+    "evidence_basis": "Explicit user confirmation; screenshot not required",
+    "execution_id": "OBP42-SYS-006-EXEC-002",
+    "case_id": "OBP42-SYS-006",
+    "title": "Assigned seller visibly displayed on QA Python Basics details",
+    "requirements": [
+      "BOOK-F-007"
+    ],
+    "expected": "Detail page displays the assigned seller qa_seller_20261102_01.",
+    "actual": {
+      "book_title": "QA Python Basics",
+      "book_id": 1,
+      "seller_visibly_displayed": true,
+      "expected_seller": "qa_seller_20261102_01",
+      "unexpected_behavior": null,
+      "independent_support": "post-deployment-afdb5b14/book-detail.json confirms matching Sold by text in public HTML"
+    },
+    "retest_scope": "Previously failing seller field; other originally passed required fields are not claimed newly rechecked.",
+    "supersedes_execution": "OBP42-SYS-006-EXEC-001"
+  },
+  {
+    "level": "System",
+    "environment": "Render deployed application",
+    "deployment_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+    "deployment_commit_basis": "Latest developer deployment report; no subsequent deployment reported",
+    "browser_version": "Not reconfirmed on this retest",
+    "recorded_at_utc": "2026-11-09T09:39:27.378325+00:00",
+    "execution_timestamp": "Exact execution time not provided",
+    "execution_mode": "User manual",
+    "status": "Passed",
+    "evidence": [],
+    "evidence_basis": "Explicit user confirmation; screenshot not required",
+    "execution_id": "OBP42-SYS-007-EXEC-001",
+    "case_id": "OBP42-SYS-007",
+    "title": "Configured HTTPS cover visibly loads on catalogue card",
+    "requirements": [
+      "BOOK-F-005"
+    ],
+    "expected": "A book with a working HTTPS cover URL displays its image in the catalogue, rather than a blank/broken placeholder.",
+    "actual": {
+      "book_title": "QA Python Basics",
+      "book_id": 1,
+      "cover_url_in_procedure": "http[local path omitted]",
+      "catalogue_image_visibly_loaded": true,
+      "unexpected_behavior": null,
+      "independent_fixture_support": "post-deployment-afdb5b14/cover-fixture.json confirms 200 image/png with valid PNG signature"
+    },
+    "fixture_change": "User instructed to change only the existing QA book cover URL; other fields not claimed changed."
+  }
+]

@@ -1,0 +1,308 @@
+[
+  {
+    "execution_id": "OBP46-SYS-001-EXEC-001",
+    "case_id": "OBP46-SYS-001",
+    "title": "Unordered book has no review submission controls",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-018"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "book": "QA Python Advanced",
+      "url": "http[local path omitted]",
+      "review_controls_absent": true,
+      "message": "You can review this book after purchasing it.",
+      "evidence_basis": "Message and absent form screenshot verified. Crop omits title/account identity; follows user-reported book/account workflow."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": [
+      {
+        "sha256": "3f5a6e94d18e678f025c4303fb77b040ee28067e00fec22c9b3e6b51c6b36f34"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP46-SYS-002-EXEC-001",
+    "case_id": "OBP46-SYS-002",
+    "title": "Add QA book to buyer wishlist once",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-019"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "book": "QA Garden Stories",
+      "author": "QA Ada",
+      "price": "300.00",
+      "visible_entries_for_book": 1,
+      "evidence_basis": "Screenshot verifies single visible Garden Stories entry with author/price and signed-in buyer."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": [
+      {
+        "sha256": "9158e6272a0d022d543303a01e425fab59147acdf585b1e3676ffcc781d14433"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP46-SYS-003-EXEC-001",
+    "case_id": "OBP46-SYS-003",
+    "title": "Wishlist persists through refresh and reauthentication; detail link works",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-019"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "refresh_and_logout_login_persistence": true,
+      "view_book_opens_correct_book": true,
+      "evidence_basis": "User confirms all instructed stages matched expectations. Saved screenshot supports resulting wishlist state but does not independently prove intervening logout/login or clicked destination."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": [
+      {
+        "sha256": "9158e6272a0d022d543303a01e425fab59147acdf585b1e3676ffcc781d14433"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP46-SYS-004-EXEC-001",
+    "case_id": "OBP46-SYS-004",
+    "title": "Wishlist removal persists and empty state appears",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-019"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "book_removed": "QA Garden Stories",
+      "empty_state": "Your Wishlist Is Empty",
+      "remains_removed_after_refresh": true,
+      "evidence_basis": "Screenshot verifies empty buyer wishlist; removal action and refresh persistence user-reported."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": [
+      {
+        "sha256": "cbbd98b16ed5de5f5648dcd4c33592b6572a03f9458c2d749d3085cc4dfab493"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP46-SYS-005-EXEC-001",
+    "case_id": "OBP46-SYS-005",
+    "title": "Empty review comment prevents submission",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-018"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "empty_comment_prevented_submission": true,
+      "evidence_basis": "User confirms instructed validation behaved as expected; no exact validation message or intermediate screenshot supplied. Browser validation alone does not prove server-side empty POST handling."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP46-SYS-006-EXEC-001",
+    "case_id": "OBP46-SYS-006",
+    "title": "Save four-star review, aggregate rating and suppress duplicate form",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-018"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "book": "QA Python Basics",
+      "rating": 4,
+      "comment": "QA TEST REVIEW \u2014 checking review submission and display.",
+      "review_count_after": 1,
+      "review_count_before": "Not independently supplied; user confirms expected one-review increment",
+      "average_display": "4.0 / 5",
+      "buyer_display": "qa_buyer_20261102_01",
+      "duplicate_form_absent": true,
+      "persists_after_refresh": true,
+      "evidence_basis": "Screenshot verifies username, rating, exact comment, count, average and already-reviewed message. Crop has no URL/title; book identity, submission validation/success and refresh follow user-reported workflow.",
+      "acceptance_limitation": "Fixture has admin-staged Delivered order with unverified mock payment. Does not establish verified-paid-purchase enforcement."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": [
+      {
+        "sha256": "97b9517eaebf93ef7e6ba4ba2a58f3a8c060697580b32071b3a2205b9ee7793d"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP46-SYS-007-EXEC-001",
+    "case_id": "OBP46-SYS-007",
+    "title": "Seller cannot manage buyer wishlist",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-019",
+      "BOOK-SR-004"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "seller": "qa_seller_20261102_01",
+      "final_url": "http[local path omitted]",
+      "message": "Only buyers can manage a wishlist.",
+      "wishlist_controls_absent": true,
+      "evidence_basis": "Screenshot verifies seller identity, catalogue redirect and exact denial message."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": [
+      {
+        "sha256": "f6606362ae0e2c0e5c1081f7705559dcafb451e9ac30ac05401821f120d981f3"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP46-SYS-008-EXEC-001",
+    "case_id": "OBP46-SYS-008",
+    "title": "Seller cannot see review submission form",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-018",
+      "BOOK-SR-004"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "review_form_absent": true,
+      "evidence_basis": "User confirms instructed seller book-detail check matched expected outcome; supplied denial screenshot shows catalogue rather than book detail."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP46-SYS-009-EXEC-001",
+    "case_id": "OBP46-SYS-009",
+    "title": "Observe actual Order #1 status emails",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-020"
+    ],
+    "status": "Blocked",
+    "recorded_at_utc": "2026-11-03T02:46:13.107655+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "actual": {
+      "order_id": 1,
+      "confirmed_email_received": false,
+      "shipped_email_received": false,
+      "delivered_email_received": false,
+      "inbox_checked": true,
+      "spam_checked": true,
+      "user_clarification": "None received; Inbox and Spam checked",
+      "delivery_latency": "Not measured; no <=60-second claim",
+      "deployed_email_backend": "Unknown",
+      "evidence_basis": "Explicit user clarification. Existing locmem tests do not establish external delivery. Investigation of deployed delivery configuration/logs remains outstanding; no specific root cause inferred."
+    },
+    "user_batch_result": "everything worked properly, no errors, unexpected behavior or problems. image attached as needed; notification clarification: None received; Inbox and Spam checked",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP46-SYS-009-EXEC-002",
+    "case_id": "OBP46-SYS-009",
+    "title": "Actual Confirmed, Shipped and Delivered email delivery on deployed fixed build",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-020"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-09T09:31:37.559219+00:00",
+    "execution_timestamp": "Exact save/receipt timestamps not provided",
+    "environment": "Render deployed application; user-controlled real inbox",
+    "deployment_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+    "deployment_commit_basis": "Latest developer-reported live deployment; no subsequent revision reported",
+    "browser_version": "Not reconfirmed in retest",
+    "execution_mode": "User manual",
+    "expected": "Confirmed, Shipped and Delivered order-status transitions each result in a correct email delivered within 60 seconds.",
+    "actual": {
+      "order_id": 6,
+      "order_id_note": "User subsequently confirmed Order #6 and consistency with admin panel.",
+      "notifications": [
+        {
+          "status": "Confirmed",
+          "received": true,
+          "approximate_elapsed_seconds": 5,
+          "status_and_order_details_correct": true
+        },
+        {
+          "status": "Shipped",
+          "received": true,
+          "approximate_elapsed_seconds": 5,
+          "status_and_order_details_correct": true
+        },
+        {
+          "status": "Delivered",
+          "received": true,
+          "approximate_elapsed_seconds": 5,
+          "status_and_order_details_correct": true
+        }
+      ],
+      "timing_basis": "User reports approximately five seconds from clicking Save to inbox receipt for each message; not exact machine-timestamped measurement",
+      "user_report": "When I clicked save for Confirmed, shipped and delivered, it took about 5 seconds for the email to reach my inbox. I received all 3emails with proper status and details"
+    },
+    "evidence": [],
+    "evidence_basis": "Explicit user confirmation of real inbox delivery, approximate latency, correct statuses and details; no raw email, credentials or screenshot retained",
+    "limitations": [
+      "Single manual sample for each status, not a percentile or sustained delivery guarantee.",
+      "Exact event/arrival timestamps not supplied; Order #6 subsequently confirmed.",
+      "Staged mock-order status notifications do not establish payment success, real shipping or payment-confirmation email compliance.",
+      "No response-time/checkout-performance claim is inferred from email latency."
+    ],
+    "supersedes_execution": "OBP46-SYS-009-EXEC-001",
+    "historical_result_retained": true,
+    "clarifications": [
+      {
+        "recorded_at_utc": "2026-11-09T09:39:27.378325+00:00",
+        "order_id": 6,
+        "basis": "User reports #6, consistent with admin panel",
+        "previous_order_id_field": null
+      }
+    ]
+  }
+]

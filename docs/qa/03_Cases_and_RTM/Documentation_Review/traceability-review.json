@@ -1,0 +1,527 @@
+{
+  "requirements_reviewed": 31,
+  "all_case_id_memberships_valid": true,
+  "test_metadata_memberships_checked": true,
+  "source_scope": "Application code 33745b52, QA harness aa36272; local Git difference confined to two QA load files.",
+  "design_scope": "Original SAD 3.3/3.4/3.8 and relevant 4.x sections checked; proposed REST/JWT/gateway interfaces distinguished from implemented forms/sessions/mock flow.",
+  "reviewer": "Assistant source/documentation audit; not human acceptance or new execution",
+  "updates": [
+    {
+      "row": 2,
+      "requirement_id": "BOOK-F-001",
+      "code_reference": "accounts/forms.py; accounts/views.py; accounts/models.py",
+      "design_reference": "SAD 4.3 Auth design (pp10-11); current form/session implementation noted",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "accounts/forms.py",
+      "verified_source_tokens": [
+        "class RegistrationForm",
+        "clean_username",
+        "clean_email"
+      ],
+      "automated_mapping_count": 20,
+      "system_planned_mapping_count": 6
+    },
+    {
+      "row": 3,
+      "requirement_id": "BOOK-F-002",
+      "code_reference": "accounts/views.py; accounts/urls.py; config/settings.py",
+      "design_reference": "SAD 4.2 Flow 3 (p10); 4.3 Auth API is proposed, current username/session revision applies",
+      "disposition": "Verified under documented username/session revision R-001",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "accounts/views.py",
+      "verified_source_tokens": [
+        "def login_view",
+        "def logout_view",
+        "authenticate("
+      ],
+      "automated_mapping_count": 17,
+      "system_planned_mapping_count": 5
+    },
+    {
+      "row": 4,
+      "requirement_id": "BOOK-F-003",
+      "code_reference": "accounts/models.py; accounts/views.py",
+      "design_reference": "SAD 4.2 Flow 3 (p10); 4.3 Auth API is proposed, current username/session revision applies",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "accounts/views.py",
+      "verified_source_tokens": [
+        "locked_until",
+        "failed_attempts"
+      ],
+      "automated_mapping_count": 9,
+      "system_planned_mapping_count": 2
+    },
+    {
+      "row": 5,
+      "requirement_id": "BOOK-F-004",
+      "code_reference": "accounts/urls.py; config/settings.py",
+      "design_reference": "SAD 4.3 Auth design (pp10-11); current form/session implementation noted",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "accounts/urls.py",
+      "verified_source_tokens": [
+        "PasswordResetView",
+        "PasswordResetConfirmView"
+      ],
+      "automated_mapping_count": 11,
+      "system_planned_mapping_count": 1
+    },
+    {
+      "row": 6,
+      "requirement_id": "BOOK-F-005",
+      "code_reference": "books/views.py; books/templates/books/catalogue.html; books/catalogue_cache.py",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "def book_catalogue",
+        "_catalogue_results"
+      ],
+      "automated_mapping_count": 28,
+      "system_planned_mapping_count": 1
+    },
+    {
+      "row": 7,
+      "requirement_id": "BOOK-F-006",
+      "code_reference": "books/views.py; books/catalogue_cache.py",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "title__icontains",
+        "category__iexact",
+        "price__gte",
+        "price__lte"
+      ],
+      "automated_mapping_count": 27,
+      "system_planned_mapping_count": 5
+    },
+    {
+      "row": 8,
+      "requirement_id": "BOOK-F-007",
+      "code_reference": "books/views.py; books/templates/books/book_detail.html; books/models.py",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "def book_detail",
+        "average_rating"
+      ],
+      "automated_mapping_count": 11,
+      "system_planned_mapping_count": 1
+    },
+    {
+      "row": 9,
+      "requirement_id": "BOOK-F-008",
+      "code_reference": "cart/models.py; cart/views.py",
+      "design_reference": "SAD 4.2 Flow 1 (p8); 4.3 Checkout design; current mock/API scope differences recorded",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "cart/views.py",
+      "verified_source_tokens": [
+        "def add_to_cart",
+        "def update_cart_item",
+        "def remove_from_cart"
+      ],
+      "automated_mapping_count": 14,
+      "system_planned_mapping_count": 4
+    },
+    {
+      "row": 10,
+      "requirement_id": "BOOK-F-009",
+      "code_reference": "cart/forms.py; cart/views.py; cart/templates/cart/checkout.html",
+      "design_reference": "SAD 4.2 Flow 1 (p8); 4.3 Checkout design; current mock/API scope differences recorded",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "cart/views.py",
+      "verified_source_tokens": [
+        "def checkout",
+        "ShippingAddressForm",
+        "CheckoutForm"
+      ],
+      "automated_mapping_count": 13,
+      "system_planned_mapping_count": 3
+    },
+    {
+      "row": 11,
+      "requirement_id": "BOOK-F-010",
+      "code_reference": "orders/services.py; orders/models.py; cart/views.py",
+      "design_reference": "SAD 4.2 Flow 1 (p8); 4.3 Checkout design; current mock/API scope differences recorded",
+      "disposition": "Approved mock scope R-002; original gateway payment/confirmation not verified",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Approved mock initiation only; original real gateway/payment-success scope remains unverified. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "orders/services.py",
+      "verified_source_tokens": [
+        "class MockPaymentGateway",
+        "def create_order_from_cart",
+        "pending"
+      ],
+      "automated_mapping_count": 8,
+      "system_planned_mapping_count": 4
+    },
+    {
+      "row": 12,
+      "requirement_id": "BOOK-F-011",
+      "code_reference": "orders/views.py; orders/templates/orders/order_history.html",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "orders/views.py",
+      "verified_source_tokens": [
+        "def order_history",
+        "def order_detail"
+      ],
+      "automated_mapping_count": 6,
+      "system_planned_mapping_count": 5
+    },
+    {
+      "row": 13,
+      "requirement_id": "BOOK-F-012",
+      "code_reference": "orders/models.py; orders/views.py; orders/signals.py",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "orders/models.py",
+      "verified_source_tokens": [
+        "SHIPPED",
+        "DELIVERED",
+        "delivered_at"
+      ],
+      "automated_mapping_count": 7,
+      "system_planned_mapping_count": 5
+    },
+    {
+      "row": 14,
+      "requirement_id": "BOOK-F-013",
+      "code_reference": "orders/views.py; orders/models.py; static/js/order-confirm.js",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "orders/views.py",
+      "verified_source_tokens": [
+        "def cancel_order",
+        "def request_return",
+        "_policy_is_open"
+      ],
+      "automated_mapping_count": 21,
+      "system_planned_mapping_count": 6
+    },
+    {
+      "row": 15,
+      "requirement_id": "BOOK-F-014",
+      "code_reference": "books/forms.py; books/views.py; books/models.py",
+      "design_reference": "SAD 4.2 Flow 2 (p9); 4.1 listing states",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "def create_listing",
+        "Book.ApprovalStatus.PENDING"
+      ],
+      "automated_mapping_count": 9,
+      "system_planned_mapping_count": 2
+    },
+    {
+      "row": 16,
+      "requirement_id": "BOOK-F-015",
+      "code_reference": "books/views.py",
+      "design_reference": "SAD 4.2 Flow 2 (p9); 4.1 listing states",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "def edit_listing",
+        "def delete_listing",
+        "seller=request.user"
+      ],
+      "automated_mapping_count": 17,
+      "system_planned_mapping_count": 2
+    },
+    {
+      "row": 17,
+      "requirement_id": "BOOK-F-016",
+      "code_reference": "books/admin.py; books/views.py",
+      "design_reference": "SAD 4.2 Flow 2 (p9); 4.1 listing states",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/admin.py",
+      "verified_source_tokens": [
+        "def approve_listings",
+        "def reject_listings"
+      ],
+      "automated_mapping_count": 18,
+      "system_planned_mapping_count": 4
+    },
+    {
+      "row": 18,
+      "requirement_id": "BOOK-F-017",
+      "code_reference": "books/admin.py; accounts/admin.py",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/admin.py",
+      "verified_source_tokens": [
+        "stock_quantity",
+        "def deactivate_listings"
+      ],
+      "automated_mapping_count": 17,
+      "system_planned_mapping_count": 0
+    },
+    {
+      "row": 19,
+      "requirement_id": "BOOK-F-018",
+      "code_reference": "books/views.py; books/models.py",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Review workflow tested; successful-paid-purchase-only eligibility not established",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Non-cancelled ordered items enable reviews; verified-paid-purchase-only enforcement is not established. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "def submit_review",
+        "has_purchased",
+        "Order.Status.CANCELLED"
+      ],
+      "automated_mapping_count": 17,
+      "system_planned_mapping_count": 4
+    },
+    {
+      "row": 20,
+      "requirement_id": "BOOK-F-019",
+      "code_reference": "books/views.py; books/models.py",
+      "design_reference": "SAD 4.1 Design Overview; 3.8 traceability",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "def wishlist",
+        "def add_to_wishlist",
+        "def remove_from_wishlist"
+      ],
+      "automated_mapping_count": 6,
+      "system_planned_mapping_count": 4
+    },
+    {
+      "row": 21,
+      "requirement_id": "BOOK-F-020",
+      "code_reference": "orders/email_notifications.py; orders/signals.py; config/email_backends.py",
+      "design_reference": "SAD 4.2 Flow 1 (p8); 4.3 Checkout design; current mock/API scope differences recorded",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "orders/email_notifications.py",
+      "verified_source_tokens": [
+        "def send_order_status_notification",
+        "send_mail"
+      ],
+      "automated_mapping_count": 14,
+      "system_planned_mapping_count": 1
+    },
+    {
+      "row": 22,
+      "requirement_id": "BOOK-NF-001",
+      "code_reference": "books/views.py; cart/views.py; orders/services.py; books/catalogue_cache.py",
+      "design_reference": "SAD 3.1 targets; 4.4 monitoring; 4.2 checkout flow",
+      "disposition": "Normal-load catalogue/search browser cases Passed in run 42964208887: 20 per endpoint, p90 0.136s/0.142s during ten VUs plus one browser. Authenticated checkout timing remains unverified.",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Historical browser samples Passed; authenticated completed-checkout timing remains unverified. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "qa/nfr/controlled_load.py",
+      "verified_source_tokens": [
+        "p90",
+        "3000",
+        "No authenticated checkout"
+      ],
+      "automated_mapping_count": 0,
+      "system_planned_mapping_count": 3
+    },
+    {
+      "row": 23,
+      "requirement_id": "BOOK-NF-002",
+      "code_reference": "render.yaml; orders/services.py; books/catalogue_cache.py; books/views.py; qa/nfr/controlled_load.py",
+      "design_reference": "SAD 3.5 layered deployment; 3.6 hosting; staged capacity measurements executed with limits recorded.",
+      "disposition": "Targeted cache retest 43035954975: 100 users Passed; 250 failed sustained three-second latency gate (p90 3.807s/3.792s), zero HTTP errors and full request reconciliation. 500 not run. Capacity limitation retained.",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. 250-user latency gate Failed after caching; 500 users Not run. Mapping review is not capacity acceptance. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "qa/nfr/controlled_load.py",
+      "verified_source_tokens": [
+        "targeted-100-250",
+        "250",
+        "500",
+        "steady_complete"
+      ],
+      "automated_mapping_count": 26,
+      "system_planned_mapping_count": 1
+    },
+    {
+      "row": 24,
+      "requirement_id": "BOOK-NF-003",
+      "code_reference": "config/health.py; .github/workflows/ci.yml",
+      "design_reference": "SAD 4.4 monitoring; monthly history pending",
+      "disposition": "Not verified",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Health endpoint support is not evidence of full-month 99.5% availability. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "config/health.py",
+      "verified_source_tokens": [
+        "database",
+        "healthy"
+      ],
+      "automated_mapping_count": 3,
+      "system_planned_mapping_count": 1
+    },
+    {
+      "row": 25,
+      "requirement_id": "BOOK-NF-004",
+      "code_reference": "templates/base.html; books/templates/books/catalogue.html; cart/templates/cart/checkout.html",
+      "design_reference": "SAD 4.5 UX",
+      "disposition": "Partial evidence: five sampled checks Passed",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Manual/public automated samples only; full applicable WCAG coverage not established. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "templates/base.html",
+      "verified_source_tokens": [
+        "skip-link",
+        "main-content",
+        "prefers-reduced-motion"
+      ],
+      "automated_mapping_count": 0,
+      "system_planned_mapping_count": 6
+    },
+    {
+      "row": 26,
+      "requirement_id": "BOOK-NF-005",
+      "code_reference": ".coveragerc; qa/run_validation.py; .github/workflows/ci.yml",
+      "design_reference": "SAD 3.6 Testing; core scope definition in report",
+      "disposition": "Verified CI 42976045985: defined core 1013/1093=92.68%, target >=70%; overall statements 91.85%, branches 84.01%.",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Defined 20-file scope and XML totals checked; core 92.68% exceeds the 70% target. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": ".coveragerc",
+      "verified_source_tokens": [
+        "branch = True",
+        "relative_files = True"
+      ],
+      "automated_mapping_count": 0,
+      "system_planned_mapping_count": 0
+    },
+    {
+      "row": 27,
+      "requirement_id": "BOOK-NF-006",
+      "code_reference": ".github/workflows/database-backup.yml; qa/nfr/recovery_probe.py; qa/nfr/qa_recovery_settings.py",
+      "design_reference": "SAD 3.7 Data loss mitigation; maintenance/recovery draft procedure",
+      "disposition": "Daily scheduled operation evidenced: 24/24 scheduled runs succeeded. Scoped matching-app recovery Passed in 2.371s. Observed Nov 9\u201310 snapshot interval >=24h8m24s; strict production RPO <=24h and full outage RTO not established.",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Scoped recovery Passed; daily operation evidenced; observed >24h interval and full production RPO/RTO limits retained. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "qa/nfr/recovery_probe.py",
+      "verified_source_tokens": [
+        "pg_dump",
+        "pg_restore",
+        "snapshot_integrity_match"
+      ],
+      "automated_mapping_count": 0,
+      "system_planned_mapping_count": 4
+    },
+    {
+      "row": 28,
+      "requirement_id": "BOOK-SR-001",
+      "code_reference": "config/settings.py; config/email_backends.py; accounts/management/commands/verify_postgres_tls.py; render.yaml",
+      "design_reference": "SAD 3.9 Security Architecture; 4.1 validation/authorization path; current implementation/scope qualifications retained",
+      "disposition": "Scoped TLS evidence; developer DB report and runtime mail-transport limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Live transport samples and attributed DB/email evidence remain distinct from source configuration. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "config/settings.py",
+      "verified_source_tokens": [
+        "SECURE_SSL_REDIRECT",
+        "SESSION_COOKIE_SECURE",
+        "SECURE_HSTS_SECONDS"
+      ],
+      "automated_mapping_count": 4,
+      "system_planned_mapping_count": 4
+    },
+    {
+      "row": 29,
+      "requirement_id": "BOOK-SR-002",
+      "code_reference": "accounts/views.py; accounts/forms.py",
+      "design_reference": "SAD 3.9 Security Architecture; 4.1 validation/authorization path; current implementation/scope qualifications retained",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Hashing/login/log sample evidence has its recorded scope; no complete historical log/database audit inferred. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "accounts/forms.py",
+      "verified_source_tokens": [
+        "validate_password",
+        "create_user"
+      ],
+      "automated_mapping_count": 2,
+      "system_planned_mapping_count": 2
+    },
+    {
+      "row": 30,
+      "requirement_id": "BOOK-SR-003",
+      "code_reference": "orders/services.py; orders/models.py; cart/forms.py",
+      "design_reference": "SAD 3.9 Security Architecture; 4.1 validation/authorization path; current implementation/scope qualifications retained",
+      "disposition": "Approved mock/tokenization exception; original tokenization unimplemented",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Approved mock exception; no real gateway tokenization implementation is claimed. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "orders/services.py",
+      "verified_source_tokens": [
+        "MockPaymentGateway",
+        "Payment",
+        "pending"
+      ],
+      "automated_mapping_count": 0,
+      "system_planned_mapping_count": 1
+    },
+    {
+      "row": 31,
+      "requirement_id": "BOOK-SR-004",
+      "code_reference": "accounts/views.py; books/views.py; cart/views.py; orders/views.py",
+      "design_reference": "SAD 3.9 Security Architecture; 4.1 validation/authorization path; current implementation/scope qualifications retained",
+      "disposition": "Verified by sampled/automated evidence within implemented scope; historical build limits retained",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Evidence is sampled/automated within the implemented scope; historical build limits remain. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "cart/views.py",
+      "verified_source_tokens": [
+        "login_required",
+        "def is_buyer",
+        "Profile.Role.BUYER"
+      ],
+      "automated_mapping_count": 50,
+      "system_planned_mapping_count": 12
+    },
+    {
+      "row": 32,
+      "requirement_id": "BOOK-SR-005",
+      "code_reference": "books/forms.py; books/views.py; books/templates/books/book_detail.html; cart/forms.py",
+      "design_reference": "SAD 3.9 Security Architecture; 4.1 validation/authorization path; current implementation/scope qualifications retained",
+      "disposition": "Scoped adversarial/regression/scan evidence; image-source hardening observation open",
+      "review_note": "Mapping review: SAD architecture/design reference, existing source path/behavior, case-ID membership and current evidence disposition checked. Scoped ORM/form/escaping/security evidence; broad HTTPS image-source CSP observation remains open. Reviewer: assistant source/documentation audit; no new execution or human acceptance asserted.",
+      "review_status": "Reviewed",
+      "anchor_file": "books/views.py",
+      "verified_source_tokens": [
+        "Q(title__icontains",
+        "ReviewForm",
+        "BookListingForm"
+      ],
+      "automated_mapping_count": 25,
+      "system_planned_mapping_count": 3
+    }
+  ]
+}

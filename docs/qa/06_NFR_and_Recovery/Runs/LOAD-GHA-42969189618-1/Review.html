@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Review</title><style>body{font:16px/1.55 Segoe UI,Arial,sans-serif;max-width:1150px;margin:40px auto;padding:0 26px;color:#182334}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:32px}a{color:#1557a0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #d7dee7;padding:9px;text-align:left;vertical-align:top}th{background:#eaf0f7}tr:nth-child(even){background:#f7f9fc}code,pre{font-family:Consolas,monospace}pre{padding:14px;background:#f0f3f7;white-space:pre-wrap;overflow-wrap:anywhere}li{margin-bottom:7px}p{overflow-wrap:anywhere}.status{color:#754400} @media print{body{margin:10mm;font-size:11pt}a{color:inherit}pre,table{font-size:9pt}}</style><body><h1>Hosted browsing load review — run 42969189618</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>11 November 2026, 05:58:49–06:11:09 UTC (11:28:49–11:41:09 IST). Reported deployed and harness SHA: <code>5752e3e02e2507be060d480c411c14f4dd70e5a9</code>. Deployment identity is operator supplied.</p>
+<p><strong>The 250-user stage failed with six HTTP 503 responses. The earlier shutdown-accounting problem is resolved in this run.</strong></p>
+<table><thead><tr><th>Active VUs</th><th>Catalogue HTTP p90</th><th>Search HTTP p90</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>1</td><td>0.089 s</td><td>0.110 s</td><td>Passed 60-second steady sample</td></tr>
+<tr><td>10</td><td>0.107 s</td><td>0.114 s</td><td>Passed 300-second steady sample</td></tr>
+<tr><td>50</td><td>0.287 s</td><td>0.288 s</td><td>Passed 120-second steady sample</td></tr>
+<tr><td>100</td><td>2.205 s</td><td>2.204 s</td><td>Passed 120-second steady sample</td></tr>
+<tr><td>250</td><td>7.976 s</td><td>7.949 s</td><td>Failed, early abort after about two seconds of steady-stage controller time</td></tr>
+<tr><td>500</td><td>Not measured</td><td>Not measured</td><td>Not run</td></tr>
+</tbody></table>
+<p>The 250-user p90 values are diagnostic statistics for successful requests in an aborted, short stage. They do not describe a completed two-minute steady sample. Phases are captured at request initiation; the controller waits for in-flight requests after stopping new work. At 10 users there were three successful HTTP requests above three seconds, although per-endpoint p90 passed. At 100 users latency was materially higher than the one-user baseline, despite remaining within the three-second gate.</p>
+<h2>Verified request accounting and failures</h2>
+<ul>
+<li>9,606 started = 9,606 completed. 9,600 returned HTTP 200; six returned HTTP 503.</li>
+<li>All six 503s occurred at 250 active users: three catalogue and three search. Completion timestamps: 06:11:01.998–06:11:02.133 UTC (11:41:01.998–11:41:02.133 IST).</li>
+<li>At the 100-user cutoff, 60 active requests drained successfully in 2.476 seconds.</li>
+<li>At the 250-user cutoff, 191 active requests drained successfully in 7.693 seconds. No requests remain unaccounted for.</li>
+<li>Peak sampled generator CPU was 9%, memory 91.52 MiB. No sampled generator saturation threshold was reached. Server resource utilization is not included.</li>
+</ul>
+<p>The workflow&#x27;s nonzero exit correctly reports the failed service/correctness gate. No further controller correction is indicated by this artifact. The service-error origin is unknown because per-error response headers/bodies and server/platform resource data are absent. The operator checked Render logs for 11:40:25–11:41:10 IST and reported none of the requested errors visible. This does not establish that the 503s did not occur or identify their source.</p>
+<h2>Normal-load browser evidence</h2>
+<p>During ten active VUs plus one sequential Chromium browser, 20 catalogue and 20 search page loads passed correctness and the three-second gate. Catalogue p90: 0.1351 s, maximum 0.3432 s. Search p90: 0.1254 s, maximum 0.2334 s. All 40 measured navigations were below three seconds. Original PERF-001/002 Pass evidence remains valid and this run corroborates it.</p>
+<h2>Disposition and next action</h2>
+<p>BOOK-NF-002 is not met by this execution. The public browsing workload failed at 250 users, and 500 users were not tested. Do not report an exact maximum capacity or a successful 500-user test. BOOK-NF-001 remains partial because authenticated checkout timing is unverified. OBP-48 remains In Progress.</p>
+<p>Preserve this run and send the accompanying developer handoff for investigation. Check platform metrics/events, actual worker/concurrency configuration and database/query behavior around the failure window. Do not change deployment settings or repeat the unchanged public stress test until there is a diagnostic plan or a relevant fix to verify. Other QA finalization work can continue with this finding recorded.</p>
+<p>Original ZIP, summary, request CSV, browser data and pasted workflow log are preserved unchanged in this folder. No Jira issue was published and no new public load test was run while reviewing the artifact.</p></body></html>

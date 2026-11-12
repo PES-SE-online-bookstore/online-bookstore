@@ -1,0 +1,37 @@
+{
+  "review_date_client": "2026-11-11",
+  "scope": "Public GitHub workflow/job/artifact metadata only; no dumps or credentials accessed",
+  "workflow": "Daily Database Backup",
+  "workflow_cron_utc": "30 2 * * *",
+  "observed_schedule_days": 24,
+  "scheduled_successes": 24,
+  "first_scheduled_day": "2026-10-19",
+  "last_scheduled_day": "2026-11-11",
+  "initial_manual_failures_retained": 2,
+  "successful_manual_runs": 2,
+  "recent_verified_restore_jobs": [
+    42597330729,
+    42796266346,
+    42996728403
+  ],
+  "backup_artifact_metadata_exists_for_recent_jobs": true,
+  "latest_run_url": "http[local path omitted]",
+  "observed_interval": {
+    "previous_run": 42597330729,
+    "following_run": 42796266346,
+    "previous_backup_step_utc": [
+      "2026-11-09T09:58:12Z",
+      "2026-11-09T09:58:18Z"
+    ],
+    "following_backup_step_utc": [
+      "2026-11-10T10:06:42Z",
+      "2026-11-10T10:06:49Z"
+    ],
+    "snapshot_interval_lower_bound_seconds": 86904.0,
+    "snapshot_interval_upper_bound_seconds": 86917.0
+  },
+  "daily_operation": "Evidenced in inspected workflow history",
+  "strict_24h_cadence": "Not met by this observed pair of workflow backup windows",
+  "overall_production_RPO": "Not established; no other recovery-point history supplied",
+  "recovery_scope": "Separate isolated rehearsal 42953060880 Passed; production outage RTO still unverified"
+}

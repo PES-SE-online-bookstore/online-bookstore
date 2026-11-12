@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Code Coverage Report</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui;color:#1c2833}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #ccd4dc;padding:9px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eef2f6}code{overflow-wrap:anywhere;font-size:.9em}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f7fa;padding:16px}a{color:#174ea6}h1{font-size:30px}h2{margin-top:28px}</style><main><h1>Code Coverage Report</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>Final automated source: <code>92247d31739eed30e0d769865869869b384a2ba6</code>. <a href="https://github.com/PES-SE-online-bookstore/online-bookstore/actions/runs/43241415099">CI run</a>. Historical manual and deployed checks retain the distinct builds/dates shown in their evidence.</p>
+<p>Status: <strong>QA execution completed for the revised scope, with findings and untested/unverified targets retained.</strong></p>
+<p><strong>1183/1288 = 91.85% statement coverage.</strong> All 294 tests Passed. XML contains 42 unique repository-relative paths; counts were independently recomputed and reconciled with the coverage summary.</p>
+<p>BOOK-NF-005 specifies &gt;=70% coverage of core business logic. The explicit unchanged 20-file core scope covers <strong>1013/1093 =92.68%</strong>, meeting that target. No uncovered file was dropped to raise coverage. Exact scope is in <code>supporting/Core_Coverage_Scope.json</code>.</p>
+<table><thead><tr><th>File</th><th>Covered</th><th>Total</th><th>Coverage</th></tr></thead><tbody>
+<tr><td>accounts/__init__.py</td><td>0</td><td>0</td><td>N/A</td></tr>
+<tr><td>accounts/admin.py</td><td>22</td><td>22</td><td>100.00%</td></tr>
+<tr><td>accounts/apps.py</td><td>4</td><td>4</td><td>100.00%</td></tr>
+<tr><td>accounts/forms.py</td><td>39</td><td>40</td><td>97.50%</td></tr>
+<tr><td>accounts/models.py</td><td>17</td><td>19</td><td>89.47%</td></tr>
+<tr><td>accounts/urls.py</td><td>4</td><td>4</td><td>100.00%</td></tr>
+<tr><td>accounts/views.py</td><td>54</td><td>54</td><td>100.00%</td></tr>
+<tr><td>accounts/management/__init__.py</td><td>0</td><td>0</td><td>N/A</td></tr>
+<tr><td>accounts/management/commands/__init__.py</td><td>0</td><td>0</td><td>N/A</td></tr>
+<tr><td>accounts/management/commands/verify_postgres_tls.py</td><td>15</td><td>16</td><td>93.75%</td></tr>
+<tr><td>books/__init__.py</td><td>0</td><td>0</td><td>N/A</td></tr>
+<tr><td>books/admin.py</td><td>43</td><td>43</td><td>100.00%</td></tr>
+<tr><td>books/apps.py</td><td>6</td><td>6</td><td>100.00%</td></tr>
+<tr><td>books/catalogue_cache.py</td><td>26</td><td>26</td><td>100.00%</td></tr>
+<tr><td>books/forms.py</td><td>42</td><td>45</td><td>93.33%</td></tr>
+<tr><td>books/models.py</td><td>42</td><td>44</td><td>95.45%</td></tr>
+<tr><td>books/signals.py</td><td>8</td><td>8</td><td>100.00%</td></tr>
+<tr><td>books/urls.py</td><td>4</td><td>4</td><td>100.00%</td></tr>
+<tr><td>books/views.py</td><td>235</td><td>266</td><td>88.35%</td></tr>
+<tr><td>cart/__init__.py</td><td>0</td><td>0</td><td>N/A</td></tr>
+<tr><td>cart/admin.py</td><td>1</td><td>1</td><td>100.00%</td></tr>
+<tr><td>cart/apps.py</td><td>4</td><td>4</td><td>100.00%</td></tr>
+<tr><td>cart/forms.py</td><td>29</td><td>32</td><td>90.62%</td></tr>
+<tr><td>cart/models.py</td><td>42</td><td>45</td><td>93.33%</td></tr>
+<tr><td>cart/urls.py</td><td>4</td><td>4</td><td>100.00%</td></tr>
+<tr><td>cart/views.py</td><td>132</td><td>150</td><td>88.00%</td></tr>
+<tr><td>config/__init__.py</td><td>0</td><td>0</td><td>N/A</td></tr>
+<tr><td>config/asgi.py</td><td>0</td><td>4</td><td>0.00%</td></tr>
+<tr><td>config/email_backends.py</td><td>51</td><td>54</td><td>94.44%</td></tr>
+<tr><td>config/health.py</td><td>15</td><td>15</td><td>100.00%</td></tr>
+<tr><td>config/settings.py</td><td>48</td><td>61</td><td>78.69%</td></tr>
+<tr><td>config/urls.py</td><td>5</td><td>5</td><td>100.00%</td></tr>
+<tr><td>config/wsgi.py</td><td>0</td><td>4</td><td>0.00%</td></tr>
+<tr><td>orders/__init__.py</td><td>0</td><td>0</td><td>N/A</td></tr>
+<tr><td>orders/admin.py</td><td>20</td><td>20</td><td>100.00%</td></tr>
+<tr><td>orders/apps.py</td><td>6</td><td>6</td><td>100.00%</td></tr>
+<tr><td>orders/email_notifications.py</td><td>22</td><td>25</td><td>88.00%</td></tr>
+<tr><td>orders/models.py</td><td>76</td><td>80</td><td>95.00%</td></tr>
+<tr><td>orders/services.py</td><td>44</td><td>47</td><td>93.62%</td></tr>
+<tr><td>orders/signals.py</td><td>38</td><td>43</td><td>88.37%</td></tr>
+<tr><td>orders/urls.py</td><td>4</td><td>4</td><td>100.00%</td></tr>
+<tr><td>orders/views.py</td><td>81</td><td>83</td><td>97.59%</td></tr>
+</tbody></table>
+<p>Coverage was collected with branches enabled over accounts, books, cart, orders and config. Test modules, migrations and tooling/results are excluded by the retained configuration. The combined line/branch percentage in coverage.txt is not substituted for statement-only coverage. Source hashes, commands and exit codes were inspected; overall/core metrics retain their defined denominators. Coverage is not proof of all requirements or deployed performance.</p></main></html>

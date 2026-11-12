@@ -1,0 +1,151 @@
+{
+  "run_id": "LOAD-GHA-42964208887-1",
+  "artifact_sha256": "f9365045cc326813842e1489535807f6bf3305112c1778536cc5572806381958",
+  "workflow_url": "http[local path omitted]",
+  "reported_deployed_sha": "26f62e6eca81feee7ef5736568ec24f8328352dd",
+  "harness_commit": "26f62e6eca81feee7ef5736568ec24f8328352dd",
+  "started_at_utc": "2026-11-11T05:13:14.825914+00:00",
+  "finished_at_utc": "2026-11-11T05:24:44.755835+00:00",
+  "status": "Stopped at 100-user request reconciliation gate; inconclusive at 100",
+  "recorded_requests": 8552,
+  "recorded_http_errors": 0,
+  "unaccounted_requests": 2,
+  "passed_scoped_stages": [
+    1,
+    10,
+    50
+  ],
+  "not_executed_stages": [
+    250,
+    500
+  ],
+  "stages": [
+    {
+      "users": 1,
+      "requests_started": 31,
+      "requests_completed": 31,
+      "steady_elapsed_seconds": 60.14,
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 14,
+          "failures": 0,
+          "p90_ms": 127.049,
+          "max_ms": 134.974,
+          "at_or_below_3000ms": 14
+        },
+        "search_http": {
+          "attempts": 11,
+          "failures": 0,
+          "p90_ms": 113.205,
+          "max_ms": 114.442,
+          "at_or_below_3000ms": 11
+        }
+      },
+      "status": "Passed scoped browsing stage"
+    },
+    {
+      "users": 10,
+      "requests_started": 1498,
+      "requests_completed": 1498,
+      "steady_elapsed_seconds": 300.801,
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 854,
+          "failures": 0,
+          "p90_ms": 120.022,
+          "max_ms": 361.224,
+          "at_or_below_3000ms": 854
+        },
+        "search_http": {
+          "attempts": 565,
+          "failures": 0,
+          "p90_ms": 127.955,
+          "max_ms": 1338.873,
+          "at_or_below_3000ms": 565
+        }
+      },
+      "status": "Passed scoped browsing stage"
+    },
+    {
+      "users": 50,
+      "requests_started": 3149,
+      "requests_completed": 3149,
+      "steady_elapsed_seconds": 120.353,
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 1657,
+          "failures": 0,
+          "p90_ms": 300.807,
+          "max_ms": 889.609,
+          "at_or_below_3000ms": 1657
+        },
+        "search_http": {
+          "attempts": 1111,
+          "failures": 0,
+          "p90_ms": 294.092,
+          "max_ms": 718.341,
+          "at_or_below_3000ms": 1111
+        }
+      },
+      "status": "Passed scoped browsing stage"
+    },
+    {
+      "users": 100,
+      "requests_started": 3876,
+      "requests_completed": 3874,
+      "steady_elapsed_seconds": 120.355,
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 1955,
+          "failures": 0,
+          "p90_ms": 2135.741,
+          "max_ms": 2714.416,
+          "at_or_below_3000ms": 1955
+        },
+        "search_http": {
+          "attempts": 1353,
+          "failures": 0,
+          "p90_ms": 2119.842,
+          "max_ms": 2607.881,
+          "at_or_below_3000ms": 1353
+        }
+      },
+      "status": "Stopped / target not demonstrated"
+    }
+  ],
+  "normal_load_browser": [
+    {
+      "endpoint": "/books/",
+      "samples": 20,
+      "p90_load_ms": 136.10000000003492,
+      "max_load_ms": 281.3999999999651,
+      "at_or_below_3000ms": 20,
+      "sample_target_met": true
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "samples": 20,
+      "p90_load_ms": 142.29999999998836,
+      "max_load_ms": 252.39999999999418,
+      "at_or_below_3000ms": 20,
+      "sample_target_met": true
+    }
+  ],
+  "render_log_observation": "Not supplied for this hosted run. Earlier no-error observation belongs only to local LOAD-001.",
+  "attribution": "Generator shutdown allowed started work to remain unaccounted. A shutdown weakness was fixed locally; the artifact cannot establish what happened to the two requests or an application defect.",
+  "scope": "Anonymous catalogue/search only. Ten VUs plus one measurement browser for normal-load page timing. No authenticated checkout or full-system capacity result.",
+  "historical_70_checkpoint_total_unchanged": true,
+  "shutdown_fix_validation": {
+    "scope": "Local fixture integration only; not performance/capacity evidence",
+    "public_requests": 0,
+    "stage_gates_and_request_drain": "Passed",
+    "browser_child_start_and_result_gate": "Passed",
+    "stages_checked": [
+      1,
+      10
+    ],
+    "delayed_requests_at_cutoff": 10,
+    "drain_elapsed_seconds": 1.172,
+    "unaccounted_after_drain": 0
+  }
+}

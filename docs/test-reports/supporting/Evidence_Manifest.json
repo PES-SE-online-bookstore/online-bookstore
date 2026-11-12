@@ -1,0 +1,52 @@
+{
+  "source_commit": "92247d31739eed30e0d769865869869b384a2ba6",
+  "workflow_url": "http[local path omitted]",
+  "artifact_sha256": "551a101e4bb6ae72e6a729533e1ba01064fb35853de378a09b8489a4ba869108",
+  "automated_tests": {
+    "total": 294,
+    "Unit": 18,
+    "Integration": 276,
+    "Passed": 294,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "case_register": {
+    "total": 373,
+    "Passed": 368,
+    "Failed": 2,
+    "not_run": 3
+  },
+  "statement_coverage_percent": 91.85,
+  "branch_coverage_percent": 84.01,
+  "core_statement_percent": 92.68,
+  "execution_scope": "Hybrid testing; not every case manually executed",
+  "nfr_dispositions": {
+    "BOOK-NF-001": "Passed declared normal-load samples: historical catalogue/search p90 0.136/0.142 s; checkout run43180348416 p90 0.1911 s,20/20 correct during10 browsing VUs. Distinct builds/boundaries retained.",
+    "BOOK-NF-002": "250-user timing Failed; 100-user sample Passed; 500 users Not tested per revised execution scope. Original500 target not demonstrated.",
+    "BOOK-NF-003": "Monthly availability Not tested per user scope decision; no99.5% full-month claim.",
+    "BOOK-NF-004": "Executed sampled audit with unresolved admin breadcrumb finding. Manual keyboard/zoom/form/contrast/table follow-up recorded; full conformance and screen-reader speech not established.",
+    "BOOK-NF-005": "Final CI43241415099: overall statements1183/1288=91.85%; branches247/294=84.01%; defined20-file core1013/1093=92.68%, exceeds original70% target.",
+    "BOOK-NF-006": "Twice-daily cron published. Fresh backup/temp restore43243243463 Passed; isolated recovery43243646709 exact22 tables/258 rows,usable2.675s. Historical>24h gap and full production RPO/RTO remain unverified."
+  },
+  "deployed_runs": {
+    "checkout": {
+      "run": "43180348416",
+      "sha": "f6d7d85eb6c93599c5e0bd05f6b6560aa1e88da3"
+    },
+    "accessibility": {
+      "run": "43230895650",
+      "sha": "cc99379e894c250d0801090d60e502138064d3b4"
+    },
+    "capacity": {
+      "run": "43035954975",
+      "sha": "aa36272e424489724153b8cdd89c1ae25b4a8e13"
+    },
+    "recovery": {
+      "run": "43243646709",
+      "sha": "92247d31739eed30e0d769865869869b384a2ba6"
+    }
+  },
+  "publication": "Local packet prepared; existing documentation PR #6 still open; no new commit/push by agent",
+  "database_material": "No database dumps included or opened for final review"
+}

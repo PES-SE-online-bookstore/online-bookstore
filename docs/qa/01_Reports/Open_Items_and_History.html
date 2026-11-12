@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Open_Items_and_History</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui}table{display:block;overflow:auto;border-collapse:collapse}td,th{border:1px solid #ccd4dc;padding:9px;vertical-align:top;text-align:left;overflow-wrap:anywhere}pre{white-space:pre-wrap}</style><main><h1>Open findings and historical outcomes</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<table><thead><tr><th>Finding/limit</th><th>Final disposition</th></tr></thead><tbody>
+<tr><td>250-user browsing response time</td><td>Failed; p90 3.807/3.792 s exceeded 3 s; original evidence retained</td></tr>
+<tr><td>Admin order-edit breadcrumb links</td><td>Unresolved WCAG 1.4.1 automated finding; user chose to retain it</td></tr>
+<tr><td>500-user capacity</td><td>Not tested; no further execution planned</td></tr>
+<tr><td>Monthly 99.5% availability</td><td>Not tested; no full-month history</td></tr>
+<tr><td>Backup/recovery</td><td>Fresh scoped checks Passed, schedule improved; historical &gt;24h gap/full production RPO/RTO remain unverified</td></tr>
+<tr><td>Accessibility limits</td><td>Manual sweeps/checks reported satisfactory; per-node ratios/role details and screen-reader speech not supplied; no full conformance claim</td></tr>
+<tr><td>Broad HTTPS CSP image sources</td><td>Retained nonblocking security observation</td></tr>
+<tr><td>Mock payment / review eligibility</td><td>No gateway tokenization or genuine paid-payment acceptance; paid-purchase-only review restriction not established</td></tr>
+<tr><td>Registration error association</td><td>Reference visible and target existence user-reported; local broken-reference result not promoted to confirmed live defect</td></tr>
+</tbody></table>
+<p>Historical reset expiry, assigned seller, cover rendering and real email delivery findings were fixed/retested or revised as documented. The email-login assertion was revised to username/session behavior; it was not hidden as an application fix. Original failed CI/run evidence remains preserved.</p>
+<h2>Developer-documented implementation gaps</h2>
+<p>The reconciled deviation register retains two additional acceptance limits reported by the developer: seller approval/rejection notifications are unimplemented (D-07), and application-level login/checkout throttling is unimplemented (D-08). Approval/visibility tests and account lockout do not establish those separate criteria. These are documented implementation gaps, not new deployed findings independently executed by this documentation update. Outstanding decision statuses are retained.</p></main></html>

@@ -1,0 +1,31 @@
+{
+  "reported_on": "2026-11-12",
+  "source": "User response to the three-page admin table checklist",
+  "statement_verbatim": "all pages checked. everythin named and listed as expected.",
+  "pages": [
+    {
+      "path": "/admin/books/book/",
+      "result": "User reports names/listing/relationships as expected"
+    },
+    {
+      "path": "/admin/orders/order/",
+      "result": "User reports names/listing/relationships as expected"
+    },
+    {
+      "path": "/admin/orders/order/9/change/",
+      "result": "User reports names/listing/relationships as expected"
+    }
+  ],
+  "manual_check_disposition": "Passed as user-reported sampled admin table checks",
+  "exact_accessibility_roles_or_relations": "Not supplied",
+  "screenshots_or_dom": "Not supplied",
+  "execution_sha_and_time": "Not supplied",
+  "original_axe_incomplete_results": "Preserved unchanged; manual follow-up recorded separately",
+  "accessibility_closeout": "Scoped automated/manual assessment complete with unresolved breadcrumb finding and stated evidence limits",
+  "full_wcag_conformance": "Not established; open finding and untested/unverified criteria retained",
+  "screen_reader_speech": "Not tested/reported",
+  "contrast": "Mobile and desktop Firefox sweeps reported no issues; individual ratios not supplied",
+  "breadcrumb": "Unresolved per user decision; not Passed or fixed",
+  "obp48_status": "In Progress; backup/recovery and final documentation/regression remain",
+  "product_git_or_jira_changes": false
+}

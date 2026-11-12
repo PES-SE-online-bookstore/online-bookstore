@@ -1,0 +1,3351 @@
+{
+  "tests_run": 294,
+  "successful": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "expected_failures": 0,
+  "unexpected_successes": 0,
+  "records": [
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_another_account_is_not_locked",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.480916
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_correct_password_is_blocked_during_lockout",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.057379
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_correct_password_works_after_expiry",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.259974
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_fifth_failure_locks_for_fifteen_minutes",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.059819
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_first_failure_is_counted",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.231356
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_four_failures_do_not_lock_account",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.84634
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_sixth_attempt_shows_lockout_message",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.05454
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_success_between_failures_resets_consecutive_count",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.266051
+    },
+    {
+      "test_id": "accounts.test_authentication.LockoutIntegrationTests.test_wrong_password_after_expiry_starts_new_count",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-003",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.258819
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_email_identifier_is_not_accepted_under_revised_requirement",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.223616
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_inactive_account_cannot_log_in",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.231121
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_login_page_loads",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.020511
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_missing_credentials_are_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.223258
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_revised_username_and_password_establish_session",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.227299
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_unknown_account_does_not_create_attempt_record",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.22282
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_wrong_password_can_be_followed_by_successful_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.436375
+    },
+    {
+      "test_id": "accounts.test_authentication.LoginIntegrationTests.test_wrong_password_does_not_establish_session",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.22819
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_inactive_account_receives_no_reset_message",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.075055
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_link_is_valid_before_thirty_minutes",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.05333
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_mismatched_reset_passwords_do_not_change_password",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.237907
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_new_password_logs_in_and_old_password_does_not",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.659895
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_registered_account_receives_reset_message",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.023821
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_reset_request_page_loads",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.022123
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_srs_link_expires_after_thirty_minutes",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026118
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_successful_reset_changes_password",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.631672
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_tampered_token_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.027857
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_unknown_email_discloses_no_account_and_sends_no_message",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.021998
+    },
+    {
+      "test_id": "accounts.test_authentication.PasswordResetIntegrationTests.test_used_link_cannot_be_reused",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.242811
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_buyer_account_and_profile_are_created",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.225349
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_duplicate_email_does_not_create_another_account",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.23459
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_duplicate_username_does_not_create_another_account",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.232579
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_mismatched_password_creates_no_account_or_profile",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.028957
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_missing_required_data_creates_no_account",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026124
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_registration_cannot_create_an_admin",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.027383
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_registration_page_loads",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.024891
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_registration_stores_verifiable_hash_not_plaintext",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001",
+        "BOOK-SR-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.626901
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationIntegrationTests.test_seller_account_and_profile_are_created",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.223848
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_anonymous_cart_access_redirects_to_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.02068
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_get_logout_does_not_change_session",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.228699
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_independent_client_has_no_authenticated_session",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.288627
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_logged_in_buyer_can_access_cart",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.238325
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_login_post_without_csrf_token_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.030683
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_logout_post_without_csrf_token_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.032017
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_post_logout_removes_authentication",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.22925
+    },
+    {
+      "test_id": "accounts.test_authentication.SessionAccessIntegrationTests.test_protected_access_after_logout_is_denied",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.23169
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_account_admin_is_registered_with_custom_admin",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.018349
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_can_deactivate_account",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.089192
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_can_deactivate_other_account_without_deactivating_self",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.064594
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_can_reactivate_account",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.062934
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_admin_cannot_deactivate_own_account",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.063959
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_deactivated_user_cannot_authenticate",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.208592
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_deactivated_user_cannot_log_in",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.242067
+    },
+    {
+      "test_id": "accounts.tests.AdminAccountManagementTests.test_non_staff_user_cannot_access_user_admin",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.036151
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheCspTests.test_each_cached_response_has_its_own_matching_nonce",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.039067
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheCspTests.test_response_is_not_marked_publicly_cacheable",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.030414
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_entry_is_rebuilt_after_timeout",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.039787
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_entry_is_still_served_just_before_timeout",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.030962
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_first_request_misses_and_repeat_hits",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.029213
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_hit_runs_no_queries_and_miss_runs_three",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.029024
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheExpiryTests.test_zero_seconds_disables_the_cache",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.033336
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_admin_bulk_deactivate_invalidates_despite_bypassing_save",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.251803
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_approving_a_pending_book_publishes_it",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.041476
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_category_list_follows_new_category",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.034182
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_deleting_a_book_removes_it",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.035991
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_edited_title_and_price_appear_immediately",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.03485
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_new_approved_book_appears_immediately",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.033165
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheInvalidationTests.test_rejecting_a_book_removes_it_and_its_category",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.031464
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_categories_do_not_share_entries",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-006",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.043354
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_different_searches_get_different_results",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-006",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.046425
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_invalid_and_out_of_range_pages_resolve_like_before",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-006",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.051039
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_pages_do_not_share_entries",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-006",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.04911
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_price_ranges_do_not_share_entries",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-006",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.043587
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheQuerySeparationTests.test_search_box_echoes_this_request_not_a_cached_one",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-006",
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.041846
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_anonymous_hit_after_logged_in_miss_shows_no_user",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.445026
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_anonymous_hit_does_not_create_a_session",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.423886
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_cache_stores_no_user_or_session_data",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.434856
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CacheSessionSeparationTests.test_each_user_sees_own_navigation_on_shared_entry",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.448013
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CatalogueDiagnosticsTests.test_log_line_records_cache_status_and_queries_without_search_text",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.079871
+    },
+    {
+      "test_id": "books.test_catalogue_cache.CatalogueDiagnosticsTests.test_server_timing_header_reports_durations",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026885
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_first_page_contains_twelve_books",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.030121
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_invalid_page_input_falls_back_without_error",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.028348
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_out_of_range_page_resolves_to_last_page",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026711
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_pagination_links_preserve_encoded_search_and_filters",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.036908
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CataloguePaginationIntegrationTests.test_three_pages_do_not_omit_or_repeat_books",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.045836
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CatalogueRequiredFieldsIntegrationTests.test_book_detail_displays_computed_average_rating",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.03726
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CatalogueRequiredFieldsIntegrationTests.test_srs_book_detail_identifies_seller",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.027798
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CatalogueRequiredFieldsIntegrationTests.test_srs_catalogue_renders_book_cover_image",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025317
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CatalogueVisibilityIntegrationTests.test_pending_book_is_inaccessible_by_direct_url",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007",
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.023302
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CatalogueVisibilityIntegrationTests.test_rejected_book_is_inaccessible_by_direct_url",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007",
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.055979
+    },
+    {
+      "test_id": "books.test_catalogue_validation.CatalogueVisibilityIntegrationTests.test_unapproved_books_and_their_categories_are_hidden",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005",
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.024946
+    },
+    {
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_anonymous_user_must_log_in_to_submit_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.617352
+    },
+    {
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_buyer_with_purchase_can_submit_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.656694
+    },
+    {
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_buyer_with_purchase_sees_review_form",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.642982
+    },
+    {
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_seller_cannot_submit_review_even_after_purchase",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.640324
+    },
+    {
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_seller_does_not_see_review_form_on_book_details",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.634201
+    },
+    {
+      "test_id": "books.test_rbac.ReviewRolePermissionTests.test_user_without_profile_cannot_submit_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.649488
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_anonymous_wishlist_access_requires_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-019",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.019921
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_get_requests_cannot_add_or_remove_wishlist_entries",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-019",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.039273
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_login_post_with_valid_csrf_authenticates",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.2314
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_login_post_without_csrf_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025838
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_login_rotates_pre_authentication_session",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.235705
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_logout_invalidates_copied_authenticated_cookie",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-002",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.065903
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_other_buyer_cannot_view_or_remove_saved_item",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-019",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.051227
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_registered_passwords_are_verifiable_salted_hashes",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-001",
+        "BOOK-SR-002"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 1.186267
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_search_reflection_escapes_html_attribute_payload",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.02494
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_seller_cannot_add_or_remove_buyer_wishlist_item",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-019",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.046291
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_sql_like_login_identifier_does_not_bypass_authentication",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.22345
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_sql_like_search_is_literal_and_does_not_broaden_results",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.034257
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_stored_book_title_is_escaped_in_catalogue_and_detail",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.035806
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_valid_csrf_wishlist_add_is_idempotent",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-019",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.049685
+    },
+    {
+      "test_id": "books.test_security.SecurityRequestIntegrationTests.test_wishlist_post_without_csrf_creates_nothing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-019",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.041109
+    },
+    {
+      "test_id": "books.tests.AdminInventoryManagementTests.test_admin_can_deactivate_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.071569
+    },
+    {
+      "test_id": "books.tests.AdminInventoryManagementTests.test_admin_can_reactivate_approved_listing_with_stock",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.069207
+    },
+    {
+      "test_id": "books.tests.AdminInventoryManagementTests.test_admin_can_update_stock_quantity",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.077628
+    },
+    {
+      "test_id": "books.tests.AdminInventoryManagementTests.test_deactivated_listing_is_hidden_from_catalogue",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.073662
+    },
+    {
+      "test_id": "books.tests.AdminInventoryManagementTests.test_non_staff_user_cannot_manage_inventory",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.239623
+    },
+    {
+      "test_id": "books.tests.AdminInventoryManagementTests.test_out_of_stock_listing_cannot_be_activated",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.071316
+    },
+    {
+      "test_id": "books.tests.AdminInventoryManagementTests.test_pending_listing_cannot_be_activated",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-017"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.069581
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_admin_can_approve_pending_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.066646
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_admin_can_open_book_listing_management",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.056193
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_admin_can_reject_pending_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.067931
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_anonymous_user_cannot_access_admin_listing_management",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.031867
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_approved_listing_appears_in_public_catalogue",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.074286
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_approved_listing_without_stock_remains_unavailable",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.066052
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_non_staff_user_cannot_access_admin_listing_management",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.238822
+    },
+    {
+      "test_id": "books.tests.AdminListingApprovalTests.test_rejected_listing_does_not_appear_in_public_catalogue",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.07211
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_available_books_are_displayed",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026821
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_catalogue_page_loads",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025256
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_category_filter_excludes_unavailable_books",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026186
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_category_filter_is_case_insensitive",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.027153
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_empty_catalogue_displays_message",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.030706
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_category",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026546
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_category_and_price_together",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.028172
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_maximum_price",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025205
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_minimum_price",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026527
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_filter_by_price_range",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025537
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_invalid_maximum_price_does_not_crash",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025866
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_invalid_minimum_price_does_not_crash",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025805
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_minimum_price_greater_than_maximum_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025709
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_negative_minimum_price_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026856
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_non_finite_price_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026199
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_price_boundaries_are_inclusive",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025823
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_results_are_ordered_by_title",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025555
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_search_and_filters_work_together",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026757
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_author",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026722
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_description_keyword",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.027331
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_isbn",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025508
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_search_by_title",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026145
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_search_is_case_insensitive",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.02652
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_unavailable_books_are_excluded",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025621
+    },
+    {
+      "test_id": "books.tests.BookCatalogueTests.test_unmatched_search_displays_message",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-006"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.029276
+    },
+    {
+      "test_id": "books.tests.BookDetailTests.test_book_detail_displays_book_information",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.029077
+    },
+    {
+      "test_id": "books.tests.BookDetailTests.test_book_detail_displays_cover_image",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.027084
+    },
+    {
+      "test_id": "books.tests.BookDetailTests.test_book_detail_page_loads",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.026175
+    },
+    {
+      "test_id": "books.tests.BookDetailTests.test_book_detail_returns_404_for_nonexistent_book",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.021314
+    },
+    {
+      "test_id": "books.tests.BookDetailTests.test_book_detail_shows_placeholder_without_cover_image",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.028821
+    },
+    {
+      "test_id": "books.tests.BookDetailTests.test_catalogue_links_to_book_details",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.025572
+    },
+    {
+      "test_id": "books.tests.BookDetailTests.test_unavailable_book_detail_returns_404",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-007"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.021564
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_anonymous_user_is_redirected_to_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.019946
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_blank_comment_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.002645
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_buyer_cannot_submit_duplicate_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.057057
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_buyer_without_purchase_cannot_submit_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.051977
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_cancelled_order_does_not_qualify_for_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.052834
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_comment_over_2000_characters_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.002394
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_invalid_rating_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.002008
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_purchasing_buyer_can_submit_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.05799
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_review_comment_html_is_escaped_on_book_detail_page",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.028116
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_review_does_not_allow_another_buyer_to_review",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.053082
+    },
+    {
+      "test_id": "books.tests.BookReviewTests.test_review_is_displayed_on_book_detail_page",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-018"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.029416
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_anonymous_user_is_redirected_to_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.019699
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_buyer_cannot_access_listing_form",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.042673
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_buyer_cannot_create_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.040752
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_duplicate_isbn_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.096075
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_invalid_isbn_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.041898
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_javascript_cover_image_url_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.001546
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_seller_can_access_listing_form",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.037955
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_seller_can_create_pending_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.046266
+    },
+    {
+      "test_id": "books.tests.SellerCreateListingTests.test_zero_price_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-014"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.042168
+    },
+    {
+      "test_id": "books.tests.SellerDeleteListingTests.test_anonymous_user_is_redirected_to_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.62018
+    },
+    {
+      "test_id": "books.tests.SellerDeleteListingTests.test_buyer_cannot_delete_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.837013
+    },
+    {
+      "test_id": "books.tests.SellerDeleteListingTests.test_ordered_book_cannot_be_deleted",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.852274
+    },
+    {
+      "test_id": "books.tests.SellerDeleteListingTests.test_seller_can_delete_own_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.840406
+    },
+    {
+      "test_id": "books.tests.SellerDeleteListingTests.test_seller_can_open_delete_confirmation",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.83017
+    },
+    {
+      "test_id": "books.tests.SellerDeleteListingTests.test_seller_cannot_delete_another_sellers_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.829383
+    },
+    {
+      "test_id": "books.tests.SellerEditListingTests.test_anonymous_user_is_redirected_to_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-F-016",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.66449
+    },
+    {
+      "test_id": "books.tests.SellerEditListingTests.test_buyer_cannot_edit_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-F-016",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.856703
+    },
+    {
+      "test_id": "books.tests.SellerEditListingTests.test_invalid_edit_does_not_change_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.838462
+    },
+    {
+      "test_id": "books.tests.SellerEditListingTests.test_seller_can_edit_own_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.839825
+    },
+    {
+      "test_id": "books.tests.SellerEditListingTests.test_seller_can_open_edit_page",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-F-016"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.831217
+    },
+    {
+      "test_id": "books.tests.SellerEditListingTests.test_seller_cannot_edit_another_sellers_listing",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-F-016",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.829643
+    },
+    {
+      "test_id": "books.tests.SellerMyListingsTests.test_anonymous_user_is_redirected_to_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.421415
+    },
+    {
+      "test_id": "books.tests.SellerMyListingsTests.test_buyer_cannot_view_seller_listings",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.646977
+    },
+    {
+      "test_id": "books.tests.SellerMyListingsTests.test_seller_can_view_own_listings",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.635908
+    },
+    {
+      "test_id": "books.tests.SellerMyListingsTests.test_seller_sees_approval_statuses",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.637072
+    },
+    {
+      "test_id": "books.tests.SellerMyListingsTests.test_seller_with_no_listings_sees_empty_state",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-015"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.830567
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_adding_same_book_increases_quantity",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.05263
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_buyer_can_add_book_to_cart",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.053851
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_buyer_can_remove_item",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.046717
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_buyer_can_update_quantity",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.051743
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_buyer_can_view_empty_cart",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.037026
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_cannot_add_more_than_available_stock",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.052211
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_cannot_add_unavailable_book",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.037642
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_cannot_increase_existing_quantity_beyond_stock",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.039035
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_cannot_update_quantity_beyond_stock",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.037997
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_cart_totals_are_calculated_correctly",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.012764
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_extremely_long_quantity_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.064166
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_invalid_quantity_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.086086
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_seller_cannot_access_cart",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.047303
+    },
+    {
+      "test_id": "cart.tests.CartTests.test_seller_cannot_add_book_to_cart",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-008",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.050411
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_address_belonging_to_another_buyer_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.066459
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_buyer_can_view_checkout",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.053786
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_checkout_displays_saved_shipping_address",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.053379
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_checkout_requires_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.043554
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_empty_cart_cannot_proceed_to_checkout",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.047234
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_invalid_new_shipping_address_is_not_saved",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.061198
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_invalid_payment_method_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.058339
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_new_address_with_invalid_payment_method_is_not_saved",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.057117
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_new_shipping_address_can_be_saved",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.058645
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_seller_cannot_access_checkout",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.051998
+    },
+    {
+      "test_id": "cart.tests.CheckoutTests.test_valid_saved_address_and_payment_method_are_accepted",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.04987
+    },
+    {
+      "test_id": "config.tests_health.HealthCheckTests.test_health_check_rejects_post_requests",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-003"
+      ],
+      "mapping_basis": "Health endpoint support only; does not establish monthly availability",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.019976
+    },
+    {
+      "test_id": "config.tests_health.HealthCheckTests.test_health_check_returns_200_when_database_is_available",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-003"
+      ],
+      "mapping_basis": "Health endpoint support only; does not establish monthly availability",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.020276
+    },
+    {
+      "test_id": "config.tests_health.HealthCheckTests.test_health_check_returns_503_when_database_fails",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-NF-003"
+      ],
+      "mapping_basis": "Health endpoint support only; does not establish monthly availability",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.021404
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_anonymous_user_cannot_cancel_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.434541
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_anonymous_user_cannot_request_return",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.43275
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_can_cancel_confirmed_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.437079
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_can_cancel_pending_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.432382
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_can_request_return_for_delivered_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.436085
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_cannot_cancel_another_buyers_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.433013
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_buyer_cannot_request_return_for_another_buyers_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.435504
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_cancellation_endpoint_rejects_get",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.42909
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_cancellation_is_rejected_after_policy_window",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.433596
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_delivered_order_cannot_be_cancelled",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.433211
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_duplicate_return_request_is_rejected",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.437084
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_order_detail_shows_cancellation_option_for_eligible_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.443094
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_order_detail_shows_return_request_status",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.439573
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_endpoint_rejects_get",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.426857
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_reason_html_is_escaped_on_order_detail_page",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013",
+        "BOOK-SR-005"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.440422
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejected_after_policy_window",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.441394
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejected_for_undelivered_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.435254
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejected_without_delivery_timestamp",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.433518
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_rejects_reason_over_2000_characters",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.432575
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_return_request_requires_a_reason",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.433453
+    },
+    {
+      "test_id": "orders.test_cancellation_return.OrderCancellationReturnTests.test_shipped_order_cannot_be_cancelled",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-013"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.436003
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_cancelled_status_does_not_send_email",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.204059
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_confirmed_status_sends_email",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.205968
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_creating_pending_order_does_not_send_email",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.200794
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_delivered_status_sends_email",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.206735
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_email_contains_order_and_item_details",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.20615
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_email_failure_does_not_prevent_status_update",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.206979
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_saving_without_status_change_does_not_send_email",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.201947
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_shipped_status_sends_email",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.207363
+    },
+    {
+      "test_id": "orders.test_notifications.OrderEmailNotificationTests.test_transition_from_confirmed_to_shipped_sends_new_email",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.209918
+    },
+    {
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_cancelled_order_shows_cancellation_message",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-012"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.244768
+    },
+    {
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_confirmed_order_shows_confirmed_status",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-012"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.239843
+    },
+    {
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_delivered_order_shows_delivered_status",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-012"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.239473
+    },
+    {
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_pending_order_shows_order_received_as_current",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-012"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.23987
+    },
+    {
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_processing_order_shows_processing_status",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-012"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.241105
+    },
+    {
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_shipped_order_shows_shipped_status",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-012"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.239917
+    },
+    {
+      "test_id": "orders.test_tracking.ShipmentTrackingTests.test_tracking_page_explains_live_courier_tracking_is_unavailable",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-012"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.238593
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_creates_order_items_and_pending_payment",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.215664
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_failed_initiation_marks_payment_failed",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.212314
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_order_creation_does_not_clear_cart",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.21025
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_order_creation_does_not_reduce_inventory",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.209386
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_order_preserves_shipping_address_snapshot",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.210395
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_deleted_book",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.211315
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_insufficient_stock",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.209842
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_invalid_payment_method",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-009"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.204346
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_rejects_unavailable_book",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.208567
+    },
+    {
+      "test_id": "orders.tests.CreateOrderFromCartTests.test_successful_initiation_keeps_payment_pending",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-010"
+      ],
+      "mapping_basis": "Mock/order-creation characterization only; does not verify gateway payment acceptance",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.211143
+    },
+    {
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_buyer_can_view_order_history",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-011"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.442793
+    },
+    {
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_buyer_can_view_own_order_details",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-011"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.444167
+    },
+    {
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_buyer_cannot_view_another_buyers_order",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-011",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.432004
+    },
+    {
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_order_details_require_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-011"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.418637
+    },
+    {
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_order_history_does_not_show_other_buyers_orders",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-011"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.444494
+    },
+    {
+      "test_id": "orders.tests.OrderHistoryAndDetailTests.test_order_history_requires_login",
+      "level": "Integration",
+      "requirements": [
+        "BOOK-F-011"
+      ],
+      "mapping_basis": "Reviewed class scope; partial evidence only",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.419672
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_admin_role_cannot_be_selected",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001",
+        "BOOK-SR-004"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.0012
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_duplicate_email_is_rejected",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000956
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_duplicate_username_is_rejected",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000906
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_email_is_normalized",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000805
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_invalid_email_is_rejected",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000996
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_mismatched_password_is_rejected",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.00081
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_numeric_password_is_rejected",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000862
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_short_password_is_rejected",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000913
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_username_is_trimmed",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000935
+    },
+    {
+      "test_id": "accounts.test_authentication.RegistrationValidationUnitTests.test_valid_registration_passes_validation",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.000784
+    },
+    {
+      "test_id": "accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_fails_when_connection_is_not_encrypted",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-SR-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.005434
+    },
+    {
+      "test_id": "accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_rejects_non_postgresql_database",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-SR-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.001196
+    },
+    {
+      "test_id": "accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_reports_tls_version_and_cipher",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-SR-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.003204
+    },
+    {
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_api_failures_raise_sanitized_backend_error",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.002057
+    },
+    {
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_empty_message_list_does_not_make_api_requests",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.001564
+    },
+    {
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_fail_silently_returns_zero_on_api_failure",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.001701
+    },
+    {
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_missing_oauth_credentials_raise_configuration_error",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-020"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.001519
+    },
+    {
+      "test_id": "config.test_email_backend.GmailAPIEmailBackendTests.test_sends_email_through_gmail_https_api",
+      "level": "Unit",
+      "requirements": [
+        "BOOK-F-020",
+        "BOOK-SR-001"
+      ],
+      "mapping_basis": "Explicit test metadata",
+      "status": "Passed",
+      "detail": "",
+      "seconds": 0.003869
+    }
+  ]
+}

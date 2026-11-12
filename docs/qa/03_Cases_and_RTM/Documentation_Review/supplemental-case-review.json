@@ -1,0 +1,99 @@
+{
+  "reviewer": "Assistant source/documentation review",
+  "updates": [
+    {
+      "row": 336,
+      "case_id": "OBP49-SYS-008",
+      "documentation_status": "Reviewed",
+      "review_note": "Documentation reviewed against the final-journey record and original expected result; actual outcome/build limits retained. Order #7 total/currency limitations remain explicit. No fresh execution or human acceptance asserted."
+    },
+    {
+      "row": 337,
+      "case_id": "OBP49-SYS-005",
+      "documentation_status": "Reviewed",
+      "review_note": "Documentation reviewed against the final-journey record and original expected result; actual outcome/build limits retained. Order #7 total/currency limitations remain explicit. No fresh execution or human acceptance asserted."
+    },
+    {
+      "row": 338,
+      "case_id": "OBP49-SYS-006",
+      "documentation_status": "Reviewed",
+      "review_note": "Documentation reviewed against the final-journey record and original expected result; actual outcome/build limits retained. Order #7 total/currency limitations remain explicit. No fresh execution or human acceptance asserted."
+    },
+    {
+      "row": 339,
+      "case_id": "OBP49-SYS-012",
+      "documentation_status": "Reviewed",
+      "review_note": "Documentation reviewed against the final-journey record and original expected result; actual outcome/build limits retained. Order #7 total/currency limitations remain explicit. No fresh execution or human acceptance asserted."
+    },
+    {
+      "row": 340,
+      "case_id": "OBP48-PERF-001",
+      "documentation_status": "Reviewed",
+      "review_note": "Scoped browser evidence checked: run 42964208887, 20 measured navigations per endpoint during ten VUs plus one browser, original thresholds retained. Historical build attribution and checkout gap retained; no fresh execution."
+    },
+    {
+      "row": 341,
+      "case_id": "OBP48-PERF-002",
+      "documentation_status": "Reviewed",
+      "review_note": "Scoped browser evidence checked: run 42964208887, 20 measured navigations per endpoint during ten VUs plus one browser, original thresholds retained. Historical build attribution and checkout gap retained; no fresh execution."
+    },
+    {
+      "row": 342,
+      "case_id": "OBP48-PERF-003",
+      "documentation_status": "Reviewed",
+      "preconditions": "Planned test only. Stable identified build; isolated Buyer/cart/address fixtures, sufficient stock and authorized synthetic orders. Declared normal profile: ten anonymous browsing VUs plus one sequential checkout measurement browser; cold/warm states distinguished.",
+      "steps": "1. Record build, fixtures and measurement boundary before execution. 2. Sustain the declared normal browsing profile. 3. Capture 20 completed mock-checkout browser samples after warm-up. 4. Measure from final submission through the correct loaded order confirmation/detail, including redirects. 5. Verify order/cart/address/method correctness and record every error. 6. Compute per-request timings and p90; retain created QA order IDs. No such run has been executed.",
+      "data": "Planned: 20 completed mock checkouts, controlled QA Buyer/address and known book/quantity/price fixtures. Credentials remain private. This case does not use a checkout GET or login redirect as a completion sample.",
+      "expected": "Completed authenticated mock-checkout p90 <=5 seconds under the declared normal workload, with correct persisted results and no hidden failures.",
+      "review_note": "Planned definition reviewed against the retained requirement and current evidence gap. Original Actual Result and Not run state are preserved. No execution or approval inferred."
+    },
+    {
+      "row": 343,
+      "case_id": "OBP48-LOAD-001",
+      "documentation_status": "Reviewed",
+      "preconditions": "Planned original target. Identified deployment/configuration, monitored service and generator, defined anonymous 3:2 catalogue/search workload and stop controls. Current deployment already failed at 250; do not jump directly to 500.",
+      "steps": "1. Preserve baseline and define build/resources. 2. Ramp through 1/10/50/100/250 toward 500 users only while all preceding gates pass. 3. Use one-to-three-second think time and separate ramp/warm-up from steady metrics. 4. Sustain 500 active VUs for the declared ten-minute sample. 5. Record counts, response/error/timeout and resource evidence and compare the no-degradation criterion. Stop before unsafe higher stages. The 500-user stage remains Not run.",
+      "data": "Planned target: 500 active VUs; catalogue/search GET mix 3:2, think time 1\u20133s, 15s request timeout, ten-minute final hold. Browsing-only scope does not demonstrate the entire authenticated system.",
+      "expected": "500 active VUs sustained for the declared sample with no errors/timeouts and the declared no-degradation criterion satisfied. A smaller passing stage is not a Pass for this target.",
+      "review_note": "Planned definition reviewed against the retained requirement and current evidence gap. Original Actual Result and Not run state are preserved. No execution or approval inferred."
+    },
+    {
+      "row": 344,
+      "case_id": "OBP48-OPS-008",
+      "documentation_status": "Reviewed",
+      "preconditions": "Planned test only. External monitor with declared interval/timezone, outage classification and retained history; the required full-month history is not available.",
+      "steps": "1. Define one complete monthly observation period and a one-minute external HTTPS health-probe interval. 2. Retain timestamped successes, failures, maintenance and missing observations. 3. Calculate availability for that declared period with the denominator/exclusions stated. 4. Report missing intervals explicitly rather than treating them as successful. No full-month result is presently available.",
+      "data": "Planned: public /health/ external observations for one complete month; exact future calendar period/provider not selected. Existing point-in-time health checks are separate evidence.",
+      "expected": "Measured availability >=99.5% over the full declared month, with observation completeness and any exclusions explicitly recorded.",
+      "review_note": "Planned definition reviewed against the retained requirement and current evidence gap. Original Actual Result and Not run state are preserved. No execution or approval inferred."
+    },
+    {
+      "row": 345,
+      "case_id": "OBP48-OPS-009",
+      "documentation_status": "Reviewed",
+      "preconditions": "Planned full RPO verification. Identified source and recoverable snapshot history, declared recovery instant and complete recovery-point evidence. Known GitHub backup cadence has a >24h interval.",
+      "steps": "1. Collect actual successful snapshot timestamps/ages, not only cron declarations. 2. Inspect gaps and failed/missing backups. 3. At the declared recovery point, identify the newest usable restore point and verify restored state against the source baseline. 4. Quantify recoverable data loss/age and compare <=24h. Current metadata review supplies partial cadence evidence; full production RPO remains unverified.",
+      "data": "Known partial evidence: 24 scheduled successes; Nov 9\u201310 snapshot-step interval lower bound 24h8m24s. Other recovery points and a full production recovery-point/data-loss check were not supplied.",
+      "expected": "Daily backup evidence and verified usable production recovery-point age/data loss <=24 hours. A daily schedule alone is insufficient.",
+      "review_note": "Planned definition reviewed against the retained requirement and current evidence gap. Original Actual Result and Not run state are preserved. No execution or approval inferred."
+    },
+    {
+      "row": 346,
+      "case_id": "OBP48-OPS-010",
+      "documentation_status": "Reviewed",
+      "review_note": "Scoped matching-app recovery evidence checked against the preserved summary: integrity/HTTP buyer flow and original timing boundary. Production RPO/full outage RTO are not inferred. No fresh drill."
+    },
+    {
+      "row": 347,
+      "case_id": "OBP48-UX-006",
+      "documentation_status": "Reviewed",
+      "preconditions": "Planned completion audit. Identified build/browser/assistive technology and public, Buyer, Seller and Admin page states, including success/error states. Prior samples cover only part of this scope.",
+      "steps": "1. Build an applicability checklist for WCAG 2.1 A/AA criteria across the declared states. 2. Run supported automated checks and retain their rule scope. 3. Check keyboard/focus, names/labels, contrast, structure, alternatives, reflow/zoom and error associations manually as applicable. 4. Check remaining applicable assistive-technology criteria. 5. Record Pass/Fail and justified not-applicable decisions per criterion. No full conformance result is claimed.",
+      "data": "Planned: login/registration/reset, catalogue/detail, Buyer cart/checkout/orders, Seller listing and Admin states. Existing five manual samples, six-page public automated scan and 320/390px reflow checks remain partial evidence.",
+      "expected": "All applicable WCAG 2.1 A/AA criteria in the declared audit scope verified, or defects/coverage gaps explicitly reported; zero automated issues alone is not complete conformance.",
+      "review_note": "Planned definition reviewed against the retained requirement and current evidence gap. Original Actual Result and Not run state are preserved. No execution or approval inferred."
+    }
+  ],
+  "no_execution_result_changes": true,
+  "planned_not_run_cases_preserved": 5
+}

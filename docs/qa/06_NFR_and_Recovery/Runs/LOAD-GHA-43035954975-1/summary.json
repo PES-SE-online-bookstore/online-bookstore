@@ -1,0 +1,441 @@
+{
+  "run_id": "LOAD-GHA-43035954975-1",
+  "started_at_utc": "2026-11-11T14:10:55.853631+00:00",
+  "target": "http[local path omitted]",
+  "profile_name": "targeted-100-250",
+  "status": "Stopped: stage gate failed; higher stages not run",
+  "locust_version": "2.47.0",
+  "python": "3.11.18 (main, Oct 26 2026, 02:48:29) [GCC 15.2.0]",
+  "package_versions": {
+    "locust": "2.47.0",
+    "gevent": "26.9.0",
+    "requests": "2.34.2",
+    "psutil": "7.2.2"
+  },
+  "readiness": "User reports Render logs open and ready; permissions assumed per user instruction",
+  "reported_deployed_sha": "aa36272e424489724153b8cdd89c1ae25b4a8e13",
+  "harness_commit": "aa36272e424489724153b8cdd89c1ae25b4a8e13",
+  "github_run_id": "43035954975",
+  "runtime_sha_verification": "Deployment SHA is operator supplied; the application does not expose a build identifier",
+  "workload": "Anonymous catalogue/search HTML GET only; 3:2 random task weighting; 1-3s think time",
+  "measurement": "HTTP request timing, not rendered browser page timing; independent sessions per virtual user",
+  "instrumentation_browser": "No browser in targeted-100-250 profile. Full profile may add one measurement browser during its ten-VU stage.",
+  "diagnostic_measurement": "Server-Timing app covers only the instrumented view interval. Client minus app includes network, proxy, queueing and other uninstrumented time; it is not isolated queue time. Header absence does not alone establish response origin.",
+  "diagnostic_hit_share_denominators": "Reported separately over all successful responses and over successful responses marked HIT or MISS. Failed-response metadata is retained separately.",
+  "latency_gate": "p90 <=3000ms per browsing endpoint; comparison to one-user baseline will also be reported. This is an operational stop/acceptance threshold, not proof of every interpretation of no degradation.",
+  "profiles": [
+    {
+      "users": 100,
+      "spawn_rate": 10,
+      "steady_seconds": 120
+    },
+    {
+      "users": 250,
+      "spawn_rate": 10,
+      "steady_seconds": 120
+    }
+  ],
+  "stop_conditions": [
+    "Any HTTP/timeout/correctness error",
+    "Sustained p90>3000ms",
+    "Generator saturation",
+    "Operator STOP file"
+  ],
+  "limitations": [
+    "No authenticated checkout workload",
+    "Not a full-system 500-user acceptance test",
+    "Current public deployed SHA not exposed by app; deployment SHA is operator supplied",
+    "Warmup/ramp excluded only from steady metrics; all requests retained in CSV",
+    "Generator resources are measured; Render resources/log observations come from operator"
+  ],
+  "preflight": [
+    {
+      "path": "/health/",
+      "started_at_utc": "2026-11-11T14:10:55.855515+00:00",
+      "status": 200,
+      "elapsed_ms": 207.367,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true
+    },
+    {
+      "path": "/books/",
+      "started_at_utc": "2026-11-11T14:10:56.063304+00:00",
+      "status": 200,
+      "elapsed_ms": 213.214,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true,
+      "diagnostics": {
+        "cache_header_present": true,
+        "cache_status": "MISS",
+        "server_timing_present": true,
+        "data_ms": 7.1,
+        "app_ms": 8.8,
+        "client_minus_instrumented_app_ms": 204.414,
+        "safe_response_headers": {
+          "server": "cloudflare",
+          "x-render-origin-server": "gunicorn",
+          "rndr-id": "b136e633-9eb3-46c8",
+          "cf-ray": "a58de21d0fb4d501-DFW"
+        }
+      },
+      "targeted_diagnostics_available": true
+    }
+  ],
+  "stages": [
+    {
+      "users": 100,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T14:10:56.278275+00:00",
+      "phase": "finished",
+      "requests_started": 6249,
+      "requests_completed": 6249,
+      "accepting_requests": false,
+      "max_actual_users": 100,
+      "max_generator_cpu_percent": 8.0,
+      "max_generator_rss_mb": 76.6,
+      "current_actual_users": 100,
+      "elapsed_seconds": 140.313,
+      "target_reached_at_utc": "2026-11-11T14:11:06.307962+00:00",
+      "steady_started_at_utc": "2026-11-11T14:11:16.326155+00:00",
+      "steady_elapsed_seconds": 120.266,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 9,
+      "drain_elapsed_seconds": 0.154,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 3259,
+          "failures": 0,
+          "p90_ms": 332.339,
+          "max_ms": 678.447,
+          "at_or_below_3000ms": 3259
+        },
+        "search_http": {
+          "attempts": 2238,
+          "failures": 0,
+          "p90_ms": 320.518,
+          "max_ms": 756.263,
+          "at_or_below_3000ms": 2238
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 3706,
+          "failures": 0,
+          "p90_ms": 347.471,
+          "max_ms": 678.447,
+          "at_or_below_3000ms": 3706
+        },
+        "search_http": {
+          "attempts": 2543,
+          "failures": 0,
+          "p90_ms": 339.01,
+          "max_ms": 756.263,
+          "at_or_below_3000ms": 2543
+        }
+      },
+      "steady_diagnostics": {
+        "catalogue_http": {
+          "attempts": 3259,
+          "successful_responses": 3259,
+          "http_status_counts": {
+            "200": 3259
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 3253,
+            "MISS": 6,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.998159,
+          "hit_share_of_hit_or_miss_responses": 0.998159,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 3259,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 3259,
+            "p90": 15.5
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 3259,
+            "p90": 320.589
+          }
+        },
+        "search_http": {
+          "attempts": 2238,
+          "successful_responses": 2238,
+          "http_status_counts": {
+            "200": 2238
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 2232,
+            "MISS": 6,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997319,
+          "hit_share_of_hit_or_miss_responses": 0.997319,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 2238,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 2238,
+            "p90": 19.0
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 2238,
+            "p90": 306.702
+          }
+        }
+      },
+      "all_phase_diagnostics": {
+        "catalogue_http": {
+          "attempts": 3706,
+          "successful_responses": 3706,
+          "http_status_counts": {
+            "200": 3706
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 3700,
+            "MISS": 6,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.998381,
+          "hit_share_of_hit_or_miss_responses": 0.998381,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 3706,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 3706,
+            "p90": 15.0
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 3706,
+            "p90": 332.616
+          }
+        },
+        "search_http": {
+          "attempts": 2543,
+          "successful_responses": 2543,
+          "http_status_counts": {
+            "200": 2543
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 2536,
+            "MISS": 7,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997247,
+          "hit_share_of_hit_or_miss_responses": 0.997247,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 2543,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 2543,
+            "p90": 13.6
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 2543,
+            "p90": 328.014
+          }
+        }
+      },
+      "failure_diagnostics": [],
+      "steady_min_actual_users": 100,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T14:13:16.789309+00:00"
+    },
+    {
+      "users": 250,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T14:13:21.798952+00:00",
+      "phase": "finished",
+      "requests_started": 3136,
+      "requests_completed": 3136,
+      "accepting_requests": false,
+      "max_actual_users": 250,
+      "max_generator_cpu_percent": 11.0,
+      "max_generator_rss_mb": 96.34,
+      "current_actual_users": 250,
+      "elapsed_seconds": 65.147,
+      "target_reached_at_utc": "2026-11-11T14:13:46.866958+00:00",
+      "steady_started_at_utc": "2026-11-11T14:13:56.887280+00:00",
+      "steady_elapsed_seconds": 30.059,
+      "abort_reason": "Sustained HTTP p90 above 3000ms",
+      "requests_inflight_at_cutoff": 143,
+      "drain_elapsed_seconds": 2.894,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 850,
+          "failures": 0,
+          "p90_ms": 3806.835,
+          "max_ms": 4034.98,
+          "at_or_below_3000ms": 290
+        },
+        "search_http": {
+          "attempts": 576,
+          "failures": 0,
+          "p90_ms": 3792.473,
+          "max_ms": 4017.785,
+          "at_or_below_3000ms": 188
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 1890,
+          "failures": 0,
+          "p90_ms": 3670.323,
+          "max_ms": 4034.98,
+          "at_or_below_3000ms": 1195
+        },
+        "search_http": {
+          "attempts": 1246,
+          "failures": 0,
+          "p90_ms": 3687.784,
+          "max_ms": 4017.785,
+          "at_or_below_3000ms": 779
+        }
+      },
+      "steady_diagnostics": {
+        "catalogue_http": {
+          "attempts": 850,
+          "successful_responses": 850,
+          "http_status_counts": {
+            "200": 850
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 848,
+            "MISS": 2,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997647,
+          "hit_share_of_hit_or_miss_responses": 0.997647,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 850,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 850,
+            "p90": 79.4
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 850,
+            "p90": 3778.756
+          }
+        },
+        "search_http": {
+          "attempts": 576,
+          "successful_responses": 576,
+          "http_status_counts": {
+            "200": 576
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 575,
+            "MISS": 1,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.998264,
+          "hit_share_of_hit_or_miss_responses": 0.998264,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 576,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 576,
+            "p90": 85.6
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 576,
+            "p90": 3783.239
+          }
+        }
+      },
+      "all_phase_diagnostics": {
+        "catalogue_http": {
+          "attempts": 1890,
+          "successful_responses": 1890,
+          "http_status_counts": {
+            "200": 1890
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 1885,
+            "MISS": 5,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997354,
+          "hit_share_of_hit_or_miss_responses": 0.997354,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 1890,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 1890,
+            "p90": 15.8
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 1890,
+            "p90": 3657.698
+          }
+        },
+        "search_http": {
+          "attempts": 1246,
+          "successful_responses": 1246,
+          "http_status_counts": {
+            "200": 1246
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 1242,
+            "MISS": 4,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.99679,
+          "hit_share_of_hit_or_miss_responses": 0.99679,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 1246,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 1246,
+            "p90": 84.9
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 1246,
+            "p90": 3666.485
+          }
+        }
+      },
+      "failure_diagnostics": [],
+      "steady_min_actual_users": 250,
+      "status": "Stopped / target not demonstrated",
+      "finished_at_utc": "2026-11-11T14:14:29.857359+00:00"
+    }
+  ],
+  "finished_at_utc": "2026-11-11T14:14:29.858797+00:00"
+}

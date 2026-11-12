@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Requirement Revisions</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui;color:#1c2833}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #ccd4dc;padding:9px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eef2f6}code{overflow-wrap:anywhere;font-size:.9em}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f7fa;padding:16px}a{color:#174ea6}h1{font-size:30px}h2{margin-top:28px}</style><main><h1>Requirement and scope revisions (against SRS v1.0, 06-08-2025)</h1>
+<p>These record decisions made by QA and relayed to development in the OBP-47 handoff on 2026-11-09. Original SRS wording is quoted so the change is traceable.</p>
+<h2>R-001 — BOOK-F-002 login identifier</h2>
+<ul>
+<li><strong>Original SRS text:</strong> &quot;The system shall authenticate users via email and</li>
+</ul>
+<p>  password, and issue a session/JWT token on success.&quot; AC-BOOK-F-002.</p>
+<ul>
+<li><strong>Revised requirement:</strong> The system shall authenticate users via **username</li>
+</ul>
+<p>  and password** and establish an authenticated Django session on success.   Incorrect credentials are rejected. Email addresses are not accepted as login   identifiers.</p>
+<ul>
+<li><strong>Reason:</strong> The implemented login form and Django authentication backend use</li>
+</ul>
+<p>  usernames; email remains a unique registered attribute (BOOK-F-001) and the   password-reset identifier (BOOK-F-004).</p>
+<ul>
+<li><strong>Evidence trail:</strong> The original email-login assertion failed in run</li>
+</ul>
+<p>  20261103T063353040577Z (<code>qa/history/2026-11-03_run_29049b0.md</code>, QA-AUTH-001).   It was replaced by   <code>LoginIntegrationTests.test_revised_username_and_password_establish_session</code>   and <code>test_email_identifier_is_not_accepted_under_revised_requirement</code>, which   keep the revised behaviour explicit.</p>
+<ul>
+<li><strong>Status:</strong> Decided</li>
+<li><strong>Decision authority:</strong> Abdullah Faruqui (QA Lead); Deepthi A E (Test Engineer)</li>
+<li><strong>Decision date:</strong> 2026-11-09</li>
+<li><strong>Source:</strong> OBP-47 handoff message from the QA Lead to development</li>
+</ul>
+<h2>R-002 — BOOK-F-010 / BOOK-SR-003 payment scope</h2>
+<ul>
+<li><strong>Original SRS text:</strong> BOOK-F-010 requires payment &quot;through the payment</li>
+</ul>
+<p>  gateway&quot;; §3.3 names a Razorpay/Stripe sandbox; §2.5 constrains payments to   sandbox/test mode.</p>
+<ul>
+<li><strong>Revised scope:</strong> For this release, payment is the in-process</li>
+</ul>
+<p>  <code>orders.services.MockPaymentGateway</code>. It simulates initiation only; no gateway   call is made, no money moves, and no card data is collected or stored.</p>
+<ul>
+<li><strong>QA consequence:</strong> Tests in <code>orders.tests.CreateOrderFromCartTests</code> are</li>
+</ul>
+<p>  characterization of order creation with the mock (already labelled so in   <code>qa/catalog.py</code>). They do <strong>not</strong> verify gateway acceptance, tokenisation   (BOOK-SR-003) or payment-confirmation email for BOOK-F-010. Those remain   &quot;Not verified&quot; until a sandbox gateway is integrated.</p>
+<ul>
+<li><strong>Status:</strong> Decided</li>
+<li><strong>Decision authority:</strong> Abdullah Faruqui (QA Lead); Deepthi A E (Test Engineer)</li>
+<li><strong>Decision date:</strong> 2026-11-09</li>
+<li><strong>Source:</strong> OBP-47 handoff message from the QA Lead to development</li>
+</ul>
+<h2>R-003 — OBP-48 execution closeout scope</h2>
+<ul>
+<li>User decision: existing testing through 250 users is sufficient for this project&#x27;s testing scope; no 500-user execution is required for this closeout. Record 500 users as <strong>Not tested</strong>.</li>
+<li>Existing 250-user timing result remains <strong>Failed</strong>. The original BOOK-NF-002 500-user target is retained for traceability and is not claimed satisfied.</li>
+<li>Monthly BOOK-NF-003 availability remains <strong>Not tested</strong>; the user excluded a month-long measurement because of the project timeline. Original 99.5% monthly acceptance is not claimed.</li>
+<li>Remaining accessibility, backup/recovery, regression and documentation work continues.</li>
+<li>Decision source: the user&#x27;s explicit QA-chat instructions on 12 November 2026.</li>
+<li>Detailed record: <code>OBP48_Closeout_Scope_2026-11-12.json</code>.</li>
+</ul></main></html>

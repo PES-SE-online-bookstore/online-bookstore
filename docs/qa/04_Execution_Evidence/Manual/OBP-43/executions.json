@@ -1,0 +1,196 @@
+[
+  {
+    "execution_id": "OBP43-SYS-001-EXEC-001",
+    "case_id": "OBP43-SYS-001",
+    "title": "Add books and calculate cart total",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-008"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:21:53.585752+00:00",
+    "execution_timestamp": "Not supplied; recording time is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "initial_cart_empty": true,
+      "items": [
+        {
+          "title": "QA Python Basics",
+          "quantity": 2,
+          "unit_price": "200.00",
+          "subtotal": "400.00"
+        },
+        {
+          "title": "QA Python Advanced",
+          "quantity": 1,
+          "unit_price": "450.00",
+          "subtotal": "450.00"
+        }
+      ],
+      "total_quantity": 3,
+      "total": "850.00",
+      "evidence_basis": "Cart contents/totals and signed-in buyer screenshot verified; initially empty cart user-reported."
+    },
+    "user_batch_result": "all stages worked properly, with no problems or issues whatsoever. everything went as expected. screenshots are attached as directed",
+    "evidence": [
+      {
+        "sha256": "cc33831903eee68e2af30cd66b1b73790f8a46703d45483475b6e32fa07c30c2"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP43-SYS-002-EXEC-001",
+    "case_id": "OBP43-SYS-002",
+    "title": "Update cart quantity and recalculate total",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-008"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:21:53.585752+00:00",
+    "execution_timestamp": "Not supplied; recording time is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "basics_quantity": 3,
+      "advanced_quantity": 1,
+      "total": "1050.00",
+      "evidence_basis": "User confirms all instructed stages matched expected results; intermediate state has no screenshot."
+    },
+    "user_batch_result": "all stages worked properly, with no problems or issues whatsoever. everything went as expected. screenshots are attached as directed",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP43-SYS-003-EXEC-001",
+    "case_id": "OBP43-SYS-003",
+    "title": "Remove cart item and recalculate total",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-008"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:21:53.585752+00:00",
+    "execution_timestamp": "Not supplied; recording time is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "remaining_title": "QA Python Basics",
+      "quantity": 3,
+      "total": "600.00",
+      "evidence_basis": "Removal-stage cart user-reported; subsequent order screenshot corroborates final item quantity and total."
+    },
+    "user_batch_result": "all stages worked properly, with no problems or issues whatsoever. everything went as expected. screenshots are attached as directed",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP43-SYS-004-EXEC-001",
+    "case_id": "OBP43-SYS-004",
+    "title": "Submit synthetic address and test-card selection; characterize pending mock checkout",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-009",
+      "BOOK-F-010"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:21:53.585752+00:00",
+    "execution_timestamp": "Not supplied; recording time is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "order_status": "Pending",
+      "payment_status": "Pending",
+      "total": "600.00",
+      "payment_method": "Test Card",
+      "address_type": "Synthetic QA address; not a shipping instruction",
+      "exact_message": "Order #1 has been created with pending payment of 600.00. This is a test-mode workflow: no money was charged, and payment has not been verified. Your cart has been preserved.",
+      "evidence_basis": "Checkout result screenshot and order detail screenshot verified; input sequence and submission count user-reported.",
+      "acceptance_limitation": "Passed for documented mock behavior only; BOOK-F-010 real sandbox gateway verification/confirmation remains incomplete."
+    },
+    "user_batch_result": "all stages worked properly, with no problems or issues whatsoever. everything went as expected. screenshots are attached as directed",
+    "evidence": [
+      {
+        "sha256": "e93192b839eee669ab9fd1e4d41fc57917e77ac603b6af45b4bdd6be5711f7df"
+      },
+      {
+        "sha256": "08a59274db8ee9d43b63f13bb8f77ed274846daa7f2ea321137f61b48adfd23a"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP43-SYS-005-EXEC-001",
+    "case_id": "OBP43-SYS-005",
+    "title": "Cart preserved after pending mock checkout",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-008",
+      "BOOK-F-010"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:21:53.585752+00:00",
+    "execution_timestamp": "Not supplied; recording time is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "title": "QA Python Basics",
+      "quantity": 3,
+      "total": "600.00",
+      "evidence_basis": "Actual cart revisit user-reported; checkout screenshot states preservation but does not independently prove cart contents.",
+      "acceptance_limitation": "Characterizes pending mock flow; not proof of cart clearing after successful verified payment."
+    },
+    "user_batch_result": "all stages worked properly, with no problems or issues whatsoever. everything went as expected. screenshots are attached as directed",
+    "evidence": [
+      {
+        "sha256": "e93192b839eee669ab9fd1e4d41fc57917e77ac603b6af45b4bdd6be5711f7df"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP43-SYS-006-EXEC-001",
+    "case_id": "OBP43-SYS-006",
+    "title": "Persist submitted checkout details in buyer order",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-009",
+      "BOOK-F-010"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:21:53.585752+00:00",
+    "execution_timestamp": "Not supplied; recording time is not execution time",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "url": "http[local path omitted]",
+      "title": "QA Python Basics",
+      "unit_price": "200.00",
+      "quantity": 3,
+      "total": "600.00",
+      "order_status": "Pending",
+      "payment_status": "Pending",
+      "payment_method": "Test Card",
+      "synthetic_address_matches": true,
+      "evidence_basis": "Order detail screenshot verified; navigation through order history user-reported.",
+      "acceptance_limitation": "Order persistence verified; successful payment and confirmed order are not established."
+    },
+    "user_batch_result": "all stages worked properly, with no problems or issues whatsoever. everything went as expected. screenshots are attached as directed",
+    "evidence": [
+      {
+        "sha256": "08a59274db8ee9d43b63f13bb8f77ed274846daa7f2ea321137f61b48adfd23a"
+      }
+    ]
+  }
+]

@@ -1,0 +1,738 @@
+[
+  {
+    "execution_id": "OBP41-SYS-001-EXEC-001",
+    "case_id": "OBP41-SYS-001",
+    "title": "Logged-out access to shopping cart",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-002",
+      "BOOK-SR-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Not recorded",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T17:34:53.835049+00:00",
+    "status": "Passed",
+    "expected": "Logged-out visitor is redirected to login and cannot access cart contents/controls.",
+    "actual": {
+      "final_url": "http[local path omitted]",
+      "login_form_displayed": true,
+      "cart_contents_or_controls_accessible": false,
+      "after_refresh": "Same login page, as reported by user",
+      "error_message": null
+    },
+    "evidence": {
+      "sha256": "c325a612ed5862fdaff35376449824c83084611706df1201942fbf145c38df4c",
+      "visual_review": "Screenshot shows expected URL and login form, with no cart controls.",
+      "refresh_evidence": "User report; screenshot is a single point-in-time capture."
+    },
+    "limitations": [
+      "Deployment commit and browser version remain unconfirmed.",
+      "This single access check does not establish full authentication or RBAC acceptance."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-002-EXEC-001",
+    "case_id": "OBP41-SYS-002",
+    "title": "Buyer registration accepted through deployed UI",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-001"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed (user reported latest)",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T17:38:46.378528+00:00",
+    "status": "Passed",
+    "expected": "Valid Buyer registration is accepted and redirects to login with success feedback.",
+    "actual": {
+      "username": "qa_buyer_20261102_01",
+      "final_url": "http[local path omitted]",
+      "message": "Your account has been created successfully. You can now log in.",
+      "login_page_displayed": true,
+      "registration_email_received": false,
+      "email_inbox_access": "Not confirmed; user interpreted question as email receipt"
+    },
+    "evidence": {
+      "sha256": "dbec1e8a7f541df5281c806ff1d2441a87e74bb9ef467c676ebb42214ef2f74d",
+      "visual_review": "Screenshot confirms login URL, registration success message, and login form."
+    },
+    "limitations": [
+      "Login with the created credentials and Buyer-only access will be verified separately.",
+      "Persisted role and account state are not established by the screenshot alone.",
+      "Registration email receipt is not an acceptance criterion for this case."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-003-EXEC-001",
+    "case_id": "OBP41-SYS-003",
+    "title": "Current username login and Buyer cart access",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-002",
+      "BOOK-SR-004"
+    ],
+    "mapping_basis": "Current username-flow characterization and authorized Buyer access; email-login acceptance remains unresolved.",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T17:41:41.227794+00:00",
+    "status": "Passed",
+    "expected": "Registered username/password authenticates; account navigation and protected Buyer cart are accessible.",
+    "actual": {
+      "username": "qa_buyer_20261102_01",
+      "after_login_url": "http[local path omitted]",
+      "message": "You have logged in successfully.",
+      "authenticated_navigation": true,
+      "cart_url": "http[local path omitted]",
+      "cart_displayed": true,
+      "cart_state": "Empty",
+      "error_message": null,
+      "registered_email_inbox_access": true
+    },
+    "evidence": [
+      {
+        "sha256": "c9b5bc9d612005519f40ccd80ce419c1152d6b6d14cb6dcc8de2632dc800a555"
+      },
+      {
+        "sha256": "c232b1ec0d5df9d43d9da95e7520ef7a586404eb18b44f35228cc78f7e1721e3"
+      }
+    ],
+    "visual_review": "Screenshots confirm login success, signed-in username, Log Out navigation and accessible empty Shopping Cart.",
+    "limitations": [
+      "Does not satisfy the unresolved email-login requirement.",
+      "Deployment commit and exact browser version remain unknown."
+    ],
+    "other_observations": [
+      "Catalogue screenshot shows no matching books on an unfiltered catalogue; inventory preparation may be needed for later tests. This is not classified as a defect."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-004-EXEC-001",
+    "case_id": "OBP41-SYS-004",
+    "title": "Logout removes protected cart access",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-002",
+      "BOOK-SR-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T17:47:13.077017+00:00",
+    "status": "Passed",
+    "expected": "Logout removes authentication; a fresh cart request redirects to login with no cart access.",
+    "actual": {
+      "after_logout_url": "http[local path omitted]",
+      "message": "You have logged out successfully.",
+      "authenticated_navigation_removed": true,
+      "cart_request_final_url": "http[local path omitted]",
+      "login_form_displayed": true,
+      "cart_contents_or_controls_accessible": false,
+      "after_refresh": "Same login page, as reported by user",
+      "error_message": null
+    },
+    "evidence": [
+      {
+        "sha256": "4e916676040a9c5467a2e7e706438d0b06f12881d1350f612d854d40eb767e6a"
+      },
+      {
+        "sha256": "52478a279dd1b4f3877ce48dad0aa1d8ae2d669ba86e18472bf6a996483a9a54"
+      }
+    ],
+    "visual_review": "Screenshots confirm logout success feedback, public navigation, and subsequent protected-cart redirect to login.",
+    "limitations": [
+      "Refresh persistence is user-reported; screenshot is a point-in-time capture.",
+      "Does not verify invalidation of a copied pre-logout session cookie or other browser sessions.",
+      "Deployment commit and exact browser version remain unconfirmed."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-005-EXEC-001",
+    "case_id": "OBP41-SYS-005",
+    "title": "Incorrect password rejected for an existing username",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-002"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T17:49:13.423171+00:00",
+    "status": "Passed",
+    "expected": "Wrong password is rejected with generic feedback and no authenticated UI.",
+    "actual": {
+      "final_url": "http[local path omitted]",
+      "message": "Invalid username or password.",
+      "login_form_displayed": true,
+      "authenticated_navigation_displayed": false,
+      "failed_submissions": 1,
+      "unexpected_behavior": null
+    },
+    "evidence": [
+      {
+        "sha256": "0a578d215f6ab4f42645092a8983d1fe9f53fb7fb74bb9cf30a28170fd4a2715"
+      }
+    ],
+    "visual_review": "Screenshot confirms generic credential error, login form, public navigation and login URL.",
+    "limitations": [
+      "Single invalid attempt only; this does not verify the five-attempt lockout threshold.",
+      "Does not resolve the email-login requirement discrepancy.",
+      "Deployment commit and exact browser version remain unconfirmed."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-006-EXEC-001",
+    "case_id": "OBP41-SYS-006",
+    "title": "Deployed password-reset request and actual email delivery",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T17:53:58.571669+00:00",
+    "status": "Blocked",
+    "expected": "Reset request reaches the generic confirmation page and reset instructions arrive at the controlled registered inbox.",
+    "actual": {
+      "final_url": "http[local path omitted]",
+      "heading": "Check Your Email",
+      "message": "If an eligible account exists with the email address you entered, password-reset instructions will be sent to that address.",
+      "reset_email_received": false,
+      "spam_junk_checked": true,
+      "submission_time": "Not provided",
+      "elapsed_wait": "User reported indefinite; exact duration not recorded",
+      "email_subject": null
+    },
+    "checkpoints": {
+      "request_confirmation_ui": "Passed",
+      "actual_email_delivery": "Not verified; no email observed",
+      "reset_link_journey": "Blocked: no delivered reset link"
+    },
+    "evidence": [
+      {
+        "sha256": "67a0eac7664691128f7582da26d47114d93173b4b8d54d166905a348697e7848"
+      }
+    ],
+    "visual_review": "Screenshot confirms generic reset-request confirmation and expected URL; it does not prove token generation or email delivery.",
+    "limitations": [
+      "No measured delivery deadline or elapsed duration is available.",
+      "Deployed email backend, account/email match and provider logs have not been verified.",
+      "Cause is unknown; console-backend configuration is a possibility, not an established finding.",
+      "Separate CI expiry defect is not proved or disproved by this delivery observation."
+    ],
+    "next_action": "Developer verifies deployed email backend and matching QA account/email, then delivery/provider logs; retry once with recorded timestamps after prerequisite is established.",
+    "disposition": "User deferred email-backend investigation; retain as unresolved delivery shortcoming and blocked reset journey, not a pass. Root cause unconfirmed."
+  },
+  {
+    "execution_id": "OBP41-SYS-007-EXEC-001",
+    "case_id": "OBP41-SYS-007",
+    "title": "Registration rejects an already registered email",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-001"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:00:21.326830+00:00",
+    "status": "Passed",
+    "expected": "Duplicate email is rejected with field validation; no account-creation success redirect.",
+    "actual": {
+      "final_url": "http[local path omitted]",
+      "username_attempted": "qa_duplicate_email_01",
+      "message": "An account with this email already exists.",
+      "registration_form_displayed": true,
+      "account_creation_success_message_displayed": false,
+      "unexpected_behavior": null
+    },
+    "evidence": [
+      {
+        "sha256": "a5e0b637d83e13c158fa3aa650bee26c84f9ff6b6e41f8e47ec66285f33754fc"
+      }
+    ],
+    "visual_review": "Screenshot confirms registration URL, duplicate-email field error and retained form.",
+    "limitations": [
+      "UI rejection verified; database record counts were not inspected.",
+      "Screenshot includes the test email address; redact before wider publication."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-008-EXEC-001",
+    "case_id": "OBP41-SYS-008",
+    "title": "Lockout blocks correct-password login after reported failed-attempt sequence",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-003",
+      "BOOK-SR-005"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not provided; user declined timing as irrelevant",
+    "recorded_at_utc": "2026-11-02T18:05:17.572300+00:00",
+    "status": "Passed",
+    "expected": "After five consecutive incorrect-password submissions, a subsequent correct-password attempt is blocked during lockout.",
+    "actual": {
+      "initial_correct_login_and_logout": true,
+      "wrong_password_submissions_user_reported": 5,
+      "fifth_response_message": "Invalid username or password, or the account is temporarily unavailable. Please try again later.",
+      "correct_password_response": "Invalid username or password, or the account is temporarily unavailable. Please try again later.",
+      "authenticated_navigation_appeared": false
+    },
+    "evidence": [
+      {
+        "sha256": "5ac9ed50127d5666e81409ec3647730f54e407ec69c37bea094dee4828e07c24"
+      },
+      {
+        "sha256": "c457605024507a4bc53c0d4dacea1ff3574a06a7688dcb9b637b0926c2c7f6fa"
+      }
+    ],
+    "visual_review": "Both screenshots show login URL, temporary-unavailability feedback and public navigation, with no signed-in username or Log Out control.",
+    "correction": "User corrected initial authenticated-navigation response from Yes to No before result was recorded.",
+    "checkpoints": {
+      "correct_password_blocked_during_lockout": "Passed",
+      "failed_attempt_count": "Five submissions reported by user; intermediate requests not captured",
+      "fifteen_minute_duration": "Not verified on deployment"
+    },
+    "limitations": [
+      "No submission timestamps: deployed lockout duration and expiry cannot be established.",
+      "Message reported on fifth attempt differs from baseline code response sequencing; intermediate requests and deployed commit are unavailable, so no separate sequencing defect is inferred.",
+      "This checkpoint does not establish full BOOK-F-003 acceptance."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-009-EXEC-001",
+    "case_id": "OBP41-SYS-009",
+    "title": "Seller registration, username login and listings-page access",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-001",
+      "BOOK-SR-004"
+    ],
+    "mapping_basis": "Seller registration and permitted role access only; listing mutations and ownership are separate checks.",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:08:07.607572+00:00",
+    "status": "Passed",
+    "expected": "Seller registration succeeds, username login works, and own listings page is accessible.",
+    "actual": {
+      "username": "qa_seller_20261102_01",
+      "registration_message": "Your account has been created successfully. You can now log in.",
+      "seller_login_succeeded": true,
+      "final_url": "http[local path omitted]",
+      "listings_page_displayed": true,
+      "listings_state": "No Listings Yet",
+      "signed_in_username": "qa_seller_20261102_01",
+      "error_message": null
+    },
+    "evidence": [
+      {
+        "sha256": "6cdaed0e8e4b4afcc8db0aeaa4056e02bfe92b096cb9c6e0a7cff933c164fa0c"
+      },
+      {
+        "sha256": "4dbdb65a3926ed9ec5b936d340dea5dbd195a408d5148e494d1406b4e16b2b6a"
+      }
+    ],
+    "visual_review": "Screenshots confirm registration success and My Book Listings with matching signed-in Seller username and seller navigation.",
+    "limitations": [
+      "No listing created, modified or deleted.",
+      "Does not verify exclusion from Buyer/Admin operations.",
+      "Deployment commit and exact browser version remain unconfirmed."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-010-EXEC-001",
+    "case_id": "OBP41-SYS-010",
+    "title": "Authenticated Seller denied Buyer cart access",
+    "level": "System",
+    "requirements": [
+      "BOOK-SR-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:10:01.618580+00:00",
+    "status": "Passed",
+    "expected": "Seller cart request is denied with feedback and redirected to catalogue while Seller session remains active.",
+    "actual": {
+      "requested_url": "http[local path omitted]",
+      "final_url": "http[local path omitted]",
+      "message": "Only buyers can access the shopping cart.",
+      "cart_contents_or_controls_accessible": false,
+      "seller_remains_signed_in": true,
+      "signed_in_username": "qa_seller_20261102_01",
+      "unexpected_behavior": null
+    },
+    "evidence": [
+      {
+        "sha256": "c06b7d6ec4cd9425dc6ae7a76980ece643c984f04e174b82dee1889cff7fb017"
+      }
+    ],
+    "visual_review": "Screenshot confirms cart-denial feedback, catalogue redirect and matching signed-in Seller username.",
+    "limitations": [
+      "Verifies one role-restricted route only; checkout, admin and ownership checks remain separate.",
+      "Deployment commit and exact browser version remain unconfirmed."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-011-EXEC-001",
+    "case_id": "OBP41-SYS-011",
+    "title": "Authenticated Seller denied direct Buyer checkout access",
+    "level": "System",
+    "requirements": [
+      "BOOK-SR-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:11:32.911487+00:00",
+    "status": "Passed",
+    "expected": "Direct checkout URL rejects Seller, redirects to catalogue and exposes no checkout controls.",
+    "actual": {
+      "requested_url": "http[local path omitted]",
+      "final_url": "http[local path omitted]",
+      "message": "Only buyers can proceed to checkout.",
+      "checkout_address_payment_controls_accessible": false,
+      "seller_remains_signed_in": true,
+      "unexpected_behavior": null
+    },
+    "evidence": [
+      {
+        "sha256": "df6bdf33993679422e0b7fa89cad19111de303d0812c7270c62070db0fbbefc4"
+      }
+    ],
+    "visual_review": "Screenshot confirms checkout-denial message, catalogue URL and matching signed-in Seller username.",
+    "limitations": [
+      "Role-restricted GET route only; no checkout POST or payment operation attempted.",
+      "Deployment commit and exact browser version remain unconfirmed."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-012-EXEC-001",
+    "case_id": "OBP41-SYS-012",
+    "title": "Buyer denied Seller listings access",
+    "level": "System",
+    "requirements": [
+      "BOOK-SR-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:14:36.591702+00:00",
+    "status": "Blocked",
+    "expected": "Buyer login succeeds, then Seller listings URL denies Buyer access.",
+    "actual": {
+      "buyer_login_succeeded": false,
+      "blocking_condition": "User reports lockout still blocks login",
+      "seller_listings_request_executed": false
+    },
+    "evidence": [],
+    "limitations": [
+      "No screenshot or exact message supplied for this attempt.",
+      "Original lockout time and elapsed duration are unknown; no expiry defect can be inferred.",
+      "Seller-listings authorization result remains untested."
+    ],
+    "next_action": "Controlled wait/recovery check without login attempts, or a separate active Buyer account; then rerun SYS-012 with a new execution ID."
+  },
+  {
+    "execution_id": "OBP41-SYS-013-EXEC-001",
+    "case_id": "OBP41-SYS-013",
+    "title": "Registration rejects an existing username",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-001"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:17:56.447260+00:00",
+    "status": "Passed",
+    "expected": "Existing username is rejected with field validation; registration remains displayed.",
+    "actual": {
+      "final_url": "http[local path omitted]",
+      "message": "This username is already taken.",
+      "registration_form_visible": true,
+      "account_creation_success_message_displayed": false,
+      "lockout_recovery_timer_finished_at_report": false
+    },
+    "evidence": [
+      {
+        "sha256": "ab290ad8255a0237fb52901e53896497a8efa2fa7683297a845fad553528afd2"
+      }
+    ],
+    "visual_review": "Screenshot confirms username validation error for the existing QA Buyer, unused placeholder email, and retained registration form.",
+    "limitations": [
+      "Database counts were not inspected.",
+      "Lockout recovery has not been attempted after the controlled wait."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-014-EXEC-001",
+    "case_id": "OBP41-SYS-014",
+    "title": "Registration rejects mismatched passwords",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-001"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:21:54.177177+00:00",
+    "status": "Passed",
+    "expected": "Password mismatch is rejected with field validation and no success redirect.",
+    "actual": {
+      "final_url": "http[local path omitted]",
+      "username_visible_in_screenshot": "qa_mismatch",
+      "email_visible_in_screenshot": "qa_mistmatch@example.com",
+      "message": "The passwords do not match.",
+      "registration_form_visible": true,
+      "account_creation_success_message_displayed": false,
+      "lockout_recovery_timer_finished_at_report": false
+    },
+    "evidence": [
+      {
+        "sha256": "f88dd2de1fe8b9eef8789c211031bfd1409401d09c2d247186e1207c5bdba01b"
+      }
+    ],
+    "visual_review": "Screenshot confirms mismatch error under confirmation field and retained registration form.",
+    "limitations": [
+      "Actual placeholder username/email differ from proposed data; the mismatch-check expectation is unchanged.",
+      "No database record counts were inspected."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-015-EXEC-001",
+    "case_id": "OBP41-SYS-015",
+    "title": "Registration rejects a password shorter than eight characters",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-001"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:23:27.248533+00:00",
+    "status": "Passed",
+    "expected": "Matching but too-short passwords are rejected; registration remains displayed with a length error.",
+    "actual": {
+      "final_url": "http[local path omitted]",
+      "username": "qa_short_password_01",
+      "message": "This password is too short. It must contain at least 8 characters.",
+      "registration_form_visible": true,
+      "account_creation_success_message_displayed": false,
+      "lockout_recovery_timer_finished_at_report": "Unknown; reply retained Yes/No placeholder"
+    },
+    "evidence": [
+      {
+        "sha256": "5a27088155bd6b7a67073d643557ee8da93ca6ae16245162142a4c4a7d46db19"
+      }
+    ],
+    "visual_review": "Screenshot confirms the minimum-length field error and retained registration form.",
+    "limitations": [
+      "Database counts were not inspected.",
+      "Timer completion is not inferred from the unedited response placeholder."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-016-EXEC-001",
+    "case_id": "OBP41-SYS-016",
+    "title": "Non-staff Seller denied administration dashboard",
+    "level": "System",
+    "requirements": [
+      "BOOK-SR-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:26:13.889819+00:00",
+    "status": "Passed",
+    "expected": "Seller is not permitted into administration dashboard; admin login or denial shown.",
+    "actual": {
+      "seller_login_succeeded": true,
+      "requested_url": "http[local path omitted]",
+      "final_url_from_screenshot": "http[local path omitted]",
+      "final_url_user_reported": "http[local path omitted]",
+      "admin_login_form_displayed": true,
+      "administration_dashboard_accessible": false,
+      "message_from_screenshot": "You are authenticated as qa_seller_20261102_01, but are not authorized to access this page. Would you like to login to a different account?",
+      "timer_finished_user_reported": false
+    },
+    "evidence": [
+      {
+        "sha256": "e5c70143cdcae4b3d8d9d4ce91a913ba95e0c34001716b74f9cf3da8d8cd8d01"
+      }
+    ],
+    "visual_review": "Screenshot directly confirms admin-login URL, authenticated Seller identity, explicit authorization denial and no model-management dashboard.",
+    "limitations": [
+      "Typed final URL and no-message response differ from screenshot; screenshot-supported URL and denial text are retained explicitly.",
+      "No credentials were submitted to admin login."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-017-EXEC-001",
+    "case_id": "OBP41-SYS-017",
+    "title": "Authenticated session-cookie security attributes",
+    "level": "System",
+    "requirements": [
+      "BOOK-SR-001",
+      "BOOK-SR-004"
+    ],
+    "mapping_basis": "Supporting deployed session-security configuration evidence; not full TLS/RBAC acceptance.",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:30:10.454952+00:00",
+    "status": "Passed",
+    "expected": "Authenticated sessionid cookie uses Secure and HttpOnly; SameSite value recorded.",
+    "actual": {
+      "sessionid_present": true,
+      "secure": true,
+      "http_only": true,
+      "same_site": "Lax",
+      "timer_finished_user_reported": false
+    },
+    "evidence": [
+      {
+        "sha256": "ffd168cce699b72528926e4fc0ef6c4fbca15fecae241e637c7de4e0c32b3a7a"
+      }
+    ],
+    "visual_review": "Storage Inspector screenshot confirms sessionid row with HttpOnly=true, Secure=true and SameSite=Lax; cookie values are obscured.",
+    "limitations": [
+      "No cookie values copied into the register.",
+      "Cookie flags do not independently prove deployed TLS versions, complete session invalidation or full RBAC.",
+      "Deployment commit and exact browser version remain unconfirmed."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-018-EXEC-001",
+    "case_id": "OBP41-SYS-018",
+    "title": "Buyer recovers access after controlled lockout wait",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-003"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:36:39.762076+00:00",
+    "status": "Passed",
+    "expected": "Correct Buyer credentials succeed after the completed 15-minute, 20-second no-attempt wait.",
+    "actual": {
+      "no_buyer_login_attempts_during_timer": true,
+      "timer_completion_confirmed_in_prior_response": true,
+      "buyer_login_succeeded": true,
+      "message_from_screenshot": "You have logged in successfully.",
+      "message_user_reported": "normal",
+      "final_url": "http[local path omitted]",
+      "signed_in_username": "qa_buyer_20261102_01"
+    },
+    "evidence": [
+      {
+        "sha256": "fe0926a1e7b8198fcba44c19b06936393acf8f1d0b0358331426db0fa2d4875b"
+      }
+    ],
+    "visual_review": "Screenshot confirms login success and matching signed-in Buyer identity.",
+    "limitations": [
+      "Waiting interval is user-confirmed, not independently timestamped.",
+      "This verifies recovery after waiting; it does not establish the exact deployed 15-minute expiry boundary."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-012-EXEC-002",
+    "case_id": "OBP41-SYS-012",
+    "retest_of": "OBP41-SYS-012-EXEC-001",
+    "title": "Authenticated Buyer denied Seller listings access",
+    "level": "System",
+    "requirements": [
+      "BOOK-SR-004"
+    ],
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "execution_timestamp": "Not recorded; user-reported execution",
+    "recorded_at_utc": "2026-11-02T18:36:39.762076+00:00",
+    "status": "Passed",
+    "expected": "Buyer cannot access Seller listing management; redirect to catalogue with authorization feedback.",
+    "actual": {
+      "buyer_login_succeeded": true,
+      "requested_url": "http[local path omitted]",
+      "final_url": "http[local path omitted]",
+      "message": "Only sellers can manage book listings.",
+      "seller_management_controls_accessible": false,
+      "signed_in_username": "qa_buyer_20261102_01"
+    },
+    "evidence": [
+      {
+        "sha256": "3789668a70cc72b2d2ef08559ee1958949c5aba367da68ec410e588d7f773ab3"
+      }
+    ],
+    "visual_review": "Screenshot confirms Seller-only denial message, catalogue URL and matching authenticated Buyer.",
+    "limitations": [
+      "GET page access only; Seller mutation/ownership checks are separate coverage."
+    ]
+  },
+  {
+    "execution_id": "OBP41-SYS-006-EXEC-002",
+    "case_id": "OBP41-SYS-006",
+    "title": "Deployed password-reset email delivery and successful single-use reset journey",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-004"
+    ],
+    "environment": "Render deployed application; controlled real inbox",
+    "deployment_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+    "deployment_commit_basis": "Developer deployment report; main CI/public header evidence reviewed separately",
+    "browser_version": "Not reconfirmed on retest; prior procedure specified private Firefox",
+    "execution_timestamp": "Exact request/arrival timestamps not supplied",
+    "recorded_at_utc": "2026-11-09T09:23:29.600410+00:00",
+    "execution_mode": "User manual",
+    "status": "Passed",
+    "expected": "Reset instructions reach the registered controlled inbox; delivered link changes the password; new password permits login; original link is unusable after successful reset.",
+    "actual": {
+      "email_received": true,
+      "delivery_observation": "User reports arrival within the same displayed minute as request; exact elapsed seconds not measured",
+      "password_change_succeeded": true,
+      "new_password_login_succeeded": true,
+      "original_link_unusable_after_successful_reset": true,
+      "unexpected_message": null,
+      "old_password_requested_by_reset_form": false,
+      "old_password_login_rejection": "Not manually checked; user interpreted this as the reset form asking for the old password"
+    },
+    "checkpoints": {
+      "real_email_delivery": "Passed by explicit user report",
+      "successful_password_change": "Passed by explicit user report",
+      "new_password_login": "Passed by explicit user report",
+      "reset_link_single_use": "Passed by explicit user report",
+      "old_password_rejected_at_login": "Not manually checked; separate hosted integration test Passed"
+    },
+    "evidence": [],
+    "evidence_basis": "Explicit user report in this chat; no credentials, reset tokens, screenshot or full email retained",
+    "limitations": [
+      "Exact email latency not measured; same-minute observation is not reused to establish BOOK-F-020 order-status email deadlines.",
+      "Old-password rejection was not manually checked. Hosted integration test test_new_password_logs_in_and_old_password_does_not passed; no redundant manual repeat required under hybrid strategy.",
+      "This retest does not establish the thirty-minute boundary on a wall clock; hosted controlled-clock expiry tests supply that evidence."
+    ],
+    "supersedes_execution": "OBP41-SYS-006-EXEC-001",
+    "historical_result_retained": true
+  }
+]

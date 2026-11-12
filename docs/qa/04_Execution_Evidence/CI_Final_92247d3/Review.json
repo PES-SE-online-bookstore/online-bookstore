@@ -1,0 +1,350 @@
+{
+  "commit": "92247d31739eed30e0d769865869869b384a2ba6",
+  "ci_url": "http[local path omitted]",
+  "artifact_sha256": "551a101e4bb6ae72e6a729533e1ba01064fb35853de378a09b8489a4ba869108",
+  "digest_matched_previously_verified_github_metadata": true,
+  "tests": 294,
+  "levels": {
+    "Integration": 276,
+    "Unit": 18
+  },
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "unmapped": 0,
+  "unclassified": 0,
+  "duration_seconds": 66.125,
+  "python": "3.11.18",
+  "coverage": {
+    "statement_covered": 1183,
+    "statement_total": 1288,
+    "branch_covered": 247,
+    "branch_total": 294
+  },
+  "core_coverage": {
+    "statement_covered": 1013,
+    "statement_total": 1093,
+    "branch_covered": 226,
+    "branch_total": 264
+  },
+  "core_files": [
+    "accounts/admin.py",
+    "accounts/forms.py",
+    "accounts/models.py",
+    "accounts/views.py",
+    "books/admin.py",
+    "books/catalogue_cache.py",
+    "books/forms.py",
+    "books/models.py",
+    "books/signals.py",
+    "books/views.py",
+    "cart/admin.py",
+    "cart/forms.py",
+    "cart/models.py",
+    "cart/views.py",
+    "orders/admin.py",
+    "orders/email_notifications.py",
+    "orders/models.py",
+    "orders/services.py",
+    "orders/signals.py",
+    "orders/views.py"
+  ],
+  "file_metrics": [
+    {
+      "file": "accounts/__init__.py",
+      "statement_covered": 0,
+      "statement_total": 0,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "accounts/admin.py",
+      "statement_covered": 22,
+      "statement_total": 22,
+      "branch_covered": 2,
+      "branch_total": 2
+    },
+    {
+      "file": "accounts/apps.py",
+      "statement_covered": 4,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "accounts/forms.py",
+      "statement_covered": 39,
+      "statement_total": 40,
+      "branch_covered": 9,
+      "branch_total": 10
+    },
+    {
+      "file": "accounts/models.py",
+      "statement_covered": 17,
+      "statement_total": 19,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "accounts/urls.py",
+      "statement_covered": 4,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "accounts/views.py",
+      "statement_covered": 54,
+      "statement_total": 54,
+      "branch_covered": 20,
+      "branch_total": 20
+    },
+    {
+      "file": "accounts/management/__init__.py",
+      "statement_covered": 0,
+      "statement_total": 0,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "accounts/management/commands/__init__.py",
+      "statement_covered": 0,
+      "statement_total": 0,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "accounts/management/commands/verify_postgres_tls.py",
+      "statement_covered": 15,
+      "statement_total": 16,
+      "branch_covered": 5,
+      "branch_total": 6
+    },
+    {
+      "file": "books/__init__.py",
+      "statement_covered": 0,
+      "statement_total": 0,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "books/admin.py",
+      "statement_covered": 43,
+      "statement_total": 43,
+      "branch_covered": 8,
+      "branch_total": 8
+    },
+    {
+      "file": "books/apps.py",
+      "statement_covered": 6,
+      "statement_total": 6,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "books/catalogue_cache.py",
+      "statement_covered": 26,
+      "statement_total": 26,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "books/forms.py",
+      "statement_covered": 42,
+      "statement_total": 45,
+      "branch_covered": 11,
+      "branch_total": 14
+    },
+    {
+      "file": "books/models.py",
+      "statement_covered": 42,
+      "statement_total": 44,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "books/signals.py",
+      "statement_covered": 8,
+      "statement_total": 8,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "books/urls.py",
+      "statement_covered": 4,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "books/views.py",
+      "statement_covered": 235,
+      "statement_total": 266,
+      "branch_covered": 80,
+      "branch_total": 94
+    },
+    {
+      "file": "cart/__init__.py",
+      "statement_covered": 0,
+      "statement_total": 0,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "cart/admin.py",
+      "statement_covered": 1,
+      "statement_total": 1,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "cart/apps.py",
+      "statement_covered": 4,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "cart/forms.py",
+      "statement_covered": 29,
+      "statement_total": 32,
+      "branch_covered": 7,
+      "branch_total": 10
+    },
+    {
+      "file": "cart/models.py",
+      "statement_covered": 42,
+      "statement_total": 45,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "cart/urls.py",
+      "statement_covered": 4,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "cart/views.py",
+      "statement_covered": 132,
+      "statement_total": 150,
+      "branch_covered": 37,
+      "branch_total": 46
+    },
+    {
+      "file": "config/__init__.py",
+      "statement_covered": 0,
+      "statement_total": 0,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "config/asgi.py",
+      "statement_covered": 0,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "config/email_backends.py",
+      "statement_covered": 51,
+      "statement_total": 54,
+      "branch_covered": 10,
+      "branch_total": 12
+    },
+    {
+      "file": "config/health.py",
+      "statement_covered": 15,
+      "statement_total": 15,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "config/settings.py",
+      "statement_covered": 48,
+      "statement_total": 61,
+      "branch_covered": 6,
+      "branch_total": 12
+    },
+    {
+      "file": "config/urls.py",
+      "statement_covered": 5,
+      "statement_total": 5,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "config/wsgi.py",
+      "statement_covered": 0,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "orders/__init__.py",
+      "statement_covered": 0,
+      "statement_total": 0,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "orders/admin.py",
+      "statement_covered": 20,
+      "statement_total": 20,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "orders/apps.py",
+      "statement_covered": 6,
+      "statement_total": 6,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "orders/email_notifications.py",
+      "statement_covered": 22,
+      "statement_total": 25,
+      "branch_covered": 4,
+      "branch_total": 6
+    },
+    {
+      "file": "orders/models.py",
+      "statement_covered": 76,
+      "statement_total": 80,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "orders/services.py",
+      "statement_covered": 44,
+      "statement_total": 47,
+      "branch_covered": 15,
+      "branch_total": 18
+    },
+    {
+      "file": "orders/signals.py",
+      "statement_covered": 38,
+      "statement_total": 43,
+      "branch_covered": 15,
+      "branch_total": 18
+    },
+    {
+      "file": "orders/urls.py",
+      "statement_covered": 4,
+      "statement_total": 4,
+      "branch_covered": 0,
+      "branch_total": 0
+    },
+    {
+      "file": "orders/views.py",
+      "statement_covered": 81,
+      "statement_total": 83,
+      "branch_covered": 18,
+      "branch_total": 18
+    }
+  ],
+  "branch_zero_opportunities": "N/A in curated reports",
+  "inspection_scope": "Artifact inspection only; no new execution or live build assertion"
+}

@@ -1,0 +1,48 @@
+{
+  "reported_on": "2026-11-12",
+  "source": "User QA-chat response to five-page desktop contrast checklist",
+  "statement": {
+    "all_five_checked": "Yes",
+    "issues_reported": "None",
+    "not_evaluated": "N/A"
+  },
+  "pages": [
+    {
+      "path": "/orders/9/",
+      "mode": "Desktop",
+      "result": "No issues reported in Firefox contrast sweep"
+    },
+    {
+      "path": "/admin/",
+      "mode": "Desktop",
+      "result": "No issues reported in Firefox contrast sweep"
+    },
+    {
+      "path": "/admin/books/book/",
+      "mode": "Desktop",
+      "result": "No issues reported in Firefox contrast sweep"
+    },
+    {
+      "path": "/admin/orders/order/",
+      "mode": "Desktop",
+      "result": "No issues reported in Firefox contrast sweep"
+    },
+    {
+      "path": "/admin/orders/order/9/change/",
+      "mode": "Desktop",
+      "result": "No issues reported in Firefox contrast sweep"
+    }
+  ],
+  "exact_desktop_width": "Not supplied",
+  "browser_full_patch_version": "Not supplied",
+  "live_sha": "Not supplied",
+  "measured_contrast_ratios": "Not supplied",
+  "per_original_axe_node_results": "Not supplied",
+  "disposition": "Supporting desktop contrast sweep evidence; not independent proof that every original incomplete axe node meets WCAG",
+  "mobile_sweep": "Previously reported no issues at 390px",
+  "further_sweeps_requested": false,
+  "table_relationship_checks": "Pending on admin Books, Orders and Order #9 edit",
+  "breadcrumb": "Unresolved, unchanged",
+  "screen_reader_announcements": "Not tested/reported",
+  "product_git_or_jira_changes": false
+}

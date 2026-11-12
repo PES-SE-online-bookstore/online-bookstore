@@ -1,0 +1,68 @@
+{
+  "recorded_at_utc": "2026-11-09T09:46:24.833167+00:00",
+  "bandit": [
+    {
+      "rule": "B105",
+      "raw_count": 1,
+      "disposition": "False positive after source review",
+      "basis": "token_url is a fixed public HTTPS OAuth endpoint URL, not an embedded password or token. Raw alert and nonzero scanner exit retained; no suppression/renaming introduced."
+    }
+  ],
+  "zap": [
+    {
+      "rule": "10055",
+      "raw_count": 8,
+      "scanner_risk": "Medium",
+      "disposition": "Open hardening observation; confirmed broad image-source policy, not a demonstrated exploit",
+      "basis": "img-src permits self and any HTTPS image host, supporting current user-supplied external cover URLs. Script/style sources remain separately restricted. No injection/exfiltration demonstrated.",
+      "recommendation": "Review approved image hosting sources or proxy images if practical; retain explicit risk/functional tradeoff."
+    },
+    {
+      "rule": "10010",
+      "raw_count": 3,
+      "scanner_risk": "Low",
+      "disposition": "Framework-default CSRF cookie observation; no demonstrated session-cookie vulnerability",
+      "basis": "All three alerts name csrftoken, not sessionid. Prior sessionid flags were separately tested."
+    },
+    {
+      "rule": "10031",
+      "raw_count": 1,
+      "scanner_risk": "Informational",
+      "disposition": "Reflection hotspot; no demonstrated XSS",
+      "basis": "Hosted security regression covers SQL-like literal inputs, HTML attribute and stored-title escaping. Earlier inert public marker review retained; no new attack payload sent in this scan."
+    },
+    {
+      "rule": "10015",
+      "raw_count": 8,
+      "scanner_risk": "Informational",
+      "disposition": "Public cache-policy review; no sensitive-data cache leak demonstrated",
+      "basis": "Scan allowlist is unauthenticated public pages; authenticated caching is outside this passive sample."
+    },
+    {
+      "rule": "10112",
+      "raw_count": 3,
+      "scanner_risk": "Informational",
+      "disposition": "Token-detection context; not a vulnerability"
+    }
+  ],
+  "resolved_prior_findings": [
+    {
+      "rule": "10038",
+      "finding": "Missing CSP",
+      "postfix_instances": 0,
+      "scope": "Eight sampled HTTPS pages"
+    },
+    {
+      "rule": "10035",
+      "finding": "Missing HSTS",
+      "postfix_instances": 0,
+      "scope": "Eight sampled HTTPS pages"
+    }
+  ],
+  "not_claimed": [
+    "Full penetration test/fuzz campaign",
+    "Exhaustive authenticated vulnerability coverage",
+    "Every possible third-party connection inspected",
+    "Zero raw scanner alerts"
+  ]
+}
