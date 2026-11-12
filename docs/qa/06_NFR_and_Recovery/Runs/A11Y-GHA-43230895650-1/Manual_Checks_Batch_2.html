@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Manual_Checks_Batch_2</title><style>body{max-width:1100px;margin:40px auto;padding:0 24px;font:16px/1.6 system-ui;color:#1c2833}table{border-collapse:collapse;display:block;overflow:auto}td,th{border:1px solid #ccd4dc;padding:10px;vertical-align:top;text-align:left}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><main><h1>Manual accessibility batch 2 — remaining checks</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>The admin breadcrumb finding remains unresolved per user instruction. Do not repeat batch 1 or the unchanged automated workflow.</p>
+<p>Record the current full deployed SHA and exact Firefox version (Help → About Firefox) if available. Record only facts you actually observed. Pass, Fail, Not verified and Not tested are valid outcomes.</p>
+<h2>1. Native validation and accessible form names</h2>
+<p>In a signed-out/private window, open <code>/accounts/register/</code>. Submit the empty form once. Verify that the browser identifies a required field and moves focus to it, and that the field&#x27;s label identifies what must be entered. No valid account is submitted.</p>
+<p>Use Firefox&#x27;s Accessibility inspector (right-click a field → Inspect Accessibility Properties). Check that Username, Email, Password, Confirm password and Role have meaningful accessible names. Do not expose real credentials in a screenshot or report.</p>
+<h2>2. Server-side validation error</h2>
+<p>On registration, use an unused QA username, an address ending <code>@example.invalid</code>, Buyer role and two different strong temporary passwords. Submit once. The server should reject the mismatch and show a clear correction message; no account-creation success should appear. Do not reuse real passwords or send temporary values in the report.</p>
+<p>Inspect Confirm password in the accessibility tree: record its accessible name, whether invalid state is exposed, and whether the mismatch message is associated as a description/relation. Merely seeing red text is not enough to establish an accessible association. If uncertain, report Not verified.</p>
+<p>If you already use a screen reader, record its name/version and whether the error is announced or can be found by navigating the form. If you do not have/use one, report this part Not tested; do not infer speech behavior from the accessibility tree.</p>
+<h2>3. Contrast review queue</h2>
+<p>Firefox DevTools → Accessibility → Check for issues → Contrast can assist the review. Inspect/scroll the flagged content into view. Keep the 390px mobile layout distinct from desktop; responsive design mode can set 390px without repeating zoom tests.</p>
+<table><thead><tr><th>Page/state</th><th>Content needing review</th></tr></thead><tbody>
+<tr><td>Buyer <code>/orders/</code>, 390px</td><td>Order links, including below-the-fold rows</td></tr>
+<tr><td>Buyer <code>/orders/9/</code>, desktop</td><td>Tracking markers; determine whether markers are decorative and equivalent visible status text conveys the same information</td></tr>
+<tr><td>Admin <code>/admin/</code>, desktop and 390px</td><td>Add/Change and recent-action links/text</td></tr>
+<tr><td>Admin <code>/admin/books/book/</code>, desktop and 390px</td><td>Sort/header, Add/View and sidebar links</td></tr>
+<tr><td>Admin <code>/admin/orders/order/</code>, desktop and 390px</td><td>Sort/header, Add/View and sidebar links</td></tr>
+<tr><td>Admin <code>/admin/orders/order/9/change/</code>, desktop and 390px</td><td>Flagged links; retain breadcrumb finding separately</td></tr>
+</tbody></table>
+<p>Record the actual ratios/Firefox findings where available. Normal text requires &gt;=4.5:1 against its background; large text &gt;=3:1. Purely decorative, inactive or genuinely invisible text may have applicable exceptions, but note the reason. <code>aria-hidden</code> alone is not sufficient to exempt meaningful visible text. A clean additional automated check is supporting evidence; it does not automatically resolve every original incomplete node. Leave uncertain items Not verified rather than judging by eye.</p>
+<h2>4. Admin table/sidebar relationships</h2>
+<p>At desktop width, inspect the model-navigation tables in the sidebar on the Books list, Orders list and Order #9 edit pages. Expand the Firefox accessibility tree. Check whether row headings/model names and the associated Add/Change links are exposed in coherent rows with meaningful names. Also inspect the actual data-list table headings on Books/Orders: headings should identify the corresponding row data.</p>
+<p>Record the table/header/cell roles and any missing or misleading association. If the navigation is a layout table instead of a data table, record why that classification applies; do not dismiss it simply because it is Django admin. If the relationship cannot be established, report Not verified.</p>
+<h2>Return format</h2>
+<pre><code>Current deployed SHA:
+Firefox exact version:
+Empty-form required-field focus and labels: Pass/Fail/Not tested
+Registration field accessible names: Pass/Fail/Not verified
+Password-mismatch message shown; no success: Yes/No/Not tested
+Confirm-password invalid state exposed: Yes/No/Not verified
+Mismatch error associated with field: Yes/No/Not verified
+Screen-reader error behavior: Result + reader/version, or Not tested
+Contrast: Per queue row result + actual ratios/findings, or Not verified
+Admin table/header relationships: Per page result + observed roles/relationships, or Not verified
+Any other issue:</code></pre>
+<p>These checks support the declared sampled audit. Remaining untested applicable WCAG criteria must remain explicit; this batch does not silently establish a complete WCAG 2.1 AA conformance claim.</p>
+<p>References: https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html and https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html</p></main></html>

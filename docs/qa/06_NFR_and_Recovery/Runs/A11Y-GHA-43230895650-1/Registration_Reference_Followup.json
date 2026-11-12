@@ -1,0 +1,16 @@
+{
+  "reported_on": "2026-11-12",
+  "source": "User follow-up and attached screenshot",
+  "aria_describedby": "id_confirm_password_error",
+  "aria_describedby_evidence": "Screenshot confirms the input attribute value",
+  "aria_errormessage": "Not present, user reported",
+  "referenced_element_exists": "Yes, user reported",
+  "screenshot_limit": "Shows aria-describedby only; does not itself show an element with matching id or its text",
+  "live_disposition": "Reference present and target existence reported; exact target/message and announcement not independently verified",
+  "local_finding_disposition": "Preserve local broken-reference reproduction; do not promote it to a confirmed deployed defect",
+  "screen_reader_behavior": "Not tested/reported",
+  "breadcrumb": "Unresolved per user decision",
+  "evidence_image": "Registration_Aria_Reference.png",
+  "evidence_image_sha256": "7acdbdd48c6f3c24bcb1c9492b4a707205a9e213ddd1fce2b2cdf9a099156179",
+  "product_or_git_changes": false
+}

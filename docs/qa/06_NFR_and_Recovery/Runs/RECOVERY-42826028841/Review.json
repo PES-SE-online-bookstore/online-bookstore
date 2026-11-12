@@ -1,0 +1,16 @@
+{
+  "review_date_client": "2026-11-11",
+  "source_zip_sha256": "3a3a41ade4a437d1adc3535a8a5c258baf25df81239f6a5d68b2c186a7c492d1",
+  "run_id_source": "User-provided artifact filename; remote run not independently inspected in this review",
+  "result": "Failed before snapshot/backup/restore due to database identity mismatch",
+  "elapsed_seconds": 0.749,
+  "source_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "render_service_name_shown_in_user_screenshot": "online-bookstore-db",
+  "database_name_declared_in_checked_out_render_yaml": "online_bookstore",
+  "actual_connected_database_name": "Not included in artifact",
+  "entered_expected_database_name": "Not included in artifact",
+  "diagnosis": "Do not equate the Render service name with PostgreSQL current_database(); compare the workflow input with actual web DB_NAME. If expected name already matches, verify the GitHub DATABASE_URL target.",
+  "code_changed": false,
+  "git_publication": false,
+  "nfr_acceptance_changed": false
+}

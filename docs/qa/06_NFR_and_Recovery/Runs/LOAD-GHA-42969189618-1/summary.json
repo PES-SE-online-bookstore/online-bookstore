@@ -1,0 +1,883 @@
+{
+  "run_id": "LOAD-GHA-42969189618-1",
+  "started_at_utc": "2026-11-11T05:58:49.208963+00:00",
+  "target": "http[local path omitted]",
+  "status": "Stopped: stage gate failed; higher stages not run",
+  "locust_version": "2.47.0",
+  "python": "3.11.18 (main, Oct 26 2026, 02:48:29) [GCC 15.2.0]",
+  "package_versions": {
+    "locust": "2.47.0",
+    "gevent": "26.9.0",
+    "requests": "2.34.2",
+    "psutil": "7.2.2"
+  },
+  "readiness": "User reports Render logs open and ready; permissions assumed per user instruction",
+  "reported_deployed_sha": "5752e3e02e2507be060d480c411c14f4dd70e5a9",
+  "harness_commit": "5752e3e02e2507be060d480c411c14f4dd70e5a9",
+  "github_run_id": "42969189618",
+  "runtime_sha_verification": "Deployment SHA is operator supplied; the application does not expose a build identifier",
+  "workload": "Anonymous catalogue/search HTML GET only; 3:2 random task weighting; 1-3s think time",
+  "measurement": "HTTP request timing, not rendered browser page timing; independent sessions per virtual user",
+  "instrumentation_browser": "Up to one additional sequential browser may measure page loads during the 10-VU stage; report its traffic separately (10 VUs plus one measurement browser).",
+  "latency_gate": "p90 <=3000ms per browsing endpoint; comparison to one-user baseline will also be reported. This is an operational stop/acceptance threshold, not proof of every interpretation of no degradation.",
+  "profiles": [
+    {
+      "users": 1,
+      "spawn_rate": 1,
+      "steady_seconds": 60
+    },
+    {
+      "users": 10,
+      "spawn_rate": 1,
+      "steady_seconds": 300
+    },
+    {
+      "users": 50,
+      "spawn_rate": 5,
+      "steady_seconds": 120
+    },
+    {
+      "users": 100,
+      "spawn_rate": 10,
+      "steady_seconds": 120
+    },
+    {
+      "users": 250,
+      "spawn_rate": 10,
+      "steady_seconds": 120
+    },
+    {
+      "users": 500,
+      "spawn_rate": 10,
+      "steady_seconds": 600
+    }
+  ],
+  "stop_conditions": [
+    "Any HTTP/timeout/correctness error",
+    "Sustained p90>3000ms",
+    "Generator saturation",
+    "Operator STOP file"
+  ],
+  "limitations": [
+    "No authenticated checkout workload",
+    "Not a full-system 500-user acceptance test",
+    "Current public deployed SHA not exposed by app; last reviewed application baseline afdb5b14",
+    "Warmup/ramp excluded only from steady metrics; all requests retained in CSV",
+    "Generator resources are measured; Render resources/log observations come from operator"
+  ],
+  "preflight": [
+    {
+      "path": "/health/",
+      "started_at_utc": "2026-11-11T05:58:49.210492+00:00",
+      "status": 200,
+      "elapsed_ms": 172.092,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true
+    },
+    {
+      "path": "/books/",
+      "started_at_utc": "2026-11-11T05:58:49.383016+00:00",
+      "status": 200,
+      "elapsed_ms": 255.21,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true
+    }
+  ],
+  "stages": [
+    {
+      "users": 1,
+      "spawn_rate_per_second": 1,
+      "steady_target_seconds": 60,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T05:58:49.639629+00:00",
+      "phase": "finished",
+      "requests_started": 35,
+      "requests_completed": 35,
+      "accepting_requests": false,
+      "max_actual_users": 1,
+      "max_generator_cpu_percent": 1.0,
+      "max_generator_rss_mb": 57.93,
+      "current_actual_users": 1,
+      "target_reached_at_utc": "2026-11-11T05:58:50.641731+00:00",
+      "elapsed_seconds": 71.311,
+      "steady_started_at_utc": "2026-11-11T05:59:00.660665+00:00",
+      "steady_elapsed_seconds": 60.29,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 0,
+      "drain_elapsed_seconds": 0.0,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 15,
+          "failures": 0,
+          "p90_ms": 88.629,
+          "max_ms": 96.981,
+          "at_or_below_3000ms": 15
+        },
+        "search_http": {
+          "attempts": 14,
+          "failures": 0,
+          "p90_ms": 110.158,
+          "max_ms": 235.287,
+          "at_or_below_3000ms": 14
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 16,
+          "failures": 0,
+          "p90_ms": 89.636,
+          "max_ms": 96.981,
+          "at_or_below_3000ms": 16
+        },
+        "search_http": {
+          "attempts": 19,
+          "failures": 0,
+          "p90_ms": 235.287,
+          "max_ms": 240.915,
+          "at_or_below_3000ms": 19
+        }
+      },
+      "steady_min_actual_users": 1,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:00:00.971602+00:00"
+    },
+    {
+      "users": 10,
+      "spawn_rate_per_second": 1,
+      "steady_target_seconds": 300,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:00:05.977335+00:00",
+      "phase": "finished",
+      "requests_started": 1513,
+      "requests_completed": 1513,
+      "accepting_requests": false,
+      "max_actual_users": 10,
+      "max_generator_cpu_percent": 3.0,
+      "max_generator_rss_mb": 59.39,
+      "current_actual_users": 10,
+      "elapsed_seconds": 320.703,
+      "target_reached_at_utc": "2026-11-11T06:00:16.001774+00:00",
+      "steady_started_at_utc": "2026-11-11T06:00:26.018351+00:00",
+      "measurement_browser_started": true,
+      "steady_elapsed_seconds": 300.662,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 0,
+      "drain_elapsed_seconds": 0.0,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "measurement_browser": {
+        "started_at_utc": "2026-11-11T06:00:26.240Z",
+        "scope": "One measurement browser during 10 active anonymous Locust VUs; total up to 11 active clients",
+        "measurement": "Navigation start to loadEventEnd, browser assets included; warm browser cache; initial navigation excluded",
+        "samples": [
+          {
+            "endpoint": "/books/",
+            "index": 0,
+            "phase": "warmup",
+            "started_at_utc": "2026-11-11T06:00:26.464Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 193.89999999999418,
+            "ttfb_ms": 155.60000000000582,
+            "dom_ms": 183.10000000000582
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 0,
+            "phase": "warmup",
+            "started_at_utc": "2026-11-11T06:00:27.688Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 112.40000000002328,
+            "ttfb_ms": 101.10000000003492,
+            "dom_ms": 110.70000000001164
+          },
+          {
+            "endpoint": "/books/",
+            "index": 1,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:28.822Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 115.5,
+            "ttfb_ms": 104.59999999997672,
+            "dom_ms": 114
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 1,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:29.958Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 134.09999999997672,
+            "ttfb_ms": 123.29999999998836,
+            "dom_ms": 134.09999999997672
+          },
+          {
+            "endpoint": "/books/",
+            "index": 2,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:31.115Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 250.39999999996508,
+            "ttfb_ms": 237.09999999997672,
+            "dom_ms": 248.89999999996508
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 2,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:32.386Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 117.29999999998836,
+            "ttfb_ms": 105.69999999995343,
+            "dom_ms": 115.89999999996508
+          },
+          {
+            "endpoint": "/books/",
+            "index": 3,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:33.524Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 113.29999999998836,
+            "ttfb_ms": 102.20000000001164,
+            "dom_ms": 113.29999999998836
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 3,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:34.656Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 113.30000000004657,
+            "ttfb_ms": 102.20000000001164,
+            "dom_ms": 111.80000000004657
+          },
+          {
+            "endpoint": "/books/",
+            "index": 4,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:35.790Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 100.69999999995343,
+            "ttfb_ms": 89.69999999995343,
+            "dom_ms": 99.09999999997672
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 4,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:36.909Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 113.20000000001164,
+            "ttfb_ms": 102.20000000001164,
+            "dom_ms": 111.70000000001164
+          },
+          {
+            "endpoint": "/books/",
+            "index": 5,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:38.042Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 117.5,
+            "ttfb_ms": 106.40000000002328,
+            "dom_ms": 116
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 5,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:39.177Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 102.39999999996508,
+            "ttfb_ms": 91.59999999997672,
+            "dom_ms": 100.89999999996508
+          },
+          {
+            "endpoint": "/books/",
+            "index": 6,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:40.297Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 103.60000000003492,
+            "ttfb_ms": 92.79999999998836,
+            "dom_ms": 102.10000000003492
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 6,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:41.420Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 112,
+            "ttfb_ms": 101.20000000001164,
+            "dom_ms": 110.5
+          },
+          {
+            "endpoint": "/books/",
+            "index": 7,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:42.548Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 107.29999999998836,
+            "ttfb_ms": 96.19999999995343,
+            "dom_ms": 105.69999999995343
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 7,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:43.674Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 113.40000000002328,
+            "ttfb_ms": 102.40000000002328,
+            "dom_ms": 112
+          },
+          {
+            "endpoint": "/books/",
+            "index": 8,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:44.807Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 100.29999999998836,
+            "ttfb_ms": 88.5,
+            "dom_ms": 98.79999999998836
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 8,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:45.927Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 103.09999999997672,
+            "ttfb_ms": 91.89999999996508,
+            "dom_ms": 101.5
+          },
+          {
+            "endpoint": "/books/",
+            "index": 9,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:47.052Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 107.69999999995343,
+            "ttfb_ms": 95.79999999998836,
+            "dom_ms": 106.19999999995343
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 9,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:48.177Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 125.40000000002328,
+            "ttfb_ms": 114.20000000001164,
+            "dom_ms": 123.90000000002328
+          },
+          {
+            "endpoint": "/books/",
+            "index": 10,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:49.321Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 104.40000000002328,
+            "ttfb_ms": 93.20000000001164,
+            "dom_ms": 103
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 10,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:50.445Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 233.39999999996508,
+            "ttfb_ms": 222.89999999996508,
+            "dom_ms": 233.29999999998836
+          },
+          {
+            "endpoint": "/books/",
+            "index": 11,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:51.700Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 100,
+            "ttfb_ms": 88.5,
+            "dom_ms": 100
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 11,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:52.824Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 106.60000000003492,
+            "ttfb_ms": 95.40000000002328,
+            "dom_ms": 105
+          },
+          {
+            "endpoint": "/books/",
+            "index": 12,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:53.950Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 135.10000000003492,
+            "ttfb_ms": 122.70000000001164,
+            "dom_ms": 133.60000000003492
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 12,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:55.105Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 105.69999999995343,
+            "ttfb_ms": 94.69999999995343,
+            "dom_ms": 104.09999999997672
+          },
+          {
+            "endpoint": "/books/",
+            "index": 13,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:56.231Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 109.59999999997672,
+            "ttfb_ms": 97.29999999998836,
+            "dom_ms": 108
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 13,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:57.360Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 106.20000000001164,
+            "ttfb_ms": 95.39999999996508,
+            "dom_ms": 104.70000000001164
+          },
+          {
+            "endpoint": "/books/",
+            "index": 14,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:58.487Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 97.79999999998836,
+            "ttfb_ms": 86.39999999996508,
+            "dom_ms": 96.20000000001164
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 14,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:00:59.604Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 104.19999999995343,
+            "ttfb_ms": 93.59999999997672,
+            "dom_ms": 104.19999999995343
+          },
+          {
+            "endpoint": "/books/",
+            "index": 15,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:00.727Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 100.90000000002328,
+            "ttfb_ms": 90.29999999998836,
+            "dom_ms": 99.5
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 15,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:01.846Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 111.39999999996508,
+            "ttfb_ms": 99.59999999997672,
+            "dom_ms": 109.89999999996508
+          },
+          {
+            "endpoint": "/books/",
+            "index": 16,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:02.977Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 115.79999999998836,
+            "ttfb_ms": 104.79999999998836,
+            "dom_ms": 114.29999999998836
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 16,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:04.113Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 105.89999999996508,
+            "ttfb_ms": 95.20000000001164,
+            "dom_ms": 104.39999999996508
+          },
+          {
+            "endpoint": "/books/",
+            "index": 17,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:05.238Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 343.20000000001164,
+            "ttfb_ms": 331.8999999999651,
+            "dom_ms": 341.70000000001164
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 17,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:06.600Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 101.79999999998836,
+            "ttfb_ms": 91,
+            "dom_ms": 100.40000000002328
+          },
+          {
+            "endpoint": "/books/",
+            "index": 18,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:07.721Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 102.70000000001164,
+            "ttfb_ms": 91.70000000001164,
+            "dom_ms": 102.70000000001164
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 18,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:08.844Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 111.59999999997672,
+            "ttfb_ms": 100.5,
+            "dom_ms": 111.5
+          },
+          {
+            "endpoint": "/books/",
+            "index": 19,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:09.976Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 98.09999999997672,
+            "ttfb_ms": 87.19999999995343,
+            "dom_ms": 96.79999999998836
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 19,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:11.093Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 105.29999999998836,
+            "ttfb_ms": 94.40000000002328,
+            "dom_ms": 103.90000000002328
+          },
+          {
+            "endpoint": "/books/",
+            "index": 20,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:12.217Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 98.19999999995343,
+            "ttfb_ms": 87.69999999995343,
+            "dom_ms": 96.89999999996508
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "index": 20,
+            "phase": "measured",
+            "started_at_utc": "2026-11-11T06:01:13.335Z",
+            "status": 200,
+            "correct": true,
+            "load_ms": 107.59999999997672,
+            "ttfb_ms": 96.29999999998836,
+            "dom_ms": 106
+          }
+        ],
+        "errors": [],
+        "status": "Passed declared normal-load browser sample",
+        "browser": "151.0.7922.34",
+        "summaries": [
+          {
+            "endpoint": "/books/",
+            "samples": 20,
+            "p90_load_ms": 135.10000000003492,
+            "max_load_ms": 343.20000000001164,
+            "at_or_below_3000ms": 20,
+            "sample_target_met": true
+          },
+          {
+            "endpoint": "/books/?q=QA",
+            "samples": 20,
+            "p90_load_ms": 125.40000000002328,
+            "max_load_ms": 233.39999999996508,
+            "at_or_below_3000ms": 20,
+            "sample_target_met": true
+          }
+        ],
+        "finished_at_utc": "2026-11-11T06:01:14.488Z"
+      },
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 860,
+          "failures": 0,
+          "p90_ms": 106.93,
+          "max_ms": 4229.091,
+          "at_or_below_3000ms": 859
+        },
+        "search_http": {
+          "attempts": 574,
+          "failures": 0,
+          "p90_ms": 114.074,
+          "max_ms": 3439.661,
+          "at_or_below_3000ms": 572
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 907,
+          "failures": 0,
+          "p90_ms": 107.86,
+          "max_ms": 4229.091,
+          "at_or_below_3000ms": 906
+        },
+        "search_http": {
+          "attempts": 606,
+          "failures": 0,
+          "p90_ms": 120.331,
+          "max_ms": 3439.661,
+          "at_or_below_3000ms": 604
+        }
+      },
+      "steady_min_actual_users": 10,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:05:26.683942+00:00"
+    },
+    {
+      "users": 50,
+      "spawn_rate_per_second": 5,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:05:31.690191+00:00",
+      "phase": "finished",
+      "requests_started": 3169,
+      "requests_completed": 3169,
+      "accepting_requests": false,
+      "max_actual_users": 50,
+      "max_generator_cpu_percent": 7.0,
+      "max_generator_rss_mb": 64.41,
+      "current_actual_users": 50,
+      "elapsed_seconds": 140.319,
+      "target_reached_at_utc": "2026-11-11T06:05:41.711511+00:00",
+      "steady_started_at_utc": "2026-11-11T06:05:51.734312+00:00",
+      "steady_elapsed_seconds": 120.276,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 4,
+      "drain_elapsed_seconds": 0.155,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 1686,
+          "failures": 0,
+          "p90_ms": 286.797,
+          "max_ms": 786.995,
+          "at_or_below_3000ms": 1686
+        },
+        "search_http": {
+          "attempts": 1101,
+          "failures": 0,
+          "p90_ms": 287.74,
+          "max_ms": 686.055,
+          "at_or_below_3000ms": 1101
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 1911,
+          "failures": 0,
+          "p90_ms": 281.95,
+          "max_ms": 786.995,
+          "at_or_below_3000ms": 1911
+        },
+        "search_http": {
+          "attempts": 1258,
+          "failures": 0,
+          "p90_ms": 292.751,
+          "max_ms": 686.055,
+          "at_or_below_3000ms": 1258
+        }
+      },
+      "steady_min_actual_users": 50,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:07:52.172520+00:00"
+    },
+    {
+      "users": 100,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:07:57.180720+00:00",
+      "phase": "finished",
+      "requests_started": 3749,
+      "requests_completed": 3749,
+      "accepting_requests": false,
+      "max_actual_users": 100,
+      "max_generator_cpu_percent": 8.0,
+      "max_generator_rss_mb": 69.22,
+      "current_actual_users": 100,
+      "elapsed_seconds": 140.303,
+      "target_reached_at_utc": "2026-11-11T06:08:07.201628+00:00",
+      "steady_started_at_utc": "2026-11-11T06:08:17.225268+00:00",
+      "steady_elapsed_seconds": 120.259,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 60,
+      "drain_elapsed_seconds": 2.476,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 1932,
+          "failures": 0,
+          "p90_ms": 2204.753,
+          "max_ms": 2878.925,
+          "at_or_below_3000ms": 1932
+        },
+        "search_http": {
+          "attempts": 1286,
+          "failures": 0,
+          "p90_ms": 2204.144,
+          "max_ms": 2937.662,
+          "at_or_below_3000ms": 1286
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 2240,
+          "failures": 0,
+          "p90_ms": 2174.125,
+          "max_ms": 2878.925,
+          "at_or_below_3000ms": 2240
+        },
+        "search_http": {
+          "attempts": 1509,
+          "failures": 0,
+          "p90_ms": 2181.03,
+          "max_ms": 2937.662,
+          "at_or_below_3000ms": 1509
+        }
+      },
+      "steady_min_actual_users": 100,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T06:10:19.966659+00:00"
+    },
+    {
+      "users": 250,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T06:10:24.973049+00:00",
+      "phase": "finished",
+      "requests_started": 1140,
+      "requests_completed": 1140,
+      "accepting_requests": false,
+      "max_actual_users": 250,
+      "max_generator_cpu_percent": 9.0,
+      "max_generator_rss_mb": 91.52,
+      "current_actual_users": 250,
+      "elapsed_seconds": 37.086,
+      "target_reached_at_utc": "2026-11-11T06:10:50.032456+00:00",
+      "steady_started_at_utc": "2026-11-11T06:11:00.055395+00:00",
+      "steady_elapsed_seconds": 2.005,
+      "abort_reason": "HTTP/correctness failure at catalogue_http; status 503; CatchResponseError",
+      "first_failure": {
+        "endpoint": "catalogue_http",
+        "status": 503,
+        "exception_type": "CatchResponseError"
+      },
+      "requests_inflight_at_cutoff": 191,
+      "drain_elapsed_seconds": 7.693,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 30,
+          "failures": 3,
+          "p90_ms": 7975.668,
+          "max_ms": 7978.574,
+          "at_or_below_3000ms": 0
+        },
+        "search_http": {
+          "attempts": 20,
+          "failures": 3,
+          "p90_ms": 7948.653,
+          "max_ms": 7979.707,
+          "at_or_below_3000ms": 0
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 693,
+          "failures": 3,
+          "p90_ms": 7884.121,
+          "max_ms": 8103.412,
+          "at_or_below_3000ms": 224
+        },
+        "search_http": {
+          "attempts": 447,
+          "failures": 3,
+          "p90_ms": 7831.237,
+          "max_ms": 8140.525,
+          "at_or_below_3000ms": 161
+        }
+      },
+      "steady_min_actual_users": 250,
+      "status": "Stopped / target not demonstrated",
+      "finished_at_utc": "2026-11-11T06:11:09.757793+00:00"
+    }
+  ],
+  "finished_at_utc": "2026-11-11T06:11:09.758881+00:00"
+}

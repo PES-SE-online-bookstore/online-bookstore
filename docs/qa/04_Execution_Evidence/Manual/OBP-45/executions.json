@@ -1,0 +1,144 @@
+[
+  {
+    "execution_id": "OBP45-SYS-001-EXEC-001",
+    "case_id": "OBP45-SYS-001",
+    "title": "Seller submission requires approval",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-014",
+      "BOOK-F-016"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T19:27:07.743928+00:00",
+    "execution_timestamp": "Not supplied; user-reported execution",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_record": "QA Seller Workflow",
+    "actual": {
+      "pending_approval": true,
+      "unavailable": true,
+      "hidden_before_approval": true,
+      "evidence_basis": "User reports every instructed scenario worked; no initial-pending screenshot supplied"
+    },
+    "user_batch_result": "every case scenario worked perfectly, no errors, or problems. screenshots attached as directed.",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP45-SYS-002-EXEC-001",
+    "case_id": "OBP45-SYS-002",
+    "title": "Admin approval publishes listing",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-014",
+      "BOOK-F-016"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T19:27:07.743928+00:00",
+    "execution_timestamp": "Not supplied; user-reported execution",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_record": "QA Seller Workflow",
+    "actual": {
+      "title": "QA Seller Workflow",
+      "author": "QA Workflow Author",
+      "category": "QA Workflow",
+      "price": "150.00",
+      "catalogue_visible": true,
+      "stock_label": "In stock",
+      "signed_in_seller": "qa_seller_20261102_01",
+      "evidence_basis": "Catalogue screenshot verifies approved-stage visibility; admin action is user-reported"
+    },
+    "user_batch_result": "every case scenario worked perfectly, no errors, or problems. screenshots attached as directed.",
+    "evidence": [
+      {
+        "sha256": "8b0860b4cee21de4f562945bb1bcc78a3d495288106dbaec022c62ed7315490a"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP45-SYS-003-EXEC-001",
+    "case_id": "OBP45-SYS-003",
+    "title": "Seller edit requires reapproval and removes listing from catalogue",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-015",
+      "BOOK-F-016"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T19:27:07.743928+00:00",
+    "execution_timestamp": "Not supplied; user-reported execution",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_record": "QA Seller Workflow",
+    "actual": {
+      "price": "175.00",
+      "stock_quantity": 3,
+      "approval_status": "Pending Approval",
+      "availability": "Unavailable",
+      "catalogue_hidden_after_edit": true,
+      "evidence_basis": "Price/status/availability screenshot verified; catalogue disappearance user-reported"
+    },
+    "user_batch_result": "every case scenario worked perfectly, no errors, or problems. screenshots attached as directed.",
+    "evidence": [
+      {
+        "sha256": "91061b07ca4f9048634ce721d5f73592521714778ded9c08ba010c8b39123921"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP45-SYS-004-EXEC-001",
+    "case_id": "OBP45-SYS-004",
+    "title": "Admin rejection reflected to Seller and keeps listing hidden",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-016"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T19:27:07.743928+00:00",
+    "execution_timestamp": "Not supplied; user-reported execution",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_record": "QA Seller Workflow",
+    "actual": {
+      "approval_status": "Rejected",
+      "availability": "Unavailable",
+      "catalogue_hidden_after_rejection": true,
+      "notification_channel_observed": "Seller My Listings status on refresh; no email delivery tested",
+      "evidence_basis": "Rejected/unavailable screenshot verified; catalogue absence user-reported"
+    },
+    "user_batch_result": "every case scenario worked perfectly, no errors, or problems. screenshots attached as directed.",
+    "evidence": [
+      {
+        "sha256": "0f526137bbf7b5377c7764d34aca3bc37585a08c28237d9656514e826cdb5416"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP45-SYS-005-EXEC-001",
+    "case_id": "OBP45-SYS-005",
+    "title": "Seller deletes own disposable listing",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-015"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T19:27:07.743928+00:00",
+    "execution_timestamp": "Not supplied; user-reported execution",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_record": "QA Seller Workflow",
+    "actual": {
+      "deleted_successfully": true,
+      "title_absent_from_my_listings": true,
+      "exact_deletion_message": "Not supplied",
+      "evidence_basis": "User reports all instructed scenarios worked; deletion screenshot and exact message not supplied"
+    },
+    "user_batch_result": "every case scenario worked perfectly, no errors, or problems. screenshots attached as directed.",
+    "evidence": []
+  }
+]

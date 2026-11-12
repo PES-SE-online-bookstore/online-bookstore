@@ -1,0 +1,987 @@
+{
+  "started_at_utc": "2026-11-09T15:15:03.326Z",
+  "target": "http[local path omitted]",
+  "deployment_sha": null,
+  "last_reported_deployment_sha": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "build_attribution": "Last user/developer report; target does not expose a build SHA. No independent current SHA claim.",
+  "playwright": "1.62.1",
+  "profile": "One anonymous sequential browser, 1-second pauses; no load/capacity claim",
+  "timing_boundary": "Navigation start to loadEventEnd, includes browser asset loading; warm cache; local client/network",
+  "samples": [
+    {
+      "endpoint": "/books/",
+      "phase": "initial",
+      "index": 0,
+      "started_at_utc": "2026-11-09T15:15:03.473Z",
+      "ttfb_ms": 287,
+      "dom_ms": 336.5,
+      "load_ms": 351.8999999985099,
+      "response_end_ms": 288.0999999977648,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 381.572
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 1,
+      "started_at_utc": "2026-11-09T15:15:04.861Z",
+      "ttfb_ms": 705.5,
+      "dom_ms": 711.9000000022352,
+      "load_ms": 713.1000000014901,
+      "response_end_ms": 706.1000000014901,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 729.5893999999998
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 2,
+      "started_at_utc": "2026-11-09T15:15:06.592Z",
+      "ttfb_ms": 257.30000000074506,
+      "dom_ms": 264.69999999925494,
+      "load_ms": 265.69999999925494,
+      "response_end_ms": 258.1000000014901,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 284.9163000000003
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 3,
+      "started_at_utc": "2026-11-09T15:15:07.885Z",
+      "ttfb_ms": 257.5,
+      "dom_ms": 282.6000000014901,
+      "load_ms": 286.6000000014901,
+      "response_end_ms": 260,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 340.60220000000027
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 4,
+      "started_at_utc": "2026-11-09T15:15:09.237Z",
+      "ttfb_ms": 304.1000000014901,
+      "dom_ms": 325.30000000074506,
+      "load_ms": 330.1000000014901,
+      "response_end_ms": 305.80000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 386.84340000000066
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 5,
+      "started_at_utc": "2026-11-09T15:15:10.627Z",
+      "ttfb_ms": 265.70000000298023,
+      "dom_ms": 282.9000000022352,
+      "load_ms": 287.6000000014901,
+      "response_end_ms": 267.6000000014901,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 351.0663999999997
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 6,
+      "started_at_utc": "2026-11-09T15:15:11.984Z",
+      "ttfb_ms": 236.60000000149012,
+      "dom_ms": 266,
+      "load_ms": 271.4000000022352,
+      "response_end_ms": 238.20000000298023,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 329.67319999999927
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 7,
+      "started_at_utc": "2026-11-09T15:15:13.327Z",
+      "ttfb_ms": 257.9000000022352,
+      "dom_ms": 288.5,
+      "load_ms": 293.80000000074506,
+      "response_end_ms": 259.9000000022352,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 353.8937999999998
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 8,
+      "started_at_utc": "2026-11-09T15:15:14.685Z",
+      "ttfb_ms": 260.5999999977648,
+      "dom_ms": 282.30000000074506,
+      "load_ms": 286.3999999985099,
+      "response_end_ms": 262.69999999925494,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 333.5501999999997
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 9,
+      "started_at_utc": "2026-11-09T15:15:16.029Z",
+      "ttfb_ms": 275,
+      "dom_ms": 298.8999999985099,
+      "load_ms": 302.69999999925494,
+      "response_end_ms": 276.29999999701977,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 373.8022999999994
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 10,
+      "started_at_utc": "2026-11-09T15:15:17.414Z",
+      "ttfb_ms": 238.60000000149012,
+      "dom_ms": 262.20000000298023,
+      "load_ms": 266.80000000074506,
+      "response_end_ms": 239.70000000298023,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 333.21250000000146
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 11,
+      "started_at_utc": "2026-11-09T15:15:18.754Z",
+      "ttfb_ms": 254.19999999925494,
+      "dom_ms": 271.69999999925494,
+      "load_ms": 275.5,
+      "response_end_ms": 255.19999999925494,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 329.6874000000007
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 12,
+      "started_at_utc": "2026-11-09T15:15:20.099Z",
+      "ttfb_ms": 715.3000000007451,
+      "dom_ms": 738.1000000014901,
+      "load_ms": 743.1999999992549,
+      "response_end_ms": 716.8999999985099,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 808.3451999999997
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 13,
+      "started_at_utc": "2026-11-09T15:15:21.922Z",
+      "ttfb_ms": 263.30000000074506,
+      "dom_ms": 288.9000000022352,
+      "load_ms": 294,
+      "response_end_ms": 264.4000000022352,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 344.8628000000026
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 14,
+      "started_at_utc": "2026-11-09T15:15:23.282Z",
+      "ttfb_ms": 247.40000000223517,
+      "dom_ms": 265,
+      "load_ms": 268.4000000022352,
+      "response_end_ms": 248.5,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 319.0649999999987
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 15,
+      "started_at_utc": "2026-11-09T15:15:24.611Z",
+      "ttfb_ms": 266.6000000014901,
+      "dom_ms": 280.69999999925494,
+      "load_ms": 283.6000000014901,
+      "response_end_ms": 267.80000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 322.1638000000021
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 16,
+      "started_at_utc": "2026-11-09T15:15:25.942Z",
+      "ttfb_ms": 260,
+      "dom_ms": 282.4000000022352,
+      "load_ms": 287.30000000074506,
+      "response_end_ms": 261.30000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 348.23519999999917
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 17,
+      "started_at_utc": "2026-11-09T15:15:27.303Z",
+      "ttfb_ms": 278.80000000074506,
+      "dom_ms": 297.9000000022352,
+      "load_ms": 300,
+      "response_end_ms": 280.6000000014901,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 352.0020000000004
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 18,
+      "started_at_utc": "2026-11-09T15:15:28.663Z",
+      "ttfb_ms": 257.9000000022352,
+      "dom_ms": 270.70000000298023,
+      "load_ms": 274.30000000074506,
+      "response_end_ms": 258.80000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 334.8224999999984
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 19,
+      "started_at_utc": "2026-11-09T15:15:30.011Z",
+      "ttfb_ms": 249.90000000223517,
+      "dom_ms": 274,
+      "load_ms": 278.6000000014901,
+      "response_end_ms": 251.70000000298023,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 335.6126000000004
+    },
+    {
+      "endpoint": "/books/",
+      "phase": "warm",
+      "index": 20,
+      "started_at_utc": "2026-11-09T15:15:31.360Z",
+      "ttfb_ms": 233.5,
+      "dom_ms": 255.89999999850988,
+      "load_ms": 260.5,
+      "response_end_ms": 235.19999999925494,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 322.41849999999977
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "initial",
+      "index": 0,
+      "started_at_utc": "2026-11-09T15:15:32.686Z",
+      "ttfb_ms": 251.10000000149012,
+      "dom_ms": 273.20000000298023,
+      "load_ms": 277.70000000298023,
+      "response_end_ms": 252.90000000223517,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 336.27660000000105
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 1,
+      "started_at_utc": "2026-11-09T15:15:34.036Z",
+      "ttfb_ms": 235.80000000074506,
+      "dom_ms": 268,
+      "load_ms": 272.6000000014901,
+      "response_end_ms": 238.30000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 322.0717000000004
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 2,
+      "started_at_utc": "2026-11-09T15:15:35.367Z",
+      "ttfb_ms": 38470.79999999702,
+      "dom_ms": 38495.79999999702,
+      "load_ms": 38500.199999999255,
+      "response_end_ms": 38473.39999999851,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 38547.7586
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 3,
+      "started_at_utc": "2026-11-09T15:16:14.917Z",
+      "ttfb_ms": 271.19999999925494,
+      "dom_ms": 286.69999999925494,
+      "load_ms": 288.6000000014901,
+      "response_end_ms": 272.5,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 318.40409999999974
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 4,
+      "started_at_utc": "2026-11-09T15:16:16.243Z",
+      "ttfb_ms": 256.80000000074506,
+      "dom_ms": 282.20000000298023,
+      "load_ms": 286.30000000074506,
+      "response_end_ms": 259.4000000022352,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 338.8828000000067
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 5,
+      "started_at_utc": "2026-11-09T15:16:17.584Z",
+      "ttfb_ms": 256.5,
+      "dom_ms": 266.69999999925494,
+      "load_ms": 268.5999999977648,
+      "response_end_ms": 257.5,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 298.52930000000924
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 6,
+      "started_at_utc": "2026-11-09T15:16:18.886Z",
+      "ttfb_ms": 264.3999999985099,
+      "dom_ms": 277.3999999985099,
+      "load_ms": 278.69999999925494,
+      "response_end_ms": 265.3999999985099,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 308.8433999999979
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 7,
+      "started_at_utc": "2026-11-09T15:16:20.207Z",
+      "ttfb_ms": 256.5,
+      "dom_ms": 281.69999999925494,
+      "load_ms": 286.0999999977648,
+      "response_end_ms": 259.30000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 337.6395000000048
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 8,
+      "started_at_utc": "2026-11-09T15:16:21.556Z",
+      "ttfb_ms": 250.40000000223517,
+      "dom_ms": 281,
+      "load_ms": 281.19999999925494,
+      "response_end_ms": 251.80000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 336.12390000000596
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 9,
+      "started_at_utc": "2026-11-09T15:16:22.906Z",
+      "ttfb_ms": 238.90000000223517,
+      "dom_ms": 270.4000000022352,
+      "load_ms": 273.80000000074506,
+      "response_end_ms": 240,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 317.7578999999969
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 10,
+      "started_at_utc": "2026-11-09T15:16:24.236Z",
+      "ttfb_ms": 254.19999999925494,
+      "dom_ms": 277.80000000074506,
+      "load_ms": 282.4000000022352,
+      "response_end_ms": 256.4000000022352,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 337.72739999998885
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 11,
+      "started_at_utc": "2026-11-09T15:16:25.579Z",
+      "ttfb_ms": 246.80000000074506,
+      "dom_ms": 278.5,
+      "load_ms": 284.3999999985099,
+      "response_end_ms": 249,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 362.85289999999804
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 12,
+      "started_at_utc": "2026-11-09T15:16:26.952Z",
+      "ttfb_ms": 252.60000000149012,
+      "dom_ms": 266.5,
+      "load_ms": 266.5,
+      "response_end_ms": 253.80000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 310.9176000000007
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 13,
+      "started_at_utc": "2026-11-09T15:16:28.277Z",
+      "ttfb_ms": 265.30000000074506,
+      "dom_ms": 292.70000000298023,
+      "load_ms": 292.80000000074506,
+      "response_end_ms": 267.1000000014901,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 358.5668000000005
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 14,
+      "started_at_utc": "2026-11-09T15:16:29.638Z",
+      "ttfb_ms": 247.19999999925494,
+      "dom_ms": 271.79999999701977,
+      "load_ms": 276.8999999985099,
+      "response_end_ms": 248.69999999925494,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 339.98889999999665
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 15,
+      "started_at_utc": "2026-11-09T15:16:30.982Z",
+      "ttfb_ms": 245.80000000074506,
+      "dom_ms": 270.80000000074506,
+      "load_ms": 275.19999999925494,
+      "response_end_ms": 248.39999999850988,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 337.19719999999506
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 16,
+      "started_at_utc": "2026-11-09T15:16:32.326Z",
+      "ttfb_ms": 249.89999999850988,
+      "dom_ms": 272.8999999985099,
+      "load_ms": 277.5,
+      "response_end_ms": 251.59999999776483,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 345.0420000000013
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 17,
+      "started_at_utc": "2026-11-09T15:16:33.688Z",
+      "ttfb_ms": 259.5999999977648,
+      "dom_ms": 277.3999999985099,
+      "load_ms": 281.69999999925494,
+      "response_end_ms": 261.30000000074506,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 343.190499999997
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 18,
+      "started_at_utc": "2026-11-09T15:16:35.045Z",
+      "ttfb_ms": 235.90000000223517,
+      "dom_ms": 249.69999999925494,
+      "load_ms": 251.69999999925494,
+      "response_end_ms": 237.60000000149012,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 285.87889999999607
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 19,
+      "started_at_utc": "2026-11-09T15:16:36.346Z",
+      "ttfb_ms": 257.19999999925494,
+      "dom_ms": 282.3999999985099,
+      "load_ms": 286.5,
+      "response_end_ms": 260,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 344.29439999999886
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "warm",
+      "index": 20,
+      "started_at_utc": "2026-11-09T15:16:37.696Z",
+      "ttfb_ms": 711.8000000007451,
+      "dom_ms": 740.1999999992549,
+      "load_ms": 744.6999999992549,
+      "response_end_ms": 714.5,
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "h1": [
+        "Book Catalogue"
+      ],
+      "correct": true,
+      "wall_ms": 802.837200000009
+    }
+  ],
+  "accessibility": [
+    {
+      "endpoint": "/books/",
+      "url": "http[local path omitted]",
+      "version": "4.14.0",
+      "violations": [],
+      "incomplete": [],
+      "passes": 23,
+      "inapplicable": 40
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "url": "http[local path omitted]",
+      "version": "4.14.0",
+      "violations": [],
+      "incomplete": [],
+      "passes": 23,
+      "inapplicable": 40
+    },
+    {
+      "endpoint": "/accounts/login/",
+      "url": "http[local path omitted]",
+      "version": "4.14.0",
+      "violations": [],
+      "incomplete": [],
+      "passes": 20,
+      "inapplicable": 43
+    },
+    {
+      "endpoint": "/accounts/register/",
+      "url": "http[local path omitted]",
+      "version": "4.14.0",
+      "violations": [],
+      "incomplete": [],
+      "passes": 21,
+      "inapplicable": 42
+    },
+    {
+      "endpoint": "/accounts/password-reset/",
+      "url": "http[local path omitted]",
+      "version": "4.14.0",
+      "violations": [],
+      "incomplete": [],
+      "passes": 19,
+      "inapplicable": 44
+    },
+    {
+      "endpoint": "/books/3/",
+      "url": "http[local path omitted]",
+      "version": "4.14.0",
+      "violations": [],
+      "incomplete": [],
+      "passes": 15,
+      "inapplicable": 48
+    }
+  ],
+  "reflow": [
+    {
+      "endpoint": "/books/",
+      "width": 320,
+      "viewport": 320,
+      "document_width": 320,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/books/",
+      "width": 390,
+      "viewport": 390,
+      "document_width": 390,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "width": 320,
+      "viewport": 320,
+      "document_width": 320,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "width": 390,
+      "viewport": 390,
+      "document_width": 390,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/accounts/login/",
+      "width": 320,
+      "viewport": 320,
+      "document_width": 320,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/accounts/login/",
+      "width": 390,
+      "viewport": 390,
+      "document_width": 390,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/accounts/register/",
+      "width": 320,
+      "viewport": 320,
+      "document_width": 320,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/accounts/register/",
+      "width": 390,
+      "viewport": 390,
+      "document_width": 390,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/accounts/password-reset/",
+      "width": 320,
+      "viewport": 320,
+      "document_width": 320,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/accounts/password-reset/",
+      "width": 390,
+      "viewport": 390,
+      "document_width": 390,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/books/3/",
+      "width": 320,
+      "viewport": 320,
+      "document_width": 320,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    },
+    {
+      "endpoint": "/books/3/",
+      "width": 390,
+      "viewport": 390,
+      "document_width": 390,
+      "overflowing": [
+        {
+          "tag": "A",
+          "id": "",
+          "class": "skip-link"
+        }
+      ],
+      "no_horizontal_overflow": true
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "No authenticated pages or checkout completion measured",
+    "20 timed navigations per endpoint are a small one-user sample, not approved normal-load acceptance",
+    "Automated WCAG 2.1 A/AA rules do not cover all applicable success criteria",
+    "axe is injected through DevTools evaluation; application CSP is not disabled",
+    "GET-only route guard blocks other HTTP methods; no persistent user profile or credentials"
+  ],
+  "browser": "151.0.7922.34",
+  "observed_headers": {
+    "csp": "default-src 'self'; script-src 'self' 'nonce-KIKpaAo+Eg/U2ksoq7uF1A=='; object-src 'none'; font-src 'self'; img-src 'self' https:; form-action 'self'; base-uri 'self'; style-src-attr 'none'; style-src 'self' 'nonce-KIKpaAo+Eg/U2ksoq7uF1A=='; script-src-attr 'none'; connect-src 'self'; frame-ancestors 'none'",
+    "hsts": "max-age=3600"
+  },
+  "performance_summary": [
+    {
+      "endpoint": "/books/",
+      "attempts": 20,
+      "correct": 20,
+      "p90_load_ms": 330.1000000014901,
+      "max_load_ms": 743.1999999992549,
+      "at_or_below_3000ms": 20,
+      "sample_target_met": true
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "attempts": 20,
+      "correct": 20,
+      "p90_load_ms": 292.80000000074506,
+      "max_load_ms": 38500.199999999255,
+      "at_or_below_3000ms": 19,
+      "sample_target_met": true
+    }
+  ],
+  "asset_failures": [],
+  "finished_at_utc": "2026-11-09T15:16:46.445Z"
+}

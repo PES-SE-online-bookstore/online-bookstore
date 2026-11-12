@@ -1,0 +1,84 @@
+{
+  "started_at_utc": "2026-11-09T15:13:59.880Z",
+  "target": "http[local path omitted]",
+  "deployment_sha": null,
+  "last_reported_deployment_sha": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "build_attribution": "Last user/developer report; target does not expose a build SHA. No independent current SHA claim.",
+  "playwright": "1.62.1",
+  "profile": "One anonymous sequential browser, 1-second pauses; no load/capacity claim",
+  "timing_boundary": "Navigation start to loadEventEnd, includes browser asset loading; warm cache; local client/network",
+  "samples": [
+    {
+      "endpoint": "/books/",
+      "phase": "initial",
+      "index": 0,
+      "started_at_utc": "2026-11-09T15:14:01.366Z",
+      "ttfb_ms": 1689.199999999255,
+      "dom_ms": 2197.300000000745,
+      "load_ms": 2213.10000000149,
+      "response_end_ms": 2188.39999999851,
+      "status": 503,
+      "final_url": "http[local path omitted]",
+      "h1": [],
+      "correct": false,
+      "wall_ms": 2245.6834
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "phase": "initial",
+      "index": 0,
+      "started_at_utc": "2026-11-09T15:14:03.612Z",
+      "ttfb_ms": 380.9000000022352,
+      "dom_ms": 520.1000000014901,
+      "load_ms": 526.1999999992549,
+      "response_end_ms": 511.9000000022352,
+      "status": 503,
+      "final_url": "http[local path omitted]",
+      "h1": [],
+      "correct": false,
+      "wall_ms": 545.5982000000004
+    }
+  ],
+  "accessibility": [],
+  "reflow": [],
+  "errors": [
+    {
+      "endpoint": "/books/",
+      "index": 0,
+      "reason": "Incorrect response"
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "index": 0,
+      "reason": "Incorrect response"
+    }
+  ],
+  "limitations": [
+    "No authenticated pages or checkout completion measured",
+    "20 timed navigations per endpoint are a small one-user sample, not approved normal-load acceptance",
+    "Automated WCAG 2.1 A/AA rules do not cover all applicable success criteria",
+    "axe is injected through DevTools evaluation; application CSP is not disabled",
+    "GET-only route guard blocks other HTTP methods; no persistent user profile or credentials"
+  ],
+  "browser": "151.0.7922.34",
+  "observed_headers": {},
+  "asset_failures": [
+    {
+      "url": "http[local path omitted]",
+      "status": 503
+    },
+    {
+      "url": "http[local path omitted]",
+      "status": 503
+    },
+    {
+      "url": "http[local path omitted]",
+      "status": 503
+    },
+    {
+      "url": "http[local path omitted]",
+      "status": 503
+    }
+  ],
+  "finished_at_utc": "2026-11-09T15:14:06.416Z"
+}

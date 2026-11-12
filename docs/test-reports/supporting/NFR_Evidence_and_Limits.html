@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>NFR Evidence and Limits</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui;color:#1c2833}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #ccd4dc;padding:9px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eef2f6}code{overflow-wrap:anywhere;font-size:.9em}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f7fa;padding:16px}a{color:#174ea6}h1{font-size:30px}h2{margin-top:28px}</style><main><h1>Non-functional evidence and limits</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<table><thead><tr><th>Requirement</th><th>Final disposition</th></tr></thead><tbody>
+<tr><td>BOOK-NF-001</td><td>Passed declared normal-load samples: historical catalogue/search p90 0.136/0.142 s; checkout run 43180348416 p90 0.1911 s, 20/20 correct during 10 browsing VUs. Distinct builds/boundaries retained.</td></tr>
+<tr><td>BOOK-NF-002</td><td>250-user timing Failed; 100-user sample Passed; 500 users Not tested per revised execution scope. Original 500 target not demonstrated.</td></tr>
+<tr><td>BOOK-NF-003</td><td>Monthly availability Not tested per user scope decision; no 99.5% full-month claim.</td></tr>
+<tr><td>BOOK-NF-004</td><td>Executed sampled audit with unresolved admin breadcrumb finding. Manual keyboard/zoom/form/contrast/table follow-up recorded; full conformance and screen-reader speech not established.</td></tr>
+<tr><td>BOOK-NF-005</td><td>Final CI 43241415099: overall statements 1183/1288=91.85%; branches 247/294=84.01%; defined 20-file core 1013/1093=92.68%, exceeds original 70% target.</td></tr>
+<tr><td>BOOK-NF-006</td><td>Twice-daily cron published. Fresh backup/temp restore43243243463 Passed; isolated recovery43243646709 exact 22 tables/258 rows,usable2.675s. Historical&gt;24h gap and full production RPO/RTO remain unverified.</td></tr>
+</tbody></table></main></html>

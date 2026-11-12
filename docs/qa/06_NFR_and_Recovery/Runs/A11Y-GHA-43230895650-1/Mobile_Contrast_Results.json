@@ -1,0 +1,48 @@
+{
+  "reported_on": "2026-11-12",
+  "source": "User QA-chat reply to the six-page contrast checklist",
+  "statement_verbatim": "chcked pages at 390px. no issues reported.",
+  "scope": "Listed pages at 390px, interpreted from preceding checklist; no desktop execution inferred",
+  "browser_context": "Firefox 159 previously reported; full patch/build timestamp not supplied",
+  "pages": [
+    {
+      "path": "/orders/",
+      "viewport_width": 390,
+      "result": "No issues reported by user during Firefox contrast check"
+    },
+    {
+      "path": "/orders/9/",
+      "viewport_width": 390,
+      "result": "No issues reported by user during Firefox contrast check"
+    },
+    {
+      "path": "/admin/",
+      "viewport_width": 390,
+      "result": "No issues reported by user during Firefox contrast check"
+    },
+    {
+      "path": "/admin/books/book/",
+      "viewport_width": 390,
+      "result": "No issues reported by user during Firefox contrast check"
+    },
+    {
+      "path": "/admin/orders/order/",
+      "viewport_width": 390,
+      "result": "No issues reported by user during Firefox contrast check"
+    },
+    {
+      "path": "/admin/orders/order/9/change/",
+      "viewport_width": 390,
+      "result": "No issues reported by user during Firefox contrast check"
+    }
+  ],
+  "measured_ratios": "Not supplied",
+  "per_element_results": "Not supplied",
+  "execution_sha": "Not supplied",
+  "disposition": "Supporting mobile contrast sweep evidence; not a full manual resolution of all axe incomplete nodes",
+  "desktop_contrast": "Pending",
+  "table_header_relationships": "Pending",
+  "screen_reader_announcements": "Not tested/reported",
+  "breadcrumb": "Unresolved per user decision; unchanged by the contrast sweep",
+  "product_git_or_jira_changes": false
+}

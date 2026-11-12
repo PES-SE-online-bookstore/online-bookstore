@@ -1,0 +1,55 @@
+{
+  "started_at_utc": "2026-11-11T03:24:30.442157+00:00",
+  "scope": "Local synthetic SQLite app-flow check; not a PostgreSQL recovery run",
+  "production_database_accessed": false,
+  "steps": [
+    {
+      "step": "Login form before collectstatic",
+      "status": 200
+    },
+    {
+      "step": "Login before collectstatic",
+      "status": 200
+    },
+    {
+      "step": "Catalogue before collectstatic",
+      "status": 200
+    },
+    {
+      "step": "Add cart item before collectstatic",
+      "status": 200
+    },
+    {
+      "step": "Checkout before collectstatic",
+      "status": 500
+    },
+    {
+      "step": "Checkout after collectstatic",
+      "status": 200
+    },
+    {
+      "step": "Mock checkout after collectstatic",
+      "status": 200
+    },
+    {
+      "step": "Order detail after collectstatic",
+      "status": 200
+    }
+  ],
+  "reproduced_failure": {
+    "path": "/cart/checkout/",
+    "status": 500,
+    "exception_type": "ValueError",
+    "message": "Missing staticfiles manifest entry for 'js/checkout.js'"
+  },
+  "static_assets": {
+    "status": "Passed",
+    "checked": [
+      "js/checkout.js",
+      "js/order-confirm.js"
+    ],
+    "storage_backend": "ConfiguredStorage"
+  },
+  "result": "Passed; reproduced missing-manifest failure and verified collectstatic fixes the synthetic app flow",
+  "finished_at_utc": "2026-11-11T03:24:34.903162+00:00"
+}

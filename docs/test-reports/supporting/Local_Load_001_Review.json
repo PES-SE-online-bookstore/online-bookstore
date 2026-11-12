@@ -1,0 +1,59 @@
+{
+  "review_date_client": "2026-11-11",
+  "status": "Stopped at one-user smoke latency gate",
+  "load_requests": 14,
+  "steady_requests": 13,
+  "http_errors": 0,
+  "peak_virtual_users": 1,
+  "higher_stages_executed": [],
+  "steady_metrics": {
+    "catalogue_http": {
+      "attempts": 7,
+      "failures": 0,
+      "p90_ms": 3730.643,
+      "max_ms": 3730.643,
+      "at_or_below_3000ms": 6
+    },
+    "search_http": {
+      "attempts": 6,
+      "failures": 0,
+      "p90_ms": 4191.124,
+      "max_ms": 4191.124,
+      "at_or_below_3000ms": 3
+    }
+  },
+  "operator_render_log_observation": "User reports no errors or restarts during 10:00\u201310:01 IST on 11 November",
+  "diagnostic_browser": [
+    {
+      "endpoint": "/books/",
+      "samples": 5,
+      "p90_load_ms": 2254.399999999441,
+      "max_load_ms": 2254.399999999441,
+      "at_or_below_3000ms": 5,
+      "sample_target_met": true
+    },
+    {
+      "endpoint": "/books/?q=QA",
+      "samples": 5,
+      "p90_load_ms": 2562.5,
+      "max_load_ms": 2562.5,
+      "at_or_below_3000ms": 5,
+      "sample_target_met": true
+    }
+  ],
+  "connection_setup_through_tls_complete_seconds_range": [
+    2.321075,
+    4.717541
+  ],
+  "tls_handshake_only_seconds_range": [
+    1.328993,
+    2.9629209999999997
+  ],
+  "curl_time_appconnect_is_cumulative": true,
+  "attribution": "The local sample missed the timing gate; app execution time/cause not isolated from network/client environment. No application code defect established.",
+  "measurement_limits": "One-user/short samples, HTTP client versus browser connection/caching differences, separate measurement times; no declared 10-VU normal run or 500-user result.",
+  "local_generator_exit_code": 0,
+  "exit_code_note": "Original local version returned zero even when the summary gate stopped the run; summary/CSV are authoritative. Future version now returns nonzero for a stopped gate.",
+  "generator_reference_note": "Saved source reference includes a current_actual_users telemetry field added after launch; no exact launch-time source digest was captured.",
+  "next_run": "Prepared GitHub-hosted Linux generator; same public target and thresholds; not yet executed"
+}

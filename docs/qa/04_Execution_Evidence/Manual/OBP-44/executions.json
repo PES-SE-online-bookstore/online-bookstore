@@ -1,0 +1,233 @@
+[
+  {
+    "execution_id": "OBP44-SYS-001-EXEC-001",
+    "case_id": "OBP44-SYS-001",
+    "title": "Buyer order history and detail navigation",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-011"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "history_contents_correct": true,
+      "detail_url": "http[local path omitted]",
+      "initial_status": "Pending",
+      "evidence_basis": "History listing contents and navigation are user-reported. Despite its filename, the history screenshot shows Order #1 detail, with Pending status, not the history table."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": [
+      {
+        "sha256": "6c244820632da16188df4d034fb8d12fe46e8bbca6889d0b984b025d848d78ba"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP44-SYS-002-EXEC-001",
+    "case_id": "OBP44-SYS-002",
+    "title": "Create disposable pending order and cancel within policy",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-011",
+      "BOOK-F-013"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 2,
+      "url": "http[local path omitted]",
+      "order_status": "Cancelled",
+      "title": "QA Python Basics",
+      "quantity": 3,
+      "unit_price": "200.00",
+      "total": "600.00",
+      "payment_status": "Pending",
+      "exact_message": "Your order has been cancelled.",
+      "cancel_control_absent": true,
+      "persists_after_refresh_and_in_history": true,
+      "evidence_basis": "Order #2, cancellation message/status, absent cancellation control and order contents screenshot verified. Creation sequence and persistence checks user-reported."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": [
+      {
+        "sha256": "8cad7fef88dd7a44fe25c5c0ee4e8f06139eca3249484e63562fec24c4d9f138"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP44-SYS-003-EXEC-001",
+    "case_id": "OBP44-SYS-003",
+    "title": "Confirmed status reflected in tracking",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-012"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "current_status": "Confirmed",
+      "correct_tracking_stage": true,
+      "evidence_basis": "User confirms instructed admin status change and buyer observation; no screenshot of this intermediate stage."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP44-SYS-004-EXEC-001",
+    "case_id": "OBP44-SYS-004",
+    "title": "Processing status reflected in tracking",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-012"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "current_status": "Processing",
+      "correct_tracking_stage": true,
+      "evidence_basis": "User confirms instructed admin status change and buyer observation; no screenshot of this intermediate stage."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP44-SYS-005-EXEC-001",
+    "case_id": "OBP44-SYS-005",
+    "title": "Shipped tracking and cancellation UI restriction",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-012",
+      "BOOK-F-013"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "current_status": "Shipped",
+      "correct_tracking_stage": true,
+      "cancel_control_absent": true,
+      "exact_policy_message": "This order has shipped and can no longer be cancelled.",
+      "evidence_basis": "Buyer Order #1 screenshot verifies shipped stage/status and absence of Cancel Order. This browser check covers UI availability; server-side enforcement is supported separately by CI tests."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": [
+      {
+        "sha256": "f731b9680ba6f0e3f3bbd17d53c92d16f336ca13f92a5715921c8876f6cf83bd"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP44-SYS-006-EXEC-001",
+    "case_id": "OBP44-SYS-006",
+    "title": "Delivered tracking and return eligibility UI",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-012",
+      "BOOK-F-013"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "current_status": "Delivered",
+      "correct_tracking_stage": true,
+      "return_form_initially_present": true,
+      "cancel_control_absent": true,
+      "evidence_basis": "Delivered tracking/status and absent cancel control screenshot verified after return submission. Initial eligible return form appearance user-reported."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": [
+      {
+        "sha256": "4bfbc6b07b64fa4632cd2825e528964f904cc893b74802f7886260d3395f2394"
+      }
+    ]
+  },
+  {
+    "execution_id": "OBP44-SYS-007-EXEC-001",
+    "case_id": "OBP44-SYS-007",
+    "title": "Empty return reason prevents submission",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-013"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "empty_reason_prevented_submission": true,
+      "request_not_created_by_empty_submission": true,
+      "evidence_basis": "User confirms instructed empty-reason check matched expected outcome; no validation screenshot or exact browser validation text supplied. Do not infer a deployed server-side empty POST from browser required-field validation."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": []
+  },
+  {
+    "execution_id": "OBP44-SYS-008-EXEC-001",
+    "case_id": "OBP44-SYS-008",
+    "title": "Submit return reason and preserve Pending request",
+    "level": "System",
+    "requirements": [
+      "BOOK-F-013"
+    ],
+    "status": "Passed",
+    "recorded_at_utc": "2026-11-02T20:37:30.167294+00:00",
+    "execution_timestamp": "Not supplied; recording timestamp is not execution time; displayed application times have unconfirmed timezone",
+    "environment": "Render deployed application",
+    "deployment_commit": "Unknown",
+    "browser_version": "Firefox; exact version unconfirmed",
+    "test_account": "qa_buyer_20261102_01",
+    "actual": {
+      "order_id": 1,
+      "return_status": "Pending",
+      "reason": "QA TEST ONLY \u2014 checking the return-request workflow. No physical shipment involved.",
+      "return_form_absent": true,
+      "persists_after_refresh": true,
+      "submission_success_message_expected_and_user_confirmed": "Your return request has been submitted for review.",
+      "evidence_basis": "Screenshot verifies Pending return, reason, Delivered order and absent repeat form. Success message and refresh persistence user-reported; success banner is not visible in final screenshot."
+    },
+    "user_batch_result": "all stages went as expected, no errors, warnings, unexpected behavior. everything went perfectly. screenshots attached as directed",
+    "evidence": [
+      {
+        "sha256": "4bfbc6b07b64fa4632cd2825e528964f904cc893b74802f7886260d3395f2394"
+      }
+    ]
+  }
+]

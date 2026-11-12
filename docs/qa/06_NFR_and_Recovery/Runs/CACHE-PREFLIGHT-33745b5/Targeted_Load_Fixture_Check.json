@@ -1,0 +1,10 @@
+{
+  "scope": "Local fixture only; no application performance evidence",
+  "public_requests": 0,
+  "checks": {
+    "positive_stages_and_cache_timing_summary": "Passed",
+    "503_stops_before_next_stage_with_sanitized_diagnostics": "Passed",
+    "missing_cache_diagnostics_preflight_stop": "Passed",
+    "cookies_not_persisted": "Passed"
+  }
+}

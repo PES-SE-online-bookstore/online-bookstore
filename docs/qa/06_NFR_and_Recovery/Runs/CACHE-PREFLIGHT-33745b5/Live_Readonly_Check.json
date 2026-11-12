@@ -1,0 +1,65 @@
+{
+  "scope": "Four sequential public GET requests, no load or mutations",
+  "client_date": "2026-11-11",
+  "reported_live_commit": "33745b521ffcb3e57c2287c943662c6526582078",
+  "runtime_sha_independently_verified": false,
+  "status": "Passed scoped header/nonce/health check",
+  "requests": [
+    {
+      "path": "/health/",
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "client_elapsed_ms": 41833.413,
+      "cache_status": null,
+      "server_timing": null,
+      "csp_enforced": true,
+      "hsts": "max-age=3600",
+      "catalogue_heading_correct": null,
+      "nonce_header_and_body_match": null,
+      "nonce_sha256": null,
+      "health_database_available": true
+    },
+    {
+      "path": "/books/",
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "client_elapsed_ms": 479.53,
+      "cache_status": "MISS",
+      "server_timing": "data;dur=9.8, app;dur=174.2",
+      "csp_enforced": true,
+      "hsts": "max-age=3600",
+      "catalogue_heading_correct": true,
+      "nonce_header_and_body_match": true,
+      "nonce_sha256": "c64f73f75134dfd29fb0a6f59c78da9d1192c0e01e145f26d601d0445e1dae07",
+      "health_database_available": null
+    },
+    {
+      "path": "/books/",
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "client_elapsed_ms": 320.211,
+      "cache_status": "HIT",
+      "server_timing": "data;dur=0.5, app;dur=2.0",
+      "csp_enforced": true,
+      "hsts": "max-age=3600",
+      "catalogue_heading_correct": true,
+      "nonce_header_and_body_match": true,
+      "nonce_sha256": "b812d556ca1efab44540ba0e2e9ee344acf0eee17d1f3b5e90753c0ffb631142",
+      "health_database_available": null
+    },
+    {
+      "path": "/books/?q=QA",
+      "status": 200,
+      "final_url": "http[local path omitted]",
+      "client_elapsed_ms": 301.778,
+      "cache_status": "MISS",
+      "server_timing": "data;dur=4.0, app;dur=5.5",
+      "csp_enforced": true,
+      "hsts": "max-age=3600",
+      "catalogue_heading_correct": true,
+      "nonce_header_and_body_match": true,
+      "nonce_sha256": "329f7c2df06ad27e456fd2869af1231dba00444738067ff9da5752e6b8a0ac2b",
+      "health_database_available": null
+    }
+  ]
+}

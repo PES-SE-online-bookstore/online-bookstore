@@ -1,0 +1,15 @@
+{
+  "requirement": "BOOK-SR-003",
+  "implemented_scope": "Mock payments; no real card collection",
+  "unimplemented_scope": "Gateway tokenization",
+  "decision": "Keep mock payments; approved exception for gateway tokenization within this project scope",
+  "approved_by": "Project owner, as reported by user",
+  "approval_date": "2026-11-03",
+  "approval_timezone": "Asia/Calcutta",
+  "recorded_at_utc": "2026-11-03T03:52:00.057342+00:00",
+  "supporting_external_reference": "Not required by user; no separate reference requested",
+  "evidence_basis": "User explicitly reports project-owner approval in this chat",
+  "disposition": "Approved scope exception; tokenization not implemented and not marked Passed",
+  "retained_checks": "No real card collection/storage remains applicable; existing static schema and one-day log sample evidence remain qualified",
+  "scope_limit": "Applies to BOOK-SR-003 gateway-tokenization component only. Does not automatically approve changes to BOOK-F-010, change test results, resolve email delivery or accept other security findings."
+}

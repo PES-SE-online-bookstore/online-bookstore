@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Unit Test Report</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui;color:#1c2833}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #ccd4dc;padding:9px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eef2f6}code{overflow-wrap:anywhere;font-size:.9em}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f7fa;padding:16px}a{color:#174ea6}h1{font-size:30px}h2{margin-top:28px}</style><main><h1>Unit Test Report</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>Final automated source: <code>92247d31739eed30e0d769865869869b384a2ba6</code>. <a href="https://github.com/PES-SE-online-bookstore/online-bookstore/actions/runs/43241415099">CI run</a>. Historical manual and deployed checks retain the distinct builds/dates shown in their evidence.</p>
+<p>Status: <strong>QA execution completed for the revised scope, with findings and untested/unverified targets retained.</strong></p>
+<p><strong>18 Unit tests Passed.</strong> The full Django suite contains 294 tests: 18 Unit and 276 Integration. Zero failures, errors, skipped tests, expected failures or unexpected successes. Python 3.11.18; the hosted workflow uses PostgreSQL 18.</p>
+<table><thead><tr><th>Test ID</th><th>Result</th><th>Requirement mapping</th></tr></thead><tbody>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_admin_role_cannot_be_selected</td><td>Passed</td><td>BOOK-F-001, BOOK-SR-004</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_duplicate_email_is_rejected</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_duplicate_username_is_rejected</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_email_is_normalized</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_invalid_email_is_rejected</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_mismatched_password_is_rejected</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_numeric_password_is_rejected</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_short_password_is_rejected</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_username_is_trimmed</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_authentication.RegistrationValidationUnitTests.test_valid_registration_passes_validation</td><td>Passed</td><td>BOOK-F-001</td></tr>
+<tr><td>accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_fails_when_connection_is_not_encrypted</td><td>Passed</td><td>BOOK-SR-001</td></tr>
+<tr><td>accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_rejects_non_postgresql_database</td><td>Passed</td><td>BOOK-SR-001</td></tr>
+<tr><td>accounts.test_database_tls.VerifyPostgresTlsCommandTests.test_reports_tls_version_and_cipher</td><td>Passed</td><td>BOOK-SR-001</td></tr>
+<tr><td>config.test_email_backend.GmailAPIEmailBackendTests.test_api_failures_raise_sanitized_backend_error</td><td>Passed</td><td>BOOK-F-020</td></tr>
+<tr><td>config.test_email_backend.GmailAPIEmailBackendTests.test_empty_message_list_does_not_make_api_requests</td><td>Passed</td><td>BOOK-F-020</td></tr>
+<tr><td>config.test_email_backend.GmailAPIEmailBackendTests.test_fail_silently_returns_zero_on_api_failure</td><td>Passed</td><td>BOOK-F-020</td></tr>
+<tr><td>config.test_email_backend.GmailAPIEmailBackendTests.test_missing_oauth_credentials_raise_configuration_error</td><td>Passed</td><td>BOOK-F-020</td></tr>
+<tr><td>config.test_email_backend.GmailAPIEmailBackendTests.test_sends_email_through_gmail_https_api</td><td>Passed</td><td>BOOK-F-020, BOOK-SR-001</td></tr>
+</tbody></table>
+<p>The full-suite duration was <strong>66.125 seconds</strong>, not a unit-only duration or a website response time. The Unit groups cover registration validation, mocked database-TLS command reporting and mocked Gmail HTTPS backend behavior. Mock results do not replace live TLS or inbox-delivery evidence. Exact IDs, timing and classifications are retained in <code>supporting/Automated_Test_Register.json</code>. All 294 original assertion outcomes were preserved; tests were not skipped or weakened to hide failures.</p></main></html>

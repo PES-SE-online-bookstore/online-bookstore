@@ -1,0 +1,198 @@
+{
+  "reviewed_runs": [
+    {
+      "id": 43243243463,
+      "name": "Daily Database Backup",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "workflow_dispatch",
+      "branch": "main",
+      "head_sha": "92247d31739eed30e0d769865869869b384a2ba6",
+      "created_at": "2026-11-12T15:01:12Z",
+      "updated_at": "2026-11-12T15:02:01Z",
+      "html_url": "http[local path omitted]",
+      "jobs": [
+        {
+          "name": "Backup and Restore Verification",
+          "conclusion": "success",
+          "started_at": "2026-11-12T15:01:17Z",
+          "completed_at": "2026-11-12T15:02:00Z",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:17Z",
+              "completed_at": "2026-11-12T15:01:18Z"
+            },
+            {
+              "name": "Initialize containers",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:18Z",
+              "completed_at": "2026-11-12T15:01:42Z"
+            },
+            {
+              "name": "Install PostgreSQL 18 client",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:42Z",
+              "completed_at": "2026-11-12T15:01:47Z"
+            },
+            {
+              "name": "Check required secret",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:47Z",
+              "completed_at": "2026-11-12T15:01:47Z"
+            },
+            {
+              "name": "Create database backup",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:47Z",
+              "completed_at": "2026-11-12T15:01:56Z"
+            },
+            {
+              "name": "Restore backup into temporary database",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:56Z",
+              "completed_at": "2026-11-12T15:01:56Z"
+            },
+            {
+              "name": "Upload database backup",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:56Z",
+              "completed_at": "2026-11-12T15:01:57Z"
+            },
+            {
+              "name": "Stop containers",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:57Z",
+              "completed_at": "2026-11-12T15:01:58Z"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:01:58Z",
+              "completed_at": "2026-11-12T15:01:58Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 43243646709,
+      "name": "QA Isolated Recovery Rehearsal",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "workflow_dispatch",
+      "branch": "main",
+      "head_sha": "92247d31739eed30e0d769865869869b384a2ba6",
+      "created_at": "2026-11-12T15:03:27Z",
+      "updated_at": "2026-11-12T15:04:25Z",
+      "html_url": "http[local path omitted]",
+      "jobs": [
+        {
+          "name": "recovery",
+          "conclusion": "success",
+          "started_at": "2026-11-12T15:03:31Z",
+          "completed_at": "2026-11-12T15:04:24Z",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:03:32Z",
+              "completed_at": "2026-11-12T15:03:32Z"
+            },
+            {
+              "name": "Initialize containers",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:03:33Z",
+              "completed_at": "2026-11-12T15:03:51Z"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:03:51Z",
+              "completed_at": "2026-11-12T15:03:52Z"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:03:52Z",
+              "completed_at": "2026-11-12T15:03:53Z"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:03:53Z",
+              "completed_at": "2026-11-12T15:03:53Z"
+            },
+            {
+              "name": "Install project dependencies and PostgreSQL 18 client",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:03:53Z",
+              "completed_at": "2026-11-12T15:04:05Z"
+            },
+            {
+              "name": "Private snapshot and isolated application recovery",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:04:05Z",
+              "completed_at": "2026-11-12T15:04:20Z"
+            },
+            {
+              "name": "Upload sanitized recovery summary only",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:04:20Z",
+              "completed_at": "2026-11-12T15:04:21Z"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:04:21Z",
+              "completed_at": "2026-11-12T15:04:21Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:04:21Z",
+              "completed_at": "2026-11-12T15:04:22Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:04:22Z",
+              "completed_at": "2026-11-12T15:04:22Z"
+            },
+            {
+              "name": "Stop containers",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:04:22Z",
+              "completed_at": "2026-11-12T15:04:22Z"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "started_at": "2026-11-12T15:04:22Z",
+              "completed_at": "2026-11-12T15:04:22Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "main_ci_artifacts": [
+    {
+      "id": 13955675641,
+      "name": "qa-results-92247d31739eed30e0d769865869869b384a2ba6-1",
+      "size_in_bytes": 227563,
+      "expired": false,
+      "digest": "sha256:551a101e4bb6ae72e6a729533e1ba01064fb35853de378a09b8489a4ba869108"
+    }
+  ],
+  "recovery_artifacts": [
+    {
+      "id": 13954824077,
+      "name": "qa-recovery-summary-43243646709",
+      "size_in_bytes": 1321,
+      "expired": false,
+      "digest": "sha256:efed1f25fcf8ddf64c2e5a108658a0ec75dad0cbd3450cc948fdd816e18d24dc"
+    }
+  ]
+}

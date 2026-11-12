@@ -1,0 +1,98 @@
+{
+  "recorded_at_utc": "2026-11-09T09:46:24.833167+00:00",
+  "source_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "deployed_commit_basis": "Developer report; no subsequent deployment reported",
+  "scope": "Pinned-source static analysis, dependency advisory checks, four public TLS handshakes and sixteen allowlisted GETs with passive scanning only",
+  "bandit": {
+    "files": 40,
+    "lines": 2603,
+    "raw_findings": 1,
+    "confirmed_vulnerabilities": 0,
+    "false_positives": 1,
+    "errors": 0,
+    "exit_code": 1
+  },
+  "dependency_audits": {
+    "source_packages": 14,
+    "ci_snapshot_packages": 20,
+    "known_vulnerabilities": 0,
+    "skipped_packages": 0,
+    "exit_codes": [
+      0,
+      0
+    ]
+  },
+  "tls": [
+    {
+      "protocol": "TLSv1.0",
+      "outcome": "Rejected by peer: protocol version alert",
+      "exit_code": 1
+    },
+    {
+      "protocol": "TLSv1.1",
+      "outcome": "Rejected by peer: protocol version alert",
+      "exit_code": 1
+    },
+    {
+      "protocol": "TLSv1.2",
+      "outcome": "Accepted",
+      "exit_code": 0
+    },
+    {
+      "protocol": "TLSv1.3",
+      "outcome": "Accepted",
+      "exit_code": 0
+    }
+  ],
+  "zap": {
+    "version": "2.17.0",
+    "passive_rules": 62,
+    "requests": 16,
+    "raw_alerts": 23,
+    "risks": {
+      "Informational": 12,
+      "Medium": 8,
+      "Low": 3
+    },
+    "rules": {
+      "10112": 3,
+      "10015": 8,
+      "10055": 8,
+      "10010": 3,
+      "10031": 1
+    },
+    "active_scan_used": false,
+    "spider_used": false,
+    "authenticated": false,
+    "queue_remaining": 0
+  },
+  "open_items": [
+    "CSP img-src https: breadth: open hardening observation/risk review",
+    "render.yaml startCommand omits automatic verify_postgres_tls; developer small PR pending",
+    "Runtime email backend selection remains attributed to implementation plus observed delivery, not a captured runtime variable",
+    "Review eligibility under mock payments does not prove successful-paid-purchase enforcement"
+  ],
+  "sha256": {
+    "bandit.json": "01392ecc9f4bcb3d4357af984f6298b395dfd4c116939d1fff73cff30b362314",
+    "ci-packages-to-audit.txt": "3c10e095891f72a4776e99ad88a05998c7bb99524169e2baaa1190115f7f102e",
+    "dependency-audit-commands.json": "8d53afd49bcc26f22453bfbddebb38201a0d88d0e2ff443fed47bc85d1d8fb0b",
+    "openssl-TLSv1.0.txt": "c1ef3064900dc660b264fe8b17791e2103251542af847596c5d96d0312a16d7c",
+    "openssl-TLSv1.1.txt": "d8677ca7ccc43e7693f173057dccdc2be1699f5ce6ee9dc6ae2b57175b672571",
+    "openssl-TLSv1.2.txt": "202bbfc37510ad456a34d6eb7fbbe043bcc961af487da6f91bd3177fc7f4fb22",
+    "openssl-TLSv1.3.txt": "c865d7e7db4e504aaf6b332f9ff6a25cc6af6c5af1dda3e72cbdfade2de4272c",
+    "pip-audit-ci-snapshot.json": "bc9f4eb80d84e04c1425fbff57ffc02ea5077dc55dfdf09ed7dd0fd4db58b3a7",
+    "pip-audit-ci-snapshot.log": "e82148c0c30269ca5a2c35420ece6af011a4faf5a375325d750e243ffdb10625",
+    "pip-audit-source.json": "63f6ad6cc5cafd11b77080c49c1f849916434816a6c3f5d08ea529f9824b1e28",
+    "pip-audit-source.log": "65ef73f8c23cdfc3684ca3aeea9ced285ab375f2fb0aedb1d588bd4e2fded254",
+    "source-manifest.json": "b4dab4e1b242786dc5b5ef63a1559d035a6d83b9972c7b47b442352ed4ac325c",
+    "tls-version-results.json": "1421eb40022f446286162de3e968158c1bad970417510a1c255ea61d73032048",
+    "triage.json": "379ff7772ad54ad935e4d00ff745b39d3be82883b80e81a58f03f54cb2d3341b",
+    "zap-alerts.json": "64fdb34162fc943db55dd6a489b36e5e903e245593e9ecd30f705428b7114b22",
+    "zap-passive-report.html": "5b74a27cb179196ce01a598752b5b5dc8ddd47fd5645e4f9e47cb0b41f3affeb",
+    "zap-passive-report.json": "a699745ef25ade5d29c6864fccb2d17e805f0d6709197ad9c30ca0cd9ed67f55",
+    "zap-process.log": "07c3d61475b9f82b3715dd5d6ab7e76c77afd5115f7f3b89f3a1c70280b110b0",
+    "zap-run-metadata.json": "be803e9c56c77a9e2d66513fe24132a77d14217cdeda71f78e0e0c9229dd62e1"
+  },
+  "application_data_mutations": false,
+  "obp49_executed": false
+}

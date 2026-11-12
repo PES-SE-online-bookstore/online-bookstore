@@ -1,0 +1,396 @@
+{
+  "run_id": "LOAD-GHA-43035954975-1",
+  "workflow_url": "http[local path omitted]",
+  "artifact_zip_sha256": "1f67388adbbd4416d9636a7b98b053d7017b623552da2784f849ea690fa9fa1a",
+  "source": "User-supplied local ZIP; remote digest not independently fetched",
+  "reported_deployed_sha": "aa36272e424489724153b8cdd89c1ae25b4a8e13",
+  "harness_commit": "aa36272e424489724153b8cdd89c1ae25b4a8e13",
+  "runtime_sha_independently_verified": false,
+  "started_at_utc": "2026-11-11T14:10:55.853631+00:00",
+  "finished_at_utc": "2026-11-11T14:14:29.858797+00:00",
+  "status": "Failed 250-user latency gate; 100-user Passed; 500 not run",
+  "recorded_requests": 9385,
+  "http_200": 9385,
+  "recorded_http_errors": 0,
+  "unaccounted_requests": 0,
+  "passed_scoped_stages": [
+    100
+  ],
+  "failed_stage": 250,
+  "not_executed_stages": [
+    500
+  ],
+  "stage_summaries": [
+    {
+      "users": 100,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T14:10:56.278275+00:00",
+      "phase": "finished",
+      "requests_started": 6249,
+      "requests_completed": 6249,
+      "accepting_requests": false,
+      "max_actual_users": 100,
+      "max_generator_cpu_percent": 8.0,
+      "max_generator_rss_mb": 76.6,
+      "current_actual_users": 100,
+      "elapsed_seconds": 140.313,
+      "target_reached_at_utc": "2026-11-11T14:11:06.307962+00:00",
+      "steady_started_at_utc": "2026-11-11T14:11:16.326155+00:00",
+      "steady_elapsed_seconds": 120.266,
+      "steady_complete": true,
+      "requests_inflight_at_cutoff": 9,
+      "drain_elapsed_seconds": 0.154,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 3259,
+          "failures": 0,
+          "p90_ms": 332.339,
+          "max_ms": 678.447,
+          "at_or_below_3000ms": 3259
+        },
+        "search_http": {
+          "attempts": 2238,
+          "failures": 0,
+          "p90_ms": 320.518,
+          "max_ms": 756.263,
+          "at_or_below_3000ms": 2238
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 3706,
+          "failures": 0,
+          "p90_ms": 347.471,
+          "max_ms": 678.447,
+          "at_or_below_3000ms": 3706
+        },
+        "search_http": {
+          "attempts": 2543,
+          "failures": 0,
+          "p90_ms": 339.01,
+          "max_ms": 756.263,
+          "at_or_below_3000ms": 2543
+        }
+      },
+      "steady_diagnostics": {
+        "catalogue_http": {
+          "attempts": 3259,
+          "successful_responses": 3259,
+          "http_status_counts": {
+            "200": 3259
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 3253,
+            "MISS": 6,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.998159,
+          "hit_share_of_hit_or_miss_responses": 0.998159,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 3259,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 3259,
+            "p90": 15.5
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 3259,
+            "p90": 320.589
+          }
+        },
+        "search_http": {
+          "attempts": 2238,
+          "successful_responses": 2238,
+          "http_status_counts": {
+            "200": 2238
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 2232,
+            "MISS": 6,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997319,
+          "hit_share_of_hit_or_miss_responses": 0.997319,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 2238,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 2238,
+            "p90": 19.0
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 2238,
+            "p90": 306.702
+          }
+        }
+      },
+      "all_phase_diagnostics": {
+        "catalogue_http": {
+          "attempts": 3706,
+          "successful_responses": 3706,
+          "http_status_counts": {
+            "200": 3706
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 3700,
+            "MISS": 6,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.998381,
+          "hit_share_of_hit_or_miss_responses": 0.998381,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 3706,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 3706,
+            "p90": 15.0
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 3706,
+            "p90": 332.616
+          }
+        },
+        "search_http": {
+          "attempts": 2543,
+          "successful_responses": 2543,
+          "http_status_counts": {
+            "200": 2543
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 2536,
+            "MISS": 7,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997247,
+          "hit_share_of_hit_or_miss_responses": 0.997247,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 2543,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 2543,
+            "p90": 13.6
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 2543,
+            "p90": 328.014
+          }
+        }
+      },
+      "failure_diagnostics": [],
+      "steady_min_actual_users": 100,
+      "status": "Passed scoped browsing stage",
+      "finished_at_utc": "2026-11-11T14:13:16.789309+00:00"
+    },
+    {
+      "users": 250,
+      "spawn_rate_per_second": 10,
+      "steady_target_seconds": 120,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T14:13:21.798952+00:00",
+      "phase": "finished",
+      "requests_started": 3136,
+      "requests_completed": 3136,
+      "accepting_requests": false,
+      "max_actual_users": 250,
+      "max_generator_cpu_percent": 11.0,
+      "max_generator_rss_mb": 96.34,
+      "current_actual_users": 250,
+      "elapsed_seconds": 65.147,
+      "target_reached_at_utc": "2026-11-11T14:13:46.866958+00:00",
+      "steady_started_at_utc": "2026-11-11T14:13:56.887280+00:00",
+      "steady_elapsed_seconds": 30.059,
+      "abort_reason": "Sustained HTTP p90 above 3000ms",
+      "requests_inflight_at_cutoff": 143,
+      "drain_elapsed_seconds": 2.894,
+      "requests_unaccounted_after_drain": 0,
+      "drain_status": "All started requests accounted",
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 850,
+          "failures": 0,
+          "p90_ms": 3806.835,
+          "max_ms": 4034.98,
+          "at_or_below_3000ms": 290
+        },
+        "search_http": {
+          "attempts": 576,
+          "failures": 0,
+          "p90_ms": 3792.473,
+          "max_ms": 4017.785,
+          "at_or_below_3000ms": 188
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 1890,
+          "failures": 0,
+          "p90_ms": 3670.323,
+          "max_ms": 4034.98,
+          "at_or_below_3000ms": 1195
+        },
+        "search_http": {
+          "attempts": 1246,
+          "failures": 0,
+          "p90_ms": 3687.784,
+          "max_ms": 4017.785,
+          "at_or_below_3000ms": 779
+        }
+      },
+      "steady_diagnostics": {
+        "catalogue_http": {
+          "attempts": 850,
+          "successful_responses": 850,
+          "http_status_counts": {
+            "200": 850
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 848,
+            "MISS": 2,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997647,
+          "hit_share_of_hit_or_miss_responses": 0.997647,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 850,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 850,
+            "p90": 79.4
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 850,
+            "p90": 3778.756
+          }
+        },
+        "search_http": {
+          "attempts": 576,
+          "successful_responses": 576,
+          "http_status_counts": {
+            "200": 576
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 575,
+            "MISS": 1,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.998264,
+          "hit_share_of_hit_or_miss_responses": 0.998264,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 576,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 576,
+            "p90": 85.6
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 576,
+            "p90": 3783.239
+          }
+        }
+      },
+      "all_phase_diagnostics": {
+        "catalogue_http": {
+          "attempts": 1890,
+          "successful_responses": 1890,
+          "http_status_counts": {
+            "200": 1890
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 1885,
+            "MISS": 5,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.997354,
+          "hit_share_of_hit_or_miss_responses": 0.997354,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 1890,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 1890,
+            "p90": 15.8
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 1890,
+            "p90": 3657.698
+          }
+        },
+        "search_http": {
+          "attempts": 1246,
+          "successful_responses": 1246,
+          "http_status_counts": {
+            "200": 1246
+          },
+          "cache_status_counts_on_successful_responses": {
+            "HIT": 1242,
+            "MISS": 4,
+            "BYPASS": 0,
+            "MISSING_OR_INVALID": 0
+          },
+          "hit_share_of_successful_responses": 0.99679,
+          "hit_share_of_hit_or_miss_responses": 0.99679,
+          "successful_responses_missing_required_diagnostics": 0,
+          "data_ms": {
+            "samples": 1246,
+            "p90": 0.5
+          },
+          "app_ms": {
+            "samples": 1246,
+            "p90": 84.9
+          },
+          "client_minus_instrumented_app_ms": {
+            "samples": 1246,
+            "p90": 3666.485
+          }
+        }
+      },
+      "failure_diagnostics": [],
+      "steady_min_actual_users": 250,
+      "status": "Stopped / target not demonstrated",
+      "finished_at_utc": "2026-11-11T14:14:29.857359+00:00"
+    }
+  ],
+  "previous_100_user_comparison": {
+    "catalogue_http": {
+      "previous_p90_ms": 2204.753,
+      "cache_retest_p90_ms": 332.339,
+      "observed_reduction_percent": 84.93
+    },
+    "search_http": {
+      "previous_p90_ms": 2204.144,
+      "cache_retest_p90_ms": 320.518,
+      "observed_reduction_percent": 85.46
+    }
+  },
+  "render_log_and_resource_observation": "Not supplied yet for this retest; do not reuse earlier-run observations",
+  "interpretation": "Cache active and measured 100-user response time improved; 250-user timing acceptance still failed. Client-minus-instrumented-app time does not isolate queueing, network or platform behavior. No new root cause established.",
+  "profile_scope": "Anonymous catalogue/search GET only, 1\u20133s think time; no browser, authenticated checkout or full-system workload",
+  "sampling_limit": "250-user stage stopped early; these are its observed short-sample metrics, not a completed two-minute steady result. Phase is captured at request initiation and active requests drain before shutdown.",
+  "report_summary": "Latest targeted cache retest 43035954975: 100-user browsing Passed for 120 seconds (catalogue/search p90 0.332s/0.321s). At 250 users, sustained p90 3.807s/3.792s exceeded the unchanged three-second gate and stopped the planned 120-second hold after about 30 seconds. All 9,385 started requests completed with HTTP 200; no recorded request failures or unmatched requests. Steady cache HIT share was about 99.8% per endpoint in both stages. The cache was active, but the tested deployment still missed the 250-user latency gate. 500 users were not run. See supporting/Hosted_Load_43035954975_Review.json.",
+  "next_action": "Stop this tuning cycle and retain the failed capacity finding. Complete remaining NFR evidence/dispositions and final documentation. No unchanged public rerun.",
+  "jira_publication": false
+}

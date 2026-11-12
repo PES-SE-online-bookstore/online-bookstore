@@ -1,0 +1,1980 @@
+{
+  "status": "Automated accessibility violations found",
+  "started_at_utc": "2026-11-12T13:49:24.855Z",
+  "reported_deployed_sha": "cc99379e894c250d0801090d60e502138064d3b4",
+  "harness_sha": "cc99379e894c250d0801090d60e502138064d3b4",
+  "deployment_attribution": "Operator supplied; no runtime build identifier",
+  "scope": "Sequential public, buyer, seller and admin sampled states; desktop 1366x768 and mobile 390x844",
+  "rules": {
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa"
+    ],
+    "standard": "WCAG 2.1 A/AA automatically detectable checks"
+  },
+  "limitations": [
+    "Automated samples do not establish full WCAG conformance; manual criteria and incomplete rules need review",
+    "No server-side form error state is generated; no changes, checkout, emails or admin save actions",
+    "Third-party assets blocked; site CSP is not bypassed; narrow viewport is not a browser-zoom test",
+    "No screenshots, raw DOM, cookies, credentials or storage-state artifacts"
+  ],
+  "pages": [
+    {
+      "role": "public",
+      "name": "login",
+      "path": "/accounts/login/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:26.443Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 20,
+      "inapplicable_rule_count": 41,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:26.979Z"
+    },
+    {
+      "role": "public",
+      "name": "login",
+      "path": "/accounts/login/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:27.980Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 20,
+      "inapplicable_rule_count": 41,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:28.409Z"
+    },
+    {
+      "role": "public",
+      "name": "registration",
+      "path": "/accounts/register/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:29.411Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 21,
+      "inapplicable_rule_count": 40,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:29.847Z"
+    },
+    {
+      "role": "public",
+      "name": "registration",
+      "path": "/accounts/register/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:30.849Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 21,
+      "inapplicable_rule_count": 40,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:31.254Z"
+    },
+    {
+      "role": "public",
+      "name": "reset-request",
+      "path": "/accounts/password-reset/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:32.255Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 19,
+      "inapplicable_rule_count": 42,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:32.661Z"
+    },
+    {
+      "role": "public",
+      "name": "reset-request",
+      "path": "/accounts/password-reset/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:33.662Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 19,
+      "inapplicable_rule_count": 42,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:34.067Z"
+    },
+    {
+      "role": "public",
+      "name": "catalogue",
+      "path": "/books/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:35.068Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 23,
+      "inapplicable_rule_count": 38,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:35.501Z"
+    },
+    {
+      "role": "public",
+      "name": "catalogue",
+      "path": "/books/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:36.503Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 23,
+      "inapplicable_rule_count": 38,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:36.950Z"
+    },
+    {
+      "role": "public",
+      "name": "book-detail",
+      "path": "/books/2/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:37.951Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 15,
+      "inapplicable_rule_count": 46,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:38.373Z"
+    },
+    {
+      "role": "public",
+      "name": "book-detail",
+      "path": "/books/2/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:39.375Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 15,
+      "inapplicable_rule_count": 46,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:39.812Z"
+    },
+    {
+      "role": "buyer",
+      "name": "cart",
+      "path": "/cart/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:43.484Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 18,
+      "inapplicable_rule_count": 43,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:44.196Z"
+    },
+    {
+      "role": "buyer",
+      "name": "cart",
+      "path": "/cart/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:45.197Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 18,
+      "inapplicable_rule_count": 43,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:45.667Z"
+    },
+    {
+      "role": "buyer",
+      "name": "checkout",
+      "path": "/cart/checkout/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:46.668Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 18,
+      "inapplicable_rule_count": 43,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:47.448Z"
+    },
+    {
+      "role": "buyer",
+      "name": "checkout",
+      "path": "/cart/checkout/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:48.448Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 18,
+      "inapplicable_rule_count": 43,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:49.021Z"
+    },
+    {
+      "role": "buyer",
+      "name": "order-history",
+      "path": "/orders/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:50.022Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 17,
+      "inapplicable_rule_count": 44,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:50.650Z"
+    },
+    {
+      "role": "buyer",
+      "name": "order-history",
+      "path": "/orders/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:51.651Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 21,
+          "nodes": [
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "1c2a05448f0219b76084ac540966a7fc82dd39c5f1e88d7fdc551b970356ad74",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "faeef32fdb3c2238dc488e75e60e1bb26c0033bdc7b56a6cc1ec299ab23494d6",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "136868916fcdf51d134eabcefdd860c4a404ef6dd59b9038e704f72de246016c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "230f87ee0f66dae39aff2bc33589a29228437fe37a9aa67c450bd42ceb77886c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "112a39c8a7bbced3aafee347659671bbc6167acf01e9ddccf6c0220ff2d4263c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "39254127caa3d5b19c4013b942358ab5e4f810d32dc9f851508ad36cc0839130",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "fc9510bdb2798f613d30ed1f51303a769023d27db07c39a8db3b907033f23c1e",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "99bc490c1c19f7ff5ff2d90e0829607a66f98c09976d2343b67cd7e88135f8b2",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "74885f68c3dec49e6ca6c005c3b6de71aa34e0e82d322fbad312ddba7e7ee7ab",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "f71e3aa472708a96ab59bd2cafbdd46e6da78885b9b6211d08010f87ef4dd394",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "ffd373d8b3c6a87e5e633b64e4e06dbb2d633c8946a290e599fda34a0e059619",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "ebb34d41aea166d7627884421c27f41850ff04133b50b199d19be3b605367ba4",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "b93a6c7ae3a00d4d427556754acb509f5b029b046f44dc1d6ba43902b995f14b",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "013de3a351bb91d6f95805b592b8de977fda480e73fdee9da8c59791489b75c5",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "9e38579f8adb5be652a62569c3a1d93c2da795c73a7c559b58a28709b0742f0a",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "e6ded5c9106d4a1880f3b88d6f5f349a82fe3e5d3d5460fcb1eac9ff16c87fe8",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "805cfd1ed0a2435a50631b9189d0a5f7628fb1800bfeb4d78ca1d5f3fc7c59f7",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "83a9a30fdb72e01a20f91208e9caef328ea1961a48e584493c8f94c68aad7f32",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "32703544b439e29616793075d3f1fc382a0cc0c776edf084274b773f21aa3a93",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "c21df0969f804bb54a7625aa623d82b39a55351f70cfe10252923bc627447df0",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "6dda7f3bc63384c90ed311b39a9b51a3c7637aafdd33dcda99dff38e1bf7820a",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 18,
+      "inapplicable_rule_count": 43,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:52.274Z"
+    },
+    {
+      "role": "buyer",
+      "name": "order-detail",
+      "path": "/orders/9/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:53.275Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 4,
+          "nodes": [
+            {
+              "selector": ".current > .tracking-marker[attribute-redacted]",
+              "selector_sha256": "73320abda55e4df8ced5905b7b4e6847d02f2feaaeefb8f2026beaa618270de8",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(2) > .tracking-marker[attribute-redacted]",
+              "selector_sha256": "210dd77be0ce652342e16e8894122485f51881e604ea6dd9677f038eaebb6114",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(3) > .tracking-marker[attribute-redacted]",
+              "selector_sha256": "20808655b5acfe44a2b75d9a7eec5e606dc0923dcbb20c9c1db8b7b2b69962a3",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(4) > .tracking-marker[attribute-redacted]",
+              "selector_sha256": "8ac141ada6690bcc87f96089cd164cf861fd4909aeff7c7abaf1ac1fa206a7c6",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 24,
+      "inapplicable_rule_count": 37,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:53.877Z"
+    },
+    {
+      "role": "buyer",
+      "name": "order-detail",
+      "path": "/orders/9/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:54.878Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 24,
+      "inapplicable_rule_count": 37,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:55.508Z"
+    },
+    {
+      "role": "buyer",
+      "name": "wishlist",
+      "path": "/books/wishlist/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:49:56.510Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 16,
+      "inapplicable_rule_count": 45,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:56.985Z"
+    },
+    {
+      "role": "buyer",
+      "name": "wishlist",
+      "path": "/books/wishlist/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:49:57.986Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 16,
+      "inapplicable_rule_count": 45,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:49:58.405Z"
+    },
+    {
+      "role": "seller",
+      "name": "seller-listings",
+      "path": "/books/seller/listings/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:50:02.606Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 16,
+      "inapplicable_rule_count": 45,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:03.153Z"
+    },
+    {
+      "role": "seller",
+      "name": "seller-listings",
+      "path": "/books/seller/listings/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:50:04.153Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 16,
+      "inapplicable_rule_count": 45,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:04.788Z"
+    },
+    {
+      "role": "seller",
+      "name": "seller-create",
+      "path": "/books/seller/create/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:50:05.789Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 22,
+      "inapplicable_rule_count": 39,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:06.251Z"
+    },
+    {
+      "role": "seller",
+      "name": "seller-create",
+      "path": "/books/seller/create/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:50:07.252Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 22,
+      "inapplicable_rule_count": 39,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:07.691Z"
+    },
+    {
+      "role": "seller",
+      "name": "seller-edit",
+      "path": "/books/seller/listings/3/edit/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:50:08.692Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 22,
+      "inapplicable_rule_count": 39,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:09.127Z"
+    },
+    {
+      "role": "seller",
+      "name": "seller-edit",
+      "path": "/books/seller/listings/3/edit/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:50:10.127Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [],
+      "passed_rule_count": 22,
+      "inapplicable_rule_count": 39,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:10.562Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-index",
+      "path": "/admin/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:50:15.037Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 30,
+          "nodes": [
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "89b858bf194f4d5771191e576665bc24046ee377b4ca9580d9855cd78d29909d",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "daffb8b36c147ed1ff5349a5c43db6dfd09d2b29a385ced441ab82fe158da25b",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "79ae620ff67aac105c369a15dc1effea8b4fd02c3d1c3de611580eaf1d9742b6",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "8ba8cb54f3b619429c71b70d289d20d199a748b8c65a9d7d8be0ac50e88b2fe8",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "883708c9c3dbbbf297e85dc3760dc5497e15548843fb68d64ba3f1f545f40c27",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "499ba6bcaba86cf0e23f7bef85b54fd74a954bb7523acf3ee5725b8317ef2447",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "964f50460d60ed0e86670a3259e7cfbb04946df1573076e694cf0061e664614a",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "41a44b8755edfbb0947ab7a7fc1861194d9aed82421f400eeb74011d9a2cf8ec",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "a78e3f98dc81ac616198b515ecafe21b7a0d81220c02c238a674ed6cbe19784f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "23d514dfc3ca32f691cb1596dbffd6ead7756106287335070a633d3fb497a358",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(1) > a[attribute-redacted]",
+              "selector_sha256": "7cca4b823ea3dce06f9f048ed7acd06455ba1356b013066b0a11d0ff3078ff75",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(1) > .mini.quiet",
+              "selector_sha256": "06d69229c1b8b7244f5bc2da4c41344c60799c75395aafd82533445b5976cfe3",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(2) > a[attribute-redacted]",
+              "selector_sha256": "0922857b03eea10556c3297367e0f0a9745a352511c8e72b3586de46ddcab685",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(2) > .mini.quiet",
+              "selector_sha256": "3bd174e1cfd7b826160dd722118e27dad3efde3f492ca0db63e6b1ef8208532c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(3) > a[attribute-redacted]",
+              "selector_sha256": "fb80611f6ac97407cacf49b92af16f83d1d7716721c1513cb8e75dc41e4ccb8f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(3) > .mini.quiet",
+              "selector_sha256": "d6ca68a9b6b31e4be6e94aca75d453f47593f84664a9cadd598fd465b7f76546",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(4) > a[attribute-redacted]",
+              "selector_sha256": "ed58c311b7a4cd79b518fbf13c3234297770a7d6cfbbfa1af26db1e8f7589621",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(4) > .mini.quiet",
+              "selector_sha256": "7c4f494b9f61abf8f98b85bc9226985eb1c50a2b142db8a81387c85e94f05a7c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(5)",
+              "selector_sha256": "f2ac1fe6a0e6d18cdc476612898a430345f53a073dfe43a153b2b053689e5a84",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(5) > .mini.quiet",
+              "selector_sha256": "c285db28828efb2ed1d2437e7428c8fb131d1416011fec5f3ee77849015917f3",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(6)",
+              "selector_sha256": "4d99fea4bcb6f7547c15fb92e2618799d195c9b4a301c83d207a24b14f567165",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(6) > .mini.quiet",
+              "selector_sha256": "af6997486aadb47702eaf0dce0f485dfac162ad19afa2468584d669b3647703d",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(7)",
+              "selector_sha256": "873eda35ec3b9c004abb22fed515b96563d71e682fb0b9092006efd467280478",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(7) > .mini.quiet",
+              "selector_sha256": "52b78ecfb018d0b51bd9255e8c8edfc01bcc37a2cd1a3b7f15d49c0a881e8436",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(8) > a[attribute-redacted]",
+              "selector_sha256": "11e1265e8f3b280bfdde70103fd8032ae98a34ab3a965fef00add3bbd17e2fc2",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(8) > .mini.quiet",
+              "selector_sha256": "47aa6d97cd3c8eb33e18c7e1598d60e0621c2ccadb1d29102d40164c3438bf14",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(9) > a[attribute-redacted]",
+              "selector_sha256": "be1a9781095202fad4e664601918d5bd1716be8b4533190abe6995127a106282",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(9) > .mini.quiet",
+              "selector_sha256": "43b27d78be656f966b780ba6cad977efdeaef50b811d006dc94b3e12ac6d4941",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(10) > a[attribute-redacted]",
+              "selector_sha256": "1de29646ad9efb23c25c52b0054a497022823c1a613af7101ef48f271c1020bd",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(10) > .mini.quiet",
+              "selector_sha256": "6177ceffdb64c1e35ed95660ac0d4986d7068e81d066b2a96c277d201d6f3962",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 21,
+      "inapplicable_rule_count": 40,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:16.196Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-index",
+      "path": "/admin/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:50:17.221Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 30,
+          "nodes": [
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "89b858bf194f4d5771191e576665bc24046ee377b4ca9580d9855cd78d29909d",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "daffb8b36c147ed1ff5349a5c43db6dfd09d2b29a385ced441ab82fe158da25b",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "79ae620ff67aac105c369a15dc1effea8b4fd02c3d1c3de611580eaf1d9742b6",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "8ba8cb54f3b619429c71b70d289d20d199a748b8c65a9d7d8be0ac50e88b2fe8",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "883708c9c3dbbbf297e85dc3760dc5497e15548843fb68d64ba3f1f545f40c27",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "499ba6bcaba86cf0e23f7bef85b54fd74a954bb7523acf3ee5725b8317ef2447",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "964f50460d60ed0e86670a3259e7cfbb04946df1573076e694cf0061e664614a",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "41a44b8755edfbb0947ab7a7fc1861194d9aed82421f400eeb74011d9a2cf8ec",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".addlink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "a78e3f98dc81ac616198b515ecafe21b7a0d81220c02c238a674ed6cbe19784f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".changelink[attribute-redacted][attribute-redacted]",
+              "selector_sha256": "23d514dfc3ca32f691cb1596dbffd6ead7756106287335070a633d3fb497a358",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(1) > a[attribute-redacted]",
+              "selector_sha256": "7cca4b823ea3dce06f9f048ed7acd06455ba1356b013066b0a11d0ff3078ff75",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(1) > .mini.quiet",
+              "selector_sha256": "06d69229c1b8b7244f5bc2da4c41344c60799c75395aafd82533445b5976cfe3",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(2) > a[attribute-redacted]",
+              "selector_sha256": "0922857b03eea10556c3297367e0f0a9745a352511c8e72b3586de46ddcab685",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(2) > .mini.quiet",
+              "selector_sha256": "3bd174e1cfd7b826160dd722118e27dad3efde3f492ca0db63e6b1ef8208532c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(3) > a[attribute-redacted]",
+              "selector_sha256": "fb80611f6ac97407cacf49b92af16f83d1d7716721c1513cb8e75dc41e4ccb8f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(3) > .mini.quiet",
+              "selector_sha256": "d6ca68a9b6b31e4be6e94aca75d453f47593f84664a9cadd598fd465b7f76546",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(4) > a[attribute-redacted]",
+              "selector_sha256": "ed58c311b7a4cd79b518fbf13c3234297770a7d6cfbbfa1af26db1e8f7589621",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(4) > .mini.quiet",
+              "selector_sha256": "7c4f494b9f61abf8f98b85bc9226985eb1c50a2b142db8a81387c85e94f05a7c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(5)",
+              "selector_sha256": "f2ac1fe6a0e6d18cdc476612898a430345f53a073dfe43a153b2b053689e5a84",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(5) > .mini.quiet",
+              "selector_sha256": "c285db28828efb2ed1d2437e7428c8fb131d1416011fec5f3ee77849015917f3",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(6)",
+              "selector_sha256": "4d99fea4bcb6f7547c15fb92e2618799d195c9b4a301c83d207a24b14f567165",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(6) > .mini.quiet",
+              "selector_sha256": "af6997486aadb47702eaf0dce0f485dfac162ad19afa2468584d669b3647703d",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(7)",
+              "selector_sha256": "873eda35ec3b9c004abb22fed515b96563d71e682fb0b9092006efd467280478",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".deletelink:nth-child(7) > .mini.quiet",
+              "selector_sha256": "52b78ecfb018d0b51bd9255e8c8edfc01bcc37a2cd1a3b7f15d49c0a881e8436",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(8) > a[attribute-redacted]",
+              "selector_sha256": "11e1265e8f3b280bfdde70103fd8032ae98a34ab3a965fef00add3bbd17e2fc2",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(8) > .mini.quiet",
+              "selector_sha256": "47aa6d97cd3c8eb33e18c7e1598d60e0621c2ccadb1d29102d40164c3438bf14",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(9) > a[attribute-redacted]",
+              "selector_sha256": "be1a9781095202fad4e664601918d5bd1716be8b4533190abe6995127a106282",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(9) > .mini.quiet",
+              "selector_sha256": "43b27d78be656f966b780ba6cad977efdeaef50b811d006dc94b3e12ac6d4941",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(10) > a[attribute-redacted]",
+              "selector_sha256": "1de29646ad9efb23c25c52b0054a497022823c1a613af7101ef48f271c1020bd",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li:nth-child(10) > .mini.quiet",
+              "selector_sha256": "6177ceffdb64c1e35ed95660ac0d4986d7068e81d066b2a96c277d201d6f3962",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 21,
+      "inapplicable_rule_count": 40,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:18.241Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-books",
+      "path": "/admin/books/book/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:50:19.243Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 7,
+          "nodes": [
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "4b865a1ed003ae95e46ac41d27998df88b0423dfaee2693fd205a94acbb8a81c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "6baaa90715a42fec33c9ddf607e85dd48fb4c3dfcc53922bafbda25a2d751910",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "dc306a8306f3d80e11e27d2e5549296fbd85919ca5508dfd3bfc4959e583231b",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "48b3252a5fb4a5ee3f81dc95a5f24926b99d7cca6d13952bec7f0e2110003310",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "5cc367ab20c7d134a4d4567ec26e3173d886bf8fdca168554f0153f6d6de3832",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li > .addlink[attribute-redacted]",
+              "selector_sha256": "54a2d7aea54255b0b7399fcd4bf8dca04cd6c567c396075cef1a6f5e0d73a4ed",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".viewlink",
+              "selector_sha256": "02a6f2752e9f5040c4c61121c4f6bb0ca7ffb77ee971183de98d09ebec3dd04f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "th-has-data-cells",
+          "impact": "serious",
+          "tags": [
+            "cat.tables",
+            "wcag2a",
+            "wcag131",
+            "section508",
+            "section508.22.g",
+            "TTv5",
+            "TT14.b",
+            "EN-301-549",
+            "EN-9.1.3.1",
+            "RGAAv4",
+            "RGAA-5.7.1"
+          ],
+          "help": "Table headers in a data table must refer to data cells",
+          "help_url": "http[local path omitted]",
+          "node_count": 3,
+          "nodes": [
+            {
+              "selector": ".app-auth > table",
+              "selector_sha256": "76c67bc7a6f66f2db29db5e53e54b489a09581d5097a3c0cada189adec338d25",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            },
+            {
+              "selector": ".current-app > table",
+              "selector_sha256": "a5419b086d1ec8e0b68bbfbf95676d28ec395b679cd66e6ec0f404330f9977d4",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            },
+            {
+              "selector": ".app-orders > table",
+              "selector_sha256": "73d5c0972c0141dc4c65d85895487e3dcccf402d34b4c4969ec3109236435113",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 31,
+      "inapplicable_rule_count": 30,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:20.369Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-books",
+      "path": "/admin/books/book/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:50:21.372Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 2,
+          "nodes": [
+            {
+              "selector": "li > .addlink[attribute-redacted]",
+              "selector_sha256": "54a2d7aea54255b0b7399fcd4bf8dca04cd6c567c396075cef1a6f5e0d73a4ed",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".viewlink",
+              "selector_sha256": "02a6f2752e9f5040c4c61121c4f6bb0ca7ffb77ee971183de98d09ebec3dd04f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 31,
+      "inapplicable_rule_count": 30,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:22.333Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-orders",
+      "path": "/admin/orders/order/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:50:23.334Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 7,
+          "nodes": [
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "4b865a1ed003ae95e46ac41d27998df88b0423dfaee2693fd205a94acbb8a81c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "6baaa90715a42fec33c9ddf607e85dd48fb4c3dfcc53922bafbda25a2d751910",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "dc306a8306f3d80e11e27d2e5549296fbd85919ca5508dfd3bfc4959e583231b",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "48b3252a5fb4a5ee3f81dc95a5f24926b99d7cca6d13952bec7f0e2110003310",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "5cc367ab20c7d134a4d4567ec26e3173d886bf8fdca168554f0153f6d6de3832",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "li > .addlink[attribute-redacted]",
+              "selector_sha256": "54a2d7aea54255b0b7399fcd4bf8dca04cd6c567c396075cef1a6f5e0d73a4ed",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".viewlink",
+              "selector_sha256": "02a6f2752e9f5040c4c61121c4f6bb0ca7ffb77ee971183de98d09ebec3dd04f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "th-has-data-cells",
+          "impact": "serious",
+          "tags": [
+            "cat.tables",
+            "wcag2a",
+            "wcag131",
+            "section508",
+            "section508.22.g",
+            "TTv5",
+            "TT14.b",
+            "EN-301-549",
+            "EN-9.1.3.1",
+            "RGAAv4",
+            "RGAA-5.7.1"
+          ],
+          "help": "Table headers in a data table must refer to data cells",
+          "help_url": "http[local path omitted]",
+          "node_count": 3,
+          "nodes": [
+            {
+              "selector": ".app-auth > table",
+              "selector_sha256": "76c67bc7a6f66f2db29db5e53e54b489a09581d5097a3c0cada189adec338d25",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            },
+            {
+              "selector": ".app-books > table",
+              "selector_sha256": "82ac0a255843389ded31b1bf5b0eef0376e9b3b13f4f9a77e72403388dc680af",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            },
+            {
+              "selector": ".current-app > table",
+              "selector_sha256": "a5419b086d1ec8e0b68bbfbf95676d28ec395b679cd66e6ec0f404330f9977d4",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 30,
+      "inapplicable_rule_count": 31,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:24.538Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-orders",
+      "path": "/admin/orders/order/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:50:25.539Z",
+      "status": "No automatically detected tagged violations",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 2,
+          "nodes": [
+            {
+              "selector": "li > .addlink[attribute-redacted]",
+              "selector_sha256": "54a2d7aea54255b0b7399fcd4bf8dca04cd6c567c396075cef1a6f5e0d73a4ed",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": ".viewlink",
+              "selector_sha256": "02a6f2752e9f5040c4c61121c4f6bb0ca7ffb77ee971183de98d09ebec3dd04f",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 31,
+      "inapplicable_rule_count": 30,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:26.799Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-order-detail",
+      "path": "/admin/orders/order/9/change/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "started_at_utc": "2026-11-12T13:50:27.802Z",
+      "status": "Violations found",
+      "violations": [
+        {
+          "id": "link-in-text-block",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2a",
+            "wcag141",
+            "TTv5",
+            "TT13.a",
+            "EN-301-549",
+            "EN-9.1.4.1",
+            "RGAAv4",
+            "RGAA-10.6.1"
+          ],
+          "help": "Links must be distinguishable without relying on color",
+          "help_url": "http[local path omitted]",
+          "node_count": 3,
+          "nodes": [
+            {
+              "selector": ".breadcrumbs > a[attribute-redacted]",
+              "selector_sha256": "d72c6644b60d3bfdab64103333825684790f5b6b10fe29e056d0620b7851e18f",
+              "check_ids": [
+                "link-in-text-block",
+                "link-in-text-block-style"
+              ]
+            },
+            {
+              "selector": ".breadcrumbs > a[attribute-redacted]",
+              "selector_sha256": "ae899dc87bbe375e4b523c01e50e56bed6a160f146a22c459c38d57650255cc2",
+              "check_ids": [
+                "link-in-text-block",
+                "link-in-text-block-style"
+              ]
+            },
+            {
+              "selector": ".breadcrumbs > a[attribute-redacted]",
+              "selector_sha256": "83f5f826e8e8bfaf8648d9c2cb931409424cc2a2860bf52489d26809f44e9d85",
+              "check_ids": [
+                "link-in-text-block",
+                "link-in-text-block-style"
+              ]
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 6,
+          "nodes": [
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "4b865a1ed003ae95e46ac41d27998df88b0423dfaee2693fd205a94acbb8a81c",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "6baaa90715a42fec33c9ddf607e85dd48fb4c3dfcc53922bafbda25a2d751910",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "dc306a8306f3d80e11e27d2e5549296fbd85919ca5508dfd3bfc4959e583231b",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "48b3252a5fb4a5ee3f81dc95a5f24926b99d7cca6d13952bec7f0e2110003310",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "5cc367ab20c7d134a4d4567ec26e3173d886bf8fdca168554f0153f6d6de3832",
+              "check_ids": [
+                "color-contrast"
+              ]
+            },
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "869989db0a617afba6acda5d77a19811d50ca92be87188a5640a0e00a61e97c9",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "th-has-data-cells",
+          "impact": "serious",
+          "tags": [
+            "cat.tables",
+            "wcag2a",
+            "wcag131",
+            "section508",
+            "section508.22.g",
+            "TTv5",
+            "TT14.b",
+            "EN-301-549",
+            "EN-9.1.3.1",
+            "RGAAv4",
+            "RGAA-5.7.1"
+          ],
+          "help": "Table headers in a data table must refer to data cells",
+          "help_url": "http[local path omitted]",
+          "node_count": 3,
+          "nodes": [
+            {
+              "selector": ".app-auth > table",
+              "selector_sha256": "76c67bc7a6f66f2db29db5e53e54b489a09581d5097a3c0cada189adec338d25",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            },
+            {
+              "selector": ".app-books > table",
+              "selector_sha256": "82ac0a255843389ded31b1bf5b0eef0376e9b3b13f4f9a77e72403388dc680af",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            },
+            {
+              "selector": ".current-app > table",
+              "selector_sha256": "a5419b086d1ec8e0b68bbfbf95676d28ec395b679cd66e6ec0f404330f9977d4",
+              "check_ids": [
+                "th-has-data-cells"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 28,
+      "inapplicable_rule_count": 32,
+      "layout": {
+        "viewport_width": 1366,
+        "document_width": 1366,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:28.881Z"
+    },
+    {
+      "role": "admin",
+      "name": "admin-order-detail",
+      "path": "/admin/orders/order/9/change/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "started_at_utc": "2026-11-12T13:50:29.882Z",
+      "status": "Violations found",
+      "violations": [
+        {
+          "id": "link-in-text-block",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2a",
+            "wcag141",
+            "TTv5",
+            "TT13.a",
+            "EN-301-549",
+            "EN-9.1.4.1",
+            "RGAAv4",
+            "RGAA-10.6.1"
+          ],
+          "help": "Links must be distinguishable without relying on color",
+          "help_url": "http[local path omitted]",
+          "node_count": 3,
+          "nodes": [
+            {
+              "selector": ".breadcrumbs > a[attribute-redacted]",
+              "selector_sha256": "d72c6644b60d3bfdab64103333825684790f5b6b10fe29e056d0620b7851e18f",
+              "check_ids": [
+                "link-in-text-block",
+                "link-in-text-block-style"
+              ]
+            },
+            {
+              "selector": ".breadcrumbs > a[attribute-redacted]",
+              "selector_sha256": "ae899dc87bbe375e4b523c01e50e56bed6a160f146a22c459c38d57650255cc2",
+              "check_ids": [
+                "link-in-text-block",
+                "link-in-text-block-style"
+              ]
+            },
+            {
+              "selector": ".breadcrumbs > a[attribute-redacted]",
+              "selector_sha256": "83f5f826e8e8bfaf8648d9c2cb931409424cc2a2860bf52489d26809f44e9d85",
+              "check_ids": [
+                "link-in-text-block",
+                "link-in-text-block-style"
+              ]
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "help_url": "http[local path omitted]",
+          "node_count": 1,
+          "nodes": [
+            {
+              "selector": "a[attribute-redacted]",
+              "selector_sha256": "869989db0a617afba6acda5d77a19811d50ca92be87188a5640a0e00a61e97c9",
+              "check_ids": [
+                "color-contrast"
+              ]
+            }
+          ]
+        }
+      ],
+      "passed_rule_count": 27,
+      "inapplicable_rule_count": 33,
+      "layout": {
+        "viewport_width": 390,
+        "document_width": 390,
+        "horizontal_overflow": false
+      },
+      "finished_at_utc": "2026-11-12T13:50:30.849Z"
+    }
+  ],
+  "role_results": [
+    {
+      "role": "public",
+      "status": "Scanned"
+    },
+    {
+      "role": "buyer",
+      "status": "Scanned"
+    },
+    {
+      "role": "seller",
+      "status": "Scanned"
+    },
+    {
+      "role": "admin",
+      "status": "Scanned"
+    }
+  ],
+  "errors": [],
+  "blocked_mutations": 0,
+  "browser": "151.0.7922.34",
+  "axe_version": "4.11.4",
+  "summary": {
+    "page_states_scanned": 34,
+    "expected_page_states": 34,
+    "violation_rule_occurrences": 2,
+    "incomplete_rule_occurrences": 13,
+    "roles_missing_or_incomplete": 0,
+    "scan_failures": 0,
+    "horizontal_overflow_samples": 0
+  },
+  "finished_at_utc": "2026-11-12T13:50:31.880Z"
+}

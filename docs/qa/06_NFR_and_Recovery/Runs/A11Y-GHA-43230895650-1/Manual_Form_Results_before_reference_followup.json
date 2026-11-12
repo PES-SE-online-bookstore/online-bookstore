@@ -1,0 +1,40 @@
+{
+  "reported_on": "2026-11-12",
+  "evidence_source": "User-reported live Firefox accessibility properties in QA chat",
+  "browser_reported": "Firefox 159",
+  "browser_full_patch_version": "Not supplied",
+  "manual_execution_sha": "Not supplied",
+  "manual_execution_timestamp": "Not supplied",
+  "page": "/accounts/register/",
+  "empty_form_message_and_focus": "Passed",
+  "password_mismatch_message_verbatim": "Passwords do not match",
+  "account_creation": "User reports creation rejected due to mismatch; no success",
+  "confirm_password": {
+    "accessible_name": "Confirm password",
+    "role": "password text",
+    "accessible_name_result": "Passed",
+    "invalid_state_exposed": true,
+    "invalid_state_result": "Passed",
+    "description_reported": "",
+    "relations_reported": [
+      "labelled by: Confirm password",
+      "node child of",
+      "default button: Create Account",
+      "containing document: Create Account | Online Bookstore"
+    ],
+    "error_association_live": "Not verified; supplied tree has no explicit error description/relationship"
+  },
+  "local_rendered_reproduction": {
+    "source_commit": "89c2168406ae355c082d143e775548bd726dfcee",
+    "attribute": "aria-describedby=\"id_confirm_password_error\"",
+    "referenced_id_exists": false,
+    "error_container": "ul.field-errors role=alert with no id",
+    "result": "Broken error-description reference reproduced locally",
+    "scope": "Synthetic in-memory SQLite; no production requests; current live DOM not independently checked"
+  },
+  "breadcrumb": "Unresolved per prior user decision",
+  "axe_incomplete_checks": 13,
+  "screen_reader_announcements": "Not tested/reported",
+  "product_changes": false,
+  "git_or_jira_changes": false
+}

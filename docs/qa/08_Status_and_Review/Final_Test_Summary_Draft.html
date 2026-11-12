@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Final_Test_Summary_Draft</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui}table{display:block;overflow:auto;border-collapse:collapse}td,th{border:1px solid #ccd4dc;padding:9px;text-align:left;vertical-align:top;overflow-wrap:anywhere}pre{white-space:pre-wrap}</style><main><h1>Final test summary</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>Final automated source: <code>92247d31739eed30e0d769865869869b384a2ba6</code>. <a href="https://github.com/PES-SE-online-bookstore/online-bookstore/actions/runs/43241415099">CI run</a>. Historical manual and deployed checks retain the distinct builds/dates shown in their evidence.</p>
+<p>Status: <strong>QA execution completed for the revised scope, with findings and untested/unverified targets retained.</strong></p>
+<p>Final CI: 294 Passed,18 Unit/276 Integration; duration 66.125s. Statements 91.85%, branches 84.01%, defined core 92.68%. Case register: 373 records,368 Passed,2 Failed,3 Not run;31 requirement mappings.</p>
+<table><thead><tr><th>Finding/limit</th><th>Final disposition</th></tr></thead><tbody>
+<tr><td>250-user browsing response time</td><td>Failed; p90 3.807/3.792 s exceeded 3 s; original evidence retained</td></tr>
+<tr><td>Admin order-edit breadcrumb links</td><td>Unresolved WCAG 1.4.1 automated finding; user chose to retain it</td></tr>
+<tr><td>500-user capacity</td><td>Not tested; no further execution planned</td></tr>
+<tr><td>Monthly 99.5% availability</td><td>Not tested; no full-month history</td></tr>
+<tr><td>Backup/recovery</td><td>Fresh scoped checks Passed, schedule improved; historical &gt;24h gap/full production RPO/RTO remain unverified</td></tr>
+<tr><td>Accessibility limits</td><td>Manual sweeps/checks reported satisfactory; per-node ratios/role details and screen-reader speech not supplied; no full conformance claim</td></tr>
+<tr><td>Broad HTTPS CSP image sources</td><td>Retained nonblocking security observation</td></tr>
+<tr><td>Mock payment / review eligibility</td><td>No gateway tokenization or genuine paid-payment acceptance; paid-purchase-only review restriction not established</td></tr>
+<tr><td>Developer implementation gaps</td><td>Seller approval/rejection notifications (D-07) and application request throttling (D-08) remain unimplemented per the developer register; decision statuses retained</td></tr>
+<tr><td>Registration error association</td><td>Reference visible and target existence user-reported; local broken-reference result not promoted to confirmed live defect</td></tr>
+</tbody></table>
+<p>Historical reset expiry, assigned seller, cover rendering and real email delivery findings were fixed/retested or revised as documented. The email-login assertion was revised to username/session behavior; it was not hidden as an application fix. Original failed CI/run evidence remains preserved.</p>
+<p>Checkout performance and current-build isolated recovery Passed. The scoped accessibility assessment is complete with an unresolved breadcrumb finding and recorded evidence limits. Eight functional/security/regression work items retain their scoped completed execution; OBP-48 revised-scope execution is complete with findings and untested/unverified targets. Final QA documents are ready for user publication, not an all-requirements acceptance statement.</p></main></html>

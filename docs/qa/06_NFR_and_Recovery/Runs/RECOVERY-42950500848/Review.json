@@ -1,0 +1,16 @@
+{
+  "client_date": "2026-11-11",
+  "zip_sha256": "2a852144261e00a7225db2f1d55e0804680fe5cb679333473b2159b5b0ca1dd3",
+  "database_identity": {
+    "expected_name": "online_bookstore_uav4",
+    "connected_name": "online_bookstore_uav4"
+  },
+  "source_identity_match": true,
+  "snapshot_export_reached": true,
+  "backup_creation": "Failed",
+  "restore_attempted": false,
+  "raw_pg_dump_stderr": "Not present in submitted artifact; exact error not independently observable",
+  "local_fix": "Explicit --dbname for pg_dump/pg_restore; safe error categories, versions and remote-restore guard",
+  "hosted_fix_validation": "Pending user push and new workflow run",
+  "obp48_complete": false
+}

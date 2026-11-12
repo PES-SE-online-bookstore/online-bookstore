@@ -1,0 +1,231 @@
+{
+  "run": "A11Y-GHA-43230895650-1",
+  "workflow_url": "http[local path omitted]",
+  "artifact_sha256": "8e098bb145f2fecb183e6e0f76f2de5377bba12ceda38d01c89a5671cd7d0cbf",
+  "reported_deployed_sha": "cc99379e894c250d0801090d60e502138064d3b4",
+  "harness_sha": "cc99379e894c250d0801090d60e502138064d3b4",
+  "started_at_utc": "2026-11-12T13:49:24.855Z",
+  "finished_at_utc": "2026-11-12T13:50:31.880Z",
+  "execution_status": "Completed all planned automated samples; zero scan/role failures",
+  "accessibility_status": "Automated violation found; manual review incomplete; no conformance pass",
+  "page_viewport_samples": 34,
+  "violation_rule_occurrences": 2,
+  "distinct_rule_page_findings": 1,
+  "distinct_flagged_elements": 3,
+  "violation": {
+    "id": "link-in-text-block",
+    "page": "Admin Order #9 change form",
+    "selector": ".breadcrumbs > a",
+    "viewports": [
+      1366,
+      390
+    ],
+    "tool_impact": "serious",
+    "wcag": "1.4.1 Use of Color"
+  },
+  "incomplete_occurrences": {
+    "color-contrast": 10,
+    "th-has-data-cells": 3
+  },
+  "incomplete_sample_count": 10,
+  "manual_review_groups": [
+    {
+      "page": "order-history",
+      "role": "buyer",
+      "width": 390,
+      "rule": "color-contrast",
+      "nodes": 21,
+      "selectors": [
+        "a[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "order-detail",
+      "role": "buyer",
+      "width": 1366,
+      "rule": "color-contrast",
+      "nodes": 4,
+      "selectors": [
+        ".current > .tracking-marker[attribute-redacted]",
+        "li:nth-child(2) > .tracking-marker[attribute-redacted]",
+        "li:nth-child(3) > .tracking-marker[attribute-redacted]",
+        "li:nth-child(4) > .tracking-marker[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-index",
+      "role": "admin",
+      "width": 1366,
+      "rule": "color-contrast",
+      "nodes": 30,
+      "selectors": [
+        ".addlink[attribute-redacted][attribute-redacted]",
+        ".changelink[attribute-redacted][attribute-redacted]",
+        ".deletelink:nth-child(5)",
+        ".deletelink:nth-child(5) > .mini.quiet",
+        ".deletelink:nth-child(6)",
+        ".deletelink:nth-child(6) > .mini.quiet",
+        ".deletelink:nth-child(7)",
+        ".deletelink:nth-child(7) > .mini.quiet",
+        "li:nth-child(1) > .mini.quiet",
+        "li:nth-child(1) > a[attribute-redacted]",
+        "li:nth-child(10) > .mini.quiet",
+        "li:nth-child(10) > a[attribute-redacted]",
+        "li:nth-child(2) > .mini.quiet",
+        "li:nth-child(2) > a[attribute-redacted]",
+        "li:nth-child(3) > .mini.quiet",
+        "li:nth-child(3) > a[attribute-redacted]",
+        "li:nth-child(4) > .mini.quiet",
+        "li:nth-child(4) > a[attribute-redacted]",
+        "li:nth-child(8) > .mini.quiet",
+        "li:nth-child(8) > a[attribute-redacted]",
+        "li:nth-child(9) > .mini.quiet",
+        "li:nth-child(9) > a[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-index",
+      "role": "admin",
+      "width": 390,
+      "rule": "color-contrast",
+      "nodes": 30,
+      "selectors": [
+        ".addlink[attribute-redacted][attribute-redacted]",
+        ".changelink[attribute-redacted][attribute-redacted]",
+        ".deletelink:nth-child(5)",
+        ".deletelink:nth-child(5) > .mini.quiet",
+        ".deletelink:nth-child(6)",
+        ".deletelink:nth-child(6) > .mini.quiet",
+        ".deletelink:nth-child(7)",
+        ".deletelink:nth-child(7) > .mini.quiet",
+        "li:nth-child(1) > .mini.quiet",
+        "li:nth-child(1) > a[attribute-redacted]",
+        "li:nth-child(10) > .mini.quiet",
+        "li:nth-child(10) > a[attribute-redacted]",
+        "li:nth-child(2) > .mini.quiet",
+        "li:nth-child(2) > a[attribute-redacted]",
+        "li:nth-child(3) > .mini.quiet",
+        "li:nth-child(3) > a[attribute-redacted]",
+        "li:nth-child(4) > .mini.quiet",
+        "li:nth-child(4) > a[attribute-redacted]",
+        "li:nth-child(8) > .mini.quiet",
+        "li:nth-child(8) > a[attribute-redacted]",
+        "li:nth-child(9) > .mini.quiet",
+        "li:nth-child(9) > a[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-books",
+      "role": "admin",
+      "width": 1366,
+      "rule": "color-contrast",
+      "nodes": 7,
+      "selectors": [
+        ".viewlink",
+        "a[attribute-redacted]",
+        "li > .addlink[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-books",
+      "role": "admin",
+      "width": 1366,
+      "rule": "th-has-data-cells",
+      "nodes": 3,
+      "selectors": [
+        ".app-auth > table",
+        ".app-orders > table",
+        ".current-app > table"
+      ]
+    },
+    {
+      "page": "admin-books",
+      "role": "admin",
+      "width": 390,
+      "rule": "color-contrast",
+      "nodes": 2,
+      "selectors": [
+        ".viewlink",
+        "li > .addlink[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-orders",
+      "role": "admin",
+      "width": 1366,
+      "rule": "color-contrast",
+      "nodes": 7,
+      "selectors": [
+        ".viewlink",
+        "a[attribute-redacted]",
+        "li > .addlink[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-orders",
+      "role": "admin",
+      "width": 1366,
+      "rule": "th-has-data-cells",
+      "nodes": 3,
+      "selectors": [
+        ".app-auth > table",
+        ".app-books > table",
+        ".current-app > table"
+      ]
+    },
+    {
+      "page": "admin-orders",
+      "role": "admin",
+      "width": 390,
+      "rule": "color-contrast",
+      "nodes": 2,
+      "selectors": [
+        ".viewlink",
+        "li > .addlink[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-order-detail",
+      "role": "admin",
+      "width": 1366,
+      "rule": "color-contrast",
+      "nodes": 6,
+      "selectors": [
+        "a[attribute-redacted]"
+      ]
+    },
+    {
+      "page": "admin-order-detail",
+      "role": "admin",
+      "width": 1366,
+      "rule": "th-has-data-cells",
+      "nodes": 3,
+      "selectors": [
+        ".app-auth > table",
+        ".app-books > table",
+        ".current-app > table"
+      ]
+    },
+    {
+      "page": "admin-order-detail",
+      "role": "admin",
+      "width": 390,
+      "rule": "color-contrast",
+      "nodes": 1,
+      "selectors": [
+        "a[attribute-redacted]"
+      ]
+    }
+  ],
+  "public_scan_mutations": "Artifact records zero blocked mutation attempts; only authentication POSTs allowed by harness",
+  "source_limits": [
+    "Live SHA is operator-supplied, not an independent runtime build identifier",
+    "No raw DOM, screenshots, CSS contrast measurements or manual WCAG results in this artifact",
+    "Incomplete checks are neither confirmed defects nor passes; offscreen/hidden/decorative context needs review",
+    "A clean automated sample does not establish full WCAG conformance"
+  ],
+  "case": "OBP48-UX-006 remains incomplete with a recorded automated finding",
+  "obp48_status": "In Progress",
+  "product_changes": false,
+  "commits_pushes_or_jira_updates": false
+}

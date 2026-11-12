@@ -1,0 +1,96 @@
+{
+  "recorded_at_utc": "2026-11-09T09:40:29.192154+00:00",
+  "target": "online-bookstore-10nn.onrender.com",
+  "client": "OpenSSL 3.6.1 27 Jan 2026 (Library: OpenSSL 3.6.1 27 Jan 2026)",
+  "scope": "Explicit protocol offers; lowered client cipher security level only for these probes, no server configuration changed",
+  "results": [
+    {
+      "protocol": "TLSv1.0",
+      "outcome": "Rejected by peer: protocol version alert",
+      "exit_code": 1,
+      "command": [
+        "[local path omitted] Files\\FireDaemon OpenSSL 3\\bin\\openssl.exe",
+        "s_client",
+        "-connect",
+        "online-bookstore-10nn.onrender.com:443",
+        "-servername",
+        "online-bookstore-10nn.onrender.com",
+        "-tls1",
+        "-brief",
+        "-cipher",
+        "ALL:@SECLEVEL=0",
+        "-CAfile",
+        "[local workspace]\\SE MP Git\\online-bookstore\\qa-results\\tools\\security-venv\\Lib\\site-packages\\certifi\\cacert.pem",
+        "-verify_hostname",
+        "online-bookstore-10nn.onrender.com",
+        "-verify_return_error"
+      ]
+    },
+    {
+      "protocol": "TLSv1.1",
+      "outcome": "Rejected by peer: protocol version alert",
+      "exit_code": 1,
+      "command": [
+        "[local path omitted] Files\\FireDaemon OpenSSL 3\\bin\\openssl.exe",
+        "s_client",
+        "-connect",
+        "online-bookstore-10nn.onrender.com:443",
+        "-servername",
+        "online-bookstore-10nn.onrender.com",
+        "-tls1_1",
+        "-brief",
+        "-cipher",
+        "ALL:@SECLEVEL=0",
+        "-CAfile",
+        "[local workspace]\\SE MP Git\\online-bookstore\\qa-results\\tools\\security-venv\\Lib\\site-packages\\certifi\\cacert.pem",
+        "-verify_hostname",
+        "online-bookstore-10nn.onrender.com",
+        "-verify_return_error"
+      ]
+    },
+    {
+      "protocol": "TLSv1.2",
+      "outcome": "Accepted",
+      "exit_code": 0,
+      "command": [
+        "[local path omitted] Files\\FireDaemon OpenSSL 3\\bin\\openssl.exe",
+        "s_client",
+        "-connect",
+        "online-bookstore-10nn.onrender.com:443",
+        "-servername",
+        "online-bookstore-10nn.onrender.com",
+        "-tls1_2",
+        "-brief",
+        "-cipher",
+        "ALL:@SECLEVEL=0",
+        "-CAfile",
+        "[local workspace]\\SE MP Git\\online-bookstore\\qa-results\\tools\\security-venv\\Lib\\site-packages\\certifi\\cacert.pem",
+        "-verify_hostname",
+        "online-bookstore-10nn.onrender.com",
+        "-verify_return_error"
+      ]
+    },
+    {
+      "protocol": "TLSv1.3",
+      "outcome": "Accepted",
+      "exit_code": 0,
+      "command": [
+        "[local path omitted] Files\\FireDaemon OpenSSL 3\\bin\\openssl.exe",
+        "s_client",
+        "-connect",
+        "online-bookstore-10nn.onrender.com:443",
+        "-servername",
+        "online-bookstore-10nn.onrender.com",
+        "-tls1_3",
+        "-brief",
+        "-cipher",
+        "ALL:@SECLEVEL=0",
+        "-CAfile",
+        "[local workspace]\\SE MP Git\\online-bookstore\\qa-results\\tools\\security-venv\\Lib\\site-packages\\certifi\\cacert.pem",
+        "-verify_hostname",
+        "online-bookstore-10nn.onrender.com",
+        "-verify_return_error"
+      ]
+    }
+  ]
+}

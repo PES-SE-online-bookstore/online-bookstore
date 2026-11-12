@@ -1,0 +1,139 @@
+{
+  "run_id": "LOAD-001",
+  "started_at_utc": "2026-11-11T04:29:58.235720+00:00",
+  "target": "http[local path omitted]",
+  "status": "Stopped: stage gate failed; higher stages not run",
+  "locust_version": "2.47.0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "package_versions": {
+    "locust": "2.47.0",
+    "gevent": "26.9.0",
+    "requests": "2.34.2",
+    "psutil": "7.2.2"
+  },
+  "readiness": "User reports Render logs open and ready; permissions assumed per user instruction",
+  "workload": "Anonymous catalogue/search HTML GET only; 3:2 random task weighting; 1-3s think time",
+  "measurement": "HTTP request timing, not rendered browser page timing; independent sessions per virtual user",
+  "instrumentation_browser": "Up to one additional sequential browser may measure page loads during the 10-VU stage; report its traffic separately (10 VUs plus one measurement browser).",
+  "latency_gate": "p90 <=3000ms per browsing endpoint; comparison to one-user baseline will also be reported. This is an operational stop/acceptance threshold, not proof of every interpretation of no degradation.",
+  "profiles": [
+    {
+      "users": 1,
+      "spawn_rate": 1,
+      "steady_seconds": 60
+    },
+    {
+      "users": 10,
+      "spawn_rate": 1,
+      "steady_seconds": 300
+    },
+    {
+      "users": 50,
+      "spawn_rate": 5,
+      "steady_seconds": 120
+    },
+    {
+      "users": 100,
+      "spawn_rate": 10,
+      "steady_seconds": 120
+    },
+    {
+      "users": 250,
+      "spawn_rate": 10,
+      "steady_seconds": 120
+    },
+    {
+      "users": 500,
+      "spawn_rate": 10,
+      "steady_seconds": 600
+    }
+  ],
+  "stop_conditions": [
+    "Any HTTP/timeout/correctness error",
+    "Sustained p90>3000ms",
+    "Generator saturation",
+    "Operator STOP file"
+  ],
+  "limitations": [
+    "No authenticated checkout workload",
+    "Not a full-system 500-user acceptance test",
+    "Current public deployed SHA not exposed by app; last reviewed application baseline afdb5b14",
+    "Warmup/ramp excluded only from steady metrics; all requests retained in CSV",
+    "Generator resources are measured; Render resources/log observations come from operator"
+  ],
+  "preflight": [
+    {
+      "path": "/health/",
+      "started_at_utc": "2026-11-11T04:29:58.430963+00:00",
+      "status": 200,
+      "elapsed_ms": 7922.0,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true
+    },
+    {
+      "path": "/books/",
+      "started_at_utc": "2026-11-11T04:30:06.357369+00:00",
+      "status": 200,
+      "elapsed_ms": 4218.0,
+      "server": "cloudflare",
+      "render_origin": "gunicorn",
+      "healthy": true
+    }
+  ],
+  "stages": [
+    {
+      "users": 1,
+      "spawn_rate_per_second": 1,
+      "steady_target_seconds": 60,
+      "warmup_seconds_after_target_reached": 10,
+      "started_at_utc": "2026-11-11T04:30:10.573589+00:00",
+      "phase": "finished",
+      "requests_completed": 14,
+      "max_actual_users": 1,
+      "max_generator_cpu_percent": 3.1,
+      "max_generator_rss_mb": 64.72,
+      "target_reached_at_utc": "2026-11-11T04:30:11.587261+00:00",
+      "elapsed_seconds": 71.766,
+      "steady_started_at_utc": "2026-11-11T04:30:21.697235+00:00",
+      "steady_elapsed_seconds": 60.641,
+      "steady_complete": true,
+      "steady_metrics": {
+        "catalogue_http": {
+          "attempts": 7,
+          "failures": 0,
+          "p90_ms": 3730.643,
+          "max_ms": 3730.643,
+          "at_or_below_3000ms": 6
+        },
+        "search_http": {
+          "attempts": 6,
+          "failures": 0,
+          "p90_ms": 4191.124,
+          "max_ms": 4191.124,
+          "at_or_below_3000ms": 3
+        }
+      },
+      "all_phase_metrics": {
+        "catalogue_http": {
+          "attempts": 8,
+          "failures": 0,
+          "p90_ms": 12563.713,
+          "max_ms": 12563.713,
+          "at_or_below_3000ms": 6
+        },
+        "search_http": {
+          "attempts": 6,
+          "failures": 0,
+          "p90_ms": 4191.124,
+          "max_ms": 4191.124,
+          "at_or_below_3000ms": 3
+        }
+      },
+      "steady_min_actual_users": 1,
+      "status": "Stopped / target not demonstrated",
+      "finished_at_utc": "2026-11-11T04:31:22.548282+00:00"
+    }
+  ],
+  "finished_at_utc": "2026-11-11T04:31:22.549274+00:00"
+}

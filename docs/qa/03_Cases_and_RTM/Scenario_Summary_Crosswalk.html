@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Scenario_Summary_Crosswalk</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui}table{display:block;overflow:auto;border-collapse:collapse}td,th{border:1px solid #ccd4dc;padding:9px;text-align:left;vertical-align:top;overflow-wrap:anywhere}pre{white-space:pre-wrap}</style><main><h1>Scenario-summary crosswalk</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>The developer&#x27;s32 summary scenarios link to the 373-row detailed register below. Requirement mapping is not acceptance or proof that every method tests the entire scenario. Exact full case IDs are in the adjacent JSON.</p>
+<table><thead><tr><th>Scenario</th><th>Requirements</th><th>Linked case entries</th><th>Result summary</th></tr></thead><tbody>
+<tr><td>TC-Auth-01</td><td>BOOK-F-001</td><td>26</td><td>Passed</td></tr>
+<tr><td>TC-Auth-02</td><td>BOOK-F-002</td><td>22</td><td>Passed</td></tr>
+<tr><td>TC-Auth-03</td><td>BOOK-F-003</td><td>11</td><td>Passed</td></tr>
+<tr><td>TC-Auth-04</td><td>BOOK-F-004</td><td>12</td><td>Passed (the expiry check failed on 2026-11-03 and was fixed; see <code>qa/history/</code>)</td></tr>
+<tr><td>TC-Cat-01</td><td>BOOK-F-005</td><td>29</td><td>Passed</td></tr>
+<tr><td>TC-Cat-02</td><td>BOOK-F-006</td><td>32</td><td>Passed</td></tr>
+<tr><td>TC-Cat-03</td><td>BOOK-F-007</td><td>12</td><td>Passed</td></tr>
+<tr><td>TC-Cart-01</td><td>BOOK-F-008</td><td>18</td><td>Passed</td></tr>
+<tr><td>TC-Cart-02</td><td>BOOK-F-009</td><td>16</td><td>Passed</td></tr>
+<tr><td>TC-Cart-03</td><td>BOOK-F-010</td><td>12</td><td>Passed against the <strong>mock</strong> only; gateway acceptance not verified</td></tr>
+<tr><td>TC-Ord-01</td><td>BOOK-F-011</td><td>11</td><td>Passed</td></tr>
+<tr><td>TC-Ord-02</td><td>BOOK-F-012</td><td>12</td><td>Passed (manual status, no shipping API: D-06)</td></tr>
+<tr><td>TC-Ord-03</td><td>BOOK-F-013</td><td>27</td><td>Passed</td></tr>
+<tr><td>TC-Sell-01</td><td>BOOK-F-014</td><td>11</td><td>Passed</td></tr>
+<tr><td>TC-Sell-02</td><td>BOOK-F-015</td><td>19</td><td>Passed</td></tr>
+<tr><td>TC-Admin-01</td><td>BOOK-F-016</td><td>22</td><td>Approval/visibility checks Passed. Seller decision notification is unimplemented per developer D-07; full notification criterion not claimed Passed.</td></tr>
+<tr><td>TC-Admin-02</td><td>BOOK-F-017</td><td>17</td><td>Passed</td></tr>
+<tr><td>TC-Rev-01</td><td>BOOK-F-018</td><td>21</td><td>Passed within ordered-item/mock-payment scope. Verified-paid-purchase-only enforcement is not established.</td></tr>
+<tr><td>TC-Rev-02</td><td>BOOK-F-019</td><td>10</td><td>Passed</td></tr>
+<tr><td>TC-Rev-03</td><td>BOOK-F-020</td><td>15</td><td>Automated checks Passed. User reports correct real Confirmed/Shipped/Delivered messages for Order #6, each arriving in about five seconds. These are samples, not a delivery percentile.</td></tr>
+<tr><td>TC-Perf-01</td><td>BOOK-NF-001</td><td>3</td><td>Passed those declared samples: catalogue/search p90 0.136/0.142 s; checkout 20/20 correct, p90 0.1911 s during ten browsing VUs. Build/timing boundaries retained. Separate 250-user capacity failure is not a normal-load pass.</td></tr>
+<tr><td>TC-Perf-02</td><td>BOOK-NF-002</td><td>28</td><td>500 users Not tested per user execution scope. Latest 250-user timing Failed at 3.807/3.792 s against 3 s; 100-user sample Passed. Earlier 503 evidence preserved separately.</td></tr>
+<tr><td>TC-Perf-03</td><td>BOOK-NF-002, BOOK-NF-001</td><td>31</td><td>26 cache Integration tests Passed. Correctness support does not establish concurrent-user capacity.</td></tr>
+<tr><td>TC-Avail-01</td><td>BOOK-NF-003</td><td>4</td><td>Health integration checks Passed. Full-month 99.5% availability Not tested per user scope decision.</td></tr>
+<tr><td>TC-UX-01</td><td>BOOK-NF-004</td><td>6</td><td>Executed sampled audit: 34/34 scans; unresolved admin breadcrumb finding; 24 manual keyboard/zoom/reflow passes plus form/contrast/table reports. Original incomplete checks/evidence limits retained; full conformance and speech not established.</td></tr>
+<tr><td>TC-Cov-01</td><td>BOOK-NF-005</td><td>0</td><td>Defined 20-file core: 1013/1093=92.68%, exceeds 70%. Overall statements 91.85%, branches 84.01%. Scope listed in Core_Coverage_Scope.json.</td></tr>
+<tr><td>TC-Ops-02</td><td>BOOK-NF-006</td><td>4</td><td>Fresh backup/temp restore Passed. Isolated recovery matched 22 tables/258 rows, usable 2.675 s. Twice-daily schedule published. Historical &gt;24-hour gap and complete production RPO/RTO remain unverified.</td></tr>
+<tr><td>TC-Sec-01</td><td>BOOK-SR-001</td><td>8</td><td>Passed live; unit tests mock the connection</td></tr>
+<tr><td>TC-Sec-02</td><td>BOOK-SR-002</td><td>4</td><td>Passed</td></tr>
+<tr><td>TC-Sec-03</td><td>BOOK-SR-003</td><td>1</td><td><strong>Not verified</strong></td></tr>
+<tr><td>TC-Sec-04</td><td>BOOK-SR-004</td><td>62</td><td>Passed</td></tr>
+<tr><td>TC-Sec-05</td><td>BOOK-SR-005</td><td>28</td><td>Mapped integration checks Passed. Scoped security/static/dependency/dynamic-scan evidence is retained in the QA packet; comprehensive penetration/fuzz coverage is not established.</td></tr>
+</tbody></table></main></html>

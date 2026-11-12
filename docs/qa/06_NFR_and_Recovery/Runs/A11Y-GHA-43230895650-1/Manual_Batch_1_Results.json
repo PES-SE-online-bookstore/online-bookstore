@@ -1,0 +1,90 @@
+{
+  "reported_on": "2026-11-12",
+  "evidence_source": "User-reported per-page results in QA chat",
+  "execution_date_time": "Not separately supplied",
+  "browser_exact_version": "Not supplied",
+  "execution_build_sha": "Not supplied for this manual batch; do not automatically assign the earlier scan SHA",
+  "pages": [
+    {
+      "role": "buyer",
+      "path": "/cart/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    },
+    {
+      "role": "buyer",
+      "path": "/cart/checkout/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    },
+    {
+      "role": "buyer",
+      "path": "/orders/9/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    },
+    {
+      "role": "seller",
+      "path": "/books/seller/listings/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    },
+    {
+      "role": "seller",
+      "path": "/books/seller/create/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    },
+    {
+      "role": "admin",
+      "path": "/admin/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    },
+    {
+      "role": "admin",
+      "path": "/admin/books/book/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    },
+    {
+      "role": "admin",
+      "path": "/admin/orders/order/9/change/",
+      "keyboard_focus": "Passed",
+      "zoom_200_percent": "Passed",
+      "reflow_400_percent": "Passed",
+      "reported_issues": "None"
+    }
+  ],
+  "recorded_passes": 24,
+  "breadcrumb_decision": {
+    "source": "User instruction in QA chat",
+    "disposition": "Unresolved finding retained; no fix/retest planned at present",
+    "finding": "Admin order breadcrumb link-in-text-block, three links in two viewports",
+    "automated_result_unchanged": true
+  },
+  "remaining": {
+    "axe_incomplete_occurrences": 13,
+    "contrast": 10,
+    "table_headers": 3,
+    "form_error_and_assistive_technology_checks": "Pending",
+    "full_wcag_conformance": "Not established"
+  },
+  "obp48_status": "In Progress",
+  "aggregate_workbook_report_refresh": "Pending",
+  "git_or_jira_changes": false
+}

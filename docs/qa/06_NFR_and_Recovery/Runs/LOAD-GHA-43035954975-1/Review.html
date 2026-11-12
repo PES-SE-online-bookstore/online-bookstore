@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Review</title><style>body{font:16px/1.55 Segoe UI,Arial,sans-serif;max-width:1150px;margin:40px auto;padding:0 26px;color:#182334}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:32px}a{color:#1557a0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #d7dee7;padding:9px;text-align:left;vertical-align:top}th{background:#eaf0f7}tr:nth-child(even){background:#f7f9fc}code,pre{font-family:Consolas,monospace}pre{padding:14px;background:#f0f3f7;white-space:pre-wrap;overflow-wrap:anywhere}li{margin-bottom:7px}p{overflow-wrap:anywhere}.status{color:#754400} @media print{body{margin:10mm;font-size:11pt}a{color:inherit}pre,table{font-size:9pt}}</style><body><h1>Targeted cache retest — run 43035954975</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>11 November 2026, 14:10:55–14:14:29 UTC (19:40:55–19:44:29 IST). Reported deployed SHA and harness SHA: <code>aa36272e424489724153b8cdd89c1ae25b4a8e13</code>. Runtime identity is operator supplied.</p>
+<p><strong>The controller correctly stopped on the 250-user latency gate. No HTTP error or request-accounting failure occurred.</strong></p>
+<table><thead><tr><th>Stage</th><th>Recorded requests, all phases</th><th>Steady requests</th><th>Catalogue p90</th><th>Search p90</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>100 VUs</td><td>6,249</td><td>5,497</td><td>0.332 s</td><td>0.321 s</td><td>Passed 120-second steady sample</td></tr>
+<tr><td>250 VUs</td><td>3,136</td><td>1,426</td><td>3.807 s</td><td>3.792 s</td><td>Failed sustained three-second gate; early stop after about 30 of 120 seconds</td></tr>
+<tr><td>500 VUs</td><td>0</td><td>0</td><td>Not measured</td><td>Not measured</td><td>Not run; outside targeted profile</td></tr>
+</tbody></table>
+<p>All 9,385 started requests completed and returned HTTP 200. At the 250-user cutoff, 143 active requests drained successfully in 2.894 seconds. Peak sampled generator CPU was 11%, RSS 96.34 MiB; no generator resource stop threshold was reached. These are generator measurements, not Render resource measurements.</p>
+<h2>Cache and timing diagnostics</h2>
+<table><thead><tr><th>Steady stage / endpoint</th><th>Cache HIT / successful responses</th><th>HIT share</th><th>Data p90</th><th>Instrumented app p90</th><th>Client-minus-instrumented-app p90</th></tr></thead><tbody>
+<tr><td>100 / catalogue</td><td>3,253 / 3,259</td><td>99.82%</td><td>0.5 ms</td><td>15.5 ms</td><td>320.589 ms</td></tr>
+<tr><td>100 / search</td><td>2,232 / 2,238</td><td>99.73%</td><td>0.5 ms</td><td>19.0 ms</td><td>306.702 ms</td></tr>
+<tr><td>250 / catalogue</td><td>848 / 850</td><td>99.76%</td><td>0.5 ms</td><td>79.4 ms</td><td>3,778.756 ms</td></tr>
+<tr><td>250 / search</td><td>575 / 576</td><td>99.83%</td><td>0.5 ms</td><td>85.6 ms</td><td>3,783.239 ms</td></tr>
+</tbody></table>
+<p>Every successful response had the required diagnostics. HIT shares use successful-response denominators; there were no failed responses. The residual is computed per request before its p90 is taken. It includes network, proxy, possible queueing and other uninstrumented work; it is not a direct queue-time measurement. Percentiles of separate metrics must not be subtracted or added as though they describe the same request.</p>
+<p>Only 290/850 catalogue and 188/576 search requests in the 250-user steady sample completed within three seconds. HTTP 200 alone does not satisfy the timing gate. The 250-user sample was aborted and does not establish a successful two-minute hold or an exact maximum capacity.</p>
+<h2>Comparison and disposition</h2>
+<p>Before caching, run 42969189618&#x27;s 100-user catalogue/search p90 was 2.205s/2.204s. This retest measured 0.332s/0.321s, approximately 84.9%/85.5% lower. These are observed results across two deployments/runs, not a controlled proof that every difference came from caching. The previous six 503s were not reproduced in this sample; their permanent elimination is not established.</p>
+<p>The cache is active and supports materially faster measured 100-user browsing. The tested deployment still misses the 250-user three-second latency gate. BOOK-NF-002 remains unmet/unverified at its original 500-user target. The agreed single optimisation/retest cycle is complete with a failed capacity outcome. Preserve the finding and stop further public stress reruns or tuning within this cycle. A future deployment/optimization can be separately verified.</p>
+<p>BOOK-NF-001 still lacks authenticated checkout timing. Monthly availability, full applicable accessibility and operational backup/RPO evidence remain separate gaps. OBP-48 is still In Progress; earlier passing recovery and scoped functional/security evidence remain valid within their stated build/scope limits.</p>
+<p>Render logs/CPU/memory for this retest have not yet been supplied. Earlier observations must not be reused for this window. Original ZIP, JSON, CSV and pasted workflow log are preserved unchanged. No new Jira bug, application/workflow change, deployment or public load run was made during this review.</p></body></html>

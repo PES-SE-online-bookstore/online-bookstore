@@ -1,0 +1,9 @@
+{
+  "review_date_client": "2026-11-11",
+  "zip_sha256": "8111c5f89974aae81e60b2d7c69b243cb21e65bd5eb65db836d10d6087a58fda",
+  "expected_name_from_user_report": "online-bookstore",
+  "failure": "Source database identity does not match approved expected name",
+  "connected_database_name": "Not recorded by this version of probe",
+  "backup_or_restore_attempted": false,
+  "next_action": "Publish name-only diagnostic and start new workflow run; compare actual name with Render web DB_NAME before editing input or DATABASE_URL"
+}

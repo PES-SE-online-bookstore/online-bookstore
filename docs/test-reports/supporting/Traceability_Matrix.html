@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Traceability Matrix</title><style>body{max-width:1180px;margin:36px auto;padding:0 24px;font:16px/1.6 system-ui;color:#1c2833}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #ccd4dc;padding:9px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eef2f6}code{overflow-wrap:anywhere;font-size:.9em}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f7fa;padding:16px}a{color:#174ea6}h1{font-size:30px}h2{margin-top:28px}</style><main><h1>Requirements traceability</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>All 31 requirements retain architecture/design/code references. Counts are mappings, not independent requirement passes.</p>
+<table><thead><tr><th>Requirement</th><th>Description</th><th>Mapped cases</th><th>Disposition</th></tr></thead><tbody>
+<tr><td>BOOK-F-001</td><td>Registration</td><td>26</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-002</td><td>Username/session authentication</td><td>22</td><td>Verified under documented username/session revision R-001</td></tr>
+<tr><td>BOOK-F-003</td><td>Account lockout</td><td>11</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-004</td><td>Password reset</td><td>12</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-005</td><td>Catalogue display</td><td>29</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-006</td><td>Search/filter</td><td>32</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-007</td><td>Book details</td><td>12</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-008</td><td>Cart operations</td><td>18</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-009</td><td>Checkout details</td><td>16</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-010</td><td>Payment/order creation</td><td>12</td><td>Approved mock scope R-002; original gateway payment/confirmation not verified</td></tr>
+<tr><td>BOOK-F-011</td><td>Order history</td><td>11</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-012</td><td>Order tracking</td><td>12</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-013</td><td>Cancellation/return</td><td>27</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-014</td><td>Seller create</td><td>11</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-015</td><td>Seller edit/delete</td><td>19</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-016</td><td>Admin approval/rejection</td><td>22</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-017</td><td>Inventory/account administration</td><td>17</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-018</td><td>Reviews</td><td>21</td><td>Review workflow tested; successful-paid-purchase-only eligibility not established</td></tr>
+<tr><td>BOOK-F-019</td><td>Wishlist</td><td>10</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-F-020</td><td>Status notifications</td><td>15</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-NF-001</td><td>Normal-load performance</td><td>3</td><td>Passed declared normal-load samples: historical catalogue/search p90 0.136/0.142 s; checkout run 43180348416 p90 0.1911 s, 20/20 correct during 10 browsing VUs. Distinct builds/boundaries retained.</td></tr>
+<tr><td>BOOK-NF-002</td><td>500-active-user capacity</td><td>28</td><td>250-user timing Failed; 100-user sample Passed; 500 users Not tested per revised execution scope. Original 500 target not demonstrated.</td></tr>
+<tr><td>BOOK-NF-003</td><td>Monthly availability</td><td>4</td><td>Monthly availability Not tested per user scope decision; no 99.5% full-month claim.</td></tr>
+<tr><td>BOOK-NF-004</td><td>Responsive/accessibility</td><td>6</td><td>Executed sampled audit with unresolved admin breadcrumb finding. Manual keyboard/zoom/form/contrast/table follow-up recorded; full conformance and screen-reader speech not established.</td></tr>
+<tr><td>BOOK-NF-005</td><td>Core automated coverage</td><td>0</td><td>Final CI 43241415099: overall statements 1183/1288=91.85%; branches 247/294=84.01%; defined 20-file core 1013/1093=92.68%, exceeds original 70% target.</td></tr>
+<tr><td>BOOK-NF-006</td><td>Backup/RPO/RTO</td><td>4</td><td>Twice-daily cron published. Fresh backup/temp restore43243243463 Passed; isolated recovery43243646709 exact 22 tables/258 rows,usable2.675s. Historical&gt;24h gap and full production RPO/RTO remain unverified.</td></tr>
+<tr><td>BOOK-SR-001</td><td>Transport TLS</td><td>8</td><td>Scoped TLS evidence; developer DB report and runtime mail-transport limits retained</td></tr>
+<tr><td>BOOK-SR-002</td><td>Password protection</td><td>4</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-SR-003</td><td>Payment data/tokenization</td><td>1</td><td>Approved mock/tokenization exception; original tokenization unimplemented</td></tr>
+<tr><td>BOOK-SR-004</td><td>Server authorization</td><td>62</td><td>Verified by sampled/automated evidence within implemented scope; historical build limits retained</td></tr>
+<tr><td>BOOK-SR-005</td><td>Injection/XSS protection</td><td>28</td><td>Scoped adversarial/regression/scan evidence; image-source hardening observation open</td></tr>
+</tbody></table></main></html>

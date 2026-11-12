@@ -1,0 +1,105 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 123973135743,
+      "run_id": 41028757496,
+      "workflow_name": "Daily Database Backup",
+      "head_branch": "main",
+      "run_url": "http[local path omitted]",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUP6qsc8AAAAc3V_tfw",
+      "head_sha": "fe2ec7b95f54ffc9f0ec848d7127ebd8e663f6bb",
+      "url": "http[local path omitted]",
+      "html_url": "http[local path omitted]",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-30T08:46:52Z",
+      "started_at": "2026-10-30T08:46:55Z",
+      "completed_at": "2026-10-30T08:47:42Z",
+      "name": "Backup and Restore Verification",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-30T08:46:56Z",
+          "completed_at": "2026-10-30T08:46:56Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-30T08:46:56Z",
+          "completed_at": "2026-10-30T08:47:19Z"
+        },
+        {
+          "name": "Install PostgreSQL 18 client",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-30T08:47:19Z",
+          "completed_at": "2026-10-30T08:47:26Z"
+        },
+        {
+          "name": "Check required secret",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-30T08:47:26Z",
+          "completed_at": "2026-10-30T08:47:26Z"
+        },
+        {
+          "name": "Create database backup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-30T08:47:26Z",
+          "completed_at": "2026-10-30T08:47:37Z"
+        },
+        {
+          "name": "Restore backup into temporary database",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-30T08:47:37Z",
+          "completed_at": "2026-10-30T08:47:38Z"
+        },
+        {
+          "name": "Upload database backup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-30T08:47:38Z",
+          "completed_at": "2026-10-30T08:47:39Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-30T08:47:39Z",
+          "completed_at": "2026-10-30T08:47:40Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-30T08:47:40Z",
+          "completed_at": "2026-10-30T08:47:40Z"
+        }
+      ],
+      "check_run_url": "http[local path omitted]",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000019,
+      "runner_name": "GitHub Actions 1000000019",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "recorded_at_utc": "2026-11-09T14:26:15.441111+00:00",
+  "user_answer": "Only the current public Render app",
+  "load_test_launched": true,
+  "controlled_window_agreed": true,
+  "starter_scope": "Catalogue/search read-only HTTP; no checkout/browser-render claim",
+  "active_window": false,
+  "readiness_source": "User: logs are open, ready",
+  "first_run": "LOAD-001",
+  "peak_users_reached": 250,
+  "operator_observation": "No errors/restarts reported for local LOAD-001 only; hosted run observation not supplied",
+  "next_generator": "No new execution planned; single optimisation/retest cycle complete with failed 250-user timing outcome",
+  "latest_hosted_run": "LOAD-GHA-43035954975-1",
+  "latest_hosted_log_observation": "Not supplied yet for this retest; do not reuse earlier-run observations"
+}

@@ -1,0 +1,22 @@
+# Developer handoff draft — admin breadcrumb accessibility
+
+QA Lead: Abdullah Faruqui
+
+Test Engineer: Deepthi A E
+
+Subject: Review/fix admin order breadcrumb link differentiation (OBP-48)
+
+Build: cc99379e894c250d0801090d60e502138064d3b4
+Workflow: https://github.com/PES-SE-online-bookstore/online-bookstore/actions/runs/43230895650
+Page: /admin/orders/order/9/change/ (existing QA Order #9)
+Rule: axe-core 4.11.4 link-in-text-block, WCAG 1.4.1; tool impact serious.
+
+The completed audit flags the same three `.breadcrumbs > a` elements at desktop 1366x768 and mobile 390x844. Treat this as one finding with two viewport observations. The artifact contains no measured contrast ratio; inspect the actual rendered styles before final triage.
+
+Expected: breadcrumb links are visibly identifiable without relying only on color. Assess adding a persistent underline or another non-color cue, preserving keyboard focus visibility and the enforced CSP. Apply any override through appropriate static/admin stylesheet assets, not an unapproved inline-style workaround.
+
+Please return the fix commit/PR and CI result. After deployment, rerun the same accessibility workflow against the actual deployed SHA. Retain the old failed finding and keep the axe rule enabled. Do not modify tests or exclude the admin page merely to make the run green.
+
+Separately, the audit recorded 13 incomplete rule occurrences (10 contrast, three table-header) that need manual/technical review; these are not yet confirmed defects. The QA review contains the exact page/viewport groups. Please help inspect contrast and sidebar table semantics as needed.
+
+This is a draft for the user to relay or publish. It has not been sent and no Jira bug has been created.

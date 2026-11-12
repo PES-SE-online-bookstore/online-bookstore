@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-11-09T09:13:31.092576+00:00",
+  "url": "http[local path omitted]",
+  "final_url": "http[local path omitted]",
+  "http_status": 200,
+  "headers": {
+    "Content-Type": "application/json",
+    "content-security-policy": "style-src-attr 'none'; frame-ancestors 'none'; img-src 'self' https:; base-uri 'self'; object-src 'none'; default-src 'self'; script-src-attr 'none'; connect-src 'self'; form-action 'self'; style-src 'self'; script-src 'self'; font-src 'self'",
+    "strict-transport-security": "max-age=3600"
+  },
+  "body_sha256": "27d006944f1f57ce37e5ea772198ca42b6fbcd596b5a4d02221b127aa4fce7b9",
+  "bytes": 46,
+  "response": {
+    "status": "healthy",
+    "database": "available"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": "Failed",
+  "started_at_utc": "2026-11-11T02:55:05.377575+00:00",
+  "source_commit": "afdb5b14bec00e3f36d287284bd03d3a116fe7f4",
+  "scope": "Disposable PostgreSQL restore and local matching-app recovery rehearsal",
+  "limitations": [
+    "Does not prove historical backup intervals or month availability",
+    "Timed boundary excludes runner provisioning and production Render redeployment",
+    "No external email or real payment verification in this isolated rehearsal"
+  ],
+  "failure": "Source database identity does not match approved expected name",
+  "elapsed_seconds": 0.965,
+  "finished_at_utc": "2026-11-11T02:55:06.342243+00:00"
+}

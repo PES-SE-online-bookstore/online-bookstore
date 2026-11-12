@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Review</title><style>body{font:16px/1.55 Segoe UI,Arial,sans-serif;max-width:1150px;margin:40px auto;padding:0 26px;color:#182334}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:32px}a{color:#1557a0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #d7dee7;padding:9px;text-align:left;vertical-align:top}th{background:#eaf0f7}tr:nth-child(even){background:#f7f9fc}code,pre{font-family:Consolas,monospace}pre{padding:14px;background:#f0f3f7;white-space:pre-wrap;overflow-wrap:anywhere}li{margin-bottom:7px}p{overflow-wrap:anywhere}.status{color:#754400} @media print{body{margin:10mm;font-size:11pt}a{color:inherit}pre,table{font-size:9pt}}</style><body><h1>Scoped recovery rehearsal — Passed</h1>
+<p>QA Lead: Abdullah Faruqui</p>
+<p>Test Engineer: Deepthi A E</p>
+<p>Run 42953060880; application source <code>afdb5b14bec00e3f36d287284bd03d3a116fe7f4</code>. Preserved artifact SHA256 <code>992ce42a4bd01fa0170691e835bcb66f7804c04280e39420786282da16d880d8</code>.</p>
+<ul>
+<li>pg_dump and pg_restore PostgreSQL 18.6 exited 0.</li>
+<li>All 22 tables and 182 rows exactly matched the exported source snapshot, including existing orders/payments.</li>
+<li>Static asset build and restored HTTP health passed.</li>
+<li>All seven HTTP checks passed: login form/login, catalogue, add-to-cart, checkout form/mock checkout and order detail. The script also checked the new order amount/quantity and Pending mock payment.</li>
+<li>Restore start to usable buyer flow: <strong>2.371 seconds</strong>. Script total: <strong>11.841 seconds</strong>. These are not whole GitHub-job or production outage timings.</li>
+<li>Source snapshot: 11 November 2026 03:29:46 UTC (08:59:46 IST). No raw database dump was supplied to QA.</li>
+</ul>
+<p>Synthetic Order #8 and its fixture account/book exist only in the disposable restored database. No new order was created on the live bookstore by this rehearsal. No real payment or external email delivery is claimed.</p>
+<p><strong>OBP48-OPS-010 is Passed within this isolated scope. BOOK-NF-006 remains partial:</strong> historical successful backup snapshot intervals/RPO &lt;=24h remain unverified; the measured recovery boundary excludes runner provisioning and production Render redeployment. OBP-48 remains In Progress. Failed earlier artifacts remain preserved.</p></body></html>
